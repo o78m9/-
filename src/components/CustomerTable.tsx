@@ -1,4 +1,4 @@
-import { supabase } from '@/lib/supabase'
+import { sql } from '@/lib/supabase'
 import { Customer, CustomerStatus } from '@/types'
 
 const STATUS_MAP: Record<CustomerStatus, { label: string; color: string }> = {
@@ -10,14 +10,14 @@ const STATUS_MAP: Record<CustomerStatus, { label: string; color: string }> = {
 }
 
 async function getCustomers(clinicId: string): Promise<Customer[]> {
-  if (!supabase) return []
-  const { data } = await supabase
-    .from('customers')
-    .select('*')
-    .eq('clinic_id', clinicId)
-    .order('last_visit', { ascending: false })
-    .limit(100)
-  return (data as Customer[]) || []
+  if (!sql) return []
+  const rows = await sql`
+    SELECT * FROM customers
+    WHERE clinic_id = ${clinicId}
+    ORDER BY last_visit DESC NULLS LAST
+    LIMIT 100
+  `
+  return rows as unknown as Customer[]
 }
 
 export default async function CustomerTable({ clinicId }: { clinicId: string }) {

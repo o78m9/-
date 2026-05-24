@@ -1,12 +1,6 @@
-import { createClient } from '@supabase/supabase-js'
+import { neon } from '@neondatabase/serverless'
 
-const url = process.env.NEXT_PUBLIC_SUPABASE_URL
-const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+const connectionString = process.env.DATABASE_URL
+if (!connectionString) console.warn('⚠️  DATABASE_URL not set in .env.local')
 
-if (!url?.startsWith('http')) {
-  console.warn('⚠️  NEXT_PUBLIC_SUPABASE_URL not set — add real value to .env.local')
-}
-
-export const supabase = (url?.startsWith('http') && key)
-  ? createClient(url, key)
-  : null
+export const sql = connectionString ? neon(connectionString) : null

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { supabase } from '@/lib/supabase'
+import { sql } from '@/lib/supabase'
 import CustomerTable from '@/components/CustomerTable'
 
 const CLINIC_ID = process.env.NEXT_PUBLIC_DEMO_CLINIC_ID || ''
@@ -13,15 +13,10 @@ const SEGMENTS = [
 ]
 
 async function getStats() {
-  if (!CLINIC_ID || !supabase) return { vip: 0, active: 0, 'at-risk': 0, dormant: 0, lost: 0, total: 0 }
-
-  const { data } = await supabase
-    .from('customers')
-    .select('status')
-    .eq('clinic_id', CLINIC_ID)
-
+  if (!CLINIC_ID || !sql) return { vip: 0, active: 0, 'at-risk': 0, dormant: 0, lost: 0, total: 0 }
+  const rows = await sql`SELECT status FROM customers WHERE clinic_id = ${CLINIC_ID}`
   const counts: Record<string, number> = { vip: 0, active: 0, 'at-risk': 0, dormant: 0, lost: 0, total: 0 }
-  data?.forEach(c => {
+  rows.forEach((c: { status: string }) => {
     if (c.status in counts) counts[c.status]++
     counts.total++
   })
@@ -39,22 +34,13 @@ export default async function HomePage() {
           <p className="text-sm text-gray-500">لوحة التحكم</p>
         </div>
         <div className="flex gap-2 flex-wrap">
-          <Link
-            href="/capture"
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700"
-          >
+          <Link href="/capture" className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700">
             + عميل جديد
           </Link>
-          <Link
-            href="/import"
-            className="border border-gray-300 bg-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-50"
-          >
+          <Link href="/import" className="border border-gray-300 bg-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-50">
             استيراد بيانات
           </Link>
-          <Link
-            href="/qr"
-            className="border border-gray-300 bg-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-50"
-          >
+          <Link href="/qr" className="border border-gray-300 bg-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-50">
             QR Code
           </Link>
         </div>

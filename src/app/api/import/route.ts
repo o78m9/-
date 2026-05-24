@@ -1,11 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createClient } from '@supabase/supabase-js'
+import { neon } from '@neondatabase/serverless'
 import { cleanImportData } from '@/lib/claude'
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-)
+const sql = neon(process.env.DATABASE_URL!)
 
 export async function POST(req: NextRequest) {
   const { rawText, clinic_id, confirm } = await req.json()
@@ -20,26 +17,17 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ preview: cleaned, count: cleaned.length })
   }
 
-  const today = new Date().toISOString().split('T')[0]
-
-  const rows = cleaned.map(c => ({
-    clinic_id,
-    name: c.name,
-    phone: c.phone,
-    first_visit: c.last_visit || today,
-    last_visit: c.last_visit || null,
-    notes: c.notes || null,
-    status: 'active',
-    total_spent: 0,
-  }))
-
-  const { error } = await supabase
-    .from('customers')
-    .upsert(rows, { onConflict: 'phone,clinic_id' })
-
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 })
+  let imported = 0
+  for (const c of cleaned) {
+    await sql`
+      INSERT INTO customers (clinic_id, name, phone, first_visit, last_visit, notes, status, total_spent)
+      VALUES (${clinic_id}, ${c.name}, ${c.phone}, ${c.last_visit || null}, ${c.last_visit || null}, ${c.notes || null}, 'active', 0)
+      ON CONFLICT (phone, clinic_id) DO UPDATE SET
+        last_visit = EXCLUDED.last_visit,
+        notes = COALESCE(EXCLUDED.notes, customers.notes)
+    `
+    imported++
   }
 
-  return NextResponse.json({ imported: rows.length })
+  return NextResponse.json({ imported })
 }
