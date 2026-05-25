@@ -32,13 +32,13 @@ export const metadata: Metadata = {
     siteName: 'عَودة',
     title: 'أعد عملاءك المفقودين قبل ما يروحوا لعيادة ثانية',
     description: 'نموذج AI ذكي يكتشف مرضاك الخاملين ويعيدهم. ادفع نسبة فقط مما نسترجعه.',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'عَودة' }],
+    images: [{ url: '/og-image.svg', width: 1200, height: 630, alt: 'عَودة' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'عَودة | نظام تنشيط العملاء بالذكاء الاصطناعي',
     description: 'ادفع فقط من الإيراد الذي نسترجعه.',
-    images: ['/og-image.png'],
+    images: ['/og-image.svg'],
   },
   alternates: {
     canonical: '/',

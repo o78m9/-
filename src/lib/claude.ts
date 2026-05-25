@@ -23,8 +23,7 @@ export async function cleanImportData(rawText: string): Promise<ImportedCustomer
     model: 'claude-sonnet-4-6',
     max_tokens: 4096,
     system: [
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      { type: 'text', text: SYSTEM_PROMPT, cache_control: { type: 'ephemeral' } } as any,
+      { type: 'text', text: SYSTEM_PROMPT, cache_control: { type: 'ephemeral' } } as never,
     ],
     messages: [
       {

@@ -77,7 +77,7 @@ export function TestimonialsSection() {
 
               {/* Quote */}
               <blockquote className="flex-1 text-[15px] text-stone-700 leading-[1.7] mb-6">
-                "{t.quote}"
+                &ldquo;{t.quote}&rdquo;
               </blockquote>
 
               {/* Author */}

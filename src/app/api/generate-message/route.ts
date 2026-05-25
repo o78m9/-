@@ -74,8 +74,7 @@ Write the Arabic WhatsApp message now.`
         const response = await client.messages.create({
           model: 'claude-sonnet-4-6',
           max_tokens: 200,
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          system: [{ type: 'text', text: SYSTEM_PROMPT, cache_control: { type: 'ephemeral' } }] as any,
+          system: [{ type: 'text', text: SYSTEM_PROMPT, cache_control: { type: 'ephemeral' } }] as never,
           messages: [{ role: 'user', content: userMessage }],
         })
 

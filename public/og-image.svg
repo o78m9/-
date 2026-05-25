@@ -1,0 +1,10 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#FAFAF9"/>
+  <rect width="1200" height="4" fill="#0F766E"/>
+  <circle cx="120" cy="315" r="8" fill="#0F766E"/>
+  <text x="148" y="330" font-family="system-ui, sans-serif" font-size="52" font-weight="700" fill="#0C0A09" text-anchor="start">عَودة</text>
+  <text x="600" y="280" font-family="system-ui, sans-serif" font-size="48" font-weight="700" fill="#0C0A09" text-anchor="middle">أعد عملاءك المفقودين</text>
+  <text x="600" y="345" font-family="system-ui, sans-serif" font-size="48" font-weight="700" fill="#0C0A09" text-anchor="middle">قبل ما يروحوا لعيادة ثانية</text>
+  <text x="600" y="420" font-family="system-ui, sans-serif" font-size="24" fill="#78716C" text-anchor="middle">ادفع فقط من الإيراد الذي نسترجعه</text>
+  <!-- TODO: replace with designed OG image before public launch -->
+</svg>
