@@ -6,8 +6,8 @@ import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
 
 interface HeaderProps {
-  isDemoMode: boolean
-  onToggleDemo: () => void
+  isDemoMode?: boolean
+  onToggleDemo?: () => void
 }
 
 const NAV = [
@@ -17,7 +17,7 @@ const NAV = [
   { label: 'الإحصائيات', href: '/analytics',   icon: BarChart2,       soon: true },
 ]
 
-export function Header({ isDemoMode, onToggleDemo }: HeaderProps) {
+export function Header({ isDemoMode = false, onToggleDemo }: HeaderProps) {
   const pathname = usePathname()
 
   return (

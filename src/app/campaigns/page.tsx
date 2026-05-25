@@ -1,45 +1,53 @@
+'use client'
 import Link from 'next/link'
-import { Megaphone, Plus, Clock } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { Plus, Clock } from 'lucide-react'
+import { Header } from '@/components/header'
+import { EmptyState } from '@/components/empty-state'
 import { Button } from '@/components/ui/button'
 
 export default function CampaignsPage() {
   return (
-    <div className="min-h-screen bg-stone-50">
-      <div className="max-w-screen-xl mx-auto px-4 py-8">
-        <div className="flex items-center justify-between mb-8">
+    <div className="min-h-screen bg-[#FAFAF9]">
+      <Header />
+      <main className="max-w-content mx-auto px-6 lg:px-10 py-10">
+        <motion.div
+          initial={{ opacity: 0, y: -6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          className="flex items-start justify-between mb-12"
+        >
           <div>
-            <h1 className="text-xl font-bold text-gray-900">الحملات</h1>
-            <p className="text-sm text-gray-500 mt-0.5">حملات إعادة تفعيل العملاء</p>
+            <p className="label-caption mb-2">الحملات</p>
+            <h1 className="text-display-md font-semibold text-slate-900 leading-tight">
+              أعد تفعيل عملاءك
+            </h1>
+            <p className="text-slate-500 mt-2 text-sm">
+              Claude يكتب رسالة مخصصة لكل عميل — لا قوالب جاهزة
+            </p>
           </div>
-          <Button asChild>
-            <Link href="/campaigns/new">
-              <Plus size={15} />
-              حملة جديدة
-            </Link>
-          </Button>
-        </div>
+          <div className="mt-1">
+            <Button asChild size="lg">
+              <Link href="/campaigns/new">
+                <Plus size={16} />
+                حملة جديدة
+              </Link>
+            </Button>
+            <p className="text-xs text-slate-400 mt-2 flex items-center justify-end gap-1">
+              <Clock size={10} />
+              تستغرق دقيقتين
+            </p>
+          </div>
+        </motion.div>
 
-        {/* Empty state */}
-        <div className="flex flex-col items-center justify-center py-24 text-center">
-          <div className="w-16 h-16 rounded-2xl bg-teal-50 border border-teal-100 flex items-center justify-center mb-4">
-            <Megaphone size={28} className="text-teal-600" />
-          </div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-1">لا توجد حملات بعد</h3>
-          <p className="text-sm text-gray-500 max-w-xs mb-6">
-            أنشئ أول حملة الآن وأعد تفعيل عملائك الخاملين باستخدام رسائل مخصصة بالذكاء الاصطناعي
-          </p>
-          <Button asChild size="lg">
-            <Link href="/campaigns/new">
-              <Plus size={16} />
-              إنشاء حملة الآن
-            </Link>
-          </Button>
-          <p className="text-xs text-gray-400 mt-4 flex items-center gap-1">
-            <Clock size={11} />
-            تستغرق 2 دقيقة فقط
-          </p>
-        </div>
-      </div>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+        >
+          <EmptyState variant="campaigns" />
+        </motion.div>
+      </main>
     </div>
   )
 }

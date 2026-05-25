@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
 import { sql } from '@/lib/supabase'
+import { Header } from '@/components/header'
 import { CampaignWizard } from '@/components/campaign/wizard'
 
 const CLINIC_ID = process.env.NEXT_PUBLIC_DEMO_CLINIC_ID || ''
@@ -27,19 +28,20 @@ export default async function NewCampaignPage() {
   const counts = await getSegmentCounts()
 
   return (
-    <div className="min-h-screen bg-stone-50">
-      <div className="max-w-2xl mx-auto px-4 py-8">
+    <div className="min-h-screen bg-[#FAFAF9]">
+      <Header />
+      <main className="max-w-2xl mx-auto px-6 py-10">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-1.5 text-sm text-gray-400 mb-6">
-          <Link href="/campaigns" className="hover:text-gray-700 transition-colors">
+        <nav className="flex items-center gap-1.5 mb-8" aria-label="breadcrumb">
+          <Link href="/campaigns" className="text-sm text-slate-400 hover:text-slate-700 transition-colors">
             الحملات
           </Link>
-          <ChevronRight size={14} />
-          <span className="text-gray-600 font-medium">حملة جديدة</span>
+          <ChevronRight size={13} className="text-slate-300" />
+          <span className="text-sm text-slate-700 font-medium">حملة جديدة</span>
         </nav>
 
         <CampaignWizard realCounts={counts} />
-      </div>
+      </main>
     </div>
   )
 }

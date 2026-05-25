@@ -45,18 +45,18 @@ function LoadingDots() {
 export function StepPreview({ isGenerating, messages, onRegenerate, regeneratingId }: StepPreviewProps) {
   return (
     <div>
-      <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center">
-          <Sparkles size={20} className="text-teal-600" />
+      <div className="flex items-center gap-3 mb-7">
+        <div className="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center shrink-0">
+          <Sparkles size={18} className="text-teal-600" />
         </div>
         <div>
-          <h2 className="text-xl font-bold text-gray-900">
-            {isGenerating ? 'Claude يولّد الرسائل...' : 'معاينة الرسائل المُخصَّصة'}
+          <h2 className="text-xl font-semibold text-slate-900 tracking-tight">
+            {isGenerating ? 'Claude يحضّر الرسائل...' : 'معاينة الرسائل المُخصَّصة'}
           </h2>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-slate-500 mt-0.5">
             {isGenerating
-              ? 'يحلل Claude بيانات كل عميل ويصيغ رسالة فريدة'
-              : 'كل رسالة مكتوبة خصيصاً لحالة العميل'}
+              ? 'يحلل بيانات كل عميل ويصيغ رسالة بأسلوبه هو'
+              : 'كل رسالة فريدة — لا قوالب متكررة'}
           </p>
         </div>
       </div>
@@ -100,9 +100,9 @@ export function StepPreview({ isGenerating, messages, onRegenerate, regenerating
             {messages.map((msg, i) => (
               <motion.div
                 key={msg.customerId}
-                initial={{ opacity: 0, y: 12 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: i * 0.1 }}
+                transition={{ duration: 0.4, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
               >
                 <Card className="p-5">
                   <div className="flex items-start justify-between mb-3">
@@ -170,9 +170,9 @@ export function StepPreview({ isGenerating, messages, onRegenerate, regenerating
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="text-xs text-center text-gray-400 mt-4"
+          className="label-caption text-center mt-5"
         >
-          ✨ كل عميل في الحملة الفعلية سيستلم رسالة فريدة مخصصة لحالته
+          ✦ كل عميل في الحملة سيستلم رسالته هو — لا رسالة مكررة
         </motion.p>
       )}
     </div>
