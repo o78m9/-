@@ -80,9 +80,6 @@ module.exports = {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
-      maxWidth: {
-        content: '1200px',
-      },
       backgroundImage: {
         'gradient-radial':   'radial-gradient(var(--tw-gradient-stops))',
         'mesh-teal': `
@@ -110,6 +107,14 @@ module.exports = {
       },
       transitionTimingFunction: {
         spring: 'cubic-bezier(0.16, 1, 0.3, 1)',
+      },
+      boxShadow: {
+        card: '0 1px 2px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.02)',
+        'card-hover': '0 4px 12px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.03)',
+        'hero': '0 24px 48px rgba(0,0,0,0.10), 0 0 0 1px rgba(0,0,0,0.04)',
+      },
+      maxWidth: {
+        content: '1180px',
       },
     },
   },
