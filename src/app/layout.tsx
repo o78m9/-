@@ -5,13 +5,14 @@ import './globals.css'
 
 const arabic = IBM_Plex_Sans_Arabic({
   subsets: ['arabic'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['100', '200', '300', '400', '500', '600', '700'],
   variable: '--font-arabic',
   display: 'swap',
 })
 
 const inter = Inter({
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
   variable: '--font-inter',
   display: 'swap',
 })
@@ -24,9 +25,16 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ar" dir="rtl" className={`${arabic.variable} ${inter.variable}`}>
-      <body className="bg-stone-50 text-gray-900 antialiased font-sans min-h-screen">
+      <body className="bg-[#FAFAF9] text-slate-900 antialiased font-sans min-h-screen">
         {children}
-        <Toaster position="top-center" richColors />
+        <Toaster
+          position="top-center"
+          toastOptions={{
+            classNames: {
+              toast: 'font-sans text-sm',
+            },
+          }}
+        />
       </body>
     </html>
   )

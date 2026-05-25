@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
-import { Star, Users, AlertTriangle, Clock, UserX } from 'lucide-react'
+import { Star, Users, Clock, UserX, AlertCircle } from 'lucide-react'
 import { Card } from '@/components/ui/card'
 import { CountUp } from '@/components/count-up'
 import { cn } from '@/lib/utils'
@@ -8,52 +8,70 @@ import { cn } from '@/lib/utils'
 interface Segment {
   key: string
   label: string
+  sublabel: string
   icon: React.ElementType
-  color: string
+  cardBg: string
+  cardBorder: string
   iconBg: string
   iconColor: string
+  numColor: string
 }
 
 const SEGMENTS: Segment[] = [
   {
     key: 'vip',
     label: 'VIP',
+    sublabel: 'الأكثر قيمة',
     icon: Star,
-    color: 'border-amber-200',
-    iconBg: 'bg-amber-50',
-    iconColor: 'text-amber-600',
+    cardBg: 'bg-amber-50',
+    cardBorder: 'border-amber-200/70',
+    iconBg: 'bg-amber-100',
+    iconColor: 'text-amber-700',
+    numColor: 'text-amber-900',
   },
   {
     key: 'active',
-    label: 'نشطين',
+    label: 'نشطون',
+    sublabel: 'زاروا مؤخراً',
     icon: Users,
-    color: 'border-emerald-200',
-    iconBg: 'bg-emerald-50',
-    iconColor: 'text-emerald-600',
+    cardBg: 'bg-teal-50',
+    cardBorder: 'border-teal-200/70',
+    iconBg: 'bg-teal-100',
+    iconColor: 'text-teal-700',
+    numColor: 'text-teal-900',
   },
   {
     key: 'at-risk',
-    label: 'في خطر',
-    icon: AlertTriangle,
-    color: 'border-orange-200',
-    iconBg: 'bg-orange-50',
-    iconColor: 'text-orange-600',
+    label: 'يحتاجون تواصل',
+    sublabel: 'لم يزوروا مؤخراً',
+    icon: AlertCircle,
+    cardBg: 'bg-slate-50',
+    cardBorder: 'border-slate-200',
+    iconBg: 'bg-slate-100',
+    iconColor: 'text-slate-600',
+    numColor: 'text-slate-800',
   },
   {
     key: 'dormant',
-    label: 'خاملين',
+    label: 'خاملون',
+    sublabel: 'غائبون فترة',
     icon: Clock,
-    color: 'border-red-200',
-    iconBg: 'bg-red-50',
-    iconColor: 'text-red-500',
+    cardBg: 'bg-stone-50',
+    cardBorder: 'border-stone-200',
+    iconBg: 'bg-stone-100',
+    iconColor: 'text-stone-600',
+    numColor: 'text-stone-800',
   },
   {
     key: 'lost',
-    label: 'مفقودين',
+    label: 'مفقودون',
+    sublabel: 'يحتاجون إعادة تفعيل',
     icon: UserX,
-    color: 'border-slate-200',
-    iconBg: 'bg-slate-50',
+    cardBg: 'bg-slate-100',
+    cardBorder: 'border-slate-300/60',
+    iconBg: 'bg-slate-200',
     iconColor: 'text-slate-500',
+    numColor: 'text-slate-700',
   },
 ]
 
@@ -73,22 +91,36 @@ export function SegmentGrid({ stats }: SegmentGridProps) {
         return (
           <motion.div
             key={seg.key}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3, delay: 0.35 + i * 0.06 }}
-            whileHover={{ scale: 1.03, transition: { duration: 0.15 } }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35, delay: 0.3 + i * 0.06, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ y: -2, transition: { duration: 0.15 } }}
           >
-            <Card className={cn('p-4 cursor-default border', seg.color, 'hover:shadow-md transition-shadow duration-200')}>
-              <div className={cn('w-8 h-8 rounded-lg flex items-center justify-center mb-3', seg.iconBg)}>
-                <seg.icon size={16} className={seg.iconColor} />
+            <Card
+              className={cn(
+                'p-5 cursor-default border shadow-sm transition-shadow duration-200 hover:shadow-md',
+                seg.cardBg,
+                seg.cardBorder
+              )}
+            >
+              <div className={cn('w-8 h-8 rounded-lg flex items-center justify-center mb-4', seg.iconBg)}>
+                <seg.icon size={15} className={seg.iconColor} />
               </div>
+
               <CountUp
                 to={count}
-                className="font-metric text-2xl font-bold text-gray-900 leading-none block"
+                className={cn('font-metric text-metric-md font-bold leading-none block', seg.numColor)}
                 duration={1.0}
               />
-              <p className="text-xs text-gray-500 mt-1">{seg.label}</p>
-              <p className="text-xs font-metric text-gray-400 mt-0.5">{pct}%</p>
+
+              <p className={cn('text-sm font-medium mt-2 tracking-tight', seg.numColor.replace('900', '800').replace('800', '700'))}>
+                {seg.label}
+              </p>
+
+              <div className="flex items-center justify-between mt-1">
+                <p className="text-xs text-slate-400">{seg.sublabel}</p>
+                <span className="font-metric text-xs text-slate-400">{pct}%</span>
+              </div>
             </Card>
           </motion.div>
         )
