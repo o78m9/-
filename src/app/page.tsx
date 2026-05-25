@@ -16,7 +16,7 @@ async function getStats() {
   if (!CLINIC_ID || !sql) return { vip: 0, active: 0, 'at-risk': 0, dormant: 0, lost: 0, total: 0 }
   const rows = await sql`SELECT status FROM customers WHERE clinic_id = ${CLINIC_ID}`
   const counts: Record<string, number> = { vip: 0, active: 0, 'at-risk': 0, dormant: 0, lost: 0, total: 0 }
-  rows.forEach((c: { status: string }) => {
+  ;(rows as { status: string }[]).forEach((c) => {
     if (c.status in counts) counts[c.status]++
     counts.total++
   })
