@@ -1,17 +1,19 @@
 'use client'
 import { useEffect, useRef } from 'react'
 import { animate } from 'framer-motion'
+import type { CSSProperties } from 'react'
 
 interface CountUpProps {
   to: number
   duration?: number
   className?: string
+  style?: CSSProperties
   prefix?: string
   suffix?: string
   decimals?: number
 }
 
-export function CountUp({ to, duration = 1.4, className, prefix = '', suffix = '', decimals = 0 }: CountUpProps) {
+export function CountUp({ to, duration = 1.4, className, style, prefix = '', suffix = '', decimals = 0 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null)
 
   useEffect(() => {
@@ -33,7 +35,7 @@ export function CountUp({ to, duration = 1.4, className, prefix = '', suffix = '
   }, [to, duration, prefix, suffix, decimals])
 
   return (
-    <span ref={ref} className={className}>
+    <span ref={ref} className={className} style={style}>
       {prefix}0{suffix}
     </span>
   )
