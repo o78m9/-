@@ -13,12 +13,12 @@ const FAQS = [
     a: 'لا أبداً. الواجهة مصممة للطاقم الإداري في العيادة. تحمّل ملف، تختار فئة، تضغط إرسال. بس.',
   },
   {
-    q: 'كيف بضمن إنه ما يطلع spam على الزباين؟',
+    q: 'كيف بضمن إنه ما يطلع spam على الزبائن؟',
     a: 'Claude يكتب رسالة مخصصة لكل عميل بالاسم وتاريخ آخر زيارة — مش رسالة جماعية. العميل يحس إنك بتفكر فيه شخصياً. معدل الرد عادةً 30-40%.',
   },
   {
-    q: 'ايش لو ما رجّع شي في الشهر التجريبي؟',
-    a: 'ما تدفع شي. الشهر الأول تجريبي مجاناً، ونسبتنا 20% فقط من المبلغ الفعلي المسترجع. إذا ما رجع شي، ما في رسوم.',
+    q: 'ماذا لو ما رجع أي عميل في الشهر التجريبي؟',
+    a: 'ما تدفع شيئاً. الباقة التجريبية بدون رسوم شهرية، ندفع نسبة فقط من الإيراد الذي نسترجعه فعلياً. لو ما رجع حدا، ما عليك أي التزام مالي.',
   },
   {
     q: 'متوافق مع الأحكام الشرعية؟',
@@ -30,7 +30,7 @@ const FAQS = [
   },
   {
     q: 'بيشتغل لعيادات غير عيادات الأسنان؟',
-    a: 'نعم. جرّبناه مع عيادات تجميلية وعيامات علاج طبيعي. النظام يتكيّف مع أي عيادة فيها زبائن متكررين.',
+    a: 'نعم. جرّبناه مع عيادات تجميلية وعيادات علاج طبيعي. النظام يتكيّف مع أي عيادة فيها زبائن متكررين.',
   },
 ]
 
@@ -56,9 +56,10 @@ export function FAQSection() {
               <button
                 onClick={() => setOpen(open === i ? null : i)}
                 className="w-full flex items-center justify-between px-6 py-5 text-right"
+                aria-expanded={open === i}
               >
                 <span className="text-[15px] font-medium text-stone-950">{faq.q}</span>
-                <span className="shrink-0 mr-4 text-stone-400">
+                <span className="shrink-0 ms-4 text-stone-400">
                   {open === i ? <Minus size={16} /> : <Plus size={16} />}
                 </span>
               </button>
@@ -76,6 +77,25 @@ export function FAQSection() {
           ))}
         </div>
       </div>
+
+      {/* FAQ JSON-LD for Google rich snippets */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: FAQS.map((faq) => ({
+              '@type': 'Question',
+              name: faq.q,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: faq.a,
+              },
+            })),
+          }),
+        }}
+      />
     </section>
   )
 }

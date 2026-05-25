@@ -13,9 +13,8 @@ const LINKS = [
   {
     heading: 'الشركة',
     items: [
-      { label: 'عن عودة', href: '#' },
-      { label: 'المدونة', href: '#' },
-      { label: 'تواصل معنا', href: '#' },
+      { label: 'عن عَودة', href: '/about' },
+      { label: 'تواصل معنا', href: 'mailto:founder@aooda.com' },
     ],
   },
   {
@@ -29,9 +28,9 @@ const LINKS = [
   {
     heading: 'قانوني',
     items: [
-      { label: 'شروط الاستخدام', href: '#' },
-      { label: 'سياسة الخصوصية', href: '#' },
-      { label: 'سياسة الإلغاء', href: '#' },
+      { label: 'شروط الاستخدام', href: '/terms' },
+      { label: 'سياسة الخصوصية', href: '/privacy' },
+      { label: 'سياسة الإلغاء', href: '/cancellation' },
     ],
   },
 ]
@@ -48,9 +47,19 @@ export function LandingFooter() {
               <span className="w-2 h-2 rounded-full bg-teal-500" />
               <span className="text-[20px] font-bold tracking-tight">عَودة</span>
             </div>
-            <p className="text-[13px] text-stone-400 leading-relaxed">
+            <p className="text-[13px] text-stone-400 leading-relaxed mb-4">
               نظام ذكي لإعادة تفعيل عملاء العيادات باستخدام Claude AI وWhatsApp.
             </p>
+            <div className="space-y-1">
+              <a
+                href="mailto:founder@aooda.com"
+                className="block text-[13px] text-stone-500 hover:text-stone-300 transition-colors"
+              >
+                founder@aooda.com
+              </a>
+              {/* TODO: replace with real WhatsApp number */}
+              <p className="text-[13px] text-stone-500">+962 7X XXX XXXX</p>
+            </div>
           </div>
 
           {/* Link columns */}
@@ -81,8 +90,8 @@ export function LandingFooter() {
             © 2026 عَودة. جميع الحقوق محفوظة.
           </p>
           <div className="flex gap-6">
-            <Link href="#" className="text-[13px] text-stone-500 hover:text-stone-300 transition-colors">الشروط</Link>
-            <Link href="#" className="text-[13px] text-stone-500 hover:text-stone-300 transition-colors">الخصوصية</Link>
+            <Link href="/terms" className="text-[13px] text-stone-500 hover:text-stone-300 transition-colors">الشروط</Link>
+            <Link href="/privacy" className="text-[13px] text-stone-500 hover:text-stone-300 transition-colors">الخصوصية</Link>
           </div>
         </div>
       </div>

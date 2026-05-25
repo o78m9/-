@@ -1,4 +1,5 @@
-import Link from 'next/link'
+'use client'
+import { BookingButton } from '@/components/BookingButton'
 
 export function FinalCTA() {
   return (
@@ -10,12 +11,12 @@ export function FinalCTA() {
         <p className="text-[18px] text-stone-600 mb-10">
           احجز عرض 15 دقيقة — شوف النظام يشتغل على بياناتك انت.
         </p>
-        <Link
-          href="/dashboard"
+        <BookingButton
+          source="final-cta"
           className="inline-flex items-center h-14 px-8 rounded-lg bg-teal-700 text-white text-[17px] font-medium hover:bg-teal-800 transition-colors"
         >
           احجز موعد العرض
-        </Link>
+        </BookingButton>
         <p className="text-[13px] text-stone-400 mt-6">
           بدون التزام. الشهر الأول مجاني.
         </p>

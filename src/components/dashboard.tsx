@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Plus, Upload, QrCode, TrendingUp, TrendingDown, MessageCircle, Sparkles } from 'lucide-react'
+import { Plus, Upload, QrCode, TrendingUp, TrendingDown, MessageCircle, Sparkles, Eye } from 'lucide-react'
 import { DashboardSidebar } from '@/components/dashboard-sidebar'
 import { SegmentGrid } from '@/components/segment-grid'
 import { ActivityFeed } from '@/components/activity-feed'
@@ -197,10 +197,17 @@ export function DashboardClient({ realStats, realCustomers, hasClinicId }: Dashb
               transition={{ duration: 0.2 }}
               className="overflow-hidden flex-shrink-0"
             >
-              <div className="bg-amber-50 border-b border-amber-200/60 px-6 py-2 text-center">
-                <p className="text-[12px] font-medium text-amber-700 tracking-wide">
-                  وضع العرض التجريبي — البيانات المعروضة للتوضيح فقط
-                </p>
+              <div className="sticky top-0 z-40 bg-amber-500 text-white px-4 py-2.5 text-center">
+                <span className="inline-flex items-center gap-2 text-[13px] font-medium">
+                  <Eye size={14} />
+                  هذا عرض تجريبي ببيانات وهمية.
+                  <a
+                    href="/"
+                    className="underline font-semibold hover:no-underline"
+                  >
+                    احجز عرضاً حقيقياً على بياناتك
+                  </a>
+                </span>
               </div>
             </motion.div>
           )}
