@@ -9,7 +9,7 @@ export default function ImportPage() {
   return (
     <div className="min-h-screen bg-[#FAFAF9]">
       <Header />
-      <main className="max-w-3xl mx-auto px-6 lg:px-10 py-10">
+      <main id="main" className="max-w-3xl mx-auto px-6 lg:px-10 py-10">
         <nav className="flex items-center gap-1.5 mb-8" aria-label="breadcrumb">
           <Link href="/" className="text-sm text-slate-400 hover:text-slate-700 transition-colors">
             لوحة التحكم

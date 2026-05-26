@@ -94,6 +94,9 @@ export function CampaignWizard({ realCounts }: WizardProps) {
         notes: null,
       }))
 
+      const controller = new AbortController()
+      const timeoutId = setTimeout(() => controller.abort(), 15000)
+
       const res = await fetch('/api/generate-message', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -103,7 +106,9 @@ export function CampaignWizard({ realCounts }: WizardProps) {
           customMessage,
           clinicName: 'عيادة الأسنان',
         }),
+        signal: controller.signal,
       })
+      clearTimeout(timeoutId)
 
       if (!res.ok) throw new Error('API error')
       const data = await res.json()
@@ -180,7 +185,7 @@ export function CampaignWizard({ realCounts }: WizardProps) {
   }
 
   const canContinue = () => {
-    if (step === 1) return !!segment
+    if (step === 1) return !!segment && ((counts as Record<string, number>)[segment] ?? 0) > 0
     if (step === 2) return !!template && (template !== 'custom' || customMessage.trim().length > 5)
     if (step === 3) return messages.length > 0 && !isGenerating
     if (step === 4) return scheduleType === 'now' || !!scheduledAt

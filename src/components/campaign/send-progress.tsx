@@ -94,7 +94,7 @@ export function SendProgress({ customerCount, segment, isDemoMode }: SendProgres
           </h2>
           <p className="text-gray-500 mb-6 text-sm">
             {isDemoMode
-              ? `3 مواعيد محجوزة من أصل ${customerCount} رسالة — 350 دينار إيرادات متوقعة`
+              ? `3 مواعيد محجوزة من أصل ${customerCount} رسالة — 350 د.أ إيرادات متوقعة`
               : `تم إرسال ${customerCount} رسالة بنجاح للعملاء`}
           </p>
         </motion.div>
@@ -109,7 +109,7 @@ export function SendProgress({ customerCount, segment, isDemoMode }: SendProgres
             {[
               { label: 'رسائل أُرسلت', value: String(customerCount), icon: MessageSquare, color: 'text-teal-600' },
               { label: 'مواعيد محجوزة', value: '3', icon: Calendar, color: 'text-blue-600' },
-              { label: 'إيرادات متوقعة', value: '350 JD', icon: TrendingUp, color: 'text-emerald-600' },
+              { label: 'إيرادات متوقعة', value: '350 د.أ', icon: TrendingUp, color: 'text-emerald-600' },
             ].map((stat) => (
               <div key={stat.label} className="rounded-xl border border-slate-200 bg-white p-4 text-center">
                 <stat.icon size={18} className={cn('mx-auto mb-1.5', stat.color)} />
@@ -120,7 +120,7 @@ export function SendProgress({ customerCount, segment, isDemoMode }: SendProgres
           </motion.div>
         )}
 
-        <Button onClick={() => router.push('/')} className="w-full sm:w-auto px-8">
+        <Button onClick={() => router.push('/dashboard')} className="w-full sm:w-auto px-8">
           العودة للوحة التحكم
         </Button>
       </motion.div>

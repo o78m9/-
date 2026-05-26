@@ -95,6 +95,58 @@ export const DEMO_ACTIVITY: ActivityItem[] = [
   },
 ]
 
+export interface DemoCampaign {
+  id: string
+  name: string
+  segment: 'vip' | 'active' | 'at-risk' | 'dormant' | 'lost'
+  template: string
+  sentAt: string
+  customerCount: number
+  replies: number
+  bookings: number
+  revenue: number
+  status: 'completed' | 'scheduled'
+}
+
+export const DEMO_CAMPAIGNS: DemoCampaign[] = [
+  {
+    id: '1',
+    name: 'تذكير الخاملين — مايو 2026',
+    segment: 'dormant',
+    template: 'friendly',
+    sentAt: '2026-05-20',
+    customerCount: 63,
+    replies: 21,
+    bookings: 9,
+    revenue: 1350,
+    status: 'completed',
+  },
+  {
+    id: '2',
+    name: 'عرض خاص — عملاء مفقودون',
+    segment: 'lost',
+    template: 'offer',
+    sentAt: '2026-05-10',
+    customerCount: 35,
+    replies: 12,
+    bookings: 5,
+    revenue: 750,
+    status: 'completed',
+  },
+  {
+    id: '3',
+    name: 'متابعة صحية — يحتاجون تواصل',
+    segment: 'at-risk',
+    template: 'health',
+    sentAt: '2026-04-28',
+    customerCount: 42,
+    replies: 15,
+    bookings: 7,
+    revenue: 1050,
+    status: 'completed',
+  },
+]
+
 export const DEMO_CUSTOMERS: DemoCustomer[] = [
   { id: '1', name: 'أحمد البكري', phone: '0796789012', status: 'vip', last_visit: '2025-04-18', total_spent: 2100 },
   { id: '2', name: 'سارة أبو شعر', phone: '0791234567', status: 'vip', last_visit: '2025-04-10', total_spent: 1850 },

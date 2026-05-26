@@ -137,7 +137,7 @@ function StatusPill({
       </div>
       <span
         className={cn(
-          'w-2 h-2 rounded-full flex-shrink-0 mr-auto',
+          'w-2 h-2 rounded-full flex-shrink-0 ms-auto',
           connected ? 'bg-teal-500 animate-pulse' : 'bg-stone-300'
         )}
       />

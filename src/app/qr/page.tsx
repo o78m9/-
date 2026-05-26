@@ -24,7 +24,7 @@ export default function QRPage() {
   }, [])
 
   return (
-    <main className="min-h-screen flex items-center justify-center p-4">
+    <main id="main" className="min-h-screen flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-lg p-8 text-center max-w-sm w-full print:shadow-none">
         <h1 className="text-xl font-bold text-blue-700 mb-1">عَودة</h1>
         <p className="text-sm text-gray-500 mb-6">سجّل بياناتك للحصول على خصم 10% في زيارتك القادمة</p>

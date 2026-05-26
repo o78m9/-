@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 const WA_PHONE = '962790000000'
 const WA_TEXT = 'أهلاً، أريد معرفة المزيد عن عَودة'
 
-const HIDE_ON = ['/dashboard']
+const HIDE_ON = ['/dashboard', '/campaigns', '/capture', '/import', '/qr']
 
 export function WhatsAppButton() {
   const pathname = usePathname()
