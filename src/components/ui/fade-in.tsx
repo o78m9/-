@@ -17,7 +17,7 @@ export function FadeIn({ children, delay = 0, className = '', as: Tag = 'div' }:
     if (!el) return
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry?.isIntersecting) {
           el.style.transitionDelay = delay > 0 ? `${delay}ms` : ''
           el.classList.add('is-visible')
           observer.disconnect()

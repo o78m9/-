@@ -42,7 +42,7 @@ export function DashboardPreview() {
     if (!el) return
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry?.isIntersecting) {
           el.classList.add('callouts-visible')
           observer.disconnect()
         }

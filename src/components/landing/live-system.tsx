@@ -103,7 +103,7 @@ export function LiveSystem() {
     if (!el) return
     const obs = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry?.isIntersecting) {
           el.classList.add('callouts-visible')
           obs.disconnect()
         }

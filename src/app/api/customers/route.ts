@@ -17,7 +17,9 @@ export async function POST(req: NextRequest) {
   `
 
   if (existing.length > 0) {
-    const id = existing[0].id as string
+    const row = existing[0]
+    if (!row) return NextResponse.json({ error: 'Unexpected empty result' }, { status: 500 })
+    const id = row.id as string
     await sql`UPDATE customers SET last_visit = ${today}, status = 'active' WHERE id = ${id}`
     await sql`INSERT INTO visits (customer_id, date, service, notes) VALUES (${id}, ${today}, ${visit_type}, ${notes || null})`
     return NextResponse.json({ id, updated: true })
@@ -28,7 +30,9 @@ export async function POST(req: NextRequest) {
     VALUES (${clinic_id}, ${name}, ${phone}, ${today}, ${today}, 'active', ${notes || null})
     RETURNING id
   `
-  const id = inserted[0].id as string
+  const insertedRow = inserted[0]
+  if (!insertedRow) return NextResponse.json({ error: 'Insert failed' }, { status: 500 })
+  const id = insertedRow.id as string
   await sql`INSERT INTO visits (customer_id, date, service, notes) VALUES (${id}, ${today}, ${visit_type}, ${notes || null})`
 
   return NextResponse.json({ id, created: true })

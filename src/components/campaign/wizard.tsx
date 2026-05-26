@@ -137,7 +137,10 @@ export function CampaignWizard({ realCounts }: WizardProps) {
       setMessages((prev) =>
         prev.map((m) =>
           m.customerId === customerId
-            ? { ...m, message: variations[Math.floor(Math.random() * variations.length)] }
+            ? {
+                ...m,
+                message: variations[Math.floor(Math.random() * variations.length)] ?? m.message,
+              }
             : m,
         ),
       )

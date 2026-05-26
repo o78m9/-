@@ -46,7 +46,7 @@ function StatRow({
 
     const obs = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !fired.current) {
+        if (entry?.isIntersecting && !fired.current) {
           fired.current = true
           const t0 = performance.now()
           const dur = 1800

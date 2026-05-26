@@ -32,7 +32,7 @@ export async function cleanImportData(rawText: string): Promise<ImportedCustomer
   })
 
   const content = response.content[0]
-  if (content.type !== 'text') throw new Error('Unexpected response type from Claude')
+  if (!content || content.type !== 'text') throw new Error('Unexpected response type from Claude')
 
   const parsed = JSON.parse(content.text) as ImportedCustomer[]
   if (!Array.isArray(parsed)) throw new Error('Claude returned non-array JSON')
