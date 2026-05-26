@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Plus, Upload, QrCode, TrendingUp, TrendingDown, MessageCircle, Sparkles, Eye } from 'lucide-react'
+import { Plus, Upload, QrCode, TrendingUp, TrendingDown, MessageCircle, Sparkles, Eye, type LucideIcon } from 'lucide-react'
 import { DashboardSidebar } from '@/components/dashboard-sidebar'
 import { SegmentGrid } from '@/components/segment-grid'
 import { ActivityFeed } from '@/components/activity-feed'
@@ -42,6 +42,7 @@ interface DashboardClientProps {
   realStats: RealStats
   realCustomers: RealCustomer[]
   hasClinicId: boolean
+  isAuthenticated?: boolean
 }
 
 const EMPTY_SPARK = [0, 0, 0, 0, 0, 0, 0]
@@ -71,9 +72,9 @@ function SecondaryMetric({
   const positive = trend >= 0
   return (
     <motion.div
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.38, delay, ease: [0.16, 1, 0.3, 1] }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4, delay, ease: [0.16, 1, 0.3, 1] }}
       className="bg-white rounded-xl p-5 flex flex-col gap-3"
       style={{ border: '1px solid #E7E5E4', boxShadow: '0 1px 2px rgba(0,0,0,0.04)' }}
     >
@@ -108,7 +109,7 @@ function StatusPill({
   connected,
   delay,
 }: {
-  icon: React.ElementType
+  icon: LucideIcon
   label: string
   sublabel: string
   connected: boolean
@@ -145,7 +146,7 @@ function StatusPill({
   )
 }
 
-export function DashboardClient({ realStats, realCustomers, hasClinicId }: DashboardClientProps) {
+export function DashboardClient({ realStats, realCustomers, hasClinicId, isAuthenticated = false }: DashboardClientProps) {
   const [isDemoMode, setIsDemoMode] = useState(false)
   const [mounted, setMounted] = useState(false)
 
@@ -159,6 +160,12 @@ export function DashboardClient({ realStats, realCustomers, hasClinicId }: Dashb
     const next = !isDemoMode
     setIsDemoMode(next)
     localStorage.setItem('awdah-demo-mode', String(next))
+    // Mirror to cookie so middleware can read it server-side
+    if (next) {
+      document.cookie = 'awdah-demo-mode=true; path=/; max-age=86400; SameSite=Lax'
+    } else {
+      document.cookie = 'awdah-demo-mode=; path=/; max-age=0'
+    }
   }
 
   const stats = isDemoMode
@@ -182,7 +189,7 @@ export function DashboardClient({ realStats, realCustomers, hasClinicId }: Dashb
   return (
     <div className="flex h-screen overflow-hidden bg-[#FAFAF9]">
       {/* Sidebar */}
-      <DashboardSidebar isDemoMode={isDemoMode} onToggleDemo={toggleDemo} />
+      <DashboardSidebar isDemoMode={isDemoMode} onToggleDemo={toggleDemo} isAuthenticated={isAuthenticated} />
 
       {/* Main area */}
       <div className="flex-1 flex flex-col overflow-hidden">
@@ -288,7 +295,7 @@ export function DashboardClient({ realStats, realCustomers, hasClinicId }: Dashb
                       className="text-[24px] font-medium text-stone-400 mb-2"
                       style={{ fontFamily: 'var(--font-inter)' }}
                     >
-                      د.أ
+                      ر.س
                     </span>
                   </div>
                   <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-50 text-amber-700 text-[13px] font-medium">

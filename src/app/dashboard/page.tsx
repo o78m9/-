@@ -1,5 +1,6 @@
-import { sql } from '@/lib/supabase'
+import { sql } from '@/lib/db'
 import { DashboardClient } from '@/components/dashboard'
+import { createClient } from '@/lib/supabase/server'
 
 const CLINIC_ID = process.env.NEXT_PUBLIC_DEMO_CLINIC_ID || ''
 
@@ -31,12 +32,19 @@ async function getServerData() {
 }
 
 export default async function DashboardPage() {
-  const { stats, customers } = await getServerData()
+  const [{ stats, customers }, supabase] = await Promise.all([
+    getServerData(),
+    createClient(),
+  ])
+
+  const { data: { user } } = await supabase.auth.getUser()
+
   return (
     <DashboardClient
       realStats={stats}
       realCustomers={customers}
       hasClinicId={!!CLINIC_ID}
+      isAuthenticated={!!user}
     />
   )
 }

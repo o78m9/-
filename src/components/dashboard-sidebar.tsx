@@ -1,8 +1,9 @@
 'use client'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { LayoutDashboard, Users, Send, Upload, QrCode, HelpCircle, FlaskConical } from 'lucide-react'
+import { usePathname, useRouter } from 'next/navigation'
+import { LayoutDashboard, Users, Send, Upload, QrCode, HelpCircle, FlaskConical, LogOut } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { createClient } from '@/lib/supabase/client'
 
 const NAV = [
   { label: 'لوحة التحكم', href: '/dashboard', icon: LayoutDashboard },
@@ -15,10 +16,12 @@ const NAV = [
 interface DashboardSidebarProps {
   isDemoMode: boolean
   onToggleDemo: () => void
+  isAuthenticated?: boolean
 }
 
-export function DashboardSidebar({ isDemoMode, onToggleDemo }: DashboardSidebarProps) {
+export function DashboardSidebar({ isDemoMode, onToggleDemo, isAuthenticated = false }: DashboardSidebarProps) {
   const pathname = usePathname()
+  const router = useRouter()
 
   return (
     <aside className="w-[240px] flex-shrink-0 h-full bg-stone-950 flex flex-col border-r border-stone-800">
@@ -77,6 +80,19 @@ export function DashboardSidebar({ isDemoMode, onToggleDemo }: DashboardSidebarP
           <HelpCircle size={15} className="text-stone-600" />
           مساعدة وتواصل
         </Link>
+        {isAuthenticated && (
+          <button
+            onClick={async () => {
+              const supabase = createClient()
+              await supabase.auth.signOut()
+              router.push('/login')
+            }}
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13px] text-stone-500 hover:text-red-400 hover:bg-red-950/20 transition-colors text-right"
+          >
+            <LogOut size={15} className="text-stone-600" />
+            خروج
+          </button>
+        )}
       </div>
     </aside>
   )
