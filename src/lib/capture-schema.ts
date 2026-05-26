@@ -1,10 +1,3 @@
-import { z } from 'zod'
-
-export const captureSchema = z.object({
-  name: z.string().min(2, 'الاسم مطلوب'),
-  phone: z.string().min(10, 'رقم الهاتف مطلوب'),
-  visit_type: z.string().min(1, 'اختر نوع الزيارة'),
-  notes: z.string().optional(),
-})
-
-export type CaptureFormData = z.infer<typeof captureSchema>
+// Strangler Fig: re-export from feature slice — update imports to @/features/capture/lib/schema
+export { captureSchema } from '@/features/capture/lib/schema'
+export type { CaptureFormData } from '@/features/capture/lib/schema'

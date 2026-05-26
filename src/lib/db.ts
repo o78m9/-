@@ -1,6 +1,2 @@
-import { neon } from '@neondatabase/serverless'
-
-const connectionString = process.env.DATABASE_URL
-if (!connectionString) console.warn('⚠️  DATABASE_URL not set in .env.local')
-
-export const sql = connectionString ? neon(connectionString) : null
+// Strangler Fig: re-export from shared — update imports to @/shared/lib/db
+export { sql } from '@/shared/lib/db'

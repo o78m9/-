@@ -1,8 +1,2 @@
-import { createBrowserClient } from '@supabase/ssr'
-
-export function createClient() {
-  return createBrowserClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-  )
-}
+// Strangler Fig: re-export from feature slice — update imports to @/features/auth/lib/client
+export { createClient } from '@/features/auth/lib/client'
