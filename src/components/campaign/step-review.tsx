@@ -1,8 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
-import { Users, MessageSquare, Clock, Sparkles, ChevronLeft } from 'lucide-react'
+import { Users, MessageSquare, Clock, Sparkles, type LucideIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
 
 const SEGMENT_LABELS: Record<string, string> = {
   vip: 'VIP',
@@ -35,7 +34,7 @@ function SummaryRow({
   label,
   value,
 }: {
-  icon: React.ElementType
+  icon: LucideIcon
   label: string
   value: string
 }) {
@@ -82,8 +81,12 @@ export function StepReview({
         className="rounded-xl border border-slate-200 bg-white overflow-hidden mb-5"
       >
         <div className="bg-gradient-to-l from-teal-50 to-white px-5 py-4 border-b border-slate-100">
-          <p className="text-xs font-medium text-teal-700 uppercase tracking-wide mb-0.5">ملخص الحملة</p>
-          <p className="text-sm text-gray-600">حملة إعادة تفعيل — {SEGMENT_LABELS[segment] ?? segment}</p>
+          <p className="text-xs font-medium text-teal-700 uppercase tracking-wide mb-0.5">
+            ملخص الحملة
+          </p>
+          <p className="text-sm text-gray-600">
+            حملة إعادة تفعيل — {SEGMENT_LABELS[segment] ?? segment}
+          </p>
         </div>
 
         <div className="px-5">
@@ -98,11 +101,7 @@ export function StepReview({
             value={TEMPLATE_LABELS[template] ?? template}
           />
           <SummaryRow icon={Clock} label="وقت الإرسال" value={scheduleLabel} />
-          <SummaryRow
-            icon={Sparkles}
-            label="التخصيص بـ AI"
-            value="رسالة فريدة لكل عميل"
-          />
+          <SummaryRow icon={Sparkles} label="التخصيص بـ AI" value="رسالة فريدة لكل عميل" />
         </div>
 
         <div className="px-5 py-3 bg-slate-50 border-t border-slate-100">
@@ -153,7 +152,6 @@ export function StepReview({
             </>
           )}
         </Button>
-
       </div>
     </div>
   )

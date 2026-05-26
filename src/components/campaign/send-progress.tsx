@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { CheckCircle, MessageSquare, Calendar, TrendingUp } from 'lucide-react'
+import { CheckCircle, MessageSquare, Calendar, TrendingUp, type LucideIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useRouter } from 'next/navigation'
 import { cn } from '@/lib/utils'
@@ -9,18 +9,53 @@ import { cn } from '@/lib/utils'
 interface TimelineEvent {
   id: number
   time: number
-  icon: React.ElementType
+  icon: LucideIcon
   color: string
   bg: string
   text: string
 }
 
 const DEMO_EVENTS: TimelineEvent[] = [
-  { id: 1, time: 3000, icon: MessageSquare, color: 'text-teal-600', bg: 'bg-teal-50', text: 'تم إرسال 5 رسائل بنجاح ✓' },
-  { id: 2, time: 7000, icon: MessageSquare, color: 'text-emerald-600', bg: 'bg-emerald-50', text: '💬 أول رد! — سارة أبو شعر: "أوكي شكراً، بحجز قريب"' },
-  { id: 3, time: 12000, icon: Calendar, color: 'text-blue-600', bg: 'bg-blue-50', text: '📅 حجز موعد — أحمد البكري (الخميس 3 م)' },
-  { id: 4, time: 17000, icon: MessageSquare, color: 'text-emerald-600', bg: 'bg-emerald-50', text: '💬 محمد الخطيب: "عندكم وقت الأسبوع الجاي؟"' },
-  { id: 5, time: 22000, icon: Calendar, color: 'text-blue-600', bg: 'bg-blue-50', text: '📅 حجز موعد — رنا الشيخ (الأحد 11 ص)' },
+  {
+    id: 1,
+    time: 3000,
+    icon: MessageSquare,
+    color: 'text-teal-600',
+    bg: 'bg-teal-50',
+    text: 'تم إرسال 5 رسائل بنجاح ✓',
+  },
+  {
+    id: 2,
+    time: 7000,
+    icon: MessageSquare,
+    color: 'text-emerald-600',
+    bg: 'bg-emerald-50',
+    text: '💬 أول رد! — سارة أبو شعر: "أوكي شكراً، بحجز قريب"',
+  },
+  {
+    id: 3,
+    time: 12000,
+    icon: Calendar,
+    color: 'text-blue-600',
+    bg: 'bg-blue-50',
+    text: '📅 حجز موعد — أحمد البكري (الخميس 3 م)',
+  },
+  {
+    id: 4,
+    time: 17000,
+    icon: MessageSquare,
+    color: 'text-emerald-600',
+    bg: 'bg-emerald-50',
+    text: '💬 محمد الخطيب: "عندكم وقت الأسبوع الجاي؟"',
+  },
+  {
+    id: 5,
+    time: 22000,
+    icon: Calendar,
+    color: 'text-blue-600',
+    bg: 'bg-blue-50',
+    text: '📅 حجز موعد — رنا الشيخ (الأحد 11 ص)',
+  },
 ]
 
 interface SendProgressProps {
@@ -29,7 +64,7 @@ interface SendProgressProps {
   isDemoMode: boolean
 }
 
-export function SendProgress({ customerCount, segment, isDemoMode }: SendProgressProps) {
+export function SendProgress({ customerCount, segment: _segment, isDemoMode }: SendProgressProps) {
   const router = useRouter()
   const [events, setEvents] = useState<TimelineEvent[]>([])
   const [isDone, setIsDone] = useState(false)
@@ -57,7 +92,7 @@ export function SendProgress({ customerCount, segment, isDemoMode }: SendProgres
     let eventTimers: ReturnType<typeof setTimeout>[] = []
     if (isDemoMode) {
       eventTimers = DEMO_EVENTS.map((ev) =>
-        setTimeout(() => setEvents((prev) => [...prev, ev]), ev.time)
+        setTimeout(() => setEvents((prev) => [...prev, ev]), ev.time),
       )
     }
 
@@ -94,7 +129,7 @@ export function SendProgress({ customerCount, segment, isDemoMode }: SendProgres
           </h2>
           <p className="text-gray-500 mb-6 text-sm">
             {isDemoMode
-              ? `3 مواعيد محجوزة من أصل ${customerCount} رسالة — 350 د.أ إيرادات متوقعة`
+              ? `3 مواعيد محجوزة من أصل ${customerCount} رسالة — 350 ر.س إيرادات متوقعة`
               : `تم إرسال ${customerCount} رسالة بنجاح للعملاء`}
           </p>
         </motion.div>
@@ -107,11 +142,24 @@ export function SendProgress({ customerCount, segment, isDemoMode }: SendProgres
             className="grid grid-cols-3 gap-3 mb-7"
           >
             {[
-              { label: 'رسائل أُرسلت', value: String(customerCount), icon: MessageSquare, color: 'text-teal-600' },
+              {
+                label: 'رسائل أُرسلت',
+                value: String(customerCount),
+                icon: MessageSquare,
+                color: 'text-teal-600',
+              },
               { label: 'مواعيد محجوزة', value: '3', icon: Calendar, color: 'text-blue-600' },
-              { label: 'إيرادات متوقعة', value: '350 د.أ', icon: TrendingUp, color: 'text-emerald-600' },
+              {
+                label: 'إيرادات متوقعة',
+                value: '350 ر.س',
+                icon: TrendingUp,
+                color: 'text-emerald-600',
+              },
             ].map((stat) => (
-              <div key={stat.label} className="rounded-xl border border-slate-200 bg-white p-4 text-center">
+              <div
+                key={stat.label}
+                className="rounded-xl border border-slate-200 bg-white p-4 text-center"
+              >
                 <stat.icon size={18} className={cn('mx-auto mb-1.5', stat.color)} />
                 <p className="font-metric text-xl font-bold text-gray-900">{stat.value}</p>
                 <p className="text-[11px] text-gray-500 mt-0.5">{stat.label}</p>
@@ -160,7 +208,11 @@ export function SendProgress({ customerCount, segment, isDemoMode }: SendProgres
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3 }}
-                className={cn('flex items-center gap-3 p-3 rounded-xl border', ev.bg, 'border-transparent')}
+                className={cn(
+                  'flex items-center gap-3 p-3 rounded-xl border',
+                  ev.bg,
+                  'border-transparent',
+                )}
               >
                 <ev.icon size={15} className={ev.color} />
                 <p className="text-sm text-gray-700">{ev.text}</p>

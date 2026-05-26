@@ -1,5 +1,5 @@
 import Anthropic from '@anthropic-ai/sdk'
-import { ImportedCustomer } from '@/types'
+import type { ImportedCustomer } from '@/types'
 
 const client = new Anthropic()
 
@@ -22,9 +22,7 @@ export async function cleanImportData(rawText: string): Promise<ImportedCustomer
   const response = await client.messages.create({
     model: 'claude-sonnet-4-6',
     max_tokens: 4096,
-    system: [
-      { type: 'text', text: SYSTEM_PROMPT, cache_control: { type: 'ephemeral' } } as never,
-    ],
+    system: [{ type: 'text', text: SYSTEM_PROMPT, cache_control: { type: 'ephemeral' } } as never],
     messages: [
       {
         role: 'user',

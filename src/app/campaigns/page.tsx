@@ -1,11 +1,12 @@
 'use client'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Plus, Clock, MessageSquare, Calendar, TrendingUp, CheckCircle } from 'lucide-react'
 import { Header } from '@/components/header'
 import { EmptyState } from '@/components/empty-state'
 import { Button } from '@/components/ui/button'
-import { DEMO_CAMPAIGNS, DemoCampaign } from '@/lib/demo-data'
+import { DEMO_CAMPAIGNS, type DemoCampaign } from '@/lib/demo-data'
 import { cn } from '@/lib/utils'
 
 const SEGMENT_LABELS: Record<DemoCampaign['segment'], string> = {
@@ -25,7 +26,11 @@ const SEGMENT_COLORS: Record<DemoCampaign['segment'], string> = {
 }
 
 function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString('ar-JO', { year: 'numeric', month: 'long', day: 'numeric' })
+  return new Date(dateStr).toLocaleDateString('ar-JO', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
 }
 
 function CampaignCard({ campaign, index }: { campaign: DemoCampaign; index: number }) {
@@ -42,7 +47,12 @@ function CampaignCard({ campaign, index }: { campaign: DemoCampaign; index: numb
       <div className="flex items-start justify-between gap-4 mb-5">
         <div className="min-w-0">
           <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-            <span className={cn('text-xs font-medium px-2 py-0.5 rounded-full', SEGMENT_COLORS[campaign.segment])}>
+            <span
+              className={cn(
+                'text-xs font-medium px-2 py-0.5 rounded-full',
+                SEGMENT_COLORS[campaign.segment],
+              )}
+            >
               {SEGMENT_LABELS[campaign.segment]}
             </span>
             {campaign.status === 'completed' && (
@@ -55,7 +65,9 @@ function CampaignCard({ campaign, index }: { campaign: DemoCampaign; index: numb
           <h3 className="font-semibold text-slate-900 text-base truncate">{campaign.name}</h3>
           <p className="text-xs text-slate-400 mt-0.5">{formatDate(campaign.sentAt)}</p>
         </div>
-        <p className="text-sm text-slate-500 shrink-0 font-metric">{campaign.customerCount} رسالة</p>
+        <p className="text-sm text-slate-500 shrink-0 font-metric">
+          {campaign.customerCount} رسالة
+        </p>
       </div>
 
       <div className="grid grid-cols-3 gap-3">
@@ -72,7 +84,7 @@ function CampaignCard({ campaign, index }: { campaign: DemoCampaign; index: numb
         <div className="text-center bg-slate-50 rounded-xl p-3">
           <TrendingUp size={14} className="text-emerald-600 mx-auto mb-1" />
           <p className="font-metric text-lg font-bold text-slate-900">{campaign.revenue}</p>
-          <p className="text-[11px] text-slate-500">د.أ إيرادات</p>
+          <p className="text-[11px] text-slate-500">ر.س إيرادات</p>
         </div>
       </div>
     </motion.div>
@@ -80,9 +92,11 @@ function CampaignCard({ campaign, index }: { campaign: DemoCampaign; index: numb
 }
 
 export default function CampaignsPage() {
-  const isDemo = typeof window !== 'undefined'
-    ? localStorage.getItem('awdah-demo-mode') === 'true'
-    : false
+  const [isDemo, setIsDemo] = useState(false)
+
+  useEffect(() => {
+    setIsDemo(localStorage.getItem('awdah-demo-mode') === 'true')
+  }, [])
 
   const campaigns = isDemo ? DEMO_CAMPAIGNS : []
 

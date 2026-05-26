@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
-import { Star, Users, Clock, UserX, AlertCircle } from 'lucide-react'
+import { Star, Users, Clock, UserX, AlertCircle, type LucideIcon } from 'lucide-react'
 import { Card } from '@/components/ui/card'
 import { CountUp } from '@/components/count-up'
 import { cn } from '@/lib/utils'
@@ -9,7 +9,7 @@ interface Segment {
   key: string
   label: string
   sublabel: string
-  icon: React.ElementType
+  icon: LucideIcon
   cardBg: string
   cardBorder: string
   iconBg: string
@@ -100,20 +100,33 @@ export function SegmentGrid({ stats }: SegmentGridProps) {
               className={cn(
                 'p-5 cursor-default border shadow-sm transition-shadow duration-200 hover:shadow-md',
                 seg.cardBg,
-                seg.cardBorder
+                seg.cardBorder,
               )}
             >
-              <div className={cn('w-8 h-8 rounded-lg flex items-center justify-center mb-4', seg.iconBg)}>
+              <div
+                className={cn(
+                  'w-8 h-8 rounded-lg flex items-center justify-center mb-4',
+                  seg.iconBg,
+                )}
+              >
                 <seg.icon size={15} className={seg.iconColor} />
               </div>
 
               <CountUp
                 to={count}
-                className={cn('font-metric text-metric-md font-bold leading-none block', seg.numColor)}
+                className={cn(
+                  'font-metric text-metric-md font-bold leading-none block',
+                  seg.numColor,
+                )}
                 duration={1.0}
               />
 
-              <p className={cn('text-sm font-medium mt-2 tracking-tight', seg.numColor.replace('900', '800').replace('800', '700'))}>
+              <p
+                className={cn(
+                  'text-sm font-medium mt-2 tracking-tight',
+                  seg.numColor.replace('900', '800').replace('800', '700'),
+                )}
+              >
                 {seg.label}
               </p>
 

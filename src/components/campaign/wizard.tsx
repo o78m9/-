@@ -19,19 +19,22 @@ const DEMO_MESSAGES: GeneratedMessage[] = [
     customerId: '6',
     customerName: 'خالد الرشيد',
     lastVisit: '2024-11-05',
-    message: 'مرحبا خالد، وحشتنا والله! مضى وقت طويل على آخر زيارة. كيف صحة أسنانك؟ عندنا وقت هالأسبوع إذا حابب تحجز 😊',
+    message:
+      'مرحبا خالد، وحشتنا والله! مضى وقت طويل على آخر زيارة. كيف صحة أسنانك؟ عندنا وقت هالأسبوع إذا حابب تحجز 😊',
   },
   {
     customerId: '7',
     customerName: 'منى الحمود',
     lastVisit: '2024-08-22',
-    message: 'أهلاً منى، تذكرناك اليوم! مرت فترة على زيارتك الأخيرة، وصحة الأسنان تحتاج متابعة دورية. ما رأيك بموعد خلال هالأسبوع؟',
+    message:
+      'أهلاً منى، تذكرناك اليوم! مرت فترة على زيارتك الأخيرة، وصحة الأسنان تحتاج متابعة دورية. ما رأيك بموعد خلال هالأسبوع؟',
   },
   {
     customerId: '3',
     customerName: 'هند الجابر',
     lastVisit: '2024-05-11',
-    message: 'هلاً هند! اشتقنا لك بالعيادة 🌟 لو عندك أي استفسار أو بدك تحجز موعد، نحن موجودين دايماً. ننتظرك!',
+    message:
+      'هلاً هند! اشتقنا لك بالعيادة 🌟 لو عندك أي استفسار أو بدك تحجز موعد، نحن موجودين دايماً. ننتظرك!',
   },
 ]
 
@@ -126,7 +129,6 @@ export function CampaignWizard({ realCounts }: WizardProps) {
     if (isDemoMode) {
       setRegeneratingId(customerId)
       await new Promise((r) => setTimeout(r, 1200))
-      const customer = DEMO_CUSTOMERS.find((c) => c.id === customerId)
       const variations = [
         'مرحبا، وحشتنا كثير! أسنانك تستاهل عناية. احجز موعدك معنا هالأسبوع 😊',
         'أهلاً! ذكرناك اليوم بالعيادة — كيف صحتك؟ عندنا أوقات مناسبة لو بدك تمر.',
@@ -136,8 +138,8 @@ export function CampaignWizard({ realCounts }: WizardProps) {
         prev.map((m) =>
           m.customerId === customerId
             ? { ...m, message: variations[Math.floor(Math.random() * variations.length)] }
-            : m
-        )
+            : m,
+        ),
       )
       setRegeneratingId(null)
       return
@@ -159,9 +161,7 @@ export function CampaignWizard({ realCounts }: WizardProps) {
       })
       if (!res.ok) throw new Error()
       const data = await res.json()
-      setMessages((prev) =>
-        prev.map((m) => (m.customerId === customerId ? data.messages[0] : m))
-      )
+      setMessages((prev) => prev.map((m) => (m.customerId === customerId ? data.messages[0] : m)))
     } catch {
       toast.error('تعذّر إعادة التوليد')
     } finally {
@@ -221,9 +221,7 @@ export function CampaignWizard({ realCounts }: WizardProps) {
             exit="exit"
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] as never }}
           >
-            {step === 1 && (
-              <StepSegment selected={segment} counts={counts} onSelect={setSegment} />
-            )}
+            {step === 1 && <StepSegment selected={segment} counts={counts} onSelect={setSegment} />}
             {step === 2 && (
               <StepTemplate
                 selected={template}
@@ -282,11 +280,7 @@ export function CampaignWizard({ realCounts }: WizardProps) {
             السابق
           </Button>
 
-          <Button
-            onClick={() => goTo(step + 1)}
-            disabled={!canContinue()}
-            className="gap-2 px-6"
-          >
+          <Button onClick={() => goTo(step + 1)} disabled={!canContinue()} className="gap-2 px-6">
             {step === 4 ? 'مراجعة الحملة' : 'التالي'}
           </Button>
         </div>

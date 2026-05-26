@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ImportedCustomer } from '@/types'
+import type { ImportedCustomer } from '@/types'
 
 type Stage = 'input' | 'preview' | 'done'
 
@@ -57,7 +57,11 @@ export default function ImportForm({ clinicId }: { clinicId: string }) {
         <div className="text-5xl mb-4">✅</div>
         <p className="text-xl font-bold text-green-700">تم استيراد {importedCount} مريض</p>
         <button
-          onClick={() => { setStage('input'); setRawText(''); setPreview([]) }}
+          onClick={() => {
+            setStage('input')
+            setRawText('')
+            setPreview([])
+          }}
           className="mt-6 text-blue-600 text-sm hover:underline"
         >
           استيراد دفعة جديدة
@@ -71,9 +75,13 @@ export default function ImportForm({ clinicId }: { clinicId: string }) {
       <div>
         <div className="flex items-center justify-between mb-4">
           <p className="font-medium text-sm">
-            تم تنظيف <span className="text-blue-600 font-bold">{preview.length}</span> سجل — راجع قبل التأكيد
+            تم تنظيف <span className="text-blue-600 font-bold">{preview.length}</span> سجل — راجع
+            قبل التأكيد
           </p>
-          <button onClick={() => setStage('input')} className="text-sm text-gray-500 hover:underline">
+          <button
+            onClick={() => setStage('input')}
+            className="text-sm text-gray-500 hover:underline"
+          >
             ← تعديل
           </button>
         </div>
@@ -83,19 +91,31 @@ export default function ImportForm({ clinicId }: { clinicId: string }) {
             <table className="w-full text-sm">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="text-right px-4 py-3 font-medium text-gray-600 whitespace-nowrap">الاسم</th>
-                  <th className="text-right px-4 py-3 font-medium text-gray-600 whitespace-nowrap">الهاتف</th>
-                  <th className="text-right px-4 py-3 font-medium text-gray-600 whitespace-nowrap">آخر زيارة</th>
-                  <th className="text-right px-4 py-3 font-medium text-gray-600 whitespace-nowrap">ملاحظة</th>
+                  <th className="text-right px-4 py-3 font-medium text-gray-600 whitespace-nowrap">
+                    الاسم
+                  </th>
+                  <th className="text-right px-4 py-3 font-medium text-gray-600 whitespace-nowrap">
+                    الهاتف
+                  </th>
+                  <th className="text-right px-4 py-3 font-medium text-gray-600 whitespace-nowrap">
+                    آخر زيارة
+                  </th>
+                  <th className="text-right px-4 py-3 font-medium text-gray-600 whitespace-nowrap">
+                    ملاحظة
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {preview.map((c, i) => (
                   <tr key={i} className="border-t hover:bg-gray-50">
                     <td className="px-4 py-2.5 font-medium">{c.name}</td>
-                    <td className="px-4 py-2.5 font-mono text-xs text-gray-500" dir="ltr">{c.phone}</td>
+                    <td className="px-4 py-2.5 font-mono text-xs text-gray-500" dir="ltr">
+                      {c.phone}
+                    </td>
                     <td className="px-4 py-2.5 text-gray-500">{c.last_visit || '—'}</td>
-                    <td className="px-4 py-2.5 text-gray-400 text-xs max-w-xs truncate">{c.notes || '—'}</td>
+                    <td className="px-4 py-2.5 text-gray-400 text-xs max-w-xs truncate">
+                      {c.notes || '—'}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -120,7 +140,7 @@ export default function ImportForm({ clinicId }: { clinicId: string }) {
         <label className="block text-sm font-medium mb-2">الصق بياناتك هنا</label>
         <textarea
           value={rawText}
-          onChange={e => setRawText(e.target.value)}
+          onChange={(e) => setRawText(e.target.value)}
           className="w-full h-52 border rounded-lg px-3 py-2 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
           placeholder="يمكنك لصق بيانات من Excel، WhatsApp، أو أي مصدر آخر..."
           dir="auto"

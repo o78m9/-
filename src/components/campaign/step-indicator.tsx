@@ -1,8 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
 import { Check } from 'lucide-react'
-import { cn } from '@/lib/utils'
-
 const STEPS = [
   { n: 1, label: 'الفئة' },
   { n: 2, label: 'القالب' },
@@ -15,7 +13,7 @@ export function StepIndicator({ current }: { current: number }) {
   return (
     <div className="flex items-center justify-center gap-0">
       {STEPS.map((s, i) => {
-        const done   = s.n < current
+        const done = s.n < current
         const active = s.n === current
 
         return (
@@ -32,7 +30,9 @@ export function StepIndicator({ current }: { current: number }) {
                 transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                 className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold font-metric shadow-sm"
               >
-                {done ? <Check size={13} strokeWidth={3} /> : (
+                {done ? (
+                  <Check size={13} strokeWidth={3} />
+                ) : (
                   <span>{String(s.n).padStart(2, '0')}</span>
                 )}
               </motion.div>

@@ -1,0 +1,2263 @@
+
+> awdah@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3000
+  - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 2.3s
+ ○ Compiling / ...
+ ✓ Compiled / in 10.3s (2545 modules)
+ GET / 200 in 10634ms
+ ✓ Compiled in 513ms (1263 modules)
+ GET / 200 in 67ms
+ GET / 200 in 62ms
+ GET / 200 in 57ms
+ GET / 200 in 76ms
+ GET / 200 in 72ms
+ GET / 200 in 49ms
+ GET / 200 in 168ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 2.1s (2560 modules)
+ GET / 404 in 2245ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET / 200 in 168ms
+ GET /_next/static/css/app/layout.css?v=1779799196790 404 in 51ms
+ GET /_next/static/chunks/main-app.js?v=1779799196790 404 in 34ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 34ms
+ GET /_next/static/chunks/app/page.js 404 in 31ms
+ GET /_next/static/chunks/app/layout.js 404 in 20ms
+ GET / 200 in 58ms
+ GET / 200 in 65ms
+ GET /_next/static/css/app/layout.css?v=1779799332346 404 in 36ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 51ms
+ GET /_next/static/chunks/main-app.js?v=1779799332346 404 in 57ms
+ GET /_next/static/chunks/app/page.js 404 in 51ms
+ GET /_next/static/chunks/app/layout.js 404 in 49ms
+ GET / 200 in 80ms
+ GET /_next/static/css/app/layout.css?v=1779799334553 404 in 32ms
+ GET /_next/static/chunks/main-app.js?v=1779799334553 404 in 40ms
+ GET /_next/static/chunks/app/layout.js 404 in 40ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 41ms
+ GET /_next/static/chunks/app/page.js 404 in 40ms
+ GET / 200 in 61ms
+ GET /_next/static/css/app/layout.css?v=1779799336058 404 in 30ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 35ms
+ GET /_next/static/chunks/main-app.js?v=1779799336058 404 in 38ms
+ GET /_next/static/chunks/app/page.js 404 in 36ms
+ GET /_next/static/chunks/app/layout.js 404 in 36ms
+ GET / 200 in 55ms
+ GET /_next/static/css/app/layout.css?v=1779799337130 404 in 42ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 49ms
+ GET /_next/static/chunks/main-app.js?v=1779799337130 404 in 51ms
+ GET /_next/static/chunks/app/page.js 404 in 50ms
+ GET /_next/static/chunks/app/layout.js 404 in 49ms
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 1478ms (2787 modules)
+ GET / 404 in 1577ms
+ GET / 200 in 210ms
+ ○ Compiling /dashboard ...
+<w> [webpack.cache.PackFileCacheStrategy] Restoring pack from C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\client-development.pack.gz failed: TypeError: Cannot read properties of undefined (reading 'hasStartTime')
+ ✓ Compiled /dashboard in 3.5s (3879 modules)
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 589ms (3882 modules)
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /_next/static/webpack/b81ecf1de159e8e2.webpack.hot-update.json 404 in 739ms
+ GET /dashboard 200 in 4278ms
+ GET / 200 in 112ms
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at Object.__webpack_require__ [as require] (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:33:42)
+digest: "756966558"
+Warning: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://reactjs.org/link/invalid-hook-call for tips about how to debug and fix this problem.
+TypeError: Cannot read properties of null (reading 'useContext')
+    at t.useContext (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:162364)
+    at usePathname (webpack-internal:///(ssr)/./node_modules/next/dist/client/components/navigation.js:121:34)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/next/dist/client/components/error-boundary.js:159:50)
+    at au (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:10446)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:15122
+    at aw (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:16908)
+    at a_ (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:49776)
+    at ab (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:11808)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:16871
+    at aw (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:16908)
+    at aw (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:46505)
+    at a_ (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:49776)
+    at ab (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:11808)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:16871
+    at aw (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:16908)
+    at a_ (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:49776)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:58612
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:59270
+    at aN (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:59278)
+    at Timeout._onTimeout (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:6939)
+    at listOnTimeout (node:internal/timers:605:17)
+    at process.processTimers (node:internal/timers:541:7)
+ ⨯ TypeError: Cannot read properties of null (reading 'useContext')
+    at t.useContext (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:162364)
+    at usePathname (webpack-internal:///(ssr)/./node_modules/next/dist/client/components/navigation.js:121:34)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/next/dist/client/components/error-boundary.js:159:50)
+    at au (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:10446)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:15122
+    at aw (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:16908)
+    at a_ (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:49776)
+    at ab (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:11808)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:16871
+    at aw (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:16908)
+    at aw (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:46505)
+    at a_ (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:49776)
+    at ab (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:11808)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:16871
+    at aw (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:16908)
+    at a_ (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:49776)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:58612
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:59270
+    at aN (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:59278)
+    at Timeout._onTimeout (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:6939)
+    at listOnTimeout (node:internal/timers:605:17)
+    at process.processTimers (node:internal/timers:541:7) {
+  page: '/dashboard'
+}
+ ✓ Compiled /_error in 445ms (3884 modules)
+ ○ Compiling /capture ...
+ ✓ Compiled /capture in 824ms (3917 modules)
+ ○ Compiling /campaigns ...
+ ✓ Compiled /campaigns in 532ms (3935 modules)
+ GET / 200 in 131ms
+ GET / 200 in 62ms
+<w> [webpack.cache.PackFileCacheStrategy] Restoring pack from C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\client-development.pack.gz failed: TypeError: Cannot read properties of undefined (reading 'hasStartTime')
+ ⨯ ./node_modules/@react-three/drei/index.js
+Error: ENOENT: no such file or directory, open 'C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\@react-three\drei\index.js'
+
+Import trace for requested module:
+./node_modules/@react-three/drei/index.js
+./src/components/landing/hero-scene.tsx
+./src/components/landing/hero.tsx
+ ⨯ ./src/components/landing/hero-scene.tsx
+Error: Failed to read source code from C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\landing\hero-scene.tsx
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Import trace for requested module:
+./src/components/landing/hero-scene.tsx
+./src/components/landing/hero.tsx
+ ⨯ ./src/components/landing/hero-scene.tsx
+Error: Failed to read source code from C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\landing\hero-scene.tsx
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Import trace for requested module:
+./src/components/landing/hero-scene.tsx
+./src/components/landing/hero.tsx
+ ⨯ ./src/components/landing/hero-scene.tsx
+Error: Failed to read source code from C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\landing\hero-scene.tsx
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Import trace for requested module:
+./src/components/landing/hero-scene.tsx
+./src/components/landing/hero.tsx
+<w> [webpack.cache.PackFileCacheStrategy] Restoring pack from C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\client-development.pack.gz failed: TypeError: Cannot read properties of undefined (reading 'hasStartTime')
+ ⨯ ./src/components/landing/hero-scene.tsx
+Error: Failed to read source code from C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\landing\hero-scene.tsx
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Import trace for requested module:
+./src/components/landing/hero-scene.tsx
+./src/components/landing/hero.tsx
+ ⨯ ./src/components/landing/hero-scene.tsx
+Error: Failed to read source code from C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\landing\hero-scene.tsx
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Import trace for requested module:
+./src/components/landing/hero-scene.tsx
+./src/components/landing/hero.tsx
+ ⨯ ./src/components/landing/hero-scene.tsx
+Error: Failed to read source code from C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\landing\hero-scene.tsx
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Import trace for requested module:
+./src/components/landing/hero-scene.tsx
+./src/components/landing/hero.tsx
+ ⨯ ./src/components/landing/hero-scene.tsx
+Error: Failed to read source code from C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\landing\hero-scene.tsx
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Import trace for requested module:
+./src/components/landing/hero-scene.tsx
+./src/components/landing/hero.tsx
+ ⨯ ./src/components/landing/hero-scene.tsx
+Error: Failed to read source code from C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\landing\hero-scene.tsx
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Import trace for requested module:
+./src/components/landing/hero-scene.tsx
+./src/components/landing/hero.tsx
+ ⨯ ./src/components/landing/hero-scene.tsx
+Error: Failed to read source code from C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\landing\hero-scene.tsx
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Import trace for requested module:
+./src/components/landing/hero-scene.tsx
+./src/components/landing/hero.tsx
+ ✓ Compiled in 1395ms (2807 modules)
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET / 200 in 138ms
+ GET / 200 in 71ms
+ ✓ Compiled in 446ms (1466 modules)
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\BookingButton.tsx#BookingButton" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "3417002626"
+ ⨯     at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "321863537"
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\landing\product-mockup.tsx#ProductMockup" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "3342202971"
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\BookingButton.tsx#BookingButton" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "3417002626"
+ ✓ Compiled in 405ms (1466 modules)
+ GET / 500 in 394ms
+ ✓ Compiled in 346ms (1466 modules)
+ ✓ Compiled in 405ms (1466 modules)
+ GET / 200 in 410ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 1551ms (2810 modules)
+ GET / 200 in 1307ms
+ ✓ Compiled in 484ms (1465 modules)
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\BookingButton.tsx#BookingButton" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "1655039246"
+ ⨯     at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "1276696061"
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\landing\product-mockup.tsx#ProductMockup" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "1584690135"
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\ui\fade-in.tsx#FadeIn" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "3598216526"
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\ui\fade-in.tsx#FadeIn" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "3598216526"
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\ui\fade-in.tsx#FadeIn" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "3598216526"
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\ui\fade-in.tsx#FadeIn" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "3598216526"
+ ✓ Compiled in 304ms (1465 modules)
+ GET / 200 in 88ms
+ GET / 200 in 55ms
+ ✓ Compiled in 435ms (1465 modules)
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\BookingButton.tsx#BookingButton" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "1655039246"
+ ⨯     at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "1276696061"
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\landing\product-mockup.tsx#ProductMockup" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "1584690135"
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\ui\fade-in.tsx#FadeIn" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "3598216526"
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\ui\fade-in.tsx#FadeIn" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "3598216526"
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\ui\fade-in.tsx#FadeIn" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "3598216526"
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\ui\fade-in.tsx#FadeIn" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "3598216526"
+ ✓ Compiled in 319ms (1465 modules)
+ GET / 200 in 80ms
+ ✓ Compiled in 1502ms (2803 modules)
+ ✓ Compiled in 1232ms (2803 modules)
+ ✓ Compiled in 865ms (2801 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Restoring pack from C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\client-development.pack.gz failed: TypeError: Cannot read properties of undefined (reading 'hasStartTime')
+ ✓ Compiled in 1880ms (2801 modules)
+ ✓ Compiled in 943ms (2808 modules)
+[Error: ENOENT: no such file or directory, stat 'C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\server-development\1.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\cache\\webpack\\server-development\\1.pack.gz'
+}
+ ⨯ unhandledRejection: [Error: ENOENT: no such file or directory, stat 'C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\server-development\1.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\cache\\webpack\\server-development\\1.pack.gz'
+}
+ ⨯ unhandledRejection: [Error: ENOENT: no such file or directory, stat 'C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\server-development\1.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\cache\\webpack\\server-development\\1.pack.gz'
+}
+[Error: ENOENT: no such file or directory, stat 'C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\server-development\2.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\cache\\webpack\\server-development\\2.pack.gz'
+}
+ ⨯ unhandledRejection: [Error: ENOENT: no such file or directory, stat 'C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\server-development\2.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\cache\\webpack\\server-development\\2.pack.gz'
+}
+ ⨯ unhandledRejection: [Error: ENOENT: no such file or directory, stat 'C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\server-development\2.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\cache\\webpack\\server-development\\2.pack.gz'
+}
+[Error: ENOENT: no such file or directory, stat 'C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\server-development\6.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\cache\\webpack\\server-development\\6.pack.gz'
+}
+ ⨯ unhandledRejection: [Error: ENOENT: no such file or directory, stat 'C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\server-development\6.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\cache\\webpack\\server-development\\6.pack.gz'
+}
+ ⨯ unhandledRejection: [Error: ENOENT: no such file or directory, stat 'C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\server-development\6.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\cache\\webpack\\server-development\\6.pack.gz'
+}
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, stat 'C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\server-development\1.pack.gz'
+<w> [webpack.cache.PackFileCacheStrategy] Restoring pack from C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\client-development.pack.gz failed: TypeError: Cannot read properties of undefined (reading 'hasStartTime')
+ ✓ Compiled in 987ms (2808 modules)
+ ✓ Compiled /_not-found in 325ms (2797 modules)
+ GET /_next/static/css/app/layout.css?v=1779811795999 404 in 401ms
+ GET /_next/static/css/app/layout.css?v=1779811796438 404 in 71ms
+ ✓ Compiled in 983ms (2811 modules)
+ GET /_next/static/css/app/layout.css?v=1779811855817 404 in 95ms
+ ✓ Compiled in 915ms (2811 modules)
+ ⨯ Error: Cannot find module './276.js'
+Require stack:
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\page.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\build\utils.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-middleware.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1476:15)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1094:12)
+    at Module._load (node:internal/modules/cjs/loader:1262:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:198:28)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:162:22)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4537
+    at Object.<anonymous> (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4583)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js:109:84)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderErrorToResponseImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2090:30)
+    at async pipe.req.req (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2056:30)
+    at async DevServer.pipeImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:922:25)
+    at async C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:374:24)
+    at async requestHandlerImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\webpack-runtime.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\app\\page.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\require.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\load-components.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\build\\utils.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ]
+}
+ ✓ Compiled /_error in 304ms (2799 modules)
+ GET /_next/static/css/app/layout.css?v=1779811908416 500 in 1261ms
+ ✓ Compiled in 1103ms (2813 modules)
+ ⨯ Error: Cannot find module './276.js'
+Require stack:
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\page.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\build\utils.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-middleware.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1476:15)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1094:12)
+    at Module._load (node:internal/modules/cjs/loader:1262:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:198:28)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:162:22)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4537
+    at Object.<anonymous> (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4583)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js:109:84)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderErrorToResponseImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2090:30)
+    at async pipe.req.req (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2056:30)
+    at async DevServer.pipeImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:922:25)
+    at async C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:374:24)
+    at async requestHandlerImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\webpack-runtime.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\app\\page.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\require.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\load-components.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\build\\utils.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ]
+}
+ GET /_next/static/css/app/layout.css?v=1779811921828 500 in 11ms
+ ✓ Compiled in 752ms (2813 modules)
+ ⨯ Error: Cannot find module './276.js'
+Require stack:
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\page.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\build\utils.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-middleware.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1476:15)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1094:12)
+    at Module._load (node:internal/modules/cjs/loader:1262:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:198:28)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:162:22)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4537
+    at Object.<anonymous> (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4583)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js:109:84)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderErrorToResponseImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2090:30)
+    at async pipe.req.req (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2056:30)
+    at async DevServer.pipeImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:922:25)
+    at async C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:374:24)
+    at async requestHandlerImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\webpack-runtime.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\app\\page.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\require.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\load-components.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\build\\utils.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ]
+}
+ GET /_next/static/css/app/layout.css?v=1779811927821 500 in 9ms
+ GET / 200 in 115ms
+ ⨯ Error: Cannot find module './276.js'
+Require stack:
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\page.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\build\utils.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-middleware.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1476:15)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1094:12)
+    at Module._load (node:internal/modules/cjs/loader:1262:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:198:28)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:162:22)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4537
+    at Object.<anonymous> (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4583)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js:109:84)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderErrorToResponseImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2090:30)
+    at async pipe.req.req (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2056:30)
+    at async DevServer.pipeImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:922:25)
+    at async C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:374:24)
+    at async requestHandlerImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\webpack-runtime.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\app\\page.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\require.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\load-components.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\build\\utils.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ]
+}
+ ⨯ Error: Cannot find module './276.js'
+Require stack:
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\page.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\build\utils.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-middleware.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1476:15)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1094:12)
+    at Module._load (node:internal/modules/cjs/loader:1262:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:198:28)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:162:22)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4537
+    at Object.<anonymous> (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4583)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js:109:84)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderErrorToResponseImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2090:30)
+    at async pipe.req.req (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2056:30)
+    at async DevServer.pipeImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:922:25)
+    at async C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:374:24)
+    at async requestHandlerImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\webpack-runtime.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\app\\page.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\require.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\load-components.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\build\\utils.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ]
+}
+ GET /_next/static/css/app/layout.css?v=1779812058181 500 in 21ms
+ GET /_next/static/chunks/webpack.js?v=1779812058181 500 in 17ms
+ ⨯ Error: Cannot find module './276.js'
+Require stack:
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\page.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\build\utils.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-middleware.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1476:15)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1094:12)
+    at Module._load (node:internal/modules/cjs/loader:1262:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:198:28)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:162:22)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4537
+    at Object.<anonymous> (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4583)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js:109:84)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderErrorToResponseImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2090:30)
+    at async pipe.req.req (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2056:30)
+    at async DevServer.pipeImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:922:25)
+    at async C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:374:24)
+    at async requestHandlerImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\webpack-runtime.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\app\\page.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\require.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\load-components.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\build\\utils.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ]
+}
+ ⨯ Error: Cannot find module './276.js'
+Require stack:
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\page.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\build\utils.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-middleware.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1476:15)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1094:12)
+    at Module._load (node:internal/modules/cjs/loader:1262:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:198:28)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:162:22)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4537
+    at Object.<anonymous> (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4583)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js:109:84)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderErrorToResponseImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2090:30)
+    at async pipe.req.req (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2056:30)
+    at async DevServer.pipeImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:922:25)
+    at async C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:374:24)
+    at async requestHandlerImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\webpack-runtime.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\app\\page.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\require.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\load-components.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\build\\utils.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ]
+}
+ ⨯ Error: Cannot find module './276.js'
+Require stack:
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\page.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\build\utils.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-middleware.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1476:15)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1094:12)
+    at Module._load (node:internal/modules/cjs/loader:1262:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:198:28)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:162:22)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4537
+    at Object.<anonymous> (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4583)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js:109:84)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderErrorToResponseImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2090:30)
+    at async pipe.req.req (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2056:30)
+    at async DevServer.pipeImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:922:25)
+    at async C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:374:24)
+    at async requestHandlerImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\webpack-runtime.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\app\\page.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\require.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\load-components.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\build\\utils.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ]
+}
+ ⨯ Error: Cannot find module './276.js'
+Require stack:
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\page.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\build\utils.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-middleware.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1476:15)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1094:12)
+    at Module._load (node:internal/modules/cjs/loader:1262:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:198:28)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:162:22)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4537
+    at Object.<anonymous> (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4583)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js:109:84)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderErrorToResponseImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2090:30)
+    at async pipe.req.req (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2056:30)
+    at async DevServer.pipeImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:922:25)
+    at async C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:374:24)
+    at async requestHandlerImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\webpack-runtime.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\app\\page.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\require.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\load-components.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\build\\utils.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ]
+}
+ GET /_next/static/chunks/main-app.js?v=1779812058181 500 in 27ms
+ GET /_next/static/chunks/app-pages-internals.js 500 in 26ms
+ GET /_next/static/chunks/app/page.js 500 in 25ms
+ GET /_next/static/chunks/app/layout.js 500 in 24ms
+ GET / 404 in 9ms
+ GET / 404 in 13ms
+ GET / 404 in 9ms
+ GET / 404 in 8ms
+ GET / 404 in 9ms
+ GET / 404 in 7ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 9ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 9ms
+ GET / 404 in 9ms
+ GET / 404 in 8ms
+ GET / 404 in 7ms
+ GET / 404 in 8ms
+ GET / 404 in 9ms
+ GET / 404 in 8ms
+ GET / 404 in 9ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 9ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 9ms
+ GET / 404 in 8ms
+ GET / 404 in 9ms
+ GET / 404 in 8ms
+ GET / 404 in 9ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 9ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 7ms
+ GET / 404 in 9ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 7ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 7ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 9ms
+ GET / 404 in 8ms
+ GET / 404 in 7ms
+ GET / 404 in 8ms
+ GET / 404 in 9ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 9ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 9ms
+ GET / 404 in 7ms
+ GET / 404 in 8ms
+ GET / 404 in 9ms
+ GET / 404 in 8ms
+ GET / 404 in 9ms
+ GET / 404 in 20ms
+ GET / 404 in 11ms
+ GET / 404 in 8ms
+ GET / 404 in 10ms
+ GET / 404 in 8ms
+ GET / 404 in 7ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 7ms
+ GET / 404 in 8ms
+ GET / 404 in 7ms
+ GET / 404 in 7ms
+ GET / 404 in 10ms
+ GET / 404 in 11ms
+ GET / 404 in 9ms
+ GET / 404 in 10ms
+ GET / 200 in 51ms
+ GET / 200 in 66ms
+ ○ Compiling /api/booking ...
+ ✓ Compiled /api/booking in 1212ms (1374 modules)
+[BOOKING] {
+  "name": "koko",
+  "clinic": "kaka",
+  "whatsapp": "+962790192738",
+  "country": "الأردن",
+  "preferredTime": "الصباح",
+  "message": "",
+  "source": "header"
+}
+ POST /api/booking 200 in 1273ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1312ms (2827 modules)
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /_next/static/webpack/43cc405eea09327c.webpack.hot-update.json 404 in 250ms
+ GET /dashboard 404 in 1656ms
+ GET / 200 in 89ms
+ GET /dashboard 404 in 79ms
+ GET / 200 in 59ms
+ GET /dashboard 404 in 80ms
+ GET / 200 in 54ms
+<w> [webpack.cache.PackFileCacheStrategy] Restoring pack from C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\client-development.pack.gz failed: TypeError: Cannot read properties of undefined (reading 'hasStartTime')
+ ✓ Compiled in 1410ms (1464 modules)
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1092ms (2797 modules)
+ GET /dashboard 404 in 90ms
+ ✓ Compiled in 2.6s (2811 modules)
+ GET /dashboard 404 in 150ms
+<w> [webpack.cache.PackFileCacheStrategy] Restoring pack from C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\client-development.pack.gz failed: TypeError: Cannot read properties of undefined (reading 'hasStartTime')
+ ✓ Compiled in 1925ms (2841 modules)
+ GET /dashboard 404 in 94ms
+ ✓ Compiled in 408ms (1468 modules)
+ ✓ Compiled in 738ms (2800 modules)
+ GET /dashboard 404 in 122ms
+ ✓ Compiled in 488ms (1468 modules)
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\BookingButton.tsx#BookingButton" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "1655039246"
+ ⨯     at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "1276696061"
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\landing\product-mockup.tsx#ProductMockup" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "1584690135"
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\ui\fade-in.tsx#FadeIn" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "3598216526"
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\ui\fade-in.tsx#FadeIn" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "3598216526"
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\ui\fade-in.tsx#FadeIn" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "3598216526"
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\ui\fade-in.tsx#FadeIn" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "3598216526"
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\ui\fade-in.tsx#FadeIn" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "3598216526"
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\ui\fade-in.tsx#FadeIn" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "3598216526"
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\landing\dashboard-preview.tsx#DashboardPreview" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "1003130075"
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\landing\results.tsx#ResultsSection" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "1736867547"
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\ui\fade-in.tsx#FadeIn" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "3598216526"
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\ui\fade-in.tsx#FadeIn" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "3598216526"
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\BookingButton.tsx#BookingButton" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "1655039246"
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\ui\fade-in.tsx#FadeIn" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "3598216526"
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\BookingButton.tsx#BookingButton" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "1655039246"
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\BookingButton.tsx#BookingButton" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "1655039246"
+ ⨯ Error: Could not find the module "C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\src\components\BookingButton.tsx#BookingButton" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "1655039246"
+ ✓ Compiled in 879ms (2800 modules)
+ GET / 200 in 612ms
+ GET /dashboard 404 in 92ms
+ ✓ Compiled in 1307ms (2814 modules)
+ GET /dashboard 404 in 77ms
+<w> [webpack.cache.PackFileCacheStrategy] Restoring pack from C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\client-development.pack.gz failed: TypeError: Cannot read properties of undefined (reading 'hasStartTime')
+ ✓ Compiled in 682ms (1468 modules)
+ ✓ Compiled in 540ms (2800 modules)
+ GET /dashboard 404 in 76ms
+ ✓ Compiled in 1139ms (2817 modules)
+ GET /dashboard 404 in 66ms
+ ✓ Compiled in 382ms (1469 modules)
+ ✓ Compiled in 732ms (2803 modules)
+ GET /dashboard 404 in 53ms
+ ✓ Compiled in 1224ms (2814 modules)
+ GET /dashboard 404 in 63ms
+ ✓ Compiled in 437ms (1467 modules)
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 926ms (2800 modules)
+ GET /dashboard 404 in 42ms
+ ✓ Compiled in 1290ms (2816 modules)
+ ✓ Compiled /_error in 303ms (2804 modules)
+ GET /dashboard 404 in 60ms
+ ✓ Compiled in 1076ms (2810 modules)
+ GET /dashboard 404 in 70ms
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\client-development\0.pack.gz_' -> 'C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\client-development\0.pack.gz'
+ ✓ Compiled in 1343ms (2801 modules)
+ ✓ Compiled /_not-found in 302ms (2790 modules)
+ GET /dashboard 404 in 54ms
+<w> [webpack.cache.PackFileCacheStrategy] Restoring pack from C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\client-development.pack.gz failed: TypeError: Cannot read properties of undefined (reading 'hasStartTime')
+ ✓ Compiled in 1403ms (2800 modules)
+ ✓ Compiled /_not-found in 294ms (2789 modules)
+ GET /dashboard 404 in 67ms
+<w> [webpack.cache.PackFileCacheStrategy] Restoring pack from C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\client-development.pack.gz failed: TypeError: Cannot read properties of undefined (reading 'hasStartTime')
+ ✓ Compiled in 1390ms (2800 modules)
+ ✓ Compiled /_not-found in 301ms (2789 modules)
+ GET /dashboard 404 in 69ms
+ ✓ Compiled in 905ms (2803 modules)
+ GET /dashboard 404 in 41ms
+<w> [webpack.cache.PackFileCacheStrategy] Restoring pack from C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\client-development.pack.gz failed: TypeError: Cannot read properties of undefined (reading 'hasStartTime')
+ ✓ Compiled in 1682ms (2803 modules)
+ ⨯ Error: Event handlers cannot be passed to Client Component props.
+  <... href="#how" className=... style=... onMouseEnter={function onMouseEnter} onMouseLeave=... children=...>
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "2881662000"
+ ⨯ Error: Event handlers cannot be passed to Client Component props.
+  <... href="/about" className=... style=... onMouseEnter={function onMouseEnter} onMouseLeave=... children=...>
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "2700768144"
+ ⨯ Error: Event handlers cannot be passed to Client Component props.
+  <... href="/terms" className=... style=... onMouseEnter={function onMouseEnter} onMouseLeave=... children=...>
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "3508146192"
+ GET /dashboard 404 in 92ms
+<w> [webpack.cache.PackFileCacheStrategy] Restoring pack from C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\client-development.pack.gz failed: TypeError: Cannot read properties of undefined (reading 'hasStartTime')
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 1850ms (2787 modules)
+ ⨯ Error: Event handlers cannot be passed to Client Component props.
+  <... href="#how" className=... style=... onMouseEnter={function onMouseEnter} onMouseLeave=... children=...>
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "640083516"
+ ⨯ Error: Event handlers cannot be passed to Client Component props.
+  <... href="/about" className=... style=... onMouseEnter={function onMouseEnter} onMouseLeave=... children=...>
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "87298972"
+ ⨯ Error: Event handlers cannot be passed to Client Component props.
+  <... href="/terms" className=... style=... onMouseEnter={function onMouseEnter} onMouseLeave=... children=...>
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "1221613084"
+ ⨯ Error: Event handlers cannot be passed to Client Component props.
+  <... href="#how" className=... style=... onMouseEnter={function onMouseEnter} onMouseLeave=... children=...>
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "640083516"
+ GET / 500 in 1308ms
+ ✓ Compiled /_not-found in 368ms (2776 modules)
+ GET /dashboard 404 in 65ms
+<w> [webpack.cache.PackFileCacheStrategy] Restoring pack from C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\client-development.pack.gz failed: TypeError: Cannot read properties of undefined (reading 'hasStartTime')
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1892ms (2790 modules)
+ ⨯ Error: Cannot find module './276.js'
+Require stack:
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\build\utils.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-middleware.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1476:15)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1094:12)
+    at Module._load (node:internal/modules/cjs/loader:1262:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:198:28)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:162:22)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4561
+    at Object.<anonymous> (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4607)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js:109:84)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderErrorToResponseImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2090:30)
+    at async pipe.req.req (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2056:30)
+    at async DevServer.pipeImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:922:25)
+    at async C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:374:24)
+    at async requestHandlerImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\webpack-runtime.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\app\\_not-found\\page.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\require.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\load-components.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\build\\utils.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ]
+}
+ ⨯ Error: Cannot find module './276.js'
+Require stack:
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\build\utils.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-middleware.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1476:15)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1094:12)
+    at Module._load (node:internal/modules/cjs/loader:1262:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:198:28)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:162:22)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\dashboard\page.js:1:22831
+    at Object.<anonymous> (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\dashboard\page.js:1:22905)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js:109:84)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderPageComponent (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:1910:24)
+    at async DevServer.renderToResponseImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:818:17)
+    at async C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\webpack-runtime.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\app\\_not-found\\page.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\require.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\load-components.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\build\\utils.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ],
+  page: '/dashboard'
+}
+ GET / 200 in 371ms
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 704ms (2778 modules)
+ ⨯ Error: Cannot find module './682.js'
+Require stack:
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\pages\_document.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\build\utils.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-middleware.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1476:15)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1094:12)
+    at Module._load (node:internal/modules/cjs/loader:1262:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:198:28)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:162:22)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\pages\_document.js:1:340
+    at Object.<anonymous> (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\pages\_document.js:1:382)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js:109:84)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:72:65
+    at async Promise.all (index 0)
+    at async loadComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:71:33)
+    at async DevServer.findPageComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\next-server.js:714:36) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\webpack-runtime.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\pages\\_document.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\require.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\load-components.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\build\\utils.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ]
+}
+ ⨯ Error: Cannot find module './276.js'
+Require stack:
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\pages\_document.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\build\utils.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-middleware.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1476:15)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1094:12)
+    at Module._load (node:internal/modules/cjs/loader:1262:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:198:28)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:162:22)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4561
+    at Object.<anonymous> (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4607)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js:109:84)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderErrorToResponseImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2090:30)
+    at async pipe.req.req (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2056:30)
+    at async DevServer.pipeImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:922:25)
+    at async C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:374:24)
+    at async requestHandlerImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\webpack-runtime.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\pages\\_document.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\require.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\load-components.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\build\\utils.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ]
+}
+ ⨯ Error: Cannot find module './276.js'
+Require stack:
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\pages\_document.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\build\utils.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-middleware.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1476:15)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1094:12)
+    at Module._load (node:internal/modules/cjs/loader:1262:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:198:28)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:162:22)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4561
+    at Object.<anonymous> (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4607)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js:109:84)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderErrorToResponseImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2090:30)
+    at async pipe.req.req (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2056:30)
+    at async DevServer.pipeImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:922:25)
+    at async C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:374:24)
+    at async requestHandlerImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\webpack-runtime.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\pages\\_document.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\require.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\load-components.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\build\\utils.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ]
+}
+ ⨯ Error: Cannot find module './276.js'
+Require stack:
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\pages\_document.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\build\utils.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-middleware.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1476:15)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1094:12)
+    at Module._load (node:internal/modules/cjs/loader:1262:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:198:28)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:162:22)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4561
+    at Object.<anonymous> (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4607)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js:109:84)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderErrorToResponseImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2090:30)
+    at async pipe.req.req (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2056:30)
+    at async DevServer.pipeImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:922:25)
+    at async C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:374:24)
+    at async requestHandlerImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\webpack-runtime.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\pages\\_document.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\require.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\load-components.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\build\\utils.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ]
+}
+ GET /_next/static/chunks/main-app.js?v=1779817926852 500 in 53ms
+ GET /_next/static/chunks/app-pages-internals.js 500 in 51ms
+ GET /_next/static/chunks/app/page.js 500 in 50ms
+ ⨯ Error: Cannot find module './276.js'
+Require stack:
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\pages\_document.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\build\utils.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-middleware.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1476:15)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1094:12)
+    at Module._load (node:internal/modules/cjs/loader:1262:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:198:28)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:162:22)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\dashboard\page.js:1:22831
+    at Object.<anonymous> (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\dashboard\page.js:1:22905)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js:109:84)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderPageComponent (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:1910:24)
+    at async DevServer.renderToResponseImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:818:17)
+    at async C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\webpack-runtime.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\pages\\_document.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\require.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\load-components.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\build\\utils.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ],
+  page: '/dashboard'
+}
+ ⨯ Error: Cannot find module './682.js'
+Require stack:
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\pages\_document.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\build\utils.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-middleware.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1476:15)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1094:12)
+    at Module._load (node:internal/modules/cjs/loader:1262:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:198:28)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:162:22)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\pages\_document.js:1:340
+    at Object.<anonymous> (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\pages\_document.js:1:382)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js:109:84)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:72:65
+    at async Promise.all (index 0)
+    at async loadComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:71:33)
+    at async DevServer.findPageComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\next-server.js:714:36) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\webpack-runtime.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\pages\\_document.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\require.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\load-components.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\build\\utils.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ]
+}
+ GET /dashboard 500 in 19ms
+ ⨯ Error: Cannot find module './276.js'
+Require stack:
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\pages\_document.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\build\utils.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-middleware.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1476:15)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1094:12)
+    at Module._load (node:internal/modules/cjs/loader:1262:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:198:28)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:162:22)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4561
+    at Object.<anonymous> (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4607)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js:109:84)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderErrorToResponseImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2090:30)
+    at async pipe.req.req (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2056:30)
+    at async DevServer.pipeImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:922:25)
+    at async C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:374:24)
+    at async requestHandlerImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\webpack-runtime.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\pages\\_document.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\require.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\load-components.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\build\\utils.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ]
+}
+ ⨯ Error: Cannot find module './276.js'
+Require stack:
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\pages\_document.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\build\utils.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-middleware.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1476:15)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1094:12)
+    at Module._load (node:internal/modules/cjs/loader:1262:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:198:28)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:162:22)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4561
+    at Object.<anonymous> (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4607)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js:109:84)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderErrorToResponseImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2090:30)
+    at async pipe.req.req (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2056:30)
+    at async DevServer.pipeImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:922:25)
+    at async C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:374:24)
+    at async requestHandlerImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\webpack-runtime.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\pages\\_document.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\require.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\load-components.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\build\\utils.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ]
+}
+ ⨯ Error: Cannot find module './276.js'
+Require stack:
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\pages\_document.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\build\utils.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-middleware.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1476:15)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1094:12)
+    at Module._load (node:internal/modules/cjs/loader:1262:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:198:28)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:162:22)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4561
+    at Object.<anonymous> (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4607)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js:109:84)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderErrorToResponseImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2090:30)
+    at async pipe.req.req (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2056:30)
+    at async DevServer.pipeImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:922:25)
+    at async C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:374:24)
+    at async requestHandlerImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\webpack-runtime.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\pages\\_document.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\require.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\load-components.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\build\\utils.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ]
+}
+ GET /_next/static/chunks/fallback/webpack.js 500 in 21ms
+ GET /_next/static/chunks/fallback/main.js 500 in 18ms
+ GET /_next/static/chunks/fallback/react-refresh.js 500 in 17ms
+ ⨯ Error: Cannot find module './276.js'
+Require stack:
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\pages\_document.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\build\utils.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-middleware.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1476:15)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1094:12)
+    at Module._load (node:internal/modules/cjs/loader:1262:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:198:28)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:162:22)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4561
+    at Object.<anonymous> (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4607)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js:109:84)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderErrorToResponseImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2090:30)
+    at async pipe.req.req (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2056:30)
+    at async DevServer.pipeImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:922:25)
+    at async C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:374:24)
+    at async requestHandlerImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\webpack-runtime.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\pages\\_document.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\require.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\load-components.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\build\\utils.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ]
+}
+ ⨯ Error: Cannot find module './276.js'
+Require stack:
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\pages\_document.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\build\utils.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-middleware.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\hot-reloader-webpack.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js
+- C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1476:15)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1094:12)
+    at Module._load (node:internal/modules/cjs/loader:1262:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at __webpack_require__.f.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:198:28)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\webpack-runtime.js:162:22)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4561
+    at Object.<anonymous> (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\server\app\_not-found\page.js:1:4607)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1576:12)
+    at mod.require (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16)
+    at requirePage (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\require.js:109:84)
+    at C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:84
+    at async loadComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\load-components.js:103:26)
+    at async DevServer.findPageComponentsImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderErrorToResponseImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2090:30)
+    at async pipe.req.req (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:2056:30)
+    at async DevServer.pipeImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\base-server.js:922:25)
+    at async C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:374:24)
+    at async requestHandlerImpl (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\webpack-runtime.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\.next\\server\\pages\\_document.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\require.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\load-components.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\build\\utils.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-middleware.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\dev\\hot-reloader-webpack.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'C:\\tmp\\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ]
+}
+ GET /_next/static/chunks/fallback/pages/_app.js 500 in 15ms
+ GET /_next/static/chunks/fallback/pages/_error.js 500 in 15ms
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: EPERM: operation not permitted, rename 'C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\client-development\0.pack.gz_' -> 'C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\client-development\0.pack.gz'
+ ✓ Compiled in 7.2s (2787 modules)
+ ✓ Compiled in 1445ms (2787 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Restoring pack from C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\client-development.pack.gz failed: TypeError: Cannot read properties of undefined (reading 'hasStartTime')
+ ✓ Compiled in 1429ms (2787 modules)
+ ✓ Compiled in 1464ms (2787 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Restoring pack from C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\client-development.pack.gz failed: TypeError: Cannot read properties of undefined (reading 'hasStartTime')
+ ✓ Compiled in 1399ms (2787 modules)
+ ✓ Compiled in 1244ms (2787 modules)
+ ✓ Compiled in 578ms (1460 modules)
+ ✓ Compiled in 407ms (1460 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Restoring pack from C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي\.next\cache\webpack\client-development.pack.gz failed: TypeError: Cannot read properties of undefined (reading 'hasStartTime')
+ ✓ Compiled in 1325ms (2787 modules)
+ ✓ Compiled in 1510ms (2787 modules)

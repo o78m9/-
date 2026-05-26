@@ -1,12 +1,9 @@
 'use client'
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 
 export default function SignupPage() {
-  const router = useRouter()
-
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [clinicName, setClinicName] = useState('')
@@ -29,9 +26,11 @@ export default function SignupPage() {
     })
 
     if (authError) {
-      setError(authError.message === 'User already registered'
-        ? 'هذا البريد مسجّل مسبقاً. حاول تسجيل الدخول.'
-        : 'حدث خطأ أثناء التسجيل. حاول مرة أخرى.')
+      setError(
+        authError.message === 'User already registered'
+          ? 'هذا البريد مسجّل مسبقاً. حاول تسجيل الدخول.'
+          : 'حدث خطأ أثناء التسجيل. حاول مرة أخرى.',
+      )
       setLoading(false)
       return
     }
@@ -46,15 +45,21 @@ export default function SignupPage() {
         <div className="w-full max-w-[380px] text-center">
           <div className="w-14 h-14 rounded-full bg-forest/10 border border-forest/20 flex items-center justify-center mx-auto mb-5">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M5 13l4 4L19 7" stroke="#1F3D36" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <path
+                d="M5 13l4 4L19 7"
+                stroke="#1F3D36"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </div>
           <h2 className="font-sans font-[700] text-ink text-[22px] tracking-[-0.02em] mb-3">
             تحقق من بريدك
           </h2>
           <p className="text-mute text-[14px] leading-relaxed mb-6">
-            أرسلنا رسالة تأكيد إلى <strong className="text-ink">{email}</strong>.
-            افتحها وانقر الرابط لتفعيل حسابك.
+            أرسلنا رسالة تأكيد إلى <strong className="text-ink">{email}</strong>. افتحها وانقر
+            الرابط لتفعيل حسابك.
           </p>
           <Link
             href="/login"
@@ -70,12 +75,13 @@ export default function SignupPage() {
   return (
     <div className="min-h-screen bg-cream flex items-center justify-center px-4">
       <div className="w-full max-w-[380px]">
-
         {/* Logo */}
         <div className="text-center mb-10">
           <Link href="/" className="inline-flex items-center gap-2 mb-6">
             <span className="w-2 h-2 rounded-full bg-copper" />
-            <span className="font-sans font-[700] text-ink text-[22px] tracking-[-0.03em]">عَودة</span>
+            <span className="font-sans font-[700] text-ink text-[22px] tracking-[-0.03em]">
+              عَودة
+            </span>
           </Link>
           <h1 className="font-sans font-[700] text-ink text-[24px] tracking-[-0.02em]">
             ابدأ مجاناً
@@ -86,7 +92,10 @@ export default function SignupPage() {
         {/* Card */}
         <div
           className="bg-paper rounded-2xl p-8"
-          style={{ border: '1px solid var(--line)', boxShadow: '0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04)' }}
+          style={{
+            border: '1px solid var(--line)',
+            boxShadow: '0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04)',
+          }}
         >
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>

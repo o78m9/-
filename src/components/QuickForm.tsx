@@ -2,19 +2,10 @@
 
 import { useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
 import { Loader2 } from 'lucide-react'
-
-const schema = z.object({
-  name: z.string().min(2, 'الاسم مطلوب'),
-  phone: z.string().min(10, 'رقم الهاتف مطلوب'),
-  visit_type: z.string().min(1, 'اختر نوع الزيارة'),
-  notes: z.string().optional(),
-})
-
-type FormData = z.infer<typeof schema>
+import { captureSchema, type CaptureFormData } from '@/lib/capture-schema'
 
 const VISIT_TYPES = [
   'كشف وتشخيص',
@@ -38,9 +29,9 @@ export default function QuickForm({ clinicId }: { clinicId: string }) {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<FormData>({ resolver: zodResolver(schema) })
+  } = useForm<CaptureFormData>({ resolver: zodResolver(captureSchema) })
 
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = async (data: CaptureFormData) => {
     // Reject honeypot-filled submissions silently
     if (honeypotRef.current?.value) return
 
@@ -94,7 +85,9 @@ export default function QuickForm({ clinicId }: { clinicId: string }) {
           autoFocus
         />
         {errors.name && (
-          <p className="text-red-500 text-xs mt-1" role="alert">{errors.name.message}</p>
+          <p className="text-red-500 text-xs mt-1" role="alert">
+            {errors.name.message}
+          </p>
         )}
       </div>
 
@@ -111,7 +104,9 @@ export default function QuickForm({ clinicId }: { clinicId: string }) {
           dir="ltr"
         />
         {errors.phone && (
-          <p className="text-red-500 text-xs mt-1" role="alert">{errors.phone.message}</p>
+          <p className="text-red-500 text-xs mt-1" role="alert">
+            {errors.phone.message}
+          </p>
         )}
       </div>
 
@@ -125,12 +120,16 @@ export default function QuickForm({ clinicId }: { clinicId: string }) {
           className="w-full border rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-600/40 focus:border-teal-600 bg-white transition-colors"
         >
           <option value="">اختر...</option>
-          {VISIT_TYPES.map(t => (
-            <option key={t} value={t}>{t}</option>
+          {VISIT_TYPES.map((t) => (
+            <option key={t} value={t}>
+              {t}
+            </option>
           ))}
         </select>
         {errors.visit_type && (
-          <p className="text-red-500 text-xs mt-1" role="alert">{errors.visit_type.message}</p>
+          <p className="text-red-500 text-xs mt-1" role="alert">
+            {errors.visit_type.message}
+          </p>
         )}
       </div>
 

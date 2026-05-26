@@ -1,101 +1,128 @@
 'use client'
+
 import { useState } from 'react'
-import { Plus, Minus } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { SectionNumber } from '@/components/ui/section-number'
 
 const FAQS = [
   {
-    q: 'كيف بشتغل النظام إذا ما عندي قاعدة بيانات؟',
-    a: 'ما في مشكلة. نبدأ معك من الصفر — نضع رابط QR في عيادتك، عملاءك يسجّلون بياناتهم بأنفسهم مقابل خصم. خلال أسبوعين عندك قاعدة بيانات حقيقية.',
+    q: 'كيف تعرف عَودة أي عميل "خامل"؟',
+    a: 'نحدد الخمول بناءً على آخر زيارة للعيادة. أي عميل لم يزر خلال فترة تحددها أنت (عادةً ٣–٦ أشهر) يُصنَّف خاملاً ويدخل قائمة الاسترداد تلقائياً.',
   },
   {
-    q: 'هل بدي أعرف تقنية لاستخدامه؟',
-    a: 'لا أبداً. الواجهة مصممة للطاقم الإداري في العيادة. تحمّل ملف، تختار فئة، تضغط إرسال. بس.',
+    q: 'هل تحتاج تشارك بيانات مرضاك الطبية؟',
+    a: 'لا. نستخدم فقط الاسم، رقم الهاتف، وتاريخ آخر زيارة. لا نطلب أي بيانات طبية. كل شيء مشفر ومخزن بشكل آمن ولا يُشارك مع أي طرف ثالث.',
   },
   {
-    q: 'كيف بضمن إنه ما يطلع spam على الزبائن؟',
-    a: 'Claude يكتب رسالة مخصصة لكل عميل بالاسم وتاريخ آخر زيارة — مش رسالة جماعية. العميل يحس إنك بتفكر فيه شخصياً. معدل الرد عادةً 30-40%.',
+    q: 'كيف يكتب Claude الرسائل؟',
+    a: 'Claude يحلل تاريخ العميل وتصنيفه ثم يكتب رسالة شخصية بالعربية الخليجية أو العامية المناسبة للمنطقة. تراجع النماذج قبل الإرسال وتعدّل أي شيء.',
   },
   {
-    q: 'ماذا لو ما رجع أي عميل في الشهر التجريبي؟',
-    a: 'ما تدفع شيئاً. الباقة التجريبية بدون رسوم شهرية، ندفع نسبة فقط من الإيراد الذي نسترجعه فعلياً. لو ما رجع حدا، ما عليك أي التزام مالي.',
+    q: 'ماذا لو ما رجع أي عميل؟',
+    a: 'في خطة "نسبة من المسترجع" لا تدفع شيئاً على الإطلاق. مصلحتنا مرتبطة مباشرةً بنتائجك — إذا لم يرجع أحد، لا نأخذ شيئاً.',
   },
   {
-    q: 'متوافق مع الأحكام الشرعية؟',
-    a: 'نعم. الرسائل احترافية وغير مزعجة، ومبنية على موافقة العميل المسبقة (يسجّل بياناته بإرادته). لا تسويق مضلل.',
+    q: 'كم يستغرق الإعداد؟',
+    a: 'الإعداد الأساسي يستغرق أقل من ٣٠ دقيقة. ترفع ملف بيانات عملائك، تختار إعدادات الحملة، تعتمد الرسائل — ونتولى الباقي.',
   },
   {
-    q: 'كم وقت لازم لأشوف نتائج؟',
-    a: 'عادةً أول مواعيد محجوزة خلال 48-72 ساعة من إطلاق الحملة. المتوسط اللي شفناه: 8-15% من العملاء المستهدفين يحجزون.',
+    q: 'هل الخدمة متاحة خارج السعودية؟',
+    a: 'نعم، نعمل حالياً في السعودية والأردن والإمارات. نخطط للتوسع لباقي الدول العربية قريباً.',
   },
-  {
-    q: 'بيشتغل لعيادات غير عيادات الأسنان؟',
-    a: 'نعم. جرّبناه مع عيادات تجميلية وعيادات علاج طبيعي. النظام يتكيّف مع أي عيادة فيها زبائن متكررين.',
-  },
-]
+] as const
 
 export function FAQSection() {
   const [open, setOpen] = useState<number | null>(null)
 
   return (
-    <section id="faq" className="py-24 bg-stone-100 px-8">
-      <div className="max-w-[720px] mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-[40px] font-semibold text-stone-950 tracking-tight">
-            أسئلة قبل ما تبدأ
-          </h2>
-        </div>
+    <section
+      id="faq"
+      className="py-28 px-6"
+      style={{ background: 'var(--cream)' }}
+      aria-labelledby="faq-heading"
+    >
+      <div className="max-w-content mx-auto">
+        <SectionNumber n={6} label="الأسئلة الشائعة" />
 
-        <div className="space-y-2">
-          {FAQS.map((faq, i) => (
-            <div
-              key={i}
-              className="bg-white rounded-xl border border-stone-200 overflow-hidden"
-              style={{ boxShadow: '0 1px 2px rgba(0,0,0,0.04)' }}
-            >
+        <h2
+          id="faq-heading"
+          className="font-sans font-[700] text-ink mb-16"
+          style={{
+            fontSize: 'clamp(2rem, 4vw, 3rem)',
+            lineHeight: 1.1,
+            letterSpacing: '-0.025em',
+          }}
+        >
+          أسئلة يسألها أصحاب العيادات
+        </h2>
+
+        <div className="max-w-[700px]">
+          {FAQS.map(({ q, a }, i) => (
+            <div key={i} className="border-b border-line last:border-0">
               <button
+                className="w-full flex items-start justify-between py-6 text-start group"
                 onClick={() => setOpen(open === i ? null : i)}
-                className="w-full flex items-center justify-between px-6 py-5 text-right"
                 aria-expanded={open === i}
+                aria-controls={`faq-${i}`}
+                id={`faq-btn-${i}`}
               >
-                <span className="text-[15px] font-medium text-stone-950">{faq.q}</span>
-                <span className="shrink-0 ms-4 text-stone-400">
-                  {open === i ? <Minus size={16} /> : <Plus size={16} />}
+                <span
+                  className="font-sans font-[500] text-ink group-hover:text-forest transition-colors duration-150 pe-8"
+                  style={{ fontSize: 18, lineHeight: 1.4 }}
+                >
+                  {q}
+                </span>
+                <span
+                  className="w-6 h-6 flex-shrink-0 flex items-center justify-center rounded-full border border-line text-mute group-hover:border-forest group-hover:text-forest transition-all duration-150 mt-0.5"
+                  aria-hidden="true"
+                >
+                  <svg
+                    width="10"
+                    height="10"
+                    viewBox="0 0 10 10"
+                    fill="none"
+                    className={`transition-transform duration-300 ${open === i ? 'rotate-45' : ''}`}
+                  >
+                    <line
+                      x1="5"
+                      y1="0"
+                      x2="5"
+                      y2="10"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                    />
+                    <line
+                      x1="0"
+                      y1="5"
+                      x2="10"
+                      y2="5"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                    />
+                  </svg>
                 </span>
               </button>
+
               <div
-                className={cn(
-                  'overflow-hidden transition-all duration-200 ease-out',
-                  open === i ? 'max-h-64' : 'max-h-0'
-                )}
+                id={`faq-${i}`}
+                className={`faq-body${open === i ? ' open' : ''}`}
+                role="region"
+                aria-labelledby={`faq-btn-${i}`}
               >
-                <p className="px-6 pb-5 text-[15px] text-stone-600 leading-[1.65]">
-                  {faq.a}
-                </p>
+                <div>
+                  <p
+                    className="pb-6 text-mute leading-[1.75]"
+                    style={{ fontSize: 16, maxWidth: '56ch' }}
+                  >
+                    {a}
+                  </p>
+                </div>
               </div>
             </div>
           ))}
         </div>
       </div>
-
-      {/* FAQ JSON-LD for Google rich snippets */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            mainEntity: FAQS.map((faq) => ({
-              '@type': 'Question',
-              name: faq.q,
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: faq.a,
-              },
-            })),
-          }),
-        }}
-      />
     </section>
   )
 }

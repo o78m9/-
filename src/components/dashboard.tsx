@@ -2,7 +2,17 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Plus, Upload, QrCode, TrendingUp, TrendingDown, MessageCircle, Sparkles, Eye, type LucideIcon } from 'lucide-react'
+import {
+  Plus,
+  Upload,
+  QrCode,
+  TrendingUp,
+  TrendingDown,
+  MessageCircle,
+  Sparkles,
+  Eye,
+  type LucideIcon,
+} from 'lucide-react'
 import { DashboardSidebar } from '@/components/dashboard-sidebar'
 import { SegmentGrid } from '@/components/segment-grid'
 import { ActivityFeed } from '@/components/activity-feed'
@@ -47,13 +57,6 @@ interface DashboardClientProps {
 
 const EMPTY_SPARK = [0, 0, 0, 0, 0, 0, 0]
 
-const SECONDARY = [
-  { key: 'total', label: 'إجمالي العملاء', sparkKey: 'total', trend: 8, color: '#0F766E' },
-  { key: 'active', label: 'نشطون هذا الشهر', sparkKey: 'active', trend: 5, color: '#0D9488' },
-  { key: 'campaignsSent', label: 'رسائل أُرسلت', sparkKey: null, trend: 18, color: '#0F766E' },
-  { key: 'recovered', label: 'مواعيد محجوزة', sparkKey: null, trend: 33, color: '#0D9488' },
-] as const
-
 function SecondaryMetric({
   label,
   value,
@@ -79,11 +82,13 @@ function SecondaryMetric({
       style={{ border: '1px solid #E7E5E4', boxShadow: '0 1px 2px rgba(0,0,0,0.04)' }}
     >
       <div className="flex items-center justify-between">
-        <p className="text-[12px] font-medium uppercase tracking-[0.05em] text-stone-400">{label}</p>
+        <p className="text-[12px] font-medium uppercase tracking-[0.05em] text-stone-400">
+          {label}
+        </p>
         <span
           className={cn(
             'inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[12px] font-medium',
-            positive ? 'bg-green-50 text-green-700' : 'bg-stone-100 text-stone-600'
+            positive ? 'bg-green-50 text-green-700' : 'bg-stone-100 text-stone-600',
           )}
           style={{ fontFamily: 'var(--font-inter)' }}
         >
@@ -122,14 +127,19 @@ function StatusPill({
       transition={{ duration: 0.35, delay, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
         'flex items-center gap-3 px-4 py-3 rounded-xl',
-        connected ? 'bg-teal-50 border border-teal-100' : 'bg-stone-50 border border-stone-200'
+        connected ? 'bg-teal-50 border border-teal-100' : 'bg-stone-50 border border-stone-200',
       )}
     >
       <div className={cn('flex-shrink-0', connected ? 'text-teal-600' : 'text-stone-400')}>
         <Icon size={16} />
       </div>
       <div className="min-w-0">
-        <p className={cn('text-[13px] font-semibold', connected ? 'text-teal-900' : 'text-stone-500')}>
+        <p
+          className={cn(
+            'text-[13px] font-semibold',
+            connected ? 'text-teal-900' : 'text-stone-500',
+          )}
+        >
           {label}
         </p>
         <p className={cn('text-[12px]', connected ? 'text-teal-600' : 'text-stone-400')}>
@@ -139,14 +149,19 @@ function StatusPill({
       <span
         className={cn(
           'w-2 h-2 rounded-full flex-shrink-0 ms-auto',
-          connected ? 'bg-teal-500 animate-pulse' : 'bg-stone-300'
+          connected ? 'bg-teal-500 animate-pulse' : 'bg-stone-300',
         )}
       />
     </motion.div>
   )
 }
 
-export function DashboardClient({ realStats, realCustomers, hasClinicId, isAuthenticated = false }: DashboardClientProps) {
+export function DashboardClient({
+  realStats,
+  realCustomers,
+  hasClinicId,
+  isAuthenticated = false,
+}: DashboardClientProps) {
   const [isDemoMode, setIsDemoMode] = useState(false)
   const [mounted, setMounted] = useState(false)
 
@@ -180,20 +195,21 @@ export function DashboardClient({ realStats, realCustomers, hasClinicId, isAuthe
   const campaignsSpark = isDemoMode
     ? [120, 138, 145, 158, 167, 179, stats.campaignsSent]
     : EMPTY_SPARK
-  const recoveredSpark = isDemoMode
-    ? [4, 5, 7, 8, 9, 11, stats.recovered]
-    : EMPTY_SPARK
+  const recoveredSpark = isDemoMode ? [4, 5, 7, 8, 9, 11, stats.recovered] : EMPTY_SPARK
 
   if (!mounted) return null
 
   return (
     <div className="flex h-screen overflow-hidden bg-[#FAFAF9]">
       {/* Sidebar */}
-      <DashboardSidebar isDemoMode={isDemoMode} onToggleDemo={toggleDemo} isAuthenticated={isAuthenticated} />
+      <DashboardSidebar
+        isDemoMode={isDemoMode}
+        onToggleDemo={toggleDemo}
+        isAuthenticated={isAuthenticated}
+      />
 
       {/* Main area */}
       <div className="flex-1 flex flex-col overflow-hidden">
-
         {/* Demo banner */}
         <AnimatePresence>
           {isDemoMode && (
@@ -208,10 +224,7 @@ export function DashboardClient({ realStats, realCustomers, hasClinicId, isAuthe
                 <span className="inline-flex items-center gap-2 text-[13px] font-medium">
                   <Eye size={14} />
                   هذا عرض تجريبي ببيانات وهمية.
-                  <a
-                    href="/"
-                    className="underline font-semibold hover:no-underline"
-                  >
+                  <a href="/" className="underline font-semibold hover:no-underline">
                     احجز عرضاً حقيقياً على بياناتك
                   </a>
                 </span>
@@ -223,7 +236,6 @@ export function DashboardClient({ realStats, realCustomers, hasClinicId, isAuthe
         {/* Scrollable content */}
         <main className="flex-1 overflow-y-auto px-8 py-8">
           <div className="max-w-[1100px] mx-auto space-y-7">
-
             {/* Page header */}
             <motion.div
               initial={{ opacity: 0, y: -6 }}
@@ -270,7 +282,10 @@ export function DashboardClient({ realStats, realCustomers, hasClinicId, isAuthe
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
               className="bg-white rounded-2xl p-8"
-              style={{ border: '1px solid #E7E5E4', boxShadow: '0 1px 2px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.02)' }}
+              style={{
+                border: '1px solid #E7E5E4',
+                boxShadow: '0 1px 2px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.02)',
+              }}
             >
               <div className="flex items-start justify-between gap-8">
                 {/* Left: number + trend */}
@@ -351,7 +366,7 @@ export function DashboardClient({ realStats, realCustomers, hasClinicId, isAuthe
                 trend={18}
                 sparkData={campaignsSpark}
                 color="#0F766E"
-                delay={0.20}
+                delay={0.2}
               />
               <SecondaryMetric
                 label="مواعيد محجوزة"
@@ -370,7 +385,9 @@ export function DashboardClient({ realStats, realCustomers, hasClinicId, isAuthe
               transition={{ duration: 0.35, delay: 0.3 }}
             >
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-[17px] font-semibold text-stone-950 tracking-tight">توزيع العملاء</h2>
+                <h2 className="text-[17px] font-semibold text-stone-950 tracking-tight">
+                  توزيع العملاء
+                </h2>
                 <span className="text-[12px] font-medium uppercase tracking-[0.05em] text-stone-400">
                   {stats.total} إجمالاً
                 </span>
@@ -391,7 +408,9 @@ export function DashboardClient({ realStats, realCustomers, hasClinicId, isAuthe
                 style={{ border: '1px solid #E7E5E4', boxShadow: '0 1px 2px rgba(0,0,0,0.04)' }}
               >
                 <div className="px-6 py-4 border-b border-stone-100 flex items-center justify-between">
-                  <h3 className="text-[15px] font-semibold text-stone-950 tracking-tight">قاعدة عملاءك</h3>
+                  <h3 className="text-[15px] font-semibold text-stone-950 tracking-tight">
+                    قاعدة عملاءك
+                  </h3>
                   <span className="text-[12px] font-medium uppercase tracking-[0.05em] text-stone-400">
                     {customers.length} عميل
                   </span>
@@ -416,7 +435,6 @@ export function DashboardClient({ realStats, realCustomers, hasClinicId, isAuthe
                 )}
               </div>
             </motion.div>
-
           </div>
         </main>
       </div>

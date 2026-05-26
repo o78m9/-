@@ -1,20 +1,28 @@
 import type { Metadata } from 'next'
-import { IBM_Plex_Sans_Arabic, Inter } from 'next/font/google'
+import { IBM_Plex_Sans_Arabic, Inter, Fraunces } from 'next/font/google'
 import { Toaster } from 'sonner'
 import './globals.css'
 
 const arabic = IBM_Plex_Sans_Arabic({
   subsets: ['arabic'],
-  weight: ['100', '200', '300', '400', '500', '600', '700'],
+  weight: ['400', '500', '700'],
   variable: '--font-arabic',
   display: 'swap',
+  preload: true,
 })
 
 const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
+  weight: ['400', '500', '600'],
   variable: '--font-inter',
   display: 'swap',
+})
+
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-fraunces',
+  display: 'swap',
+  preload: true,
 })
 
 export const metadata: Metadata = {
@@ -40,27 +48,27 @@ export const metadata: Metadata = {
     description: 'ادفع فقط من الإيراد الذي نسترجعه.',
     images: ['/og-image.svg'],
   },
-  alternates: {
-    canonical: '/',
-  },
+  alternates: { canonical: '/' },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ar" dir="rtl" className={`${arabic.variable} ${inter.variable}`}>
-      <body className="bg-[#FAFAF9] text-slate-900 antialiased font-sans min-h-screen">
+    <html
+      lang="ar"
+      dir="rtl"
+      className={`${arabic.variable} ${inter.variable} ${fraunces.variable}`}
+    >
+      <body className="bg-cream text-ink antialiased font-sans min-h-screen">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:start-4 focus:z-50 focus:rounded-md focus:bg-black focus:px-4 focus:py-2 focus:text-white focus:text-[14px]"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:start-4 focus:z-50 focus:rounded-md focus:bg-ink focus:px-4 focus:py-2 focus:text-cream focus:text-[14px]"
         >
           انتقل إلى المحتوى الرئيسي
         </a>
         {children}
         <Toaster
           position="top-center"
-          toastOptions={{
-            classNames: { toast: 'font-sans text-sm' },
-          }}
+          toastOptions={{ classNames: { toast: 'font-sans text-sm' } }}
         />
       </body>
     </html>

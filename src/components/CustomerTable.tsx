@@ -1,5 +1,5 @@
 import { sql } from '@/lib/supabase'
-import { Customer, CustomerStatus } from '@/types'
+import type { Customer, CustomerStatus } from '@/types'
 
 const STATUS_MAP: Record<CustomerStatus, { label: string; color: string }> = {
   vip: { label: 'VIP', color: 'bg-yellow-100 text-yellow-800' },
@@ -37,22 +37,36 @@ export default async function CustomerTable({ clinicId }: { clinicId: string }) 
       <table className="w-full text-sm">
         <thead className="bg-gray-50">
           <tr>
-            <th className="text-right px-4 py-3 font-medium text-gray-600 whitespace-nowrap">الاسم</th>
-            <th className="text-right px-4 py-3 font-medium text-gray-600 whitespace-nowrap">الهاتف</th>
-            <th className="text-right px-4 py-3 font-medium text-gray-600 whitespace-nowrap">آخر زيارة</th>
-            <th className="text-right px-4 py-3 font-medium text-gray-600 whitespace-nowrap">الحالة</th>
+            <th className="text-right px-4 py-3 font-medium text-gray-600 whitespace-nowrap">
+              الاسم
+            </th>
+            <th className="text-right px-4 py-3 font-medium text-gray-600 whitespace-nowrap">
+              الهاتف
+            </th>
+            <th className="text-right px-4 py-3 font-medium text-gray-600 whitespace-nowrap">
+              آخر زيارة
+            </th>
+            <th className="text-right px-4 py-3 font-medium text-gray-600 whitespace-nowrap">
+              الحالة
+            </th>
           </tr>
         </thead>
         <tbody>
-          {customers.map(c => {
+          {customers.map((c) => {
             const s = STATUS_MAP[c.status] ?? STATUS_MAP.active
             return (
               <tr key={c.id} className="border-t hover:bg-gray-50 transition-colors">
                 <td className="px-4 py-3 font-medium">{c.name}</td>
-                <td className="px-4 py-3 font-mono text-xs text-gray-500" dir="ltr">{c.phone}</td>
+                <td className="px-4 py-3 font-mono text-xs text-gray-500" dir="ltr">
+                  {c.phone}
+                </td>
                 <td className="px-4 py-3 text-gray-500">
                   {c.last_visit
-                    ? new Date(c.last_visit).toLocaleDateString('ar-JO', { year: 'numeric', month: 'short', day: 'numeric' })
+                    ? new Date(c.last_visit).toLocaleDateString('ar-JO', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric',
+                      })
                     : '—'}
                 </td>
                 <td className="px-4 py-3">

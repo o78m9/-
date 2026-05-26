@@ -2,15 +2,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { X, CheckCircle, ExternalLink } from 'lucide-react'
 import { cn } from '@/lib/utils'
-
-interface BookingForm {
-  name: string
-  clinic: string
-  whatsapp: string
-  country: string
-  preferredTime: string
-  message: string
-}
+import { validateBookingForm, type BookingForm, type BookingErrors } from '@/lib/booking-validation'
 
 const INITIAL: BookingForm = {
   name: '',
@@ -36,12 +28,20 @@ const COUNTRIES = [
 interface BookingModalProps {
   open: boolean
   onClose: () => void
-  source: 'hero' | 'pricing-pro' | 'final-cta'
+  source:
+    | 'hero'
+    | 'header'
+    | 'mobile-menu'
+    | 'pricing-pro'
+    | 'pricing-revenue'
+    | 'pricing-subscription'
+    | 'final-cta'
+    | 'final-cta-secondary'
 }
 
 export function BookingModal({ open, onClose, source }: BookingModalProps) {
   const [form, setForm] = useState<BookingForm>(INITIAL)
-  const [errors, setErrors] = useState<Partial<BookingForm>>({})
+  const [errors, setErrors] = useState<BookingErrors>({})
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const firstInputRef = useRef<HTMLInputElement>(null)
@@ -60,7 +60,9 @@ export function BookingModal({ open, onClose, source }: BookingModalProps) {
     if (!open) return
     const prev = document.body.style.overflow
     document.body.style.overflow = 'hidden'
-    return () => { document.body.style.overflow = prev }
+    return () => {
+      document.body.style.overflow = prev
+    }
   }, [open])
 
   useEffect(() => {
@@ -73,16 +75,7 @@ export function BookingModal({ open, onClose, source }: BookingModalProps) {
   }, [open, onClose])
 
   function validate(): boolean {
-    const e: Partial<BookingForm> = {}
-    if (!form.name.trim()) e.name = 'الاسم مطلوب'
-    if (!form.clinic.trim()) e.clinic = 'اسم العيادة مطلوب'
-    if (!form.whatsapp.trim()) {
-      e.whatsapp = 'رقم الواتساب مطلوب'
-    } else if (!/^\+\d{7,15}$/.test(form.whatsapp.trim())) {
-      e.whatsapp = 'أدخل رقماً دولياً صحيحاً (مثال: +966XXXXXXXXX)'
-    }
-    if (!form.country) e.country = 'اختر الموقع'
-    if (!form.preferredTime) e.preferredTime = 'اختر وقتاً مفضلاً'
+    const e = validateBookingForm(form)
     setErrors(e)
     return Object.keys(e).length === 0
   }
@@ -127,7 +120,10 @@ export function BookingModal({ open, onClose, source }: BookingModalProps) {
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-5 border-b border-stone-100">
           <div>
-            <h2 id="booking-title" className="text-[18px] font-semibold text-stone-950 tracking-tight">
+            <h2
+              id="booking-title"
+              className="text-[18px] font-semibold text-stone-950 tracking-tight"
+            >
               احجز عرضك المجاني
             </h2>
             <p className="text-[13px] text-stone-500 mt-0.5">نتواصل معك خلال 24 ساعة</p>
@@ -169,7 +165,7 @@ export function BookingModal({ open, onClose, source }: BookingModalProps) {
                 ref={firstInputRef}
                 type="text"
                 value={form.name}
-                onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
                 className={inputCn(!!errors.name)}
                 placeholder="د. أحمد الخالد"
                 autoComplete="name"
@@ -181,7 +177,7 @@ export function BookingModal({ open, onClose, source }: BookingModalProps) {
               <input
                 type="text"
                 value={form.clinic}
-                onChange={e => setForm(f => ({ ...f, clinic: e.target.value }))}
+                onChange={(e) => setForm((f) => ({ ...f, clinic: e.target.value }))}
                 className={inputCn(!!errors.clinic)}
                 placeholder="عيادة الابتسامة للأسنان"
               />
@@ -192,7 +188,7 @@ export function BookingModal({ open, onClose, source }: BookingModalProps) {
               <input
                 type="tel"
                 value={form.whatsapp}
-                onChange={e => setForm(f => ({ ...f, whatsapp: e.target.value }))}
+                onChange={(e) => setForm((f) => ({ ...f, whatsapp: e.target.value }))}
                 className={inputCn(!!errors.whatsapp)}
                 placeholder="+966XXXXXXXXX"
                 dir="ltr"
@@ -204,11 +200,15 @@ export function BookingModal({ open, onClose, source }: BookingModalProps) {
             <Field label="الموقع" error={errors.country} required>
               <select
                 value={form.country}
-                onChange={e => setForm(f => ({ ...f, country: e.target.value }))}
+                onChange={(e) => setForm((f) => ({ ...f, country: e.target.value }))}
                 className={inputCn(!!errors.country)}
               >
                 <option value="">اختر الدولة</option>
-                {COUNTRIES.map(c => <option key={c} value={c}>{c}</option>)}
+                {COUNTRIES.map((c) => (
+                  <option key={c} value={c}>
+                    {c}
+                  </option>
+                ))}
               </select>
             </Field>
 
@@ -218,22 +218,24 @@ export function BookingModal({ open, onClose, source }: BookingModalProps) {
                 الوقت المفضّل للتواصل <span className="text-teal-600">*</span>
               </p>
               <div className="flex gap-3">
-                {['الصباح', 'المساء', 'في أي وقت'].map(t => (
+                {['الصباح', 'المساء', 'في أي وقت'].map((t) => (
                   <label key={t} className="flex-1">
                     <input
                       type="radio"
                       name="preferredTime"
                       value={t}
                       checked={form.preferredTime === t}
-                      onChange={e => setForm(f => ({ ...f, preferredTime: e.target.value }))}
+                      onChange={(e) => setForm((f) => ({ ...f, preferredTime: e.target.value }))}
                       className="sr-only"
                     />
-                    <div className={cn(
-                      'text-center py-2.5 rounded-lg border text-[13px] font-medium cursor-pointer transition-colors',
-                      form.preferredTime === t
-                        ? 'border-teal-600 bg-teal-50 text-teal-700'
-                        : 'border-stone-200 text-stone-600 hover:border-stone-300 hover:bg-stone-50'
-                    )}>
+                    <div
+                      className={cn(
+                        'text-center py-2.5 rounded-lg border text-[13px] font-medium cursor-pointer transition-colors',
+                        form.preferredTime === t
+                          ? 'border-teal-600 bg-teal-50 text-teal-700'
+                          : 'border-stone-200 text-stone-600 hover:border-stone-300 hover:bg-stone-50',
+                      )}
+                    >
                       {t}
                     </div>
                   </label>
@@ -248,7 +250,7 @@ export function BookingModal({ open, onClose, source }: BookingModalProps) {
             <Field label="رسالة قصيرة (اختياري)">
               <textarea
                 value={form.message}
-                onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
+                onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
                 className={cn(inputCn(false), 'resize-none h-20')}
                 placeholder="أي تفاصيل إضافية عن العيادة أو احتياجاتك..."
               />
@@ -302,6 +304,6 @@ function inputCn(hasError: boolean) {
   return cn(
     'w-full h-10 px-3 rounded-lg border text-[14px] text-stone-900 bg-white transition-colors outline-none',
     'focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500',
-    hasError ? 'border-red-400 bg-red-50' : 'border-stone-200 hover:border-stone-300'
+    hasError ? 'border-red-400 bg-red-50' : 'border-stone-200 hover:border-stone-300',
   )
 }

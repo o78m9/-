@@ -2,7 +2,15 @@
 import { useState } from 'react'
 import { BookingModal } from '@/components/BookingModal'
 
-type Source = 'hero' | 'pricing-pro' | 'final-cta'
+type Source =
+  | 'hero'
+  | 'header'
+  | 'mobile-menu'
+  | 'pricing-pro'
+  | 'pricing-revenue'
+  | 'pricing-subscription'
+  | 'final-cta'
+  | 'final-cta-secondary'
 
 interface BookingButtonProps {
   source: Source
