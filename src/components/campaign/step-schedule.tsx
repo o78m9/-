@@ -75,6 +75,7 @@ export function StepSchedule({ scheduleType, scheduledAt, onTypeChange, onDateCh
             type="datetime-local"
             value={scheduledAt}
             onChange={(e) => onDateChange(e.target.value)}
+            min={new Date(Date.now() + 60000).toISOString().slice(0, 16)}
             className="w-full sm:w-auto rounded-xl border border-slate-200 px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-teal-600 bg-white font-metric"
           />
         </motion.div>

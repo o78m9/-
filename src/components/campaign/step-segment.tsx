@@ -98,7 +98,7 @@ export function StepSegment({ selected, counts, onSelect }: StepSegmentProps) {
               )}
             >
               {seg.recommended && !isSelected && (
-                <Badge variant="default" className="absolute top-3 left-3 text-[10px] px-1.5 py-0">
+                <Badge variant="default" className="absolute top-3 start-3 text-[10px] px-1.5 py-0">
                   الأفضل
                 </Badge>
               )}
@@ -107,7 +107,7 @@ export function StepSegment({ selected, counts, onSelect }: StepSegmentProps) {
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                  className="absolute top-3 left-3 w-5 h-5 rounded-full bg-brand-700 flex items-center justify-center shadow-sm"
+                  className="absolute top-3 start-3 w-5 h-5 rounded-full bg-brand-700 flex items-center justify-center shadow-sm"
                 >
                   <Check size={11} className="text-white" strokeWidth={3} />
                 </motion.div>

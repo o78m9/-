@@ -27,7 +27,6 @@ interface StepReviewProps {
   customerCount: number
   isSending: boolean
   onSend: () => void
-  onSaveDraft: () => void
   isDemoMode: boolean
 }
 
@@ -59,7 +58,6 @@ export function StepReview({
   customerCount,
   isSending,
   onSend,
-  onSaveDraft,
   isDemoMode,
 }: StepReviewProps) {
   const scheduleLabel =
@@ -109,10 +107,8 @@ export function StepReview({
 
         <div className="px-5 py-3 bg-slate-50 border-t border-slate-100">
           <div className="flex items-center justify-between">
-            <span className="text-xs text-gray-500">التكلفة التقديرية (Claude)</span>
-            <span className="text-xs font-metric font-semibold text-gray-700">
-              ~${(customerCount * 0.015).toFixed(2)}
-            </span>
+            <span className="text-xs text-gray-500">التخصيص</span>
+            <span className="text-xs font-semibold text-teal-700">رسالة فريدة لكل عميل ✓</span>
           </div>
         </div>
       </motion.div>
@@ -158,12 +154,6 @@ export function StepReview({
           )}
         </Button>
 
-        <button
-          onClick={onSaveDraft}
-          className="text-sm text-center text-gray-400 hover:text-gray-600 py-2 transition-colors"
-        >
-          حفظ كمسودة
-        </button>
       </div>
     </div>
   )

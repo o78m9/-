@@ -81,8 +81,8 @@ function CampaignCard({ campaign, index }: { campaign: DemoCampaign; index: numb
 
 export default function CampaignsPage() {
   const isDemo = typeof window !== 'undefined'
-    ? localStorage.getItem('demo-mode') !== 'false'
-    : true
+    ? localStorage.getItem('awdah-demo-mode') === 'true'
+    : false
 
   const campaigns = isDemo ? DEMO_CAMPAIGNS : []
 

@@ -261,7 +261,6 @@ export function CampaignWizard({ realCounts }: WizardProps) {
                 customerCount={(counts as Record<string, number>)[segment ?? 'dormant'] ?? 0}
                 isSending={isSending}
                 onSend={handleSend}
-                onSaveDraft={() => toast.info('تم حفظ الحملة كمسودة')}
                 isDemoMode={isDemoMode}
               />
             )}

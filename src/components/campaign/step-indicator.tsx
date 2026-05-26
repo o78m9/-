@@ -54,7 +54,7 @@ export function StepIndicator({ current }: { current: number }) {
             {i < STEPS.length - 1 && (
               <div className="relative w-8 md:w-14 h-px bg-slate-200 mx-1 mb-5 rounded-full overflow-hidden">
                 <motion.div
-                  className="absolute inset-y-0 right-0 bg-brand-600 rounded-full"
+                  className="absolute inset-y-0 start-0 bg-brand-600 rounded-full"
                   animate={{ width: done ? '100%' : '0%' }}
                   transition={{ duration: 0.4, ease: 'easeOut' }}
                 />

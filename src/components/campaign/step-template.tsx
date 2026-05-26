@@ -65,7 +65,7 @@ export function StepTemplate({ selected, customMessage, onSelect, onCustomChange
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  className="absolute top-4 left-4 w-5 h-5 rounded-full bg-teal-600 flex items-center justify-center"
+                  className="absolute top-4 start-4 w-5 h-5 rounded-full bg-teal-600 flex items-center justify-center"
                 >
                   <Check size={11} className="text-white" strokeWidth={3} />
                 </motion.div>
@@ -115,7 +115,7 @@ export function StepTemplate({ selected, customMessage, onSelect, onCustomChange
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
-              className="absolute top-4 left-4 w-5 h-5 rounded-full bg-teal-600 flex items-center justify-center"
+              className="absolute top-4 start-4 w-5 h-5 rounded-full bg-teal-600 flex items-center justify-center"
             >
               <Check size={11} className="text-white" strokeWidth={3} />
             </motion.div>
@@ -145,14 +145,20 @@ export function StepTemplate({ selected, customMessage, onSelect, onCustomChange
             onChange={(e) => onCustomChange(e.target.value)}
             placeholder="اكتب رسالتك هنا... استخدم {{name}} لاسم العميل"
             rows={4}
+            maxLength={300}
             className="w-full rounded-xl border border-slate-200 p-4 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent resize-none bg-white"
             dir="rtl"
           />
-          <p className="text-xs text-gray-400 mt-1.5">
-            استخدم{' '}
-            <code className="bg-slate-100 px-1.5 py-0.5 rounded text-teal-700">{'{{name}}'}</code>{' '}
-            لإدراج اسم العميل تلقائياً
-          </p>
+          <div className="flex items-center justify-between mt-1.5">
+            <p className="text-xs text-gray-400">
+              استخدم{' '}
+              <code className="bg-slate-100 px-1.5 py-0.5 rounded text-teal-700">{'{{name}}'}</code>{' '}
+              لإدراج اسم العميل تلقائياً
+            </p>
+            <p className={`text-xs font-metric tabular-nums ${customMessage.length < 6 ? 'text-red-400' : 'text-gray-400'}`}>
+              {customMessage.length}/300
+            </p>
+          </div>
         </motion.div>
       )}
     </div>
