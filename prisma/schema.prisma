@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Clinic {
+  id        String     @id @default(uuid())
+  name      String
+  owner     String?
+  phone     String?
+  createdAt DateTime   @default(now()) @map("created_at")
+  customers Customer[]
+
+  @@map("clinics")
+}
+
+model Customer {
+  id         String    @id @default(uuid())
+  clinicId   String?   @map("clinic_id")
+  name       String
+  phone      String
+  email      String?
+  firstVisit DateTime? @map("first_visit") @db.Date
+  lastVisit  DateTime? @map("last_visit") @db.Date
+  totalSpent Decimal   @default(0) @map("total_spent")
+  status     String    @default("active")
+  tags       String[]
+  notes      String?
+  createdAt  DateTime  @default(now()) @map("created_at")
+  clinic     Clinic?   @relation(fields: [clinicId], references: [id], onDelete: Cascade)
+  visits     Visit[]
+
+  @@unique([phone, clinicId], name: "customers_phone_clinic_unique")
+  @@index([clinicId])
+  @@index([status])
+  @@index([lastVisit])
+  @@map("customers")
+}
+
+model Visit {
+  id         String    @id @default(uuid())
+  customerId String?   @map("customer_id")
+  date       DateTime  @db.Date
+  service    String?
+  amount     Decimal?
+  notes      String?
+  createdAt  DateTime  @default(now()) @map("created_at")
+  customer   Customer? @relation(fields: [customerId], references: [id], onDelete: Cascade)
+
+  @@index([customerId])
+  @@map("visits")
+}
+
