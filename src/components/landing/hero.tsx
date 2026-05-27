@@ -1,3 +1,5 @@
+'use client'
+
 import dynamic from 'next/dynamic'
 import { BookingButton } from '@/components/BookingButton'
 import { ReturnArc } from '@/components/ui/return-arc'
@@ -12,13 +14,22 @@ const HeroMockup = dynamic(() => import('./hero-mockup').then((m) => ({ default:
   ),
 })
 
+// 3D scene lazy-loaded — falls back gracefully if WebGL unavailable
+const HeroScene3D = dynamic(
+  () => import('./hero-3d-scene').then((m) => ({ default: m.HeroScene3D })),
+  { ssr: false, loading: () => null },
+)
+
 export function HeroSection() {
   return (
     <section
       className="relative overflow-hidden pt-36 pb-0 px-6"
       aria-labelledby="hero-heading"
-      style={{ background: 'var(--cream)' }}
+      style={{ background: 'var(--cream)', minHeight: '100vh' }}
     >
+      {/* 3D ambient network — decorative, hidden from screen readers */}
+      <HeroScene3D />
+
       {/* Watermark عَودة */}
       <div
         className="pointer-events-none select-none absolute bottom-0 end-[-2%] font-fraunces text-forest leading-none"

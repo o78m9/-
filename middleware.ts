@@ -1,28 +1,33 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
+import { applySecurityHeaders } from '@/lib/security-headers'
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
+  let response = NextResponse.next({ request })
 
-  // Only protect /dashboard/* routes
+  // Apply security headers to every response
+  response = applySecurityHeaders(response)
+
+  // Only auth-protect /dashboard/* routes
   if (!pathname.startsWith('/dashboard')) {
-    return NextResponse.next()
+    return response
   }
 
-  // Demo bypass — allow access without a real session
-  const demoCookie = request.cookies.get('awdah-demo-mode')
-  if (demoCookie?.value === 'true') {
-    return NextResponse.next()
+  // Demo bypass — __Host- prefix, SameSite=Strict
+  const demoCookie = request.cookies.get('__Host-awdah-demo')
+  // Support legacy cookie name during transition
+  const legacyCookie = request.cookies.get('awdah-demo-mode')
+  if (demoCookie?.value === 'true' || legacyCookie?.value === 'true') {
+    return response
   }
 
-  // Skip auth check if Supabase is not configured (dev without .env.local)
+  // Skip auth check if Supabase not configured (dev without .env.local)
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
   if (!supabaseUrl || !supabaseKey) {
-    return NextResponse.next()
+    return response
   }
-
-  let response = NextResponse.next({ request })
 
   const supabase = createServerClient(supabaseUrl, supabaseKey, {
     cookies: {
@@ -31,7 +36,7 @@ export async function middleware(request: NextRequest) {
       },
       setAll(cookiesToSet) {
         cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value))
-        response = NextResponse.next({ request })
+        response = applySecurityHeaders(NextResponse.next({ request }))
         cookiesToSet.forEach(({ name, value, options }) =>
           response.cookies.set(name, value, options),
         )
@@ -39,7 +44,9 @@ export async function middleware(request: NextRequest) {
     },
   })
 
-  const { data: { user } } = await supabase.auth.getUser()
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
 
   if (!user) {
     const loginUrl = request.nextUrl.clone()
@@ -52,5 +59,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*'],
+  matcher: ['/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)'],
 }

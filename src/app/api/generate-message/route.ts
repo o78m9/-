@@ -1,5 +1,6 @@
-import { NextResponse } from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
+import { rateLimit, LIMITS } from '@/lib/rate-limit'
 
 const client = new Anthropic()
 
@@ -26,16 +27,23 @@ function daysSince(dateStr: string | null | undefined): number | null {
 
 function templateContext(template: string): string {
   switch (template) {
-    case 'offer': return 'You are running a special promotion: 20% discount this month. Mention the limited-time offer.'
-    case 'health': return 'Focus on health reminder: regular checkups every 6 months are important for dental health.'
-    case 'custom': return 'Use a friendly, personalized re-engagement tone.'
-    default: return 'Use a warm, friendly reminder tone.'
+    case 'offer':
+      return 'You are running a special promotion: 20% discount this month. Mention the limited-time offer.'
+    case 'health':
+      return 'Focus on health reminder: regular checkups every 6 months are important for dental health.'
+    case 'custom':
+      return 'Use a friendly, personalized re-engagement tone.'
+    default:
+      return 'Use a warm, friendly reminder tone.'
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
+  const limited = rateLimit(request, LIMITS.ai)
+  if (limited) return limited
+
   try {
-    const { customers, template, customMessage, clinicName } = await request.json() as {
+    const { customers, template, customMessage, clinicName } = (await request.json()) as {
       customers: CustomerInput[]
       template: string
       customMessage?: string
@@ -55,9 +63,10 @@ export async function POST(request: Request) {
             : `${days} days ago`
           : 'unknown time'
 
-        const context = template === 'custom' && customMessage
-          ? `Custom message template: "${customMessage}". Adapt it for this specific customer.`
-          : templateContext(template)
+        const context =
+          template === 'custom' && customMessage
+            ? `Custom message template: "${customMessage}". Adapt it for this specific customer.`
+            : templateContext(template)
 
         const userMessage = `
 Customer info:
@@ -74,7 +83,9 @@ Write the Arabic WhatsApp message now.`
         const response = await client.messages.create({
           model: 'claude-sonnet-4-6',
           max_tokens: 200,
-          system: [{ type: 'text', text: SYSTEM_PROMPT, cache_control: { type: 'ephemeral' } }] as never,
+          system: [
+            { type: 'text', text: SYSTEM_PROMPT, cache_control: { type: 'ephemeral' } },
+          ] as never,
           messages: [{ role: 'user', content: userMessage }],
         })
 
@@ -86,7 +97,7 @@ Write the Arabic WhatsApp message now.`
           lastVisit: customer.last_visit ?? null,
           message: text,
         }
-      })
+      }),
     )
 
     return NextResponse.json({ messages })

@@ -1,8 +1,11 @@
-import { NextResponse } from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
+import { rateLimit, LIMITS } from '@/lib/rate-limit'
 
-export async function POST(req: Request) {
-  const body = await req.json()
+export async function POST(req: NextRequest) {
+  const limited = rateLimit(req, LIMITS.auth)
+  if (limited) return limited
+  const body = (await req.json()) as Record<string, unknown>
   // TODO: Wire to email/CRM (Resend → founder@aooda.com)
-  console.warn('[BOOKING] TODO: wire to email/CRM', JSON.stringify(body))
+  console.warn('[BOOKING] TODO: wire to email/CRM', Object.keys(body).join(','))
   return NextResponse.json({ ok: true })
 }

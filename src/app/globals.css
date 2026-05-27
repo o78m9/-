@@ -48,6 +48,34 @@
     --radius: 0.625rem;
   }
 
+  .dark {
+    --ink: #e8e2d5;
+    --cream: #0d1a16;
+    --paper: #111f1a;
+    --forest: #4a9689;
+    --moss: #6aab9c;
+    --copper: #d4924e;
+    --line: #1e3028;
+    --mute: #8a9e96;
+    --background: 160 25% 8%;
+    --foreground: 40 25% 90%;
+    --card: 160 20% 10%;
+    --card-foreground: 40 25% 90%;
+    --popover: 160 20% 10%;
+    --popover-foreground: 40 25% 90%;
+    --primary: 161 33% 45%;
+    --primary-foreground: 160 25% 8%;
+    --secondary: 160 15% 18%;
+    --secondary-foreground: 40 25% 90%;
+    --muted: 160 15% 15%;
+    --muted-foreground: 160 10% 60%;
+    --accent: 24 46% 55%;
+    --accent-foreground: 160 25% 8%;
+    --border: 160 15% 20%;
+    --input: 160 15% 20%;
+    --ring: 161 33% 45%;
+  }
+
   html {
     background-color: var(--cream);
     scroll-behavior: smooth;

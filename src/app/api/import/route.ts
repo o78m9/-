@@ -1,10 +1,14 @@
 import { type NextRequest, NextResponse } from 'next/server'
 import { neon } from '@neondatabase/serverless'
 import { cleanImportData } from '@/lib/claude'
+import { rateLimit, LIMITS } from '@/lib/rate-limit'
 
 const sql = neon(process.env.DATABASE_URL!)
 
 export async function POST(req: NextRequest) {
+  const limited = rateLimit(req, LIMITS.import)
+  if (limited) return limited
+
   const { rawText, clinic_id, confirm } = await req.json()
 
   if (!rawText || !clinic_id) {

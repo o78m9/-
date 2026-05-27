@@ -1,14 +1,18 @@
 import QuickForm from '@/components/QuickForm'
 
-export default function CapturePage({
+export default async function CapturePage({
   searchParams,
 }: {
-  searchParams: { clinic?: string }
+  searchParams: Promise<{ clinic?: string }>
 }) {
-  const clinicId = searchParams.clinic || process.env.NEXT_PUBLIC_DEMO_CLINIC_ID || ''
+  const params = await searchParams
+  const clinicId = params.clinic || process.env.NEXT_PUBLIC_DEMO_CLINIC_ID || ''
 
   return (
-    <main id="main" className="min-h-screen bg-gradient-to-br from-teal-50 via-white to-white flex items-center justify-center p-4">
+    <main
+      id="main"
+      className="min-h-screen bg-gradient-to-br from-teal-50 via-white to-white flex items-center justify-center p-4"
+    >
       <div className="bg-white rounded-2xl shadow-md border border-slate-100 p-8 w-full max-w-sm">
         <div className="text-center mb-8">
           {/* Logo */}
@@ -17,9 +21,8 @@ export default function CapturePage({
           </div>
           <h1 className="text-2xl font-bold text-slate-900 tracking-tight">عَودة</h1>
           <p className="text-sm text-slate-500 mt-2 leading-relaxed">
-            سجّل بياناتك واحصل على{' '}
-            <span className="font-semibold text-brand-700">خصم 10%</span>{' '}
-            في زيارتك القادمة
+            سجّل بياناتك واحصل على <span className="font-semibold text-brand-700">خصم 10%</span> في
+            زيارتك القادمة
           </p>
         </div>
 
