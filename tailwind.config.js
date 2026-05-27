@@ -16,6 +16,17 @@ module.exports = {
         metric:   ['var(--font-inter)', ...fontFamily.sans],
       },
       colors: {
+        // ── Hero dark palette (Palette A — Warm Premium) ──────────
+        hero: {
+          deep:   '#0A1F1C',
+          soft:   '#142B27',
+          gold:   '#D4A574',
+          'gold-dim': '#8A6040',
+          sage:   '#7FB5A8',
+          text:   '#F5EFE6',
+          muted:  '#8A9B95',
+          border: 'rgba(212,165,116,0.15)',
+        },
         // ── Editorial landing palette ──────────────────────────────
         ink:    '#1A1815',
         cream:  '#F5F1E8',

@@ -2,10 +2,11 @@
 
 import { useEffect, useRef } from 'react'
 import { SectionNumber } from '@/components/ui/section-number'
+import { SectionGlow, DotGrid } from '@/components/ui/section-bg'
 
 const STATS = [
   {
-    display: '١٢,٤٠٠',
+    display: '١٢٬٤٠٠',
     unit: 'ر.س',
     label: 'متوسط الإيرادات المسترجعة شهرياً لكل عيادة',
     countTo: 12400,
@@ -72,13 +73,25 @@ function StatRow({
   return (
     <div
       ref={rowRef}
-      className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 sm:gap-16 py-10 border-b border-line last:border-0"
+      className="relative flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 sm:gap-16 py-12 border-b border-line last:border-0"
     >
+      {/* Subtle glow behind the number */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute start-0 top-1/2 -translate-y-1/2"
+        style={{
+          width: 200,
+          height: 120,
+          background: 'radial-gradient(ellipse, rgba(184,116,61,0.08) 0%, transparent 70%)',
+          filter: 'blur(20px)',
+        }}
+      />
+
       {/* Number */}
-      <div className="flex items-baseline gap-3 flex-shrink-0">
+      <div className="flex items-baseline gap-3 flex-shrink-0 relative">
         <span
           ref={numRef}
-          className="font-fraunces font-[600] text-copper leading-none"
+          className="font-fraunces font-semibold text-copper leading-none"
           style={{
             fontSize: 'clamp(4.5rem, 11vw, 8rem)',
             letterSpacing: '-0.02em',
@@ -89,8 +102,8 @@ function StatRow({
           {display}
         </span>
         <span
-          className="font-sans font-[500] text-copper/70"
-          style={{ fontSize: 'clamp(1rem, 2.5vw, 1.75rem)' }}
+          className="font-sans font-medium"
+          style={{ fontSize: 'clamp(1rem, 2.5vw, 1.75rem)', color: 'rgba(184,116,61,0.65)' }}
         >
           {unit}
         </span>
@@ -98,7 +111,7 @@ function StatRow({
 
       {/* Label */}
       <p
-        className="text-mute sm:text-end"
+        className="text-mute sm:text-end relative"
         style={{ fontSize: 18, maxWidth: '36ch', lineHeight: 1.65 }}
       >
         {label}
@@ -110,21 +123,40 @@ function StatRow({
 export function ResultsSection() {
   return (
     <section
-      className="py-28 px-6"
+      className="relative overflow-hidden py-32 px-6"
       style={{ background: 'var(--cream)' }}
       aria-labelledby="results-heading"
     >
-      <div className="max-w-content mx-auto">
+      <DotGrid opacity={0.025} color="#B8743D" size={36} />
+      <SectionGlow color="gold" position="top-right" size={700} opacity={0.05} />
+      <SectionGlow color="sage" position="bottom-left" size={500} opacity={0.03} />
+
+      <div className="max-w-content mx-auto relative z-10">
         <SectionNumber n={4} label="الأرقام" />
+
+        {/* Eyebrow pill */}
+        <div className="mb-6" dir="rtl">
+          <span
+            className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold tracking-[0.14em] uppercase"
+            style={{
+              background: 'rgba(184,116,61,0.08)',
+              color: '#B8743D',
+              border: '1px solid rgba(184,116,61,0.16)',
+            }}
+          >
+            نتائج مؤكدة
+          </span>
+        </div>
 
         <h2
           id="results-heading"
-          className="font-sans font-[700] text-ink mb-16"
+          className="font-sans font-bold text-ink mb-20"
           style={{
             fontSize: 'clamp(2rem, 4vw, 3rem)',
             lineHeight: 1.1,
             letterSpacing: '-0.025em',
           }}
+          dir="rtl"
         >
           أرقام تتكلم عن نفسها
         </h2>

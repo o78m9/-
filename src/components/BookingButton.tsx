@@ -12,17 +12,19 @@ type Source =
   | 'final-cta'
   | 'final-cta-secondary'
 
-interface BookingButtonProps {
+interface BookingButtonProps extends Omit<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  'onClick' | 'type'
+> {
   source: Source
   children: React.ReactNode
-  className?: string
 }
 
-export function BookingButton({ source, children, className }: BookingButtonProps) {
+export function BookingButton({ source, children, ...props }: BookingButtonProps) {
   const [open, setOpen] = useState(false)
   return (
     <>
-      <button onClick={() => setOpen(true)} className={className} type="button">
+      <button onClick={() => setOpen(true)} type="button" {...props}>
         {children}
       </button>
       <BookingModal open={open} onClose={() => setOpen(false)} source={source} />

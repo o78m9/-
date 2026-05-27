@@ -3,63 +3,145 @@ import { BookingButton } from '@/components/BookingButton'
 export function FinalCTA() {
   return (
     <section
-      className="relative overflow-hidden py-36 px-6"
-      style={{ background: 'var(--forest)' }}
+      className="relative overflow-hidden py-40 px-6"
+      style={{ background: 'linear-gradient(170deg, #0A1F1C 0%, #0E2420 60%, #071810 100%)' }}
       aria-labelledby="cta-heading"
       id="cta"
     >
-      {/* Watermark */}
+      {/* Pulsing gold orb — central accent */}
       <div
-        className="pointer-events-none select-none absolute bottom-0 end-[-4%] font-fraunces text-cream leading-none"
-        style={{ fontSize: 'clamp(220px, 30vw, 400px)', opacity: 0.05, zIndex: 0 }}
+        className="pulse-glow pointer-events-none absolute left-1/2 top-1/2 rounded-full"
+        aria-hidden="true"
+        style={{
+          width: 600,
+          height: 600,
+          transform: 'translate(-50%, -50%)',
+          background:
+            'radial-gradient(circle, rgba(212,165,116,0.18) 0%, rgba(212,165,116,0.05) 40%, transparent 70%)',
+          filter: 'blur(40px)',
+          zIndex: 0,
+        }}
+      />
+
+      {/* Secondary sage glow offset */}
+      <div
+        className="pulse-glow-slow pointer-events-none absolute"
+        aria-hidden="true"
+        style={{
+          width: 400,
+          height: 400,
+          top: '10%',
+          right: '5%',
+          background: 'radial-gradient(circle, rgba(127,181,168,0.08) 0%, transparent 70%)',
+          filter: 'blur(60px)',
+          zIndex: 0,
+        }}
+      />
+
+      {/* Brand watermark */}
+      <div
+        className="pointer-events-none select-none absolute bottom-0 end-[-2%] font-fraunces text-cream leading-none"
+        style={{
+          fontSize: 'clamp(180px, 28vw, 380px)',
+          opacity: 0.04,
+          zIndex: 0,
+          lineHeight: 0.9,
+        }}
         aria-hidden="true"
       >
         عَودة
       </div>
 
+      {/* Subtle dot grid */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          backgroundImage: 'radial-gradient(circle, rgba(127,181,168,0.15) 1px, transparent 1px)',
+          backgroundSize: '36px 36px',
+          opacity: 0.025,
+        }}
+      />
+
       <div className="max-w-content mx-auto text-center relative z-10">
         {/* Eyebrow */}
-        <p className="text-[12px] font-[500] tracking-[0.14em] uppercase text-cream/50 mb-6">
+        <p
+          className="text-[12px] font-semibold tracking-[0.18em] uppercase mb-6"
+          style={{ color: 'rgba(245,239,230,0.45)' }}
+        >
           جاهز ترجّع عملاءك؟
         </p>
+
+        {/* Divider ornament */}
+        <div className="flex items-center justify-center gap-3 mb-8">
+          <div
+            className="h-px w-12"
+            style={{ background: 'linear-gradient(to right, transparent, rgba(212,165,116,0.4))' }}
+          />
+          <div
+            className="w-1.5 h-1.5 rounded-full"
+            style={{ background: 'rgba(212,165,116,0.6)' }}
+          />
+          <div
+            className="h-px w-12"
+            style={{ background: 'linear-gradient(to left, transparent, rgba(212,165,116,0.4))' }}
+          />
+        </div>
 
         {/* Headline */}
         <h2
           id="cta-heading"
-          className="font-sans font-[700] text-cream mb-6"
+          className="font-sans font-black text-cream mb-6 mx-auto"
           style={{
-            fontSize: 'clamp(2.5rem, 5.5vw, 4.5rem)',
+            fontSize: 'clamp(2.5rem, 6vw, 4.8rem)',
             lineHeight: 1.05,
-            letterSpacing: '-0.03em',
+            letterSpacing: '-0.035em',
             maxWidth: '18ch',
-            marginInline: 'auto',
           }}
         >
-          ابدأ اليوم — ما تدفع شيئاً حتى نثبت نتائجنا
+          ابدأ اليوم — <span style={{ color: '#D4A574' }}>ما تدفع</span> حتى نثبت نتائجنا
         </h2>
 
         <p
-          className="text-cream/60 mb-12 mx-auto"
-          style={{ fontSize: 18, maxWidth: '44ch', lineHeight: 1.65 }}
+          className="text-cream/60 mb-14 mx-auto"
+          style={{ fontSize: 18, maxWidth: '44ch', lineHeight: 1.7 }}
         >
           إعداد كامل خلال ٣٠ دقيقة. أول ٣٠ يوماً على حسابنا. إذا ما رجع أحد — لا فاتورة.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        {/* CTAs */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
           <BookingButton
             source="final-cta"
-            className="inline-flex items-center h-[52px] px-9 rounded-full bg-cream text-forest text-[16px] font-[600] hover:-translate-y-[2px] hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition-all duration-150 active:translate-y-0"
+            className="inline-flex items-center h-[54px] px-10 rounded-full text-[16px] font-bold transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(0,0,0,0.35)] active:translate-y-0"
+            style={
+              {
+                background: 'linear-gradient(135deg, #D4A574, #C08840)',
+                color: '#0A1F1C',
+              } as React.CSSProperties
+            }
           >
             ابدأ تجريباً مجانياً
           </BookingButton>
 
           <BookingButton
             source="final-cta-secondary"
-            className="inline-flex items-center gap-2 text-[15px] font-[500] text-cream/70 hover:text-cream transition-colors duration-150 underline underline-offset-4 decoration-1 decoration-cream/25"
+            className="inline-flex items-center gap-2 h-[54px] px-8 rounded-full text-[15px] font-medium transition-all duration-200 hover:bg-white/5"
+            style={
+              {
+                color: 'rgba(245,239,230,0.65)',
+                border: '1px solid rgba(245,239,230,0.12)',
+              } as React.CSSProperties
+            }
           >
             أو احجز عرضاً توضيحياً
           </BookingButton>
         </div>
+
+        {/* Trust line */}
+        <p className="mt-10" style={{ color: 'rgba(245,239,230,0.28)', fontSize: 13 }}>
+          ٣٤+ عيادة تثق بعَودة · لا عقود · إلغاء في أي وقت
+        </p>
       </div>
     </section>
   )

@@ -1,4 +1,5 @@
 import { SectionNumber } from '@/components/ui/section-number'
+import { SectionGlow } from '@/components/ui/section-bg'
 import { FadeIn } from '@/components/ui/fade-in'
 
 function CsvFragment() {
@@ -150,18 +151,21 @@ function WhatsAppFragment() {
 const STEPS = [
   {
     n: 1,
+    bg: '٠١',
     title: 'اربط بياناتك',
     desc: 'استورد سجلات عملائك بملف CSV. نستخدم الاسم، رقم الهاتف، وتاريخ آخر زيارة فقط — لا بيانات طبية.',
     Fragment: CsvFragment,
   },
   {
     n: 2,
+    bg: '٠٢',
     title: 'Claude AI يصنّف ويكتب',
     desc: 'النموذج يحلل كل عميل ويكتب رسالة WhatsApp شخصية باللهجة المحلية — يمكنك مراجعتها قبل الإرسال.',
     Fragment: MessageFragment,
   },
   {
     n: 3,
+    bg: '٠٣',
     title: 'الردود تتحول لمواعيد',
     desc: 'كل رد ينعكس تلقائياً في لوحة التحكم. الحجوزات تُحتسب على الفور كإيرادات مسترجعة.',
     Fragment: WhatsAppFragment,
@@ -172,17 +176,20 @@ export function HowItWorksSection() {
   return (
     <section
       id="how"
-      className="py-28 px-6"
+      className="relative overflow-hidden py-32 px-6"
       style={{ background: 'var(--paper)' }}
       aria-labelledby="how-heading"
     >
-      <div className="max-w-content mx-auto">
+      <SectionGlow color="sage" position="top-right" size={600} opacity={0.04} />
+      <SectionGlow color="gold" position="bottom-left" size={500} opacity={0.03} />
+
+      <div className="max-w-content mx-auto relative z-10">
         <SectionNumber n={2} label="كيف يشتغل" />
 
         <FadeIn>
           <h2
             id="how-heading"
-            className="font-sans font-[700] text-ink mb-20"
+            className="font-sans font-bold text-ink mb-20"
             style={{
               fontSize: 'clamp(2rem, 4vw, 3rem)',
               lineHeight: 1.1,
@@ -194,28 +201,46 @@ export function HowItWorksSection() {
           </h2>
         </FadeIn>
 
-        {/* Steps — vertical rows with connecting line */}
         <div className="relative">
-          {/* Vertical arc line — start side (RTL: right edge) */}
+          {/* Vertical timeline line */}
           <div
             className="absolute top-0 bottom-0 start-[52px] hidden md:block"
             aria-hidden="true"
             style={{
               width: 1,
               background:
-                'linear-gradient(to bottom, transparent, #1F3D36 15%, #1F3D36 85%, transparent)',
-              opacity: 0.18,
+                'linear-gradient(to bottom, transparent, rgba(31,61,54,0.18) 10%, rgba(31,61,54,0.18) 90%, transparent)',
             }}
           />
 
           <div className="space-y-0 divide-y divide-line">
-            {STEPS.map(({ n, title, desc, Fragment }, i) => (
+            {STEPS.map(({ n, bg, title, desc, Fragment }, i) => (
               <FadeIn key={n} delay={i * 120}>
-                <div className="grid grid-cols-1 md:grid-cols-[120px_1fr_auto] items-start gap-8 py-12">
-                  {/* Number */}
-                  <div className="hidden md:flex items-center justify-center">
+                <div className="relative grid grid-cols-1 md:grid-cols-[120px_1fr_auto] items-start gap-8 py-16">
+                  {/* Huge faded background step number */}
+                  <div
+                    aria-hidden="true"
+                    className="hidden md:block absolute pointer-events-none select-none font-fraunces font-black"
+                    style={{
+                      fontSize: '14rem',
+                      lineHeight: 1,
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                      insetInlineStart: '-2rem',
+                      color: 'transparent',
+                      WebkitTextStroke: '1.5px rgba(184,116,61,0.07)',
+                      letterSpacing: '-0.05em',
+                      zIndex: 0,
+                      userSelect: 'none',
+                    }}
+                  >
+                    {bg}
+                  </div>
+
+                  {/* Outlined number — foreground */}
+                  <div className="hidden md:flex items-center justify-center relative z-10">
                     <span
-                      className="font-fraunces font-[600] text-copper leading-none select-none"
+                      className="font-fraunces font-bold leading-none select-none"
                       style={{
                         fontSize: 80,
                         letterSpacing: '-0.04em',
@@ -230,10 +255,10 @@ export function HowItWorksSection() {
                   </div>
 
                   {/* Text */}
-                  <div>
+                  <div className="relative z-10">
                     <div className="flex items-center gap-3 mb-3 md:hidden">
                       <span
-                        className="font-fraunces font-[600] text-copper text-[28px]"
+                        className="font-fraunces font-semibold text-copper text-[28px]"
                         style={{ letterSpacing: '-0.02em', fontVariantNumeric: 'tabular-nums' }}
                         aria-hidden="true"
                       >
@@ -241,7 +266,7 @@ export function HowItWorksSection() {
                       </span>
                     </div>
                     <h3
-                      className="font-sans font-[700] text-ink mb-3"
+                      className="font-sans font-bold text-ink mb-3"
                       style={{ fontSize: 22, letterSpacing: '-0.02em' }}
                     >
                       {title}
@@ -252,7 +277,7 @@ export function HowItWorksSection() {
                   </div>
 
                   {/* UI Fragment */}
-                  <div className="hidden lg:block">
+                  <div className="hidden lg:block relative z-10">
                     <Fragment />
                   </div>
                 </div>

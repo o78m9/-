@@ -4,6 +4,7 @@ import { StatementSection } from '@/components/landing/statement'
 import { HowItWorksSection } from '@/components/landing/how-it-works'
 import { LiveSystem } from '@/components/landing/live-system'
 import { ResultsSection } from '@/components/landing/results'
+import { TestimonialsSection } from '@/components/landing/testimonials'
 import { PricingSection } from '@/components/landing/pricing'
 import { FAQSection } from '@/components/landing/faq'
 import { FinalCTA } from '@/components/landing/cta'
@@ -19,6 +20,7 @@ export default function LandingPage() {
         <HowItWorksSection />
         <LiveSystem />
         <ResultsSection />
+        <TestimonialsSection />
         <PricingSection />
         <FAQSection />
         <FinalCTA />
