@@ -1,23 +1,41 @@
 # Architecture Decisions
 
-## uipro replacement
+## 2026-05-28
 
-Used `uipro-cli` (npm package `uipro-cli`) — the real package. Was installable via `npm install -g uipro-cli` (not `uipro` directly). Installs UI/UX Pro Max skill into `.claude/skills/`.
+### BUG-1: Dashboard Demo Route
 
-## Stack choices
+**Decision:** Create `/dashboard/demo` as a fully public route (no auth) with rich mock data.
 
-| Item                     | Decision             | Reason                                                                       |
-| ------------------------ | -------------------- | ---------------------------------------------------------------------------- |
-| Next.js 15 + React 19    | Upgraded from 14     | Latest stable, improved caching defaults, React 19 concurrent features       |
-| Tailwind CSS v4          | Upgraded from v3     | CSS-first config, faster build, no PostCSS autoprefixer needed               |
-| shadcn/ui                | Keep existing        | Already installed, best composable component library                         |
-| React Three Fiber + drei | Added                | 3D graphics support, React-native API over Three.js                          |
-| Prisma                   | Added alongside Neon | Type-safe ORM, schema mirrors existing Supabase tables                       |
-| NextAuth v5              | Added (scaffold)     | JWT session layer — auth currently delegates to Supabase, migrate when ready |
-| Supabase                 | Kept                 | Existing auth + realtime still used by dashboard; NextAuth added alongside   |
-| Zod                      | Keep existing        | Already in use for validation schemas                                        |
+**Why:** `/dashboard` auth-gates via middleware. "الدخول" from header sends visitors to auth wall. Demo route lets anyone see the product immediately.
 
-## Folder rename
+**How:** New `src/app/dashboard/demo/page.tsx` `'use client'`. Middleware config excludes `/dashboard/demo`. Header "الدخول" rewired to `/dashboard/demo`.
 
-`C:\tmp\نظام تنشيط قاعدة العملاء بالذكاء الاصطناعي` → `C:\projects\ai-customer-base`
-Arabic folder names break many CLI tools on Windows (path encoding issues).
+---
+
+### BUG-2: How It Works Redesign
+
+**Decision:** Option B — dense full-width cards, 12-col internal grid.
+
+**Why:** Option A leaves dead center space. Option B fills width naturally with rich mockup per step.
+
+**Implementation:** Each step = wide card. Right col: huge Arabic number (gold gradient). Center: title + desc + 3 bullet points. Left col: rich animated mockup. Ambient floating particles behind each card.
+
+---
+
+### BUG-3: Hero 3D Upgrade
+
+**Decision:** Multi-layer: 3 orbital rings (InstancedMesh), Fresnel glow core, returning-particle Bezier trails, post-processing (Bloom + ChromaticAberration + Vignette + Noise).
+
+**Performance:** Mobile → 30 particles, DPR cap 2, RAF pause on tab hidden, prefers-reduced-motion → static.
+
+---
+
+## 2026-05-28
+
+### PHASE-14: Deploy
+
+**Decision:** PostHog + Sentry both opt-in via env var (absent = disabled, no runtime cost). Sentry Replay excluded — adds ~60 kB to shared bundle. First Load JS: 173 kB (target <200 kB ✓).
+
+**Vercel:** Deployed to `awdah` project (navolasweets-6423s-projects). Production URL: https://awdah-b42ltwjjv-navolasweets-6423s-projects.vercel.app
+
+**Remaining manual steps:** set Vercel env vars (Supabase, Neon, Anthropic, PostHog, Sentry), configure uptime monitor, run Lighthouse post-DNS.

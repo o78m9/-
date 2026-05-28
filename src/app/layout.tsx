@@ -11,6 +11,7 @@ import { ScrollProgress } from '@/components/ui/scroll-progress'
 import { CustomCursor } from '@/components/ui/custom-cursor'
 import { CommandPaletteShell } from '@/components/ui/command-palette-shell'
 import { EasterEgg } from '@/components/ui/easter-egg'
+import { AnalyticsProvider } from '@/components/analytics/posthog-provider'
 import './globals.css'
 
 const arabic = IBM_Plex_Sans_Arabic({
@@ -117,48 +118,50 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       className={`${arabic.variable} ${tajawal.variable} ${inter.variable} ${fraunces.variable} ${GeistSans.variable} ${GeistMono.variable}`}
     >
       <body className="bg-cream text-ink antialiased font-sans min-h-screen dark:bg-[#0d1a16] dark:text-cream">
-        <LenisProvider>
-          <CommandPaletteShell>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
-              <a
-                href="#main"
-                className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:start-4 focus:z-50 focus:rounded-md focus:bg-ink focus:px-4 focus:py-2 focus:text-cream focus:text-[14px]"
+        <AnalyticsProvider>
+          <LenisProvider>
+            <CommandPaletteShell>
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
               >
-                انتقل إلى المحتوى الرئيسي
-              </a>
-              <script
-                type="application/ld+json"
-                nonce={nonce}
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
-              />
-              <ScrollProgress />
-              <CustomCursor />
-              <EasterEgg />
-              <WebVitals />
-              {children}
-              <Toaster
-                position="top-center"
-                richColors
-                toastOptions={{
-                  classNames: {
-                    toast:
-                      'font-sans text-sm !bg-[#0F2E29] !border !border-[rgba(212,165,116,0.2)] !text-[#F5EFE6]',
-                    title: '!text-[#F5EFE6]',
-                    description: '!text-[#8A9B95]',
-                    actionButton: '!bg-gold-500 !text-forest-950 !font-semibold',
-                    success: '!border-sage-700',
-                    error: '!border-copper',
-                  },
-                }}
-              />
-            </ThemeProvider>
-          </CommandPaletteShell>
-        </LenisProvider>
+                <a
+                  href="#main"
+                  className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:start-4 focus:z-50 focus:rounded-md focus:bg-ink focus:px-4 focus:py-2 focus:text-cream focus:text-[14px]"
+                >
+                  انتقل إلى المحتوى الرئيسي
+                </a>
+                <script
+                  type="application/ld+json"
+                  nonce={nonce}
+                  dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
+                />
+                <ScrollProgress />
+                <CustomCursor />
+                <EasterEgg />
+                <WebVitals />
+                {children}
+                <Toaster
+                  position="top-center"
+                  richColors
+                  toastOptions={{
+                    classNames: {
+                      toast:
+                        'font-sans text-sm !bg-[#0F2E29] !border !border-[rgba(212,165,116,0.2)] !text-[#F5EFE6]',
+                      title: '!text-[#F5EFE6]',
+                      description: '!text-[#8A9B95]',
+                      actionButton: '!bg-gold-500 !text-forest-950 !font-semibold',
+                      success: '!border-sage-700',
+                      error: '!border-copper',
+                    },
+                  }}
+                />
+              </ThemeProvider>
+            </CommandPaletteShell>
+          </LenisProvider>
+        </AnalyticsProvider>
       </body>
     </html>
   )
