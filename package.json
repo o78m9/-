@@ -15,7 +15,9 @@
     "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
     "analyze": "cross-env ANALYZE=true next build",
-    "prepare": "husky"
+    "prepare": "husky",
+    "smoke": "node scripts/healthcheck.mjs",
+    "predeploy": "npm run build && npm test"
   },
   "lint-staged": {
     "src/app/**/*.tsx": [

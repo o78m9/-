@@ -1,3 +1,4 @@
+'use client'
 import { BookingButton } from '@/components/BookingButton'
 
 export function FinalCTA() {

@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic'
 import { BookingButton } from '@/components/BookingButton'
 import { SceneSkeleton } from '@/components/hero/HeroScene'
+import { ErrorBoundary } from '@/components/ui/error-boundary'
 
 const HeroMockup = dynamic(() => import('./hero-mockup').then((m) => ({ default: m.HeroMockup })), {
   ssr: false,
@@ -150,7 +151,9 @@ export function HeroSection() {
             className="absolute inset-0 right-0 w-[55%] h-full pointer-events-none z-0"
             style={{ maskImage: 'linear-gradient(to left, black 60%, transparent 100%)' }}
           >
-            <HeroScene />
+            <ErrorBoundary fallback={<SceneSkeleton />}>
+              <HeroScene />
+            </ErrorBoundary>
           </div>
         </div>
       </div>

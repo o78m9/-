@@ -5,11 +5,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 
-const nextConfig = {
-  experimental: {
-    instrumentationHook: true,
-  },
-}
+const nextConfig = {}
 
 const config = withBundleAnalyzer(nextConfig)
 
