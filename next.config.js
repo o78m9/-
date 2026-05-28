@@ -19,10 +19,14 @@ module.exports = withSentryConfig(config, {
   project: process.env.SENTRY_PROJECT,
   authToken: process.env.SENTRY_AUTH_TOKEN,
   widenClientFileUpload: true,
-  disableLogger: true,
-  automaticVercelMonitors: false,
   // Only upload sourcemaps if auth token is set
   sourcemaps: {
     disable: !process.env.SENTRY_AUTH_TOKEN,
+  },
+  webpack: {
+    treeshake: {
+      removeDebugLogging: true,
+    },
+    automaticVercelMonitors: false,
   },
 })

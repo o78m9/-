@@ -28,16 +28,24 @@ export default async function NewCampaignPage() {
   const counts = await getSegmentCounts()
 
   return (
-    <div className="min-h-screen bg-[#FAFAF9]">
+    <div className="min-h-screen" style={{ background: '#0A1F1C' }}>
       <Header />
       <main className="max-w-2xl mx-auto px-6 py-10">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-1.5 mb-8" aria-label="breadcrumb">
-          <Link href="/campaigns" className="text-sm text-slate-400 hover:text-slate-700 transition-colors">
+          <Link
+            href="/campaigns"
+            className="text-sm transition-colors"
+            style={{ color: '#8A9B95' }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = '#F5EFE6')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = '#8A9B95')}
+          >
             الحملات
           </Link>
-          <ChevronRight size={13} className="text-slate-300" />
-          <span className="text-sm text-slate-700 font-medium">حملة جديدة</span>
+          <ChevronRight size={13} style={{ color: 'rgba(127,181,168,0.4)' }} />
+          <span className="text-sm font-medium" style={{ color: '#F5EFE6' }}>
+            حملة جديدة
+          </span>
         </nav>
 
         <CampaignWizard realCounts={counts} />

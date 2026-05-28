@@ -87,7 +87,11 @@ const SIDEBAR_NAV = [
 const GOLD = '#D4A574'
 const SAGE = '#7FB5A8'
 const FOREST = '#0A1F1C'
+const PANEL = '#142B27'
+const ELEVATED = '#1A332D'
 const COPPER = '#C08840'
+const CREAM = '#F5EFE6'
+const MUTED = '#8A9B95'
 
 // ── Sub-components ─────────────────────────────────────────────────────────────
 
@@ -105,13 +109,16 @@ function KpiCard({ label, value, suffix = '', color, delay }: KpiCardProps) {
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay, ease: [0.16, 1, 0.3, 1] }}
-      className="bg-white rounded-2xl p-6 flex flex-col gap-2"
+      className="rounded-2xl p-6 flex flex-col gap-2"
       style={{
-        border: `1px solid ${color}40`,
-        boxShadow: `0 0 0 1px ${color}15, 0 2px 8px rgba(0,0,0,0.06)`,
+        background: PANEL,
+        border: `1px solid rgba(127,181,168,0.12)`,
+        boxShadow: `0 0 0 1px ${color}15, 0 2px 8px rgba(0,0,0,0.2)`,
       }}
     >
-      <p className="text-[12px] font-semibold uppercase tracking-wider text-stone-400">{label}</p>
+      <p className="text-[12px] font-semibold uppercase tracking-wider" style={{ color: MUTED }}>
+        {label}
+      </p>
       <div className="flex items-end gap-1.5 mt-1">
         <CountUp
           to={value}
@@ -153,8 +160,16 @@ function ChartTooltip({ active, payload, label }: ChartTooltipProps) {
   const first = payload[0]
   const val = first !== undefined ? (first.value ?? 0) : 0
   return (
-    <div className="bg-white border border-stone-100 rounded-lg px-3 py-2 shadow-lg text-right">
-      <p className="text-[11px] text-stone-400 mb-0.5">يوم {label}</p>
+    <div
+      className="rounded-lg px-3 py-2 shadow-lg text-right"
+      style={{
+        background: ELEVATED,
+        border: '1px solid rgba(127,181,168,0.2)',
+      }}
+    >
+      <p className="text-[11px] mb-0.5" style={{ color: MUTED }}>
+        يوم {label}
+      </p>
       <p className="text-[14px] font-bold" style={{ color: GOLD }}>
         {val.toLocaleString('ar-SA')} ر.س
       </p>
@@ -184,7 +199,9 @@ export default function DashboardDemoPage() {
         <div className="px-5 py-6">
           <div className="flex items-center gap-2 mb-1">
             <span className="w-2 h-2 rounded-full" style={{ background: SAGE }} />
-            <span className="text-[18px] font-bold text-white tracking-tight">عَودة</span>
+            <span className="text-[18px] font-bold tracking-tight" style={{ color: CREAM }}>
+              عَودة
+            </span>
           </div>
           <p className="text-[11px]" style={{ color: `${SAGE}80` }}>
             نظام تنشيط المرضى
@@ -201,7 +218,7 @@ export default function DashboardDemoPage() {
                 href={item.href}
                 className={cn(
                   'flex items-center gap-3 px-3 py-2.5 rounded-lg text-[14px] font-medium transition-colors',
-                  active ? 'text-white' : 'text-white/40 hover:text-white/70 hover:bg-white/5',
+                  active ? '' : 'text-white/40 hover:text-white/70 hover:bg-white/5',
                 )}
                 style={active ? { background: `${SAGE}25`, color: SAGE } : {}}
               >
@@ -237,7 +254,7 @@ export default function DashboardDemoPage() {
       </aside>
 
       {/* ── Main content ─────────────────────────────────────────────────────── */}
-      <div className="flex-1 flex flex-col overflow-hidden" style={{ background: '#F5F1E8' }}>
+      <div className="flex-1 flex flex-col overflow-hidden" style={{ background: FOREST }}>
         {/* Demo banner */}
         <div
           className="flex-shrink-0 flex items-center justify-center gap-2 px-4 py-2.5 text-[13px] font-medium text-white"
@@ -261,10 +278,16 @@ export default function DashboardDemoPage() {
               className="flex items-center justify-between"
             >
               <div>
-                <p className="text-[12px] font-semibold uppercase tracking-wider text-stone-400 mb-1">
+                <p
+                  className="text-[12px] font-semibold uppercase tracking-wider mb-1"
+                  style={{ color: MUTED }}
+                >
                   لوحة التحكم
                 </p>
-                <h1 className="text-[26px] font-bold text-stone-950 tracking-tight leading-tight">
+                <h1
+                  className="text-[26px] font-bold tracking-tight leading-tight"
+                  style={{ color: CREAM }}
+                >
                   مرحباً بك في عيادتك
                 </h1>
               </div>
@@ -292,11 +315,15 @@ export default function DashboardDemoPage() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.25 }}
-                className="lg:col-span-2 bg-white rounded-2xl p-6"
-                style={{ border: '1px solid #E7E5E4', boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }}
+                className="lg:col-span-2 rounded-2xl p-6"
+                style={{
+                  background: PANEL,
+                  border: '1px solid rgba(127,181,168,0.12)',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
+                }}
               >
                 <div className="flex items-center justify-between mb-5">
-                  <h2 className="text-[15px] font-semibold text-stone-950 tracking-tight">
+                  <h2 className="text-[15px] font-semibold tracking-tight" style={{ color: CREAM }}>
                     الإيراد المسترجع — 30 يوماً
                   </h2>
                   <span
@@ -320,13 +347,13 @@ export default function DashboardDemoPage() {
                     </defs>
                     <XAxis
                       dataKey="day"
-                      tick={{ fontSize: 10, fill: '#A8A29E' }}
+                      tick={{ fontSize: 10, fill: MUTED }}
                       tickLine={false}
                       axisLine={false}
                       interval={4}
                     />
                     <YAxis
-                      tick={{ fontSize: 10, fill: '#A8A29E' }}
+                      tick={{ fontSize: 10, fill: MUTED }}
                       tickLine={false}
                       axisLine={false}
                       tickFormatter={(v: number) => `${(v / 1000).toFixed(0)}k`}
@@ -350,10 +377,17 @@ export default function DashboardDemoPage() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.3 }}
-                className="bg-white rounded-2xl p-6 flex flex-col"
-                style={{ border: '1px solid #E7E5E4', boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }}
+                className="rounded-2xl p-6 flex flex-col"
+                style={{
+                  background: PANEL,
+                  border: '1px solid rgba(127,181,168,0.12)',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
+                }}
               >
-                <h2 className="text-[15px] font-semibold text-stone-950 tracking-tight mb-4">
+                <h2
+                  className="text-[15px] font-semibold tracking-tight mb-4"
+                  style={{ color: CREAM }}
+                >
                   توزيع المرضى
                 </h2>
                 <div className="flex-1 flex items-center justify-center">
@@ -385,9 +419,11 @@ export default function DashboardDemoPage() {
                           className="w-2.5 h-2.5 rounded-full flex-shrink-0"
                           style={{ background: seg.color }}
                         />
-                        <span className="text-stone-600 font-medium">{seg.name}</span>
+                        <span className="font-medium" style={{ color: MUTED }}>
+                          {seg.name}
+                        </span>
                       </div>
-                      <span className="font-semibold text-stone-800">
+                      <span className="font-semibold" style={{ color: CREAM }}>
                         {seg.value.toLocaleString('ar-SA')}
                       </span>
                     </div>
@@ -403,29 +439,46 @@ export default function DashboardDemoPage() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.35 }}
-                className="lg:col-span-2 bg-white rounded-2xl overflow-hidden"
-                style={{ border: '1px solid #E7E5E4', boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }}
+                className="lg:col-span-2 rounded-2xl overflow-hidden"
+                style={{
+                  background: PANEL,
+                  border: '1px solid rgba(127,181,168,0.12)',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
+                }}
               >
-                <div className="px-6 py-4 border-b border-stone-100 flex items-center justify-between">
-                  <h2 className="text-[15px] font-semibold text-stone-950 tracking-tight">
+                <div
+                  className="px-6 py-4 flex items-center justify-between"
+                  style={{ borderBottom: '1px solid rgba(127,181,168,0.08)' }}
+                >
+                  <h2 className="text-[15px] font-semibold tracking-tight" style={{ color: CREAM }}>
                     آخر 10 عمليات استرجاع
                   </h2>
-                  <span className="text-[12px] font-medium uppercase tracking-wider text-stone-400">
+                  <span
+                    className="text-[12px] font-medium uppercase tracking-wider"
+                    style={{ color: MUTED }}
+                  >
                     10 مرضى
                   </span>
                 </div>
                 <div className="overflow-x-auto">
                   <table className="w-full text-right text-[13px]">
                     <thead>
-                      <tr className="bg-stone-50 border-b border-stone-100">
-                        <th className="px-6 py-3 font-semibold text-stone-500 text-right">الاسم</th>
-                        <th className="px-4 py-3 font-semibold text-stone-500 text-right">
+                      <tr
+                        style={{
+                          background: ELEVATED,
+                          borderBottom: '1px solid rgba(127,181,168,0.08)',
+                        }}
+                      >
+                        <th className="px-6 py-3 font-semibold text-right" style={{ color: MUTED }}>
+                          الاسم
+                        </th>
+                        <th className="px-4 py-3 font-semibold text-right" style={{ color: MUTED }}>
                           آخر زيارة
                         </th>
-                        <th className="px-4 py-3 font-semibold text-stone-500 text-right">
+                        <th className="px-4 py-3 font-semibold text-right" style={{ color: MUTED }}>
                           الحالة
                         </th>
-                        <th className="px-4 py-3 font-semibold text-stone-500 text-right">
+                        <th className="px-4 py-3 font-semibold text-right" style={{ color: MUTED }}>
                           الإيراد
                         </th>
                       </tr>
@@ -434,17 +487,24 @@ export default function DashboardDemoPage() {
                       {MOCK_CUSTOMERS.map((c, i) => (
                         <tr
                           key={c.id}
-                          className="border-b border-stone-50 transition-colors"
-                          style={{ background: i % 2 === 0 ? 'white' : '#FAFAF9' }}
+                          className="transition-colors"
+                          style={{
+                            background: i % 2 === 0 ? PANEL : ELEVATED,
+                            borderBottom: '1px solid rgba(127,181,168,0.06)',
+                          }}
                           onMouseEnter={(e) => {
                             e.currentTarget.style.background = `${SAGE}12`
                           }}
                           onMouseLeave={(e) => {
-                            e.currentTarget.style.background = i % 2 === 0 ? 'white' : '#FAFAF9'
+                            e.currentTarget.style.background = i % 2 === 0 ? PANEL : ELEVATED
                           }}
                         >
-                          <td className="px-6 py-3 font-medium text-stone-900">{c.name}</td>
-                          <td className="px-4 py-3 text-stone-500">{c.lastVisit}</td>
+                          <td className="px-6 py-3 font-medium" style={{ color: CREAM }}>
+                            {c.name}
+                          </td>
+                          <td className="px-4 py-3" style={{ color: MUTED }}>
+                            {c.lastVisit}
+                          </td>
                           <td className="px-4 py-3">
                             <span
                               className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold"
@@ -465,7 +525,7 @@ export default function DashboardDemoPage() {
                           </td>
                           <td
                             className="px-4 py-3 font-semibold"
-                            style={{ color: c.revenue > 0 ? GOLD : '#A8A29E' }}
+                            style={{ color: c.revenue > 0 ? GOLD : MUTED }}
                           >
                             {c.revenue > 0 ? `${c.revenue.toLocaleString('ar-SA')} ر.س` : '—'}
                           </td>
@@ -481,38 +541,54 @@ export default function DashboardDemoPage() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.4 }}
-                className="bg-white rounded-2xl overflow-hidden flex flex-col"
-                style={{ border: '1px solid #E7E5E4', boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }}
+                className="rounded-2xl overflow-hidden flex flex-col"
+                style={{
+                  background: PANEL,
+                  border: '1px solid rgba(127,181,168,0.12)',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
+                }}
               >
-                <div className="px-5 py-4 border-b border-stone-100 flex items-center gap-2">
+                <div
+                  className="px-5 py-4 flex items-center gap-2"
+                  style={{ borderBottom: '1px solid rgba(127,181,168,0.08)' }}
+                >
                   <MessageCircle size={16} style={{ color: SAGE }} />
-                  <h2 className="text-[15px] font-semibold text-stone-950 tracking-tight">
+                  <h2 className="text-[15px] font-semibold tracking-tight" style={{ color: CREAM }}>
                     رسائل WhatsApp
                   </h2>
                 </div>
                 <div
                   className="flex-1 overflow-y-auto p-4 space-y-3"
-                  style={{ background: '#ECE5DD' }}
+                  style={{ background: '#0D2420' }}
                 >
                   {MOCK_MESSAGES.map((msg) => (
                     <div key={msg.id} className="flex flex-col gap-0.5">
-                      <p className="text-[10px] font-semibold text-stone-500 text-right pe-1">
+                      <p
+                        className="text-[10px] font-semibold text-right pe-1"
+                        style={{ color: MUTED }}
+                      >
                         {msg.name} · {msg.time}
                       </p>
                       <div
-                        className="rounded-xl rounded-tl-sm px-3.5 py-2.5 text-[12px] leading-relaxed text-stone-800 text-right max-w-[90%] self-end"
+                        className="rounded-xl rounded-tl-sm px-3.5 py-2.5 text-[12px] leading-relaxed text-right max-w-[90%] self-end"
                         style={{
-                          background: 'white',
-                          boxShadow: '0 1px 2px rgba(0,0,0,0.08)',
+                          background: ELEVATED,
+                          color: CREAM,
+                          boxShadow: '0 1px 2px rgba(0,0,0,0.2)',
                         }}
                       >
                         {msg.text}
                       </div>
-                      <p className="text-[10px] text-stone-400 text-left ps-1">✓✓</p>
+                      <p className="text-[10px] text-left ps-1" style={{ color: MUTED }}>
+                        ✓✓
+                      </p>
                     </div>
                   ))}
                 </div>
-                <div className="px-4 py-3 border-t border-stone-100">
+                <div
+                  className="px-4 py-3"
+                  style={{ borderTop: '1px solid rgba(127,181,168,0.08)' }}
+                >
                   <div
                     className="flex items-center gap-2 px-3 py-2 rounded-full text-[12px] font-medium"
                     style={{ background: `${SAGE}15`, color: SAGE }}

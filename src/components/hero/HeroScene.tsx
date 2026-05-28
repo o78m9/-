@@ -132,31 +132,30 @@ function ReturnParticle({
     delay: index * 1.8,
   })
 
-  const randOuter = () => {
-    const theta = Math.random() * Math.PI * 2
-    const phi = (Math.random() * 0.6 + 0.2) * Math.PI
-    const r = 5 + Math.random() * 2
-    return new THREE.Vector3(
-      r * Math.sin(phi) * Math.cos(theta),
-      r * Math.cos(phi) * 0.4,
-      r * Math.sin(phi) * Math.sin(theta),
-    )
-  }
-
-  const resetParticle = () => {
-    const s = randOuter()
-    state.current.start.copy(s)
-    state.current.ctrl.set(
-      s.x * 0.5 + (Math.random() - 0.5) * 2,
-      s.y * 0.5 + (Math.random() - 0.5) * 2,
-      s.z * 0.5 + (Math.random() - 0.5) * 2,
-    )
-    state.current.t = 0
-    state.current.active = true
-  }
-
   useEffect(() => {
-    const timer = setTimeout(resetParticle, state.current.delay * 1000)
+    const randOuter = () => {
+      const theta = Math.random() * Math.PI * 2
+      const phi = (Math.random() * 0.6 + 0.2) * Math.PI
+      const r = 5 + Math.random() * 2
+      return new THREE.Vector3(
+        r * Math.sin(phi) * Math.cos(theta),
+        r * Math.cos(phi) * 0.4,
+        r * Math.sin(phi) * Math.sin(theta),
+      )
+    }
+    const reset = () => {
+      const s = randOuter()
+      state.current.start.copy(s)
+      state.current.ctrl.set(
+        s.x * 0.5 + (Math.random() - 0.5) * 2,
+        s.y * 0.5 + (Math.random() - 0.5) * 2,
+        s.z * 0.5 + (Math.random() - 0.5) * 2,
+      )
+      state.current.t = 0
+      state.current.active = true
+    }
+    ;(state.current as { reset?: () => void }).reset = reset
+    const timer = setTimeout(reset, state.current.delay * 1000)
     return () => clearTimeout(timer)
   }, [])
 
@@ -176,7 +175,10 @@ function ReturnParticle({
           if (lightRef.current) lightRef.current.intensity = 3
         }, 300)
       }
-      setTimeout(resetParticle, 1800 + Math.random() * 1000)
+      setTimeout(
+        () => (state.current as { reset?: () => void }).reset?.(),
+        1800 + Math.random() * 1000,
+      )
       return
     }
 
