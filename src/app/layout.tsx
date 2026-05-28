@@ -3,6 +3,7 @@ import { IBM_Plex_Sans_Arabic, Tajawal, Inter, Fraunces } from 'next/font/google
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { Toaster } from 'sonner'
+import { headers } from 'next/headers'
 import { WebVitals } from '@/components/web-vitals'
 import { ThemeProvider } from '@/components/theme-provider'
 import { LenisProvider } from '@/components/ui/lenis-provider'
@@ -107,7 +108,8 @@ const JSON_LD = {
   ],
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const nonce = (await headers()).get('x-nonce') ?? ''
   return (
     <html
       lang="ar"
@@ -131,6 +133,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </a>
               <script
                 type="application/ld+json"
+                nonce={nonce}
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
               />
               <ScrollProgress />

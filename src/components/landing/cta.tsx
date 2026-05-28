@@ -69,7 +69,7 @@ export function FinalCTA() {
           className="text-[12px] font-semibold tracking-[0.18em] uppercase mb-6"
           style={{ color: 'rgba(245,239,230,0.45)' }}
         >
-          جاهز ترجّع عملاءك؟
+          الخطوة الأولى مجانية
         </p>
 
         {/* Divider ornament */}
@@ -99,14 +99,14 @@ export function FinalCTA() {
             maxWidth: '18ch',
           }}
         >
-          ابدأ اليوم — <span style={{ color: '#D4A574' }}>ما تدفع</span> حتى نثبت نتائجنا
+          أبدأ اليوم — <span style={{ color: '#D4A574' }}>ما أدفع</span> حتى ترجع نتائجي
         </h2>
 
         <p
           className="text-cream/60 mb-14 mx-auto"
           style={{ fontSize: 18, maxWidth: '44ch', lineHeight: 1.7 }}
         >
-          إعداد كامل خلال ٣٠ دقيقة. أول ٣٠ يوماً على حسابنا. إذا ما رجع أحد — لا فاتورة.
+          إعداد كامل في ٣٠ دقيقة. أول ٣٠ يوماً مجاناً. ما رجع أحد — ما دفعت شيئاً.
         </p>
 
         {/* CTAs */}
@@ -121,7 +121,7 @@ export function FinalCTA() {
               } as React.CSSProperties
             }
           >
-            ابدأ تجريباً مجانياً
+            أبدأ مجاناً
           </BookingButton>
 
           <BookingButton

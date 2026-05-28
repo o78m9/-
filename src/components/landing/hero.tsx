@@ -88,10 +88,9 @@ export function HeroSection() {
             className="leading-[1.75] mb-10"
             style={{ fontSize: 'clamp(1rem, 1.5vw, 1.125rem)', color: '#8A9B95', maxWidth: '44ch' }}
           >
-            أكثر من ٤٠٪ من مرضى العيادات يتوقفون عن الزيارة — ليس لأنهم غير راضين، بل لأن أحداً لم
-            يتواصل معهم.
+            مريض من كل اثنين لا يعود — ليس غضباً، بل نسياناً.
             <br />
-            عَودة يفعل ذلك بـ AI — تلقائياً.
+            عَودة يذكّره. تلقائياً.
           </p>
 
           {/* Stats row */}
@@ -119,11 +118,11 @@ export function HeroSection() {
           {/* CTAs */}
           <div className="flex flex-wrap items-center gap-4">
             <BookingButton source="hero" className="hero-cta-primary">
-              ابدأ تجريباً مجانياً
+              أبدأ مجاناً
             </BookingButton>
 
             <a href="#how" className="hero-cta-ghost">
-              شاهد كيف يعمل
+              أشاهد كيف يعمل
               <svg
                 width="14"
                 height="14"
@@ -140,7 +139,7 @@ export function HeroSection() {
 
           {/* Social proof */}
           <p className="mt-8 text-[12px]" style={{ color: '#5A6B65' }}>
-            بلا رسوم ثابتة في الشهر الأول — ادفع نسبة فقط مما نسترجعه
+            بدون رسوم مسبقة — تدفع نسبة فقط مما نسترجعه
           </p>
         </div>
 

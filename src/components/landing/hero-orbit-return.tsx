@@ -65,7 +65,8 @@ function ReturnParticles() {
     const t = state.clock.elapsedTime
 
     for (let i = 0; i < PARTICLE_COUNT; i++) {
-      const p = particles[i]!
+      const p = particles[i]
+      if (!p) continue
 
       if (t < p.startDelay) {
         dummy.scale.setScalar(0)

@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
 import { rateLimit, LIMITS } from '@/lib/rate-limit'
+import { GenerateMessageSchema } from '@/lib/schemas'
 
 const client = new Anthropic()
 
@@ -10,14 +11,6 @@ Be friendly, not pushy. Reference their specific situation (name, time since las
 Keep it under 50 words. Don't use emojis excessively (max 2).
 Include a soft call-to-action at the end.
 Return ONLY the message text. No labels, no formatting, no explanation.`
-
-interface CustomerInput {
-  id: string
-  name: string
-  last_visit?: string | null
-  total_spent?: number
-  notes?: string | null
-}
 
 function daysSince(dateStr: string | null | undefined): number | null {
   if (!dateStr) return null
@@ -42,18 +35,13 @@ export async function POST(request: NextRequest) {
   const limited = rateLimit(request, LIMITS.ai)
   if (limited) return limited
 
+  const parsed = GenerateMessageSchema.safeParse(await request.json())
+  if (!parsed.success) {
+    return NextResponse.json({ error: parsed.error.flatten() }, { status: 422 })
+  }
+  const { customers, template, customMessage, clinicName } = parsed.data
+
   try {
-    const { customers, template, customMessage, clinicName } = (await request.json()) as {
-      customers: CustomerInput[]
-      template: string
-      customMessage?: string
-      clinicName?: string
-    }
-
-    if (!Array.isArray(customers) || customers.length === 0) {
-      return NextResponse.json({ error: 'No customers provided' }, { status: 400 })
-    }
-
     const messages = await Promise.all(
       customers.slice(0, 3).map(async (customer) => {
         const days = daysSince(customer.last_visit)

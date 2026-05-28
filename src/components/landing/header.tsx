@@ -84,7 +84,7 @@ export function LandingHeader() {
             source="header"
             className="inline-flex items-center h-11 px-5 rounded-full border border-forest bg-forest text-cream text-[14px] font-[500] hover:-translate-y-[2px] hover:shadow-[0_4px_12px_rgba(31,61,54,0.3)] transition-all duration-150 active:translate-y-0"
           >
-            احجز عرض
+            أحجز عرضاً
           </BookingButton>
         </div>
 
@@ -174,7 +174,7 @@ export function LandingHeader() {
               source="mobile-menu"
               className="w-full inline-flex items-center justify-center h-12 px-6 rounded-full bg-forest text-cream text-[15px] font-[500]"
             >
-              احجز عرض توضيحي
+              أحجز عرضاً توضيحياً
             </BookingButton>
           </div>
         </div>

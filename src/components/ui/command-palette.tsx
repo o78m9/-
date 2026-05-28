@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 import { Command } from 'cmdk'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Search, Home, BarChart2, Users, Settings, HelpCircle, Phone } from 'lucide-react'
@@ -30,6 +30,33 @@ interface CommandPaletteProps {
 export function CommandPalette({ open, onClose }: CommandPaletteProps) {
   const [search, setSearch] = useState('')
   const router = useRouter()
+  const panelRef = useRef<HTMLDivElement>(null)
+
+  // Focus trap: keep Tab/Shift+Tab inside the dialog
+  useEffect(() => {
+    if (!open || !panelRef.current) return
+    const panel = panelRef.current
+    const FOCUSABLE = 'input, button, a[href], [tabindex]:not([tabindex="-1"])'
+
+    function trap(e: KeyboardEvent) {
+      if (e.key !== 'Tab') return
+      const els = Array.from(panel.querySelectorAll<HTMLElement>(FOCUSABLE))
+      if (els.length === 0) return
+      const first = els[0]
+      const last = els[els.length - 1]
+      if (!first || !last) return
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault()
+        last.focus()
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault()
+        first.focus()
+      }
+    }
+
+    panel.addEventListener('keydown', trap)
+    return () => panel.removeEventListener('keydown', trap)
+  }, [open])
 
   const run = useCallback(
     (href: string) => {
@@ -78,6 +105,7 @@ export function CommandPalette({ open, onClose }: CommandPaletteProps) {
           {/* Panel */}
           <motion.div
             key="panel"
+            ref={panelRef}
             role="dialog"
             aria-modal="true"
             aria-label="لوحة الأوامر"

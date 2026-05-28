@@ -1,18 +1,19 @@
 import { type NextRequest, NextResponse } from 'next/server'
 import { neon } from '@neondatabase/serverless'
 import { rateLimit, LIMITS } from '@/lib/rate-limit'
+import { CustomerCreateSchema } from '@/lib/schemas'
 
-const sql = neon(process.env.DATABASE_URL!)
+const sql = neon(process.env.DATABASE_URL ?? '')
 
 export async function POST(req: NextRequest) {
   const limited = rateLimit(req, LIMITS.api)
   if (limited) return limited
 
-  const { name, phone, visit_type, notes, clinic_id } = await req.json()
-
-  if (!name || !phone || !clinic_id) {
-    return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
+  const parsed = CustomerCreateSchema.safeParse(await req.json())
+  if (!parsed.success) {
+    return NextResponse.json({ error: parsed.error.flatten() }, { status: 422 })
   }
+  const { name, phone, visit_type, notes, clinic_id } = parsed.data
 
   const today = new Date().toISOString().split('T')[0]
 

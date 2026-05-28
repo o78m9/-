@@ -114,7 +114,7 @@ export function PricingSection() {
           }}
           {...fade(0.08)}
         >
-          كيف نحاسب
+          تدفع بعد ما نثبت
         </motion.h2>
 
         {/* Subtitle */}
@@ -123,8 +123,7 @@ export function PricingSection() {
           style={{ color: '#7A9B95', fontSize: 18, maxWidth: '52ch', lineHeight: 1.7 }}
           {...fade(0.16)}
         >
-          نموذج الدفع على النتائج يعني أن مصلحتنا متوافقة تماماً مع مصلحتك — إذا ما رجع أحد، لا
-          فاتورة.
+          لا نجاح — لا فاتورة. مصلحتنا واحدة.
         </motion.p>
 
         {/* Divider ornament */}
@@ -340,7 +339,7 @@ export function PricingSection() {
                   } as React.CSSProperties
                 }
               >
-                احجز عرضاً توضيحياً
+                أحجز عرضاً توضيحياً
               </BookingButton>
             </TiltCard>
           </motion.div>

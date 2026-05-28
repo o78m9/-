@@ -2,18 +2,19 @@ import { type NextRequest, NextResponse } from 'next/server'
 import { neon } from '@neondatabase/serverless'
 import { cleanImportData } from '@/lib/claude'
 import { rateLimit, LIMITS } from '@/lib/rate-limit'
+import { ImportSchema } from '@/lib/schemas'
 
-const sql = neon(process.env.DATABASE_URL!)
+const sql = neon(process.env.DATABASE_URL ?? '')
 
 export async function POST(req: NextRequest) {
   const limited = rateLimit(req, LIMITS.import)
   if (limited) return limited
 
-  const { rawText, clinic_id, confirm } = await req.json()
-
-  if (!rawText || !clinic_id) {
-    return NextResponse.json({ error: 'Missing rawText or clinic_id' }, { status: 400 })
+  const parsed = ImportSchema.safeParse(await req.json())
+  if (!parsed.success) {
+    return NextResponse.json({ error: parsed.error.flatten() }, { status: 422 })
   }
+  const { rawText, clinic_id, confirm } = parsed.data
 
   const cleaned = await cleanImportData(rawText)
 

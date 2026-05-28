@@ -2,12 +2,19 @@ import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 import { applySecurityHeaders } from '@/lib/security-headers'
 
+function generateNonce(): string {
+  const array = new Uint8Array(16)
+  crypto.getRandomValues(array)
+  return Buffer.from(array).toString('base64')
+}
+
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
-  let response = NextResponse.next({ request })
+  const nonce = generateNonce()
 
-  // Apply security headers to every response
-  response = applySecurityHeaders(response)
+  let response = NextResponse.next({ request })
+  response.headers.set('x-nonce', nonce)
+  response = applySecurityHeaders(response, nonce)
 
   // Only auth-protect /dashboard/* routes
   if (!pathname.startsWith('/dashboard')) {
@@ -36,7 +43,9 @@ export async function middleware(request: NextRequest) {
       },
       setAll(cookiesToSet) {
         cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value))
-        response = applySecurityHeaders(NextResponse.next({ request }))
+        const next = NextResponse.next({ request })
+        next.headers.set('x-nonce', nonce)
+        response = applySecurityHeaders(next, nonce)
         cookiesToSet.forEach(({ name, value, options }) =>
           response.cookies.set(name, value, options),
         )
