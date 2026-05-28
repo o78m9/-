@@ -1,7 +1,19 @@
 # Blockers & Future Phases Roadmap
 
 Last updated: 2026-05-28
-Phases 0-2 complete. Phases 3-17 remain for future sessions.
+Phases 0-3 complete. Phases 4-17 remain for future sessions.
+
+---
+
+## Deploy Blocker — Vercel CLI / MCP Auth
+
+**Status:** Credential blocker — cannot resolve without human action.
+
+- Vercel MCP returns 403 (scope `navolasweets-6423s-projects`, token not authorized)
+- Vercel CLI not installed (`npm i -g vercel` needed)
+- **Workaround:** Push to `main` triggers Vercel GitHub auto-deploy if integration is active
+- **Manual fix:** Run `! npx vercel --prod` in Claude Code terminal after `vercel login`
+- **Last known prod URL:** `https://awdah-b42ltwjjv-navolasweets-6423s-projects.vercel.app`
 
 ---
 
