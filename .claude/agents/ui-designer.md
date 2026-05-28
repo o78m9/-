@@ -1,6 +1,6 @@
 ---
 name: ui-ux-designer
-description: Use this agent to design UI screens, create wireframes, write Tailwind HTML/JSX components, improve mobile responsiveness, fix accessibility issues, improve visual hierarchy, or redesign any part of the interface.
+description: PROACTIVELY use for ALL UI work — component design, Tailwind classes, layout, typography, color, spacing, mobile responsiveness, accessibility fixes, wireframes, and any visual change to the interface.
 tools: Read, Write, Edit
 ---
 

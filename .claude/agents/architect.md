@@ -1,6 +1,6 @@
 ---
 name: system-architect
-description: Use this agent to design system architecture, choose technology, design database schemas, plan API contracts, draw system diagrams, evaluate architectural trade-offs, or make decisions about how large features should be structured.
+description: MUST BE USED before any new feature starts. PROACTIVELY use for all tech decisions, database schema design, API contract planning, system diagrams, and architectural trade-off evaluation.
 tools: Read, Write, Edit, Glob, Grep
 ---
 

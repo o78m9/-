@@ -1,6 +1,6 @@
 ---
 name: project-manager
-description: Use this agent to plan work, break features into tasks, create roadmaps, write sprint plans, track progress across multiple workstreams, generate status reports, or coordinate between other agents.
+description: MUST BE USED at the start of every task to plan and split work into sub-tasks. PROACTIVELY use to update TODO.md after every feature, generate status reports, and coordinate between agents.
 tools: Read, Write, Edit, TodoWrite
 ---
 

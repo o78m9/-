@@ -1,9 +1,11 @@
 import { LandingHeader } from '@/components/landing/header'
 import { HeroSection } from '@/components/landing/hero'
+import { LogoBar } from '@/components/landing/logo-bar'
 import { StatementSection } from '@/components/landing/statement'
 import { HowItWorksSection } from '@/components/landing/how-it-works'
-import { LiveSystem } from '@/components/landing/live-system'
+import { DashboardPreviewWrapper } from '@/components/landing/dashboard-preview-wrapper'
 import { ResultsSection } from '@/components/landing/results'
+import { MetricBar } from '@/components/landing/metric-bar'
 import { TestimonialsSection } from '@/components/landing/testimonials'
 import { PricingSection } from '@/components/landing/pricing'
 import { FAQSection } from '@/components/landing/faq'
@@ -16,10 +18,12 @@ export default function LandingPage() {
       <LandingHeader />
       <main id="main">
         <HeroSection />
+        <LogoBar />
         <StatementSection />
         <HowItWorksSection />
-        <LiveSystem />
+        <DashboardPreviewWrapper />
         <ResultsSection />
+        <MetricBar />
         <TestimonialsSection />
         <PricingSection />
         <FAQSection />

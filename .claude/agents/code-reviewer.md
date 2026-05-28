@@ -1,6 +1,6 @@
 ---
 name: code-reviewer
-description: Use this agent after any code change to review quality, correctness, performance, and maintainability. Also runs automatically after every code change. Reviews diffs, finds bugs, checks TypeScript strictness, spots security issues, and gives concrete improvement suggestions.
+description: MUST BE USED after every code change — no exception. PROACTIVELY review diffs for bugs, TypeScript strictness, performance issues, accessibility violations, RTL correctness, and security smells before any commit.
 tools: Read, Glob, Grep, Bash
 ---
 

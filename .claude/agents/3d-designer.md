@@ -1,6 +1,6 @@
 ---
 name: 3d-designer
-description: Use this agent to build 3D scenes with Three.js or React Three Fiber, write Blender Python scripts, create WebGL shaders, design 3D animations, or optimize existing 3D assets for the web.
+description: PROACTIVELY use for ALL 3D work — Three.js, React Three Fiber, WebGL shaders, GLSL, 3D animations, particle systems, canvas scenes, and performance optimization of any 3D asset.
 tools: Read, Write, Edit, Bash
 ---
 

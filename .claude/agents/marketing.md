@@ -1,6 +1,6 @@
 ---
 name: marketing-specialist
-description: Use this agent for any marketing task — writing social media posts, SEO optimization, content strategy, finding target customers, growing the business, writing landing page copy, email campaigns, or analyzing competitors.
+description: PROACTIVELY use for ALL marketing copy, landing page text, SEO, social content, email campaigns, Arabic copywriting, competitor analysis, README selling points, and any user-facing written content.
 tools: Read, Write, WebSearch, WebFetch
 ---
 

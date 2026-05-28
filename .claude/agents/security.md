@@ -1,6 +1,6 @@
 ---
 name: cybersecurity-expert
-description: Use this agent to audit code for security vulnerabilities — SQL injection, XSS, CSRF, authentication bypasses, insecure dependencies, exposed secrets, broken access control, or any OWASP Top 10 issue. Run before major releases or when touching auth/data/API code.
+description: MUST BE USED after every feature that touches auth, API routes, forms, or data. PROACTIVELY scan for OWASP Top 10, tenant isolation failures, prompt injection, exposed secrets, and dependency CVEs before every release.
 tools: Read, Glob, Grep, Bash, WebSearch
 ---
 

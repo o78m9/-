@@ -1,6 +1,6 @@
 ---
 name: code-developer
-description: Use this agent to implement features, fix bugs, write unit tests, refactor code, create new API routes, build React components, or do any hands-on coding work.
+description: PROACTIVELY use for ALL code writing — feature implementation, bug fixes, unit tests, API routes, React components, refactoring, and any hands-on coding work. Never write code directly; always delegate here.
 tools: Read, Write, Edit, Bash, Glob, Grep
 ---
 

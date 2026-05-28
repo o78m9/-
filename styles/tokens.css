@@ -1,0 +1,121 @@
+/**
+ * Aooda Design Tokens
+ * Single source of truth for all design decisions.
+ * Import after tailwindcss in globals.css.
+ */
+
+:root {
+  /* ── Gold scale (11 shades) ──────────────────────────────────── */
+  --gold-50: #fdf8f2;
+  --gold-100: #f9edd9;
+  --gold-200: #f2d8b0;
+  --gold-300: #e8bc7e;
+  --gold-400: #dca654;
+  --gold-500: #d4a574; /* brand gold */
+  --gold-600: #c08840;
+  --gold-700: #8a6040;
+  --gold-800: #6b4a30;
+  --gold-900: #4a3220;
+  --gold-950: #2a1c10;
+
+  /* ── Sage scale (11 shades) ──────────────────────────────────── */
+  --sage-50: #f0f7f6;
+  --sage-100: #d8edea;
+  --sage-200: #b4dad4;
+  --sage-300: #8ac5bc;
+  --sage-400: #7fb5a8; /* brand sage */
+  --sage-500: #5ea090;
+  --sage-600: #468a7a;
+  --sage-700: #326b5c;
+  --sage-800: #224a40;
+  --sage-900: #142b27;
+  --sage-950: #0a1f1c;
+
+  /* ── Forest scale (11 shades) ────────────────────────────────── */
+  --forest-50: #e6f0ee;
+  --forest-100: #bddad4;
+  --forest-200: #8ec2b9;
+  --forest-300: #5ea89c;
+  --forest-400: #3d9082;
+  --forest-500: #2a7068;
+  --forest-600: #1a5550;
+  --forest-700: #0f3d38;
+  --forest-800: #0a2b27;
+  --forest-900: #071a18;
+  --forest-950: #030d0b;
+
+  /* ── Semantic aliases ─────────────────────────────────────────── */
+  --color-brand: var(--gold-500);
+  --color-brand-dim: var(--gold-700);
+  --color-accent: var(--sage-400);
+  --color-bg-dark: var(--sage-950);
+  --color-bg-dark-2: var(--sage-900);
+  --color-text-primary: #f5efe6;
+  --color-text-muted: #8a9b95;
+
+  /* ── Spacing scale ───────────────────────────────────────────── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* ── Border radius ───────────────────────────────────────────── */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-3xl: 24px;
+  --radius-full: 9999px;
+
+  /* ── Shadow (stacked micro-shadows) ─────────────────────────── */
+  --shadow-e0: none;
+  --shadow-e1: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+  --shadow-e2: 0 4px 12px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.03);
+  --shadow-e3: 0 8px 24px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  --shadow-e4: 0 20px 60px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-glow-gold: 0 0 40px rgba(212, 165, 116, 0.3);
+  --shadow-glow-sage: 0 0 40px rgba(127, 181, 168, 0.25);
+
+  /* ── Typography scale (fluid clamp) ─────────────────────────── */
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: 1rem; /* 16px */
+  --text-lg: 1.125rem; /* 18px */
+  --text-xl: 1.25rem; /* 20px */
+  --text-2xl: clamp(1.25rem, 2.5vw, 1.5rem); /* 20-24px */
+  --text-3xl: clamp(1.5rem, 3vw, 2rem); /* 24-32px */
+  --text-4xl: clamp(1.875rem, 4vw, 2.5rem); /* 30-40px */
+  --text-5xl: clamp(2.25rem, 5vw, 3.5rem); /* 36-56px */
+  --text-6xl: clamp(3rem, 6vw, 4.5rem); /* 48-72px */
+  --text-hero: clamp(3.5rem, 7vw, 5.5rem); /* 56-88px */
+
+  /* ── Motion curves ───────────────────────────────────────────── */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ── Duration tokens ─────────────────────────────────────────── */
+  --dur-fast: 150ms;
+  --dur-base: 250ms;
+  --dur-medium: 400ms;
+  --dur-slow: 600ms;
+  --dur-xslow: 900ms;
+}
+
+/* ── Dark-mode overrides ─────────────────────────────────────── */
+.dark {
+  --shadow-e1: 0 1px 2px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.12);
+  --shadow-e2: 0 4px 12px rgba(0, 0, 0, 0.25), 0 1px 3px rgba(0, 0, 0, 0.15);
+  --shadow-e3: 0 8px 24px rgba(0, 0, 0, 0.35), 0 2px 6px rgba(0, 0, 0, 0.2);
+  --shadow-e4: 0 20px 60px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.25);
+}
