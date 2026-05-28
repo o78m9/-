@@ -48,11 +48,23 @@ npm test → Tests 66 passed (66)
 
 ## Deploy
 
-Committed as `fix(crash): add use client to cta.tsx — resolves 500 on homepage`.
+Committed as `fix(crash): add 'use client' to cta.tsx — resolves 500 on homepage/dashboard`.
 Pushed to `main` — Vercel auto-deploys via GitHub integration.
 
-**Smoke test against production:**
-Run `node scripts/healthcheck.mjs https://awdah-ochre.vercel.app` after deploy completes.
+**Local prod verification:**
+
+- Homepage 200: `docs/proof/homepage-prod-local.png` ✅
+- Dashboard 200: `docs/proof/dashboard-prod-local.png` ✅
+- Demo dashboard 200: `docs/proof/dashboard-demo-prod-local.png` ✅
+- All smoke checks passed against `http://localhost:3001`
+
+**Prod URL smoke test (run manually after Vercel deploy completes):**
+
+```bash
+node scripts/healthcheck.mjs https://awdah-ochre.vercel.app
+```
+
+**Blocker:** Sandbox can't reach external URLs. Vercel CLI/MCP 403. Auto-deploy via GitHub push — verify in Vercel dashboard.
 
 ## Defenses Added
 
