@@ -116,7 +116,7 @@ export function LiveSystem() {
 
   return (
     <section
-      className="py-28 px-6 overflow-hidden"
+      className="py-32 px-6 overflow-hidden"
       style={{ background: 'var(--ink)' }}
       aria-labelledby="live-heading"
     >

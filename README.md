@@ -6,8 +6,9 @@
 [![Next.js 15](https://img.shields.io/badge/Next.js-15-black)](https://nextjs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://typescriptlang.org)
 [![Tailwind CSS v4](https://img.shields.io/badge/Tailwind-v4-06B6D4)](https://tailwindcss.com)
-[![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)](./coverage)
-[![Tests](https://img.shields.io/badge/tests-65%20passing-brightgreen)](./src/test)
+[![CI](https://github.com/o78m9/AI-powered-customer-base-system/actions/workflows/ci.yml/badge.svg)](https://github.com/o78m9/AI-powered-customer-base-system/actions/workflows/ci.yml)
+[![Tests](https://img.shields.io/badge/tests-66%20passing-brightgreen)](./src/test)
+[![E2E](https://img.shields.io/badge/e2e-playwright-brightgreen)](./e2e)
 
 ---
 
@@ -48,16 +49,16 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Stack
 
-| Layer     | Technology                                    |
-| --------- | --------------------------------------------- |
-| Framework | Next.js 15 + React 19 + TypeScript 5          |
-| Styling   | Tailwind CSS v4 + shadcn/ui                   |
-| 3D        | React Three Fiber + drei + postprocessing     |
-| Auth      | Supabase SSR + NextAuth v5                    |
-| Database  | Neon PostgreSQL + Prisma ORM                  |
-| AI        | Anthropic Claude (message generation)         |
-| Testing   | Vitest + Playwright (65 tests, 100% coverage) |
-| Deploy    | Vercel + Neon                                 |
+| Layer     | Technology                                |
+| --------- | ----------------------------------------- |
+| Framework | Next.js 15 + React 19 + TypeScript 5      |
+| Styling   | Tailwind CSS v4 + shadcn/ui               |
+| 3D        | React Three Fiber + drei + postprocessing |
+| Auth      | Supabase SSR + NextAuth v5                |
+| Database  | Neon PostgreSQL + Prisma ORM              |
+| AI        | Anthropic Claude (message generation)     |
+| Testing   | Vitest (66 unit) + Playwright E2E         |
+| Deploy    | Vercel + Neon                             |
 
 ---
 
@@ -79,8 +80,8 @@ Open [http://localhost:3000](http://localhost:3000).
 ```bash
 npm run dev          # Start dev server (localhost:3000)
 npm run build        # Production build
-npm run test         # Run 65 unit tests
-npm run test:coverage # Coverage report (100% stmts)
+npm run test         # Run 66 unit tests (Vitest)
+npm run test:coverage # Coverage report
 npm run test:e2e     # Playwright end-to-end tests
 npm run lint         # ESLint + TypeScript check
 npm run format       # Prettier format
@@ -102,7 +103,7 @@ src/
 └── lib/            # Utilities (rate-limit, security-headers, logger)
 ```
 
-Full architecture → [ARCHITECTURE.md](./ARCHITECTURE.md)
+Full reference → [docs/RUNBOOK.md](./docs/RUNBOOK.md) | [docs/ENV.md](./docs/ENV.md) | [docs/AGENTS.md](./docs/AGENTS.md)
 
 ---
 

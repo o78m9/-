@@ -79,7 +79,7 @@ export function PricingSection() {
   return (
     <section
       id="pricing"
-      className="relative overflow-hidden py-36 px-6"
+      className="relative overflow-hidden py-32 px-6"
       style={{ background: 'linear-gradient(170deg, #071810 0%, #0A1F1C 55%, #0E2420 100%)' }}
       aria-labelledby="pricing-heading"
     >
@@ -87,7 +87,7 @@ export function PricingSection() {
       <SectionGlow color="sage" position="top-right" size={800} opacity={0.055} />
       <SectionGlow color="gold" position="bottom-left" size={600} opacity={0.04} />
 
-      <div className="max-w-5xl mx-auto relative z-10">
+      <div className="max-w-content mx-auto relative z-10">
         {/* Eyebrow */}
         <motion.div className="flex justify-center mb-6" {...fade(0)}>
           <span

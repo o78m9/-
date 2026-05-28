@@ -18,6 +18,11 @@
     "prepare": "husky"
   },
   "lint-staged": {
+    "src/app/**/*.tsx": [
+      "node scripts/check-colors.mjs",
+      "eslint --fix",
+      "prettier --write"
+    ],
     "*.{ts,tsx}": [
       "eslint --fix",
       "prettier --write"

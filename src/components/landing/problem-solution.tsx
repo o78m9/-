@@ -3,7 +3,7 @@ import { FadeIn } from '@/components/ui/fade-in'
 export function ProblemSolution() {
   return (
     <section
-      className="py-28 px-6"
+      className="py-32 px-6"
       style={{ background: '#142B27' }}
       aria-labelledby="problem-heading"
     >
