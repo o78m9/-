@@ -9,7 +9,7 @@ const NAV = [
   { href: '#pricing', label: 'الأسعار' },
   { href: '#faq', label: 'الأسئلة الشائعة' },
   { href: '/about', label: 'عن عَودة' },
-  { href: '/dashboard', label: 'الدخول' },
+  { href: '/dashboard/demo', label: 'الدخول' },
 ]
 
 export function LandingHeader() {
@@ -67,8 +67,8 @@ export function LandingHeader() {
         {/* Desktop CTAs */}
         <div className="hidden md:flex items-center gap-4">
           <Link
-            href="/dashboard"
-            className="text-[14px] font-[500] text-mute hover:text-ink transition-colors duration-150"
+            href="/dashboard/demo"
+            className="inline-flex items-center gap-1.5 text-[14px] font-[500] text-mute hover:text-ink transition-colors duration-150"
             style={{
               textDecoration: 'underline',
               textDecorationColor: 'transparent',
@@ -79,6 +79,9 @@ export function LandingHeader() {
             onMouseLeave={(e) => (e.currentTarget.style.textDecorationColor = 'transparent')}
           >
             الدخول
+            <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-[700] tracking-wide bg-amber-100 text-amber-700 leading-none">
+              DEMO
+            </span>
           </Link>
           <BookingButton
             source="header"

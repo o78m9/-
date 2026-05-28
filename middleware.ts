@@ -16,8 +16,8 @@ export async function middleware(request: NextRequest) {
   response.headers.set('x-nonce', nonce)
   response = applySecurityHeaders(response, nonce)
 
-  // Only auth-protect /dashboard/* routes
-  if (!pathname.startsWith('/dashboard')) {
+  // Only auth-protect /dashboard/* routes (but not /dashboard/demo which is public)
+  if (!pathname.startsWith('/dashboard') || pathname.startsWith('/dashboard/demo')) {
     return response
   }
 
