@@ -35,11 +35,26 @@ async function getServerData() {
 }
 
 export default async function DashboardPage() {
-  const [{ stats, customers }, supabase] = await Promise.all([getServerData(), createClient()])
+  let stats = { total: 0, vip: 0, active: 0, 'at-risk': 0, dormant: 0, lost: 0 }
+  let customers: {
+    id: string
+    name: string
+    phone: string
+    status: string
+    last_visit?: string | null
+    total_spent?: number
+  }[] = []
+  let user = null
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  try {
+    const [serverData, supabase] = await Promise.all([getServerData(), createClient()])
+    stats = serverData.stats
+    customers = serverData.customers
+    const { data } = await supabase.auth.getUser()
+    user = data.user
+  } catch {
+    // Supabase not configured or DB unavailable — render in demo mode
+  }
 
   return (
     <DashboardClient

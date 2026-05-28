@@ -126,7 +126,13 @@ export function FinalCTA() {
 
           <BookingButton
             source="final-cta-secondary"
-            className="inline-flex items-center gap-2 h-[54px] px-8 rounded-full text-[15px] font-medium transition-all duration-200 hover:bg-white/5"
+            className="inline-flex items-center gap-2 h-[54px] px-8 rounded-full text-[15px] font-medium transition-all duration-200"
+            onMouseEnter={(e) => {
+              ;(e.currentTarget as HTMLElement).style.background = 'rgba(127,181,168,0.08)'
+            }}
+            onMouseLeave={(e) => {
+              ;(e.currentTarget as HTMLElement).style.background = 'transparent'
+            }}
             style={
               {
                 color: 'rgba(245,239,230,0.65)',

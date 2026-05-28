@@ -129,7 +129,10 @@ function CsvFragment() {
 /* ─── Typing indicator ───────────────────────────────────────────── */
 function TypingDots() {
   return (
-    <div className="flex items-center gap-[3px] px-3 py-2 bg-white rounded-[4px_12px_12px_12px] w-fit">
+    <div
+      className="flex items-center gap-[3px] px-3 py-2 rounded-[4px_12px_12px_12px] w-fit"
+      style={{ background: 'rgba(26,51,45,0.95)', border: '1px solid rgba(127,181,168,0.15)' }}
+    >
       {[0, 0.15, 0.3].map((delay, i) => (
         <motion.span
           key={i}

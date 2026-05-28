@@ -2,6 +2,7 @@
 
 import dynamic from 'next/dynamic'
 import { BookingButton } from '@/components/BookingButton'
+import { SceneSkeleton } from '@/components/hero/HeroScene'
 
 const HeroMockup = dynamic(() => import('./hero-mockup').then((m) => ({ default: m.HeroMockup })), {
   ssr: false,
@@ -13,10 +14,10 @@ const HeroMockup = dynamic(() => import('./hero-mockup').then((m) => ({ default:
   ),
 })
 
-const HeroOrbitReturn = dynamic(
-  () => import('./hero-orbit-return').then((m) => ({ default: m.HeroOrbitReturn })),
-  { ssr: false, loading: () => null },
-)
+const HeroScene = dynamic(() => import('@/components/hero/HeroScene'), {
+  ssr: false,
+  loading: () => <SceneSkeleton />,
+})
 
 // Grain texture as inline SVG data URI — 1% opacity, no extra request
 const GRAIN_BG = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`
@@ -143,14 +144,14 @@ export function HeroSection() {
           </p>
         </div>
 
-        {/* RIGHT COLUMN — 3D Orbit Return ──────────────────────────── */}
+        {/* RIGHT COLUMN — 3D Hero Scene ───────────────────────────── */}
         <div className="hidden lg:block relative" aria-hidden="true" style={{ height: '100vh' }}>
-          {/* Soft left-edge vignette so 3D doesn't bleed into text */}
           <div
-            className="absolute inset-y-0 start-0 z-10 w-24 pointer-events-none"
-            style={{ background: 'linear-gradient(to end, #0A1F1C 0%, transparent 100%)' }}
-          />
-          <HeroOrbitReturn />
+            className="absolute inset-0 right-0 w-[55%] h-full pointer-events-none z-0"
+            style={{ maskImage: 'linear-gradient(to left, black 60%, transparent 100%)' }}
+          >
+            <HeroScene />
+          </div>
         </div>
       </div>
 
