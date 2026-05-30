@@ -9,7 +9,8 @@ import { neon } from '@neondatabase/serverless'
 const MONTH_RE = /^\d{4}-(0[1-9]|1[0-2])$/
 
 async function fetchRoiData(clinicId: string, month: string): Promise<RoiReportData> {
-  const sql = neon(process.env.DATABASE_URL!)
+  if (!process.env.DATABASE_URL) throw new Error('DATABASE_URL not set')
+  const sql = neon(process.env.DATABASE_URL)
   const parts = month.split('-')
   const yyyy = Number(parts[0])
   const mm = Number(parts[1])

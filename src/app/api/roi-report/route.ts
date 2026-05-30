@@ -70,7 +70,10 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: 'clinic_id required' }, { status: 400 })
   }
 
-  const sql = neon(process.env.DATABASE_URL!)
+  if (!process.env.DATABASE_URL) {
+    return NextResponse.json({ error: 'Internal error' }, { status: 500 })
+  }
+  const sql = neon(process.env.DATABASE_URL)
 
   // Resolve month range
   const reportDate = monthParam ? new Date(`${monthParam}-01`) : now

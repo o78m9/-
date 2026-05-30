@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import Link from 'next/link'
 import * as Sentry from '@sentry/nextjs'
 
 interface ErrorProps {
@@ -106,7 +107,7 @@ export default function GlobalError({ error, reset }: ErrorProps) {
           >
             حاول مرة أخرى
           </button>
-          <a
+          <Link
             href="/"
             style={{
               display: 'inline-flex',
@@ -124,7 +125,7 @@ export default function GlobalError({ error, reset }: ErrorProps) {
             }}
           >
             الرئيسية
-          </a>
+          </Link>
         </div>
       </body>
     </html>

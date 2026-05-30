@@ -225,9 +225,9 @@ export function DashboardClient({
                 <span className="inline-flex items-center gap-2 text-[13px] font-medium">
                   <Eye size={14} />
                   هذا عرض تجريبي ببيانات وهمية.
-                  <a href="/" className="underline font-semibold hover:no-underline">
+                  <Link href="/" className="underline font-semibold hover:no-underline">
                     احجز عرضاً حقيقياً على بياناتك
-                  </a>
+                  </Link>
                 </span>
               </div>
             </motion.div>
