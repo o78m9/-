@@ -1,12 +1,21 @@
 import QuickForm from '@/components/QuickForm'
 
+// UUID v4 format — must match the format used by the API IDOR guard.
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+
 export default async function CapturePage({
   searchParams,
 }: {
   searchParams: Promise<{ clinic?: string }>
 }) {
   const params = await searchParams
-  const clinicId = params.clinic || process.env.NEXT_PUBLIC_DEMO_CLINIC_ID || ''
+
+  // Validate the clinic query param before use — reject non-UUID values so an
+  // attacker cannot probe arbitrary clinic IDs or inject unexpected strings.
+  const rawClinic = params.clinic ?? ''
+  const clinicParam = UUID_RE.test(rawClinic) ? rawClinic : ''
+
+  const clinicId = clinicParam || process.env.NEXT_PUBLIC_DEMO_CLINIC_ID || ''
 
   return (
     <main

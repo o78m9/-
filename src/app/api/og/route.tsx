@@ -3,10 +3,17 @@ import type { NextRequest } from 'next/server'
 
 export const runtime = 'edge'
 
+// Hard limits to prevent DoS via oversized params that stress Satori's text layout engine.
+const TITLE_MAX = 120
+const SUBTITLE_MAX = 160
+
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url)
-  const title = searchParams.get('title') ?? 'عَودة | نظام تنشيط العملاء بالذكاء الاصطناعي'
-  const subtitle = searchParams.get('sub') ?? 'ادفع فقط من الإيراد الذي نسترجعه'
+  const rawTitle = searchParams.get('title') ?? ''
+  const rawSubtitle = searchParams.get('sub') ?? ''
+
+  const title = rawTitle.slice(0, TITLE_MAX) || 'عَودة | نظام تنشيط العملاء بالذكاء الاصطناعي'
+  const subtitle = rawSubtitle.slice(0, SUBTITLE_MAX) || 'ادفع فقط من الإيراد الذي نسترجعه'
 
   return new ImageResponse(
     <div

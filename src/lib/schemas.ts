@@ -20,14 +20,23 @@ export const ImportSchema = z.object({
   confirm: z.boolean().optional().default(false),
 })
 
+// Strict date format for last_visit — prevents prompt injection via free-form date strings.
+const ISO_DATE_RE = /^\d{4}-\d{2}-\d{2}$/
+
 export const GenerateMessageSchema = z.object({
   customers: z
     .array(
       z.object({
-        id: z.string(),
+        id: z.string().max(100),
         name: z.string().min(1).max(200).trim(),
-        last_visit: z.string().nullable().optional(),
-        total_spent: z.number().nonnegative().optional(),
+        // Must be YYYY-MM-DD or null/absent — rejects arbitrary strings that could
+        // inject instructions into the Claude prompt.
+        last_visit: z
+          .string()
+          .regex(ISO_DATE_RE, 'last_visit must be YYYY-MM-DD')
+          .nullable()
+          .optional(),
+        total_spent: z.number().nonnegative().max(1_000_000).optional(),
         notes: z.string().max(1000).nullable().optional(),
       }),
     )

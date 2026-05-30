@@ -65,9 +65,12 @@ export async function POST(request: NextRequest) {
             : `${days} days ago`
           : 'unknown time'
 
+        // Strip double-quotes and backticks from customMessage to prevent a user from
+        // closing the quoted string and injecting additional instructions into the prompt.
+        const safeCustomMessage = customMessage?.replace(/["`]/g, "'")
         const context =
-          template === 'custom' && customMessage
-            ? `Custom message template: "${customMessage}". Adapt it for this specific customer.`
+          template === 'custom' && safeCustomMessage
+            ? `Custom message template: "${safeCustomMessage}". Adapt it for this specific customer.`
             : templateContext(template)
 
         const userMessage = `
