@@ -20,6 +20,8 @@ import {
   Clock,
   Wifi,
   ShieldCheck,
+  BellOff,
+  Bell,
 } from 'lucide-react'
 
 const TABS = [
@@ -127,7 +129,37 @@ const NOTIFICATIONS = [
   'سارة المطيري ردّت على الرسالة',
 ]
 
+const PAUSE_REASONS = ['طلب عدم التواصل', 'ظرف شخصي', 'خلاف على الفاتورة', 'أخرى'] as const
+
 function PatientsTab() {
+  const [paused, setPaused] = useState<Set<number>>(new Set())
+  const [pauseNotes, setPauseNotes] = useState<Record<number, (typeof PAUSE_REASONS)[number]>>({})
+  const [choosingReason, setChoosingReason] = useState<number | null>(null)
+
+  function handlePauseToggle(i: number) {
+    if (paused.has(i)) {
+      setPaused((s) => {
+        const n = new Set(s)
+        n.delete(i)
+        return n
+      })
+      setPauseNotes((n) => {
+        const r = { ...n }
+        delete r[i]
+        return r
+      })
+      setChoosingReason(null)
+    } else {
+      setPaused((s) => new Set([...s, i]))
+      setChoosingReason(i)
+    }
+  }
+
+  function selectReason(i: number, reason: (typeof PAUSE_REASONS)[number]) {
+    setPauseNotes((n) => ({ ...n, [i]: reason }))
+    setChoosingReason(null)
+  }
+
   return (
     <div className="space-y-3">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5">
@@ -159,39 +191,140 @@ function PatientsTab() {
         className="rounded-xl overflow-hidden"
         style={{ border: '1px solid rgba(255,255,255,0.07)' }}
       >
-        {PATIENTS.map((p, i) => (
-          <div
-            key={p.name}
-            className="flex items-center gap-3 px-4 py-3 text-sm"
-            style={{
-              background: i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent',
-              borderBottom:
-                i < PATIENTS.length - 1 ? '1px solid rgba(255,255,255,0.05)' : undefined,
-            }}
-          >
-            <div
-              className="w-7 h-7 rounded-full flex items-center justify-center text-[0.625rem] font-bold shrink-0"
-              style={{ background: 'rgba(127,181,168,0.15)', color: '#7FB5A8' }}
-            >
-              {[...p.name][0]}
+        {PATIENTS.map((p, i) => {
+          const isPaused = paused.has(i)
+          const note = pauseNotes[i]
+          const isChoosingReason = choosingReason === i
+          return (
+            <div key={p.name}>
+              <div
+                className="flex items-center gap-3 px-4 py-3 text-sm transition-opacity duration-200"
+                style={{
+                  background: i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent',
+                  borderBottom:
+                    !isChoosingReason && i < PATIENTS.length - 1
+                      ? '1px solid rgba(255,255,255,0.05)'
+                      : undefined,
+                  opacity: isPaused ? 0.65 : 1,
+                }}
+              >
+                <div
+                  className="w-7 h-7 rounded-full flex items-center justify-center text-[0.625rem] font-bold shrink-0"
+                  style={{ background: 'rgba(127,181,168,0.15)', color: '#7FB5A8' }}
+                >
+                  {[...p.name][0]}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="font-medium text-[0.8125rem] truncate" style={{ color: '#F5EFE6' }}>
+                    {p.name}
+                  </p>
+                  <p className="text-[0.6875rem]" style={{ color: '#8A9B95' }}>
+                    {p.lastVisit}
+                  </p>
+                  {note && (
+                    <>
+                      <p className="text-[0.5625rem] mt-0.5 truncate" style={{ color: '#D4A574' }}>
+                        {note}
+                      </p>
+                      <p
+                        className="text-[0.5rem] mt-0.5"
+                        style={{ color: 'rgba(127,181,168,0.6)' }}
+                      >
+                        يُستأنف تلقائياً عند حجز موعد جديد
+                      </p>
+                    </>
+                  )}
+                </div>
+                <button
+                  onClick={() => handlePauseToggle(i)}
+                  title={isPaused ? 'استئناف الرسائل' : 'إيقاف مؤقت'}
+                  className="w-6 h-6 flex items-center justify-center rounded-md shrink-0 transition-colors duration-150 hover:opacity-80"
+                  style={{
+                    background: isPaused ? 'rgba(212,165,116,0.15)' : 'rgba(255,255,255,0.05)',
+                    border: `1px solid ${isPaused ? 'rgba(212,165,116,0.3)' : 'rgba(255,255,255,0.1)'}`,
+                    color: isPaused ? '#D4A574' : '#6B6359',
+                  }}
+                >
+                  {isPaused ? (
+                    <Bell className="w-3 h-3" aria-hidden="true" />
+                  ) : (
+                    <BellOff className="w-3 h-3" aria-hidden="true" />
+                  )}
+                </button>
+                {isPaused ? (
+                  <span
+                    className="text-[0.625rem] font-medium px-2 py-1 rounded-full"
+                    style={{ color: '#D4A574', background: 'rgba(212,165,116,0.12)' }}
+                  >
+                    موقوف مؤقتاً
+                  </span>
+                ) : (
+                  <span
+                    className="text-[0.625rem] font-medium px-2 py-1 rounded-full"
+                    style={{ color: p.color, background: p.bg }}
+                  >
+                    {p.status}
+                  </span>
+                )}
+              </div>
+
+              <AnimatePresence>
+                {isChoosingReason && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="overflow-hidden"
+                    style={{
+                      borderBottom:
+                        i < PATIENTS.length - 1 ? '1px solid rgba(255,255,255,0.05)' : undefined,
+                    }}
+                  >
+                    <div
+                      className="px-4 pb-3 pt-1 flex flex-wrap gap-1.5"
+                      dir="rtl"
+                      style={{ background: 'rgba(212,165,116,0.10)' }}
+                    >
+                      <span className="text-[0.625rem] self-center" style={{ color: '#8A9B95' }}>
+                        سبب الإيقاف:
+                      </span>
+                      {PAUSE_REASONS.map((r) => (
+                        <button
+                          key={r}
+                          onClick={() => selectReason(i, r)}
+                          className="text-[0.625rem] px-2.5 py-1 rounded-full transition-opacity hover:opacity-80"
+                          style={{
+                            background: 'rgba(212,165,116,0.12)',
+                            border: '1px solid rgba(212,165,116,0.25)',
+                            color: '#D4A574',
+                          }}
+                        >
+                          {r}
+                        </button>
+                      ))}
+                      <button
+                        onClick={() => setChoosingReason(null)}
+                        className="text-[0.625rem] px-2 py-1 rounded-full transition-opacity hover:opacity-70 ms-auto"
+                        style={{ color: 'rgba(138,155,149,0.6)' }}
+                      >
+                        تخطّ
+                      </button>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
-            <div className="flex-1 min-w-0">
-              <p className="font-medium text-[0.8125rem] truncate" style={{ color: '#F5EFE6' }}>
-                {p.name}
-              </p>
-              <p className="text-[0.6875rem]" style={{ color: '#8A9B95' }}>
-                {p.lastVisit}
-              </p>
-            </div>
-            <span
-              className="text-[0.625rem] font-medium px-2 py-1 rounded-full"
-              style={{ color: p.color, background: p.bg }}
-            >
-              {p.status}
-            </span>
-          </div>
-        ))}
+          )
+        })}
       </div>
+      <p
+        className="text-[0.5625rem] px-1 flex items-center gap-1"
+        style={{ color: 'rgba(138,155,149,0.45)' }}
+      >
+        <BellOff className="w-3 h-3 shrink-0" aria-hidden="true" />
+        اضغط على أي مريض لإيقاف رسائله مؤقتاً مع تسجيل السبب — يستأنف بضغطة واحدة.
+      </p>
     </div>
   )
 }
