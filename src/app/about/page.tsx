@@ -104,13 +104,6 @@ export default function AboutPage() {
               </a>{' '}
               — للشراكات والاستفسارات المباشرة.
             </p>
-            {/* TODO: replace with real WhatsApp number before public launch */}
-            <p>
-              <span className="font-medium" style={{ color: '#F5EFE6' }}>
-                واتساب:
-              </span>{' '}
-              +962 7X XXX XXXX
-            </p>
           </div>
         </section>
       </main>

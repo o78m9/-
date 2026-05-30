@@ -137,6 +137,9 @@ export function HeroSection() {
           <p className="mt-8 text-[12px]" style={{ color: '#8A9B95' }}>
             بدون رسوم مسبقة — تدفع نسبة فقط مما نسترجعه
           </p>
+          <p className="mt-3 text-[11px]" style={{ color: '#6B6359' }}>
+            لا رفع بيانات · مخزّن في السعودية · تجربة كاملة مجاناً
+          </p>
         </div>
 
         {/* RIGHT COLUMN — Patient Cards ───────────────────────────── */}

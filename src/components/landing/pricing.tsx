@@ -200,6 +200,7 @@ export function PricingSection() {
               <div className="mb-2 relative z-10" aria-label="٢٠٪ من الإيرادات المسترجعة">
                 <span
                   className="font-sans font-black leading-none select-none"
+                  aria-hidden="false"
                   style={{
                     fontSize: 'clamp(5rem, 10vw, 8rem)',
                     letterSpacing: '-0.045em',
@@ -400,6 +401,17 @@ export function PricingSection() {
           <p className="mt-6 text-center" style={{ color: '#8A9B95', fontSize: 12 }}>
             لا عقود طويلة · لا رسوم إعداد · إلغاء في أي وقت
           </p>
+          <div
+            className="mt-4 text-end"
+            dir="rtl"
+            style={{ color: '#6B6359', fontSize: 11, lineHeight: 1.8 }}
+          >
+            <p>
+              * &ldquo;إيراد مسترجع&rdquo; = مريض لم يحجز خلال ٩٠ يوماً أو أكثر، ثم حجز خلال ٣٠
+              يوماً من إرسال الرسالة.
+            </p>
+            <p>التعريف مُوثّق في العقد.</p>
+          </div>
         </motion.div>
       </div>
     </section>
