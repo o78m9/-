@@ -1,7 +1,27 @@
 import Anthropic from '@anthropic-ai/sdk'
+import { z } from 'zod'
 import type { ImportedCustomer } from '@/types'
 
 const client = new Anthropic()
+
+// Zod schema to validate every record Claude returns — prevents malicious AI output
+// from injecting unexpected fields into the database.
+const ImportedCustomerSchema = z.object({
+  name: z.string().min(1).max(200).trim(),
+  phone: z
+    .string()
+    .min(7)
+    .max(20)
+    .regex(/^[\d+\s\-().]+$/, 'Invalid phone'),
+  last_visit: z
+    .string()
+    .regex(/^\d{4}-\d{2}-\d{2}$/, 'Must be YYYY-MM-DD')
+    .nullable()
+    .optional(),
+  notes: z.string().max(1000).nullable().optional(),
+})
+
+const ImportedCustomersArraySchema = z.array(ImportedCustomerSchema).max(500)
 
 const SYSTEM_PROMPT = `You are a data cleaning assistant for a dental clinic management system.
 Extract patient records from messy, unstructured data (Excel exports, WhatsApp chats, handwritten notes, CSV, etc.).
@@ -26,7 +46,8 @@ export async function cleanImportData(rawText: string): Promise<ImportedCustomer
     messages: [
       {
         role: 'user',
-        content: `Extract all patient records from this data:\n\n${rawText}`,
+        // Clearly separate system instructions from user data to reduce prompt injection surface
+        content: `Extract all patient records from this data. Output only the JSON array, nothing else:\n\n<data>\n${rawText}\n</data>`,
       },
     ],
   })
@@ -34,7 +55,19 @@ export async function cleanImportData(rawText: string): Promise<ImportedCustomer
   const content = response.content[0]
   if (!content || content.type !== 'text') throw new Error('Unexpected response type from Claude')
 
-  const parsed = JSON.parse(content.text) as ImportedCustomer[]
-  if (!Array.isArray(parsed)) throw new Error('Claude returned non-array JSON')
-  return parsed
+  let rawParsed: unknown
+  try {
+    rawParsed = JSON.parse(content.text)
+  } catch {
+    throw new Error('Claude returned invalid JSON')
+  }
+
+  // Validate the shape of every returned record — reject unexpected fields,
+  // enforce field types and lengths to prevent prompt injection side effects.
+  const validated = ImportedCustomersArraySchema.safeParse(rawParsed)
+  if (!validated.success) {
+    throw new Error(`Claude output failed validation: ${validated.error.message}`)
+  }
+
+  return validated.data as ImportedCustomer[]
 }

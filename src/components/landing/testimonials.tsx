@@ -51,7 +51,7 @@ const item = {
 export function TestimonialsSection() {
   return (
     <section
-      className="relative overflow-hidden py-32 px-6"
+      className="relative overflow-hidden py-20 px-6"
       style={{ background: 'var(--cream)' }}
       aria-labelledby="testimonials-heading"
     >
@@ -63,9 +63,9 @@ export function TestimonialsSection() {
         aria-hidden="true"
         className="pointer-events-none select-none absolute top-8 end-8 leading-none font-fraunces"
         style={{
-          fontSize: 'clamp(8rem, 18vw, 14rem)',
+          fontSize: 'clamp(3.5rem, 7vw, 6rem)',
           color: '#D4A574',
-          opacity: 0.06,
+          opacity: 0.04,
           lineHeight: 1,
           zIndex: 0,
         }}
@@ -154,7 +154,7 @@ export function TestimonialsSection() {
                 >
                   {t.metric}
                 </p>
-                <p className="text-[12px] font-medium" style={{ color: '#9A9089' }}>
+                <p className="text-[12px] font-medium" style={{ color: '#6B6359' }}>
                   {t.metricLabel}
                 </p>
               </div>
@@ -176,7 +176,7 @@ export function TestimonialsSection() {
                   className="w-10 h-10 rounded-full flex items-center justify-center text-[12px] font-bold flex-shrink-0"
                   style={{
                     background: 'rgba(31,61,54,0.1)',
-                    color: '#1F3D36',
+                    color: '#4A4440',
                     border: '1px solid rgba(31,61,54,0.15)',
                   }}
                   aria-hidden="true"
@@ -187,7 +187,7 @@ export function TestimonialsSection() {
                   <p className="font-semibold text-ink" style={{ fontSize: 14 }}>
                     {t.author}
                   </p>
-                  <p style={{ fontSize: 12, color: '#9A9089' }}>
+                  <p style={{ fontSize: 12, color: '#6B6359' }}>
                     {t.role} — {t.location}
                   </p>
                 </div>
@@ -199,7 +199,7 @@ export function TestimonialsSection() {
         {/* Bottom note */}
         <motion.p
           className="mt-10 text-center"
-          style={{ fontSize: 13, color: '#9A9089' }}
+          style={{ fontSize: 13, color: '#6B6359' }}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

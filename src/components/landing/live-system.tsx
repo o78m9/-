@@ -116,7 +116,7 @@ export function LiveSystem() {
 
   return (
     <section
-      className="py-32 px-6 overflow-hidden"
+      className="py-20 px-6 overflow-hidden"
       style={{ background: 'var(--ink)' }}
       aria-labelledby="live-heading"
     >
@@ -139,8 +139,8 @@ export function LiveSystem() {
             </h2>
 
             <div
-              className="space-y-5 text-cream/70 text-[17px] leading-[1.8]"
-              style={{ maxWidth: '44ch' }}
+              className="space-y-5 text-[17px] leading-[1.8]"
+              style={{ maxWidth: '44ch', color: '#8A9B95' }}
             >
               <p>
                 عَودة يراقب قاعدة عملاءك باستمرار. في اللحظة التي يتجاوز فيها عميل فترة الخمول التي
@@ -191,7 +191,7 @@ export function LiveSystem() {
                     <div className="flex items-center gap-2.5">
                       <div
                         className="w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-[600]"
-                        style={{ background: 'rgba(255,255,255,0.08)', color: '#B8C9C0' }}
+                        style={{ background: 'rgba(255,255,255,0.08)', color: '#8A9B95' }}
                         aria-hidden="true"
                       >
                         {name[0]}

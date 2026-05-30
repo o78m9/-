@@ -3,7 +3,7 @@ import { rateLimit, LIMITS } from '@/lib/rate-limit'
 import { BookingSchema } from '@/lib/schemas'
 
 export async function POST(req: NextRequest) {
-  const limited = rateLimit(req, LIMITS.auth)
+  const limited = await rateLimit(req, LIMITS.auth)
   if (limited) return limited
 
   const parsed = BookingSchema.safeParse(await req.json())

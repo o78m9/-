@@ -67,7 +67,7 @@ export function HeroMockup() {
               <span className="text-[12px] text-mute">ر.س · هذا الشهر</span>
             </div>
             <div className="flex items-center gap-1.5 mb-3">
-              <span className="text-[11px] font-[500]" style={{ color: '#2D6B3A' }}>
+              <span className="text-[11px] font-[500]" style={{ color: '#4A6B5C' }}>
                 ↑ ٣٤٪
               </span>
               <span className="text-[11px] text-mute">مقارنة بالشهر السابق</span>

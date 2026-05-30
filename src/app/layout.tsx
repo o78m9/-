@@ -116,6 +116,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       lang="ar"
       dir="rtl"
       className={`${arabic.variable} ${tajawal.variable} ${inter.variable} ${fraunces.variable} ${GeistSans.variable} ${GeistMono.variable}`}
+      suppressHydrationWarning
     >
       <body className="bg-cream text-ink antialiased font-sans min-h-screen dark:bg-[#0d1a16] dark:text-cream">
         <AnalyticsProvider>
@@ -136,7 +137,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 <script
                   type="application/ld+json"
                   nonce={nonce}
-                  dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
+                  dangerouslySetInnerHTML={{
+                    // JSON.stringify is safe here for static, developer-controlled data.
+                    // We additionally escape </script> sequences to prevent script-tag
+                    // injection if any JSON value ever contains that substring.
+                    __html: JSON.stringify(JSON_LD).replace(/<\/script>/gi, '<\\/script>'),
+                  }}
                 />
                 <ScrollProgress />
                 <CustomCursor />

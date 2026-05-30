@@ -37,12 +37,12 @@ export function FAQSection() {
   return (
     <section
       id="faq"
-      className="relative overflow-hidden py-32 px-6"
+      className="relative overflow-hidden py-20 px-6"
       style={{ background: 'var(--paper)' }}
       aria-labelledby="faq-heading"
     >
-      <SectionGlow color="sage" position="top-left" size={600} opacity={0.04} />
-      <SectionGlow color="gold" position="bottom-right" size={500} opacity={0.035} />
+      <SectionGlow color="sage" position="top-left" size={600} opacity={0.02} />
+      <SectionGlow color="gold" position="bottom-right" size={500} opacity={0.02} />
 
       {/* Huge decorative quote mark */}
       <div
@@ -107,7 +107,7 @@ export function FAQSection() {
                     style={{
                       background: 'var(--paper)',
                       border: '1px solid var(--line)',
-                      color: '#4A6B5C',
+                      color: '#4A4440',
                       boxShadow: '0 2px 8px rgba(26,24,21,0.06)',
                     }}
                   >
@@ -120,7 +120,7 @@ export function FAQSection() {
             {/* Bottom note */}
             <p
               className="mt-16 text-center"
-              style={{ color: '#9A9089', fontSize: 13, maxWidth: '24ch' }}
+              style={{ color: '#6B6359', fontSize: 13, maxWidth: '24ch' }}
             >
               هل عندك سؤال ما وجدته هنا؟{' '}
               <a
@@ -178,7 +178,7 @@ export function FAQSection() {
                         background: open === i ? 'rgba(31,61,54,0.1)' : 'transparent',
                         border:
                           open === i ? '1px solid rgba(31,61,54,0.2)' : '1px solid var(--line)',
-                        color: open === i ? '#1F3D36' : '#9A9089',
+                        color: open === i ? '#1A1815' : '#6B6359',
                       }}
                       aria-hidden="true"
                     >

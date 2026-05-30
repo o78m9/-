@@ -2,6 +2,7 @@ import { type NextRequest, NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
 import { rateLimit, LIMITS } from '@/lib/rate-limit'
 import { GenerateMessageSchema } from '@/lib/schemas'
+import { createClient } from '@/features/auth/lib/server'
 
 const client = new Anthropic()
 
@@ -32,8 +33,21 @@ function templateContext(template: string): string {
 }
 
 export async function POST(request: NextRequest) {
-  const limited = rateLimit(request, LIMITS.ai)
+  const limited = await rateLimit(request, LIMITS.ai)
   if (limited) return limited
+
+  // Require authenticated session — AI generation consumes paid API quota
+  const supabase = await createClient()
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+
+  const supabaseConfigured =
+    !!process.env.NEXT_PUBLIC_SUPABASE_URL && !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+  if (supabaseConfigured && !user) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
 
   const parsed = GenerateMessageSchema.safeParse(await request.json())
   if (!parsed.success) {

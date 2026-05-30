@@ -131,7 +131,7 @@ function PatientsTab() {
               border: '1px solid rgba(255,255,255,0.07)',
             }}
           >
-            <p className="text-[0.625rem] mb-1" style={{ color: '#5EA090' }}>
+            <p className="text-[0.625rem] mb-1" style={{ color: '#8A9B95' }}>
               {k.label}
             </p>
             <p

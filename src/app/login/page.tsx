@@ -4,10 +4,29 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 
+/** Only allow redirects to same-origin relative paths to prevent open redirect attacks */
+function sanitizeNextParam(next: string | null): string {
+  if (!next) return '/dashboard'
+  // Must start with / and not with // (protocol-relative URLs like //evil.com)
+  if (next.startsWith('/') && !next.startsWith('//')) {
+    // Reject any path containing a protocol or host indicator
+    try {
+      // new URL with a dummy base — if it resolves to a different origin, reject it
+      const resolved = new URL(next, 'https://placeholder.invalid')
+      if (resolved.origin === 'https://placeholder.invalid') return next
+    } catch {
+      // URL parsing failed — path is likely safe relative path
+      return next
+    }
+  }
+  return '/dashboard'
+}
+
 function LoginForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const next = searchParams.get('next') || '/dashboard'
+  // Sanitize the `next` param to prevent open redirect (e.g. ?next=https://evil.com)
+  const next = sanitizeNextParam(searchParams.get('next'))
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -89,12 +108,13 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen bg-cream flex items-center justify-center px-4">
       <div className="w-full max-w-[380px]">
-
         {/* Logo */}
         <div className="text-center mb-10">
           <Link href="/" className="inline-flex items-center gap-2 mb-6">
             <span className="w-2 h-2 rounded-full bg-copper" />
-            <span className="font-sans font-[700] text-ink text-[22px] tracking-[-0.03em]">عَودة</span>
+            <span className="font-sans font-[700] text-ink text-[22px] tracking-[-0.03em]">
+              عَودة
+            </span>
           </Link>
           <h1 className="font-sans font-[700] text-ink text-[24px] tracking-[-0.02em]">
             مرحباً بعودتك
@@ -105,7 +125,10 @@ export default function LoginPage() {
         {/* Card */}
         <div
           className="bg-paper rounded-2xl p-8"
-          style={{ border: '1px solid var(--line)', boxShadow: '0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04)' }}
+          style={{
+            border: '1px solid var(--line)',
+            boxShadow: '0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04)',
+          }}
         >
           <Suspense>
             <LoginForm />
@@ -124,9 +147,12 @@ export default function LoginPage() {
             أو{' '}
             <button
               onClick={() => {
-                document.cookie = 'awdah-demo-mode=true; path=/; max-age=86400; SameSite=Lax'
+                // Use __Host- prefix cookie — enforces Secure + SameSite=Strict automatically.
+                // Must NOT include a Domain attribute (required by __Host- spec).
+                document.cookie =
+                  '__Host-awdah-demo=true; path=/; max-age=86400; SameSite=Strict; Secure'
                 localStorage.setItem('awdah-demo-mode', 'true')
-                window.location.href = '/dashboard'
+                window.location.href = '/dashboard/demo'
               }}
               className="text-copper hover:underline"
             >

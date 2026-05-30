@@ -175,11 +175,12 @@ export function DashboardClient({
     const next = !isDemoMode
     setIsDemoMode(next)
     localStorage.setItem('awdah-demo-mode', String(next))
-    // Mirror to cookie so middleware can read it server-side
+    // Mirror to __Host- cookie so middleware can read it server-side.
+    // __Host- prefix enforces: Secure, SameSite=Strict, no Domain, path=/.
     if (next) {
-      document.cookie = 'awdah-demo-mode=true; path=/; max-age=86400; SameSite=Lax'
+      document.cookie = '__Host-awdah-demo=true; path=/; max-age=86400; SameSite=Strict; Secure'
     } else {
-      document.cookie = 'awdah-demo-mode=; path=/; max-age=0'
+      document.cookie = '__Host-awdah-demo=; path=/; max-age=0; SameSite=Strict; Secure'
     }
   }
 

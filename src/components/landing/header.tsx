@@ -23,9 +23,18 @@ export function LandingHeader() {
   }, [])
 
   useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : ''
+    if (!open) return
+    const scrollY = window.scrollY
+    document.body.style.overflow = 'hidden'
+    document.body.style.position = 'fixed'
+    document.body.style.top = `-${scrollY}px`
+    document.body.style.width = '100%'
     return () => {
       document.body.style.overflow = ''
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.width = ''
+      window.scrollTo(0, scrollY)
     }
   }, [open])
 
@@ -46,7 +55,9 @@ export function LandingHeader() {
             className="w-[5px] h-[5px] rounded-full bg-copper transition-transform duration-200 group-hover:scale-125"
             aria-hidden="true"
           />
-          <span className="font-sans font-[700] text-[20px] text-ink tracking-[-0.03em]">
+          <span
+            className={`font-sans font-[700] text-[20px] tracking-[-0.03em] transition-colors duration-300 ${scrolled ? 'text-ink' : 'text-[#F5EFE6]'}`}
+          >
             عَودة
           </span>
         </Link>
@@ -57,7 +68,7 @@ export function LandingHeader() {
             <Link
               key={href}
               href={href}
-              className="text-[14px] font-[500] text-mute hover:text-ink transition-colors duration-150"
+              className={`text-[14px] font-[500] transition-colors duration-150 ${scrolled ? 'text-mute hover:text-ink' : 'text-[#F5EFE6]/70 hover:text-[#D4A574]'}`}
             >
               {label}
             </Link>
@@ -68,7 +79,7 @@ export function LandingHeader() {
         <div className="hidden md:flex items-center gap-4">
           <Link
             href="/dashboard/demo"
-            className="inline-flex items-center gap-1.5 text-[14px] font-[500] text-mute hover:text-ink transition-colors duration-150"
+            className={`inline-flex items-center gap-1.5 text-[14px] font-[500] transition-colors duration-150 ${scrolled ? 'text-mute hover:text-ink' : 'text-[#F5EFE6]/70 hover:text-[#D4A574]'}`}
             style={{
               textDecoration: 'underline',
               textDecorationColor: 'transparent',
@@ -85,7 +96,11 @@ export function LandingHeader() {
           </Link>
           <BookingButton
             source="header"
-            className="inline-flex items-center h-11 px-5 rounded-full border border-forest bg-forest text-cream text-[14px] font-[500] hover:-translate-y-[2px] hover:shadow-[0_4px_12px_rgba(31,61,54,0.3)] transition-all duration-150 active:translate-y-0"
+            className={`inline-flex items-center h-11 px-5 rounded-full text-[14px] font-[500] transition-all duration-150 active:translate-y-0 ${
+              scrolled
+                ? 'border border-forest bg-forest text-cream hover:-translate-y-[2px] hover:shadow-[0_4px_12px_rgba(31,61,54,0.3)]'
+                : 'border border-[#7FB5A8]/30 bg-[#7FB5A8]/5 hover:bg-[#7FB5A8]/12 text-[#7FB5A8] hover:text-[#F5EFE6] hover:-translate-y-[2px]'
+            }`}
           >
             أحجز عرضاً
           </BookingButton>

@@ -181,18 +181,24 @@ function ChartTooltip({ active, payload, label }: ChartTooltipProps) {
 
 export default function DashboardDemoPage() {
   const [mounted, setMounted] = useState(false)
+  const [demoToast, setDemoToast] = useState(false)
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
+  const showDemoToast = () => {
+    setDemoToast(true)
+    setTimeout(() => setDemoToast(false), 3000)
+  }
+
   if (!mounted) return null
 
   return (
-    <div className="flex h-screen overflow-hidden" dir="rtl" style={{ background: FOREST }}>
+    <div className="flex min-h-screen" dir="rtl" style={{ background: FOREST }}>
       {/* ── Sidebar ──────────────────────────────────────────────────────────── */}
       <aside
-        className="w-[220px] flex-shrink-0 h-full flex flex-col border-l border-white/5"
+        className="w-[220px] flex-shrink-0 sticky top-0 h-screen flex flex-col border-l border-white/5"
         style={{ background: FOREST }}
       >
         {/* Logo */}
@@ -212,6 +218,19 @@ export default function DashboardDemoPage() {
         <nav className="flex-1 px-3 py-2 space-y-0.5">
           {SIDEBAR_NAV.map((item) => {
             const active = item.href === '/dashboard/demo'
+            const isDemo = item.href === '#'
+            if (isDemo) {
+              return (
+                <button
+                  key={item.label}
+                  onClick={showDemoToast}
+                  className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-[14px] font-medium transition-colors text-white/40 hover:text-white/70 hover:bg-white/5"
+                >
+                  <item.icon size={16} className="text-white/30" />
+                  {item.label}
+                </button>
+              )
+            }
             return (
               <Link
                 key={item.label}
@@ -235,13 +254,13 @@ export default function DashboardDemoPage() {
 
         {/* Bottom */}
         <div className="px-3 py-4 border-t border-white/5 space-y-0.5">
-          <Link
-            href="#"
-            className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13px] text-white/30 hover:text-white/60 transition-colors"
+          <button
+            onClick={showDemoToast}
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13px] text-white/30 hover:text-white/60 transition-colors"
           >
             <HelpCircle size={15} className="text-white/20" />
             مساعدة وتواصل
-          </Link>
+          </button>
           <Link
             href="/"
             className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13px] font-medium transition-colors"
@@ -254,7 +273,7 @@ export default function DashboardDemoPage() {
       </aside>
 
       {/* ── Main content ─────────────────────────────────────────────────────── */}
-      <div className="flex-1 flex flex-col overflow-hidden" style={{ background: FOREST }}>
+      <div className="flex-1 flex flex-col" style={{ background: FOREST }}>
         {/* Demo banner */}
         <div
           className="flex-shrink-0 flex items-center justify-center gap-2 px-4 py-2.5 text-[13px] font-medium text-white"
@@ -267,8 +286,31 @@ export default function DashboardDemoPage() {
           </Link>
         </div>
 
+        {/* Demo toast */}
+        {demoToast && (
+          <div
+            className="fixed bottom-6 inset-x-0 mx-auto w-fit z-50 flex items-center gap-2.5 px-5 py-3 rounded-full text-[13px] font-medium shadow-xl pointer-events-none"
+            style={{
+              background: ELEVATED,
+              border: `1px solid ${SAGE}40`,
+              color: CREAM,
+            }}
+            dir="rtl"
+          >
+            <Eye size={14} style={{ color: GOLD }} />
+            هذه الصفحة متاحة في النسخة الكاملة فقط
+            <Link
+              href="/#pricing"
+              className="underline font-semibold pointer-events-auto"
+              style={{ color: GOLD }}
+            >
+              اشترك الآن
+            </Link>
+          </div>
+        )}
+
         {/* Scrollable area */}
-        <main className="flex-1 overflow-y-auto px-6 py-6 md:px-8 md:py-8">
+        <main className="flex-1 px-6 py-6 md:px-8 md:py-8">
           <div className="max-w-[1100px] mx-auto space-y-6">
             {/* Page header */}
             <motion.div
@@ -512,7 +554,7 @@ export default function DashboardDemoPage() {
                                 c.status === 'restored'
                                   ? {
                                       background: `${SAGE}20`,
-                                      color: '#3D8F80',
+                                      color: '#7FB5A8',
                                     }
                                   : {
                                       background: `${COPPER}20`,

@@ -68,7 +68,7 @@ export function FinalCTA() {
         {/* Eyebrow */}
         <p
           className="text-[12px] font-semibold tracking-[0.18em] uppercase mb-6"
-          style={{ color: 'rgba(245,239,230,0.45)' }}
+          style={{ color: '#D4A574' }}
         >
           الخطوة الأولى مجانية
         </p>
@@ -100,12 +100,12 @@ export function FinalCTA() {
             maxWidth: '18ch',
           }}
         >
-          أبدأ اليوم — <span style={{ color: '#D4A574' }}>ما أدفع</span> حتى ترجع نتائجي
+          ابدأ اليوم — <span style={{ color: '#D4A574' }}>ما تدفع ريال</span> حتى يرجع المرضى
         </h2>
 
         <p
-          className="text-cream/60 mb-14 mx-auto"
-          style={{ fontSize: 18, maxWidth: '44ch', lineHeight: 1.7 }}
+          className="mb-14 mx-auto"
+          style={{ fontSize: 18, maxWidth: '44ch', lineHeight: 1.7, color: '#8A9B95' }}
         >
           إعداد كامل في ٣٠ دقيقة. أول ٣٠ يوماً مجاناً. ما رجع أحد — ما دفعت شيئاً.
         </p>
@@ -136,7 +136,7 @@ export function FinalCTA() {
             }}
             style={
               {
-                color: 'rgba(245,239,230,0.65)',
+                color: '#F5EFE6',
                 border: '1px solid rgba(245,239,230,0.12)',
               } as React.CSSProperties
             }
@@ -146,7 +146,7 @@ export function FinalCTA() {
         </div>
 
         {/* Trust line */}
-        <p className="mt-10" style={{ color: 'rgba(245,239,230,0.28)', fontSize: 13 }}>
+        <p className="mt-10" style={{ color: '#8A9B95', fontSize: 13 }}>
           ٣٤+ عيادة تثق بعَودة · لا عقود · إلغاء في أي وقت
         </p>
       </div>

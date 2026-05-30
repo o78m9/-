@@ -114,11 +114,11 @@ function CsvFragment() {
       >
         <span
           className="flex items-center justify-center w-5 h-5 rounded-full text-[10px] font-[700] flex-shrink-0"
-          style={{ background: 'rgba(127,181,168,0.18)', color: '#3D9082' }}
+          style={{ background: 'rgba(212,165,116,0.18)', color: '#B8743D' }}
         >
           ✓
         </span>
-        <span className="text-[10px] font-[500]" style={{ color: '#3D9082' }}>
+        <span className="text-[10px] font-[500]" style={{ color: '#B8743D' }}>
           ٢٤٧ سجل تم التحقق منه
         </span>
       </motion.div>
@@ -149,9 +149,9 @@ function TypingDots() {
 /* ─── Status chip ────────────────────────────────────────────────── */
 function Chip({ label, variant }: { label: string; variant: 'vip' | 'idle' | 'active' }) {
   const styles = {
-    vip: { bg: 'rgba(212,165,116,0.18)', color: '#8A6040' },
+    vip: { bg: 'rgba(212,165,116,0.18)', color: '#B8743D' },
     idle: { bg: 'rgba(184,116,61,0.18)', color: '#B8743D' },
-    active: { bg: 'rgba(127,181,168,0.18)', color: '#3D9082' },
+    active: { bg: 'rgba(127,181,168,0.18)', color: '#326B5C' },
   }[variant]
   return (
     <span
@@ -571,7 +571,7 @@ export function HowItWorksSection() {
     <section
       id="how"
       dir="rtl"
-      className="relative overflow-hidden py-32 px-6"
+      className="relative overflow-hidden py-20 px-6"
       style={{ background: 'var(--paper)' }}
       aria-labelledby="how-heading"
     >

@@ -21,11 +21,13 @@ export async function middleware(request: NextRequest) {
     return response
   }
 
-  // Demo bypass — __Host- prefix, SameSite=Strict
+  // Demo bypass — only the __Host- prefixed cookie is accepted.
+  // __Host- cookies are automatically Secure + SameSite=Strict by the browser
+  // spec and cannot be set by JavaScript on a subdomain.
+  // The legacy "awdah-demo-mode" cookie (no __Host-, SameSite=Lax) has been
+  // removed to prevent auth bypass via cross-site cookie injection.
   const demoCookie = request.cookies.get('__Host-awdah-demo')
-  // Support legacy cookie name during transition
-  const legacyCookie = request.cookies.get('awdah-demo-mode')
-  if (demoCookie?.value === 'true' || legacyCookie?.value === 'true') {
+  if (demoCookie?.value === 'true') {
     return response
   }
 

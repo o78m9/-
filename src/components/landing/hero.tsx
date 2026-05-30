@@ -2,8 +2,7 @@
 
 import dynamic from 'next/dynamic'
 import { BookingButton } from '@/components/BookingButton'
-import { SceneSkeleton } from '@/components/hero/HeroScene'
-import { ErrorBoundary } from '@/components/ui/error-boundary'
+import { HeroPatientCards } from '@/components/hero/HeroPatientCards'
 
 const HeroMockup = dynamic(() => import('./hero-mockup').then((m) => ({ default: m.HeroMockup })), {
   ssr: false,
@@ -13,11 +12,6 @@ const HeroMockup = dynamic(() => import('./hero-mockup').then((m) => ({ default:
       style={{ height: 340, background: 'rgba(212,165,116,0.06)' }}
     />
   ),
-})
-
-const HeroScene = dynamic(() => import('@/components/hero/HeroScene'), {
-  ssr: false,
-  loading: () => <SceneSkeleton />,
 })
 
 // Grain texture as inline SVG data URI — 1% opacity, no extra request
@@ -63,9 +57,9 @@ export function HeroSection() {
             <span
               className="inline-block rounded-full px-3 py-1 text-[11px] font-semibold tracking-[0.16em] uppercase"
               style={{
-                background: 'rgba(127,181,168,0.12)',
-                color: '#7FB5A8',
-                border: '1px solid rgba(127,181,168,0.2)',
+                background: 'rgba(212,165,116,0.12)',
+                color: '#D4A574',
+                border: '1px solid rgba(212,165,116,0.2)',
               }}
             >
               لعيادات الأسنان والعيادات التجميلية
@@ -140,21 +134,18 @@ export function HeroSection() {
           </div>
 
           {/* Social proof */}
-          <p className="mt-8 text-[12px]" style={{ color: '#5A6B65' }}>
+          <p className="mt-8 text-[12px]" style={{ color: '#8A9B95' }}>
             بدون رسوم مسبقة — تدفع نسبة فقط مما نسترجعه
           </p>
         </div>
 
-        {/* RIGHT COLUMN — 3D Hero Scene ───────────────────────────── */}
-        <div className="hidden lg:block relative" aria-hidden="true" style={{ height: '100vh' }}>
-          <div
-            className="absolute inset-0 right-0 w-[55%] h-full pointer-events-none z-0"
-            style={{ maskImage: 'linear-gradient(to left, black 60%, transparent 100%)' }}
-          >
-            <ErrorBoundary fallback={<SceneSkeleton />}>
-              <HeroScene />
-            </ErrorBoundary>
-          </div>
+        {/* RIGHT COLUMN — Patient Cards ───────────────────────────── */}
+        <div
+          className="hidden lg:flex relative items-center justify-center"
+          aria-hidden="true"
+          style={{ minHeight: '100vh' }}
+        >
+          <HeroPatientCards />
         </div>
       </div>
 
@@ -168,7 +159,7 @@ export function HeroSection() {
           />
           <span
             className="text-[11px] tracking-[0.14em] uppercase font-medium"
-            style={{ color: '#5A6B65' }}
+            style={{ color: '#8A9B95' }}
           >
             لوحة التحكم
           </span>

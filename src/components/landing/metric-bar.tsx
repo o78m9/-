@@ -39,7 +39,7 @@ function fade(i: number) {
 
 export function MetricBar() {
   return (
-    <section className="py-16 bg-forest-950" aria-label="إحصائيات">
+    <section className="py-16" style={{ background: '#030D0B' }} aria-label="إحصائيات">
       <div className="max-w-content mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 md:divide-x md:divide-x-reverse divide-sage-900">
           {METRICS.map((metric, i) => (

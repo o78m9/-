@@ -2,18 +2,47 @@ import { type NextRequest, NextResponse } from 'next/server'
 import { neon } from '@neondatabase/serverless'
 import { rateLimit, LIMITS } from '@/lib/rate-limit'
 import { CustomerCreateSchema } from '@/lib/schemas'
+import { createClient } from '@/features/auth/lib/server'
 
 const sql = neon(process.env.DATABASE_URL ?? '')
 
 export async function POST(req: NextRequest) {
-  const limited = rateLimit(req, LIMITS.api)
+  const limited = await rateLimit(req, LIMITS.api)
   if (limited) return limited
+
+  // Require authenticated session — prevent anonymous writes to any clinic
+  const supabase = await createClient()
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+
+  // Allow the public /capture form (QR code scan) only when Supabase is not configured
+  // In production, Supabase MUST be configured so this branch is unreachable
+  const supabaseConfigured =
+    !!process.env.NEXT_PUBLIC_SUPABASE_URL && !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+  if (supabaseConfigured && !user) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
 
   const parsed = CustomerCreateSchema.safeParse(await req.json())
   if (!parsed.success) {
     return NextResponse.json({ error: parsed.error.flatten() }, { status: 422 })
   }
   const { name, phone, visit_type, notes, clinic_id } = parsed.data
+
+  // IDOR guard: when authenticated, verify the clinic belongs to this user
+  // (Supabase user metadata or a clinics table lookup should be the authoritative check)
+  // For now we enforce that the clinic_id matches the env-configured demo clinic or the
+  // user's own clinic stored in their profile metadata.
+  if (supabaseConfigured && user) {
+    const userClinicId =
+      (user.user_metadata?.clinic_id as string | undefined) ||
+      process.env.NEXT_PUBLIC_DEMO_CLINIC_ID
+    if (userClinicId && userClinicId !== clinic_id) {
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+    }
+  }
 
   const today = new Date().toISOString().split('T')[0]
 

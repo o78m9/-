@@ -70,7 +70,7 @@ function FeatureItem({ text }: { text: string }) {
       >
         <Check size={10} strokeWidth={2.5} color="#7FB5A8" />
       </span>
-      <span style={{ color: '#B0C4BC', fontSize: 14, lineHeight: 1.55 }}>{text}</span>
+      <span style={{ color: '#8A9B95', fontSize: 14, lineHeight: 1.55 }}>{text}</span>
     </li>
   )
 }
@@ -79,7 +79,7 @@ export function PricingSection() {
   return (
     <section
       id="pricing"
-      className="relative overflow-hidden py-32 px-6"
+      className="relative overflow-hidden py-20 px-6"
       style={{ background: 'linear-gradient(170deg, #071810 0%, #0A1F1C 55%, #0E2420 100%)' }}
       aria-labelledby="pricing-heading"
     >
@@ -120,7 +120,7 @@ export function PricingSection() {
         {/* Subtitle */}
         <motion.p
           className="text-center mb-12 mx-auto"
-          style={{ color: '#7A9B95', fontSize: 18, maxWidth: '52ch', lineHeight: 1.7 }}
+          style={{ color: '#8A9B95', fontSize: 18, maxWidth: '52ch', lineHeight: 1.7 }}
           {...fade(0.16)}
         >
           لا نجاح — لا فاتورة. مصلحتنا واحدة.
@@ -192,7 +192,7 @@ export function PricingSection() {
               >
                 نسبة من المسترجع
               </h3>
-              <p className="mb-8 relative z-10" style={{ color: '#7A9B95', fontSize: 13 }}>
+              <p className="mb-8 relative z-10" style={{ color: '#8A9B95', fontSize: 13 }}>
                 الأنسب لمعظم العيادات
               </p>
 
@@ -208,12 +208,14 @@ export function PricingSection() {
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text',
                     display: 'inline-block',
+                    WebkitFontSmoothing: 'antialiased',
+                    willChange: 'auto',
                   }}
                 >
                   ٢٠٪
                 </span>
               </div>
-              <p className="mb-4 relative z-10" style={{ color: '#7A9B95', fontSize: 13 }}>
+              <p className="mb-4 relative z-10" style={{ color: '#8A9B95', fontSize: 13 }}>
                 من الإيرادات المسترجعة فقط
               </p>
               <p
@@ -294,7 +296,7 @@ export function PricingSection() {
               >
                 اشتراك شهري ثابت
               </h3>
-              <p className="mb-8" style={{ color: '#7A9B95', fontSize: 13 }}>
+              <p className="mb-8" style={{ color: '#8A9B95', fontSize: 13 }}>
                 للعيادات ذات الحجم العالي
               </p>
 
@@ -310,12 +312,14 @@ export function PricingSection() {
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text',
                     display: 'inline-block',
+                    WebkitFontSmoothing: 'antialiased',
+                    willChange: 'auto',
                   }}
                 >
                   ٤٩٩
                 </span>
               </div>
-              <p className="mb-4" style={{ color: '#7A9B95', fontSize: 13 }}>
+              <p className="mb-4" style={{ color: '#8A9B95', fontSize: 13 }}>
                 ر.س / شهر
               </p>
               <p className="mb-10 leading-relaxed" style={{ color: '#8A9B95', fontSize: 14 }}>
@@ -372,7 +376,7 @@ export function PricingSection() {
                   </div>
                 ))}
               </div>
-              <p style={{ color: '#7A9B95', fontSize: 14 }}>
+              <p style={{ color: '#8A9B95', fontSize: 14 }}>
                 <span style={{ color: '#D4A574', fontWeight: 600 }}>٣٤+ عيادة</span> تثق بعَودة في
                 السعودية والأردن والإمارات
               </p>
@@ -393,7 +397,7 @@ export function PricingSection() {
             </div>
           </div>
 
-          <p className="mt-6 text-center" style={{ color: '#3A5A54', fontSize: 12 }}>
+          <p className="mt-6 text-center" style={{ color: '#8A9B95', fontSize: 12 }}>
             لا عقود طويلة · لا رسوم إعداد · إلغاء في أي وقت
           </p>
         </motion.div>

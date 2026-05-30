@@ -103,7 +103,7 @@ function StatRow({
         </span>
         <span
           className="font-sans font-medium"
-          style={{ fontSize: 'clamp(1rem, 2.5vw, 1.75rem)', color: 'rgba(184,116,61,0.65)' }}
+          style={{ fontSize: 'clamp(1rem, 2.5vw, 1.75rem)', color: '#B8743D' }}
         >
           {unit}
         </span>
@@ -123,7 +123,7 @@ function StatRow({
 export function ResultsSection() {
   return (
     <section
-      className="relative overflow-hidden py-32 px-6"
+      className="relative overflow-hidden py-20 px-6"
       style={{ background: 'var(--cream)' }}
       aria-labelledby="results-heading"
     >
@@ -150,7 +150,7 @@ export function ResultsSection() {
 
         <h2
           id="results-heading"
-          className="font-sans font-bold text-ink mb-20"
+          className="font-sans font-bold text-ink mb-8"
           style={{
             fontSize: 'clamp(2rem, 4vw, 3rem)',
             lineHeight: 1.1,

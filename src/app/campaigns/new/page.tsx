@@ -35,10 +35,7 @@ export default async function NewCampaignPage() {
         <nav className="flex items-center gap-1.5 mb-8" aria-label="breadcrumb">
           <Link
             href="/campaigns"
-            className="text-sm transition-colors"
-            style={{ color: '#8A9B95' }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = '#F5EFE6')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = '#8A9B95')}
+            className="text-sm transition-colors text-[#8A9B95] hover:text-[#F5EFE6]"
           >
             الحملات
           </Link>

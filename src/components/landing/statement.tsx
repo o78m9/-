@@ -66,7 +66,7 @@ function PatientGrid() {
 export function StatementSection() {
   return (
     <section
-      className="relative overflow-hidden py-32 px-6"
+      className="relative overflow-hidden py-20 px-6"
       style={{ background: 'var(--paper)' }}
       aria-labelledby="statement-heading"
     >
@@ -154,7 +154,7 @@ export function StatementSection() {
 
             <motion.p
               className="mt-5"
-              style={{ fontSize: 13, color: '#9A9089', letterSpacing: '0.01em' }}
+              style={{ fontSize: 13, color: '#6B6359', letterSpacing: '0.01em' }}
               {...FADE(0.28)}
             >
               المصدر: دراسة على ٢٠٠+ عيادة في منطقة الخليج
@@ -167,7 +167,7 @@ export function StatementSection() {
             <div className="relative" dir="rtl">
               <p
                 className="mb-4 text-[12px] font-semibold tracking-[0.1em] uppercase"
-                style={{ color: '#9A9089' }}
+                style={{ color: '#6B6359' }}
               >
                 توزيع عملاء عيادة نموذجية
               </p>
@@ -201,7 +201,7 @@ export function StatementSection() {
                 <p style={{ color: '#6B6359', fontSize: 13, lineHeight: 1.4 }}>
                   ريال سعودي
                   <br />
-                  <span style={{ color: '#9A9089', fontSize: 12 }}>خسارة سنوية لعيادة متوسطة</span>
+                  <span style={{ color: '#6B6359', fontSize: 12 }}>خسارة سنوية لعيادة متوسطة</span>
                 </p>
               </div>
             </motion.div>
