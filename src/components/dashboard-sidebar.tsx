@@ -1,7 +1,17 @@
 'use client'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import { LayoutDashboard, Users, Send, Upload, QrCode, HelpCircle, FlaskConical, LogOut } from 'lucide-react'
+import {
+  LayoutDashboard,
+  Users,
+  Send,
+  Upload,
+  QrCode,
+  HelpCircle,
+  FlaskConical,
+  LogOut,
+  FileBarChart2,
+} from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { createClient } from '@/lib/supabase/client'
 
@@ -11,6 +21,7 @@ const NAV = [
   { label: 'الحملات', href: '/campaigns', icon: Send },
   { label: 'استيراد', href: '/import', icon: Upload },
   { label: 'رمز QR', href: '/qr', icon: QrCode },
+  { label: 'تقرير الإيرادات', href: '/dashboard/roi-report', icon: FileBarChart2 },
 ]
 
 interface DashboardSidebarProps {
@@ -19,7 +30,11 @@ interface DashboardSidebarProps {
   isAuthenticated?: boolean
 }
 
-export function DashboardSidebar({ isDemoMode, onToggleDemo, isAuthenticated = false }: DashboardSidebarProps) {
+export function DashboardSidebar({
+  isDemoMode,
+  onToggleDemo,
+  isAuthenticated = false,
+}: DashboardSidebarProps) {
   const pathname = usePathname()
   const router = useRouter()
 
@@ -46,13 +61,10 @@ export function DashboardSidebar({ isDemoMode, onToggleDemo, isAuthenticated = f
                 'flex items-center gap-3 px-3 py-2.5 rounded-lg text-[14px] font-medium transition-colors',
                 active
                   ? 'bg-stone-800 text-white'
-                  : 'text-stone-400 hover:text-stone-200 hover:bg-stone-900'
+                  : 'text-stone-400 hover:text-stone-200 hover:bg-stone-900',
               )}
             >
-              <item.icon
-                size={16}
-                className={active ? 'text-teal-400' : 'text-stone-500'}
-              />
+              <item.icon size={16} className={active ? 'text-teal-400' : 'text-stone-500'} />
               {item.label}
             </Link>
           )
@@ -67,7 +79,7 @@ export function DashboardSidebar({ isDemoMode, onToggleDemo, isAuthenticated = f
             'w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13px] font-medium transition-colors text-right',
             isDemoMode
               ? 'text-amber-400 bg-amber-950/40 hover:bg-amber-950/60'
-              : 'text-stone-500 hover:text-stone-300 hover:bg-stone-900'
+              : 'text-stone-500 hover:text-stone-300 hover:bg-stone-900',
           )}
         >
           <FlaskConical size={15} className={isDemoMode ? 'text-amber-400' : 'text-stone-600'} />
