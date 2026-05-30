@@ -6,15 +6,19 @@
  * fake exception so we can confirm sentry.server.config.ts is wired.
  */
 import * as Sentry from '@sentry/nextjs'
-import { NextResponse } from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
+import { rateLimit, LIMITS } from '@/lib/rate-limit'
 
 export const dynamic = 'force-dynamic'
 export const runtime = 'nodejs'
 
-export async function POST() {
+export async function POST(req: NextRequest) {
   if (process.env.NODE_ENV === 'production') {
     return new NextResponse(null, { status: 404 })
   }
+
+  const limited = await rateLimit(req, LIMITS.api)
+  if (limited) return limited
 
   Sentry.captureMessage('sentry-debug:server-message', 'info')
 

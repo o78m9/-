@@ -1,5 +1,6 @@
 import { ImageResponse } from 'next/og'
 import type { NextRequest } from 'next/server'
+import { rateLimit, LIMITS } from '@/lib/rate-limit'
 
 export const runtime = 'edge'
 
@@ -8,6 +9,9 @@ const TITLE_MAX = 120
 const SUBTITLE_MAX = 160
 
 export async function GET(req: NextRequest) {
+  const limited = await rateLimit(req, LIMITS.api)
+  if (limited) return limited
+
   const { searchParams } = new URL(req.url)
   const rawTitle = searchParams.get('title') ?? ''
   const rawSubtitle = searchParams.get('sub') ?? ''

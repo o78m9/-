@@ -137,7 +137,7 @@ project-manager → architect → ui-designer → 3d-designer → code-developer
 - [ ] 9.7 Audit log table in DB
 - [ ] 9.8 2FA option via Supabase MFA
 - [ ] 9.9 npm audit: zero HIGH/CRITICAL
-- [ ] 9.10 Rate limiting on all public API routes
+- [x] 9.10 Rate limiting on all public API routes (auth/debug/og added 2026-05-30 — all 9 routes covered)
 
 ---
 
