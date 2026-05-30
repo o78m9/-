@@ -1,20 +1,26 @@
 'use client'
 
 import { usePathname, useSearchParams } from 'next/navigation'
-import posthog from 'posthog-js'
 import { PostHogProvider } from 'posthog-js/react'
-import { useEffect, type ReactNode } from 'react'
+import { Suspense, useEffect, type ReactNode } from 'react'
+import { POSTHOG_KEY, capturePageview, getClient, initPostHog, shouldOptOut } from '@/lib/posthog'
 
-const KEY = process.env.NEXT_PUBLIC_POSTHOG_KEY
-const HOST = process.env.NEXT_PUBLIC_POSTHOG_HOST ?? 'https://app.posthog.com'
-
+/**
+ * Tracks SPA navigations as $pageview events.
+ *
+ * Wrapped in <Suspense> by the parent because `useSearchParams` opts the
+ * subtree into client-side bailout — we don't want that to bubble up to
+ * the whole layout.
+ */
 function PageviewTracker() {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
   useEffect(() => {
-    if (!KEY) return
-    posthog.capture('$pageview')
+    if (!pathname) return
+    const qs = searchParams?.toString()
+    const url = qs ? `${pathname}?${qs}` : pathname
+    capturePageview(typeof window !== 'undefined' ? window.location.origin + url : url)
   }, [pathname, searchParams])
 
   return null
@@ -22,23 +28,35 @@ function PageviewTracker() {
 
 export function AnalyticsProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
-    if (!KEY) return
-    posthog.init(KEY, {
-      api_host: HOST,
-      capture_pageview: false,
-      capture_pageleave: true,
-      respect_dnt: true,
-      loaded: (ph) => {
-        if (process.env.NODE_ENV === 'development') ph.debug()
-      },
-    })
+    // Init is a no-op when the user opted out or the key is missing.
+    initPostHog()
   }, [])
 
-  if (!KEY) return <>{children}</>
+  // If we have no key OR the user opted out, render children without the
+  // provider so we don't ship the React context for nothing.
+  if (!POSTHOG_KEY || (typeof window !== 'undefined' && shouldOptOut())) {
+    return <>{children}</>
+  }
+
+  const client = getClient()
+  if (!client) {
+    // First render before init effect — still render children, tracker will
+    // come online on the next render via Suspense.
+    return (
+      <>
+        <Suspense fallback={null}>
+          <PageviewTracker />
+        </Suspense>
+        {children}
+      </>
+    )
+  }
 
   return (
-    <PostHogProvider client={posthog}>
-      <PageviewTracker />
+    <PostHogProvider client={client}>
+      <Suspense fallback={null}>
+        <PageviewTracker />
+      </Suspense>
       {children}
     </PostHogProvider>
   )

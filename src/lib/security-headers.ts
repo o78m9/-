@@ -11,7 +11,22 @@ function buildCSP(nonce: string): string {
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' blob: data: https:",
     "font-src 'self' data:",
-    "connect-src 'self' https://*.supabase.co https://api.anthropic.com wss://*.supabase.co",
+    [
+      "connect-src 'self'",
+      'https://*.supabase.co',
+      'wss://*.supabase.co',
+      'https://api.anthropic.com',
+      // PostHog analytics — capture, decide, and EU/US ingest hosts.
+      'https://app.posthog.com',
+      'https://us.i.posthog.com',
+      'https://eu.i.posthog.com',
+      'https://*.posthog.com',
+      // Sentry error monitoring — main API + per-project ingest subdomains.
+      'https://*.sentry.io',
+      'https://*.ingest.sentry.io',
+      'https://*.ingest.us.sentry.io',
+      'https://*.ingest.de.sentry.io',
+    ].join(' '),
     "frame-ancestors 'none'",
     "base-uri 'self'",
     "form-action 'self'",

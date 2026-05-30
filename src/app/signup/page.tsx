@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
+import { track } from '@/lib/posthog'
 
 export default function SignupPage() {
   const [email, setEmail] = useState('')
@@ -15,6 +16,7 @@ export default function SignupPage() {
     e.preventDefault()
     setError('')
     setLoading(true)
+    track('signup_started', { has_clinic_name: clinicName.length > 0 })
 
     const supabase = createClient()
     const { error: authError } = await supabase.auth.signUp({
@@ -35,6 +37,7 @@ export default function SignupPage() {
       return
     }
 
+    track('signup_completed')
     setSuccess(true)
     setLoading(false)
   }

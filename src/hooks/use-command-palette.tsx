@@ -1,6 +1,7 @@
 'use client'
 
-import { useEffect, useState, createContext, useContext } from 'react'
+import { useEffect, useState, createContext, useContext, useCallback } from 'react'
+import { track } from '@/lib/posthog'
 
 interface CommandPaletteContextType {
   open: boolean
@@ -10,13 +11,24 @@ interface CommandPaletteContextType {
 const CommandPaletteContext = createContext<CommandPaletteContextType | null>(null)
 
 export function CommandPaletteProvider({ children }: { children: React.ReactNode }) {
-  const [open, setOpen] = useState(false)
+  const [open, setOpenState] = useState(false)
+
+  const setOpen = useCallback((next: boolean) => {
+    setOpenState((prev) => {
+      // Only track on the false → true transition so toggling closed doesn't spam events.
+      if (next && !prev) track('command_palette_open', { trigger: 'api' })
+      return next
+    })
+  }, [])
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault()
-        setOpen((v) => !v)
+        setOpenState((prev) => {
+          if (!prev) track('command_palette_open', { trigger: 'keyboard' })
+          return !prev
+        })
       }
     }
     window.addEventListener('keydown', onKey)
