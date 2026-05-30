@@ -79,33 +79,48 @@ export function HeroSection() {
             ساعدهم
           </h1>
 
-          {/* Subhead */}
+          {/* Subhead — softened claim, no fabricated ratio.
+              TODO(brand): if pilot data supports a specific ratio, cite it with source. */}
           <p
             className="leading-[1.75] mb-10"
             style={{ fontSize: 'clamp(1rem, 1.5vw, 1.125rem)', color: '#8A9B95', maxWidth: '44ch' }}
           >
-            مريض من كل اثنين لا يعود — ليس غضباً، بل نسياناً.
+            كثير من مرضاك ما يرجعون — ليس غضباً، بل نسياناً.
             <br />
-            عَودة يذكّره. تلقائياً.
+            عَودة يذكّرهم. تلقائياً.
           </p>
 
-          {/* Stats row */}
-          <div className="flex gap-8 mb-10" role="list" aria-label="أرقام عَودة">
+          {/* Value props — no fabricated cohort numbers.
+              TODO(brand): once we have a signed pilot cohort with published results,
+              replace with attributed numbers + a source link. */}
+          <div
+            className="flex flex-col sm:flex-row gap-6 sm:gap-10 mb-10"
+            role="list"
+            aria-label="مزايا عَودة"
+          >
             {[
-              { value: '٤٠٪', label: 'مرضى خاملون قابلون للاسترداد' },
-              { value: '٣×', label: 'عائد على الاستثمار في أول شهر' },
-              { value: '٥ دقائق', label: 'لإطلاق أول حملة' },
+              {
+                title: 'بدون رسوم مسبقة',
+                desc: 'تدفع نسبة من الإيراد المسترجع فقط',
+              },
+              {
+                title: 'بياناتك تبقى لك',
+                desc: 'تشفير كامل · تستلم نسخة عند الإلغاء',
+              },
+              {
+                title: 'أقل من ٣٠ دقيقة',
+                desc: 'لإطلاق أول حملة من رفع الملف',
+              },
             ].map((s) => (
-              <div key={s.label} role="listitem">
+              <div key={s.title} role="listitem" className="max-w-[18ch]">
                 <div
-                  className="font-bold leading-none mb-1"
-                  style={{ fontSize: '1.6rem', color: '#D4A574' }}
-                  aria-label={`${s.value} — ${s.label}`}
+                  className="font-semibold leading-tight mb-1"
+                  style={{ fontSize: '0.95rem', color: '#D4A574' }}
                 >
-                  {s.value}
+                  {s.title}
                 </div>
-                <div style={{ fontSize: '0.72rem', color: '#8A9B95', lineHeight: 1.4 }}>
-                  {s.label}
+                <div style={{ fontSize: '0.78rem', color: '#8A9B95', lineHeight: 1.5 }}>
+                  {s.desc}
                 </div>
               </div>
             ))}
@@ -174,10 +189,9 @@ export function HeroSection() {
 
         {/* Mockup with dark glass frame */}
         <div
-          className="rounded-2xl overflow-hidden"
+          className="rounded-2xl overflow-hidden shadow-e3"
           style={{
             border: '1px solid rgba(212,165,116,0.12)',
-            boxShadow: '0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,165,116,0.06)',
             background: 'rgba(20,43,39,0.6)',
           }}
         >

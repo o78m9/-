@@ -25,10 +25,7 @@ const CUSTOMERS = [
 
 export function HeroMockup() {
   return (
-    <div
-      className="w-full rounded-[20px] bg-paper border border-line overflow-hidden"
-      style={{ boxShadow: '0 30px 60px -20px rgba(26,24,21,0.18), 0 0 0 1px rgba(26,24,21,0.04)' }}
-    >
+    <div className="w-full rounded-[20px] bg-paper border border-line overflow-hidden shadow-e3">
       {/* Top bar */}
       <div className="border-b border-line px-5 py-3 flex items-center justify-between bg-cream/60">
         <div className="flex items-center gap-2">

@@ -1,26 +1,22 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { CountUp } from '@/components/ui/count-up'
 
-const METRICS = [
+// Pre-launch transparency block — replaces fabricated metric counters.
+// TODO(brand): once we have a signed pilot cohort with published, attributable
+// numbers, restore a real metric bar with source links + effective date.
+const TRUST_POINTS = [
   {
-    value: 2300,
-    suffix: '+',
-    label: 'عيادة تثق بنا',
-    sublabel: 'في ٨ مدن سعودية',
+    title: 'مرحلة الإطلاق التجريبي',
+    body: 'لم ننشر أرقام عيادات بعد. كل ما نقوله موثّق أو محذوف.',
   },
   {
-    value: 87,
-    suffix: '٪',
-    label: 'معدل إعادة التفاعل',
-    sublabel: 'مرضى نائمون يعودون',
+    title: 'بياناتك في السعودية',
+    body: 'تشفير كامل (TLS 1.3 + AES-256) — تستلم نسختك عند أي طلب.',
   },
   {
-    value: 12,
-    suffix: ' يوم',
-    label: 'متوسط وقت العودة',
-    sublabel: 'من أول رسالة',
+    title: 'أول مكالمة مع المؤسس',
+    body: 'لا فريق مبيعات في هذه المرحلة — تواصل مباشر معك.',
   },
 ]
 
@@ -41,31 +37,28 @@ export function MetricBar() {
   return (
     <section
       className="py-16 bg-cream/40 dark:bg-forest-950/10 border-y border-line dark:border-sage-800/10"
-      aria-label="إحصائيات"
+      aria-label="وعد الشفافية"
+      dir="rtl"
     >
       <div className="max-w-content mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 md:divide-x md:divide-x-reverse divide-line dark:divide-sage-800/20">
-          {METRICS.map((metric, i) => (
+          {TRUST_POINTS.map((point, i) => (
             <motion.div
-              key={metric.label}
+              key={point.title}
               {...fade(i)}
               className="flex flex-col items-center text-center px-8 py-2"
             >
-              <div
-                className="text-5xl md:text-6xl font-black mb-2"
+              <p
+                className="font-semibold mb-2"
                 style={{
-                  background: 'linear-gradient(135deg, #D4A574 0%, #C08840 50%, #7FB5A8 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  fontFamily: 'var(--font-tajawal)',
-                  letterSpacing: '-0.03em',
+                  fontSize: '1.125rem',
+                  color: '#B8743D',
+                  letterSpacing: '-0.01em',
                 }}
               >
-                <CountUp end={metric.value} suffix={metric.suffix} arabicNumerals />
-              </div>
-              <p className="text-ink font-semibold text-[1rem] mb-1">{metric.label}</p>
-              <p className="text-mute text-sm">{metric.sublabel}</p>
+                {point.title}
+              </p>
+              <p className="text-mute text-sm leading-[1.65] max-w-[28ch]">{point.body}</p>
             </motion.div>
           ))}
         </div>

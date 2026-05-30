@@ -3,17 +3,19 @@
 import { motion } from 'framer-motion'
 import { SectionGlow } from '@/components/ui/section-bg'
 
+const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1]
+
 function FADE(delay = 0) {
   return {
     initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true as const },
-    transition: { duration: 0.65, delay, ease: 'easeOut' as const },
+    transition: { duration: 0.65, delay, ease: EASE_OUT_EXPO },
   }
 }
 
 function PatientGrid() {
-  // 8×4 = 32 cells. 60% active (sage), 40% dormant.
+  // 8×4 = 32 cells. Illustrative visualization, not a measured ratio.
   const cells = Array.from({ length: 32 }, (_, i) => i < 20)
 
   return (
@@ -38,13 +40,11 @@ function PatientGrid() {
         ))}
       </div>
 
-      {/* Legend */}
+      {/* Legend — illustrative only, no fabricated percentage */}
       <div className="flex flex-col gap-2" dir="rtl">
         <div className="flex items-center gap-2">
           <span className="w-3 h-3 rounded-sm" style={{ background: 'rgba(127,181,168,0.5)' }} />
-          <span style={{ color: '#8A9B95', fontSize: 12 }}>
-            عملاء نشطون <span style={{ color: '#7FB5A8', fontWeight: 600 }}>٦٠٪</span>
-          </span>
+          <span style={{ color: '#8A9B95', fontSize: 12 }}>عملاء نشطون</span>
         </div>
         <div className="flex items-center gap-2">
           <span
@@ -55,7 +55,7 @@ function PatientGrid() {
             }}
           />
           <span style={{ color: '#8A9B95', fontSize: 12 }}>
-            عملاء خاملون — <span style={{ color: '#D4A574', fontWeight: 600 }}>٤٠٪ ينتظرون</span>
+            عملاء خاملون — <span style={{ color: '#D4A574', fontWeight: 600 }}>ينتظرون تذكير</span>
           </span>
         </div>
       </div>
@@ -72,23 +72,6 @@ export function StatementSection() {
       <SectionGlow color="gold" position="top-left" size={600} opacity={0.04} />
       <SectionGlow color="sage" position="bottom-right" size={500} opacity={0.035} />
 
-      {/* Decorative watermark */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none select-none absolute top-1/2 start-1/2 font-sans font-black leading-none"
-        style={{
-          fontSize: 'clamp(8rem, 22vw, 18rem)',
-          transform: 'translate(-20%, -60%)',
-          color: 'transparent',
-          WebkitTextStroke: '1px rgba(184,116,61,0.06)',
-          letterSpacing: '-0.05em',
-          zIndex: 0,
-          whiteSpace: 'nowrap',
-        }}
-      >
-        ٤٠٪
-      </div>
-
       <div className="max-w-content mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center" dir="rtl">
           {/* Right column (RTL = visually right) — text */}
@@ -100,51 +83,35 @@ export function StatementSection() {
               </span>
             </motion.div>
 
+            {/* Headline — no fabricated SAR figures.
+                TODO(brand): if pilot clinic data supports a per-patient loss range,
+                cite source + sample size. Until then, qualitative framing only. */}
             <motion.p
               id="statement-heading"
               className="font-sans font-bold text-ink leading-[1.2]"
               style={{
                 fontSize: 'clamp(1.9rem, 4vw, 3.2rem)',
-                letterSpacing: '-0.028em',
-                maxWidth: '24ch',
+                maxWidth: '26ch',
               }}
               {...FADE(0.1)}
             >
-              كل عميل ما رجع لـ{' '}
-              <span
-                className="font-fraunces font-semibold text-copper dark:text-gold-300"
-                style={{ fontVariantNumeric: 'tabular-nums' }}
-              >
-                ٩
-              </span>{' '}
-              أشهر، خسارة{' '}
-              <span
-                className="font-fraunces font-semibold text-copper dark:text-gold-300"
-                style={{ fontVariantNumeric: 'tabular-nums' }}
-              >
-                ١٫٨٠٠
-              </span>{' '}
-              ر.س.
-              <br />
-              اضرب هذا بـ{' '}
-              <span
-                className="font-fraunces font-semibold text-copper dark:text-gold-300"
-                style={{ fontVariantNumeric: 'tabular-nums' }}
-              >
-                ١٠٠
-              </span>{' '}
-              عميل.
+              كل عميل ما رجع، إيراد ضايع — وأنت ما تدري.
             </motion.p>
 
             <motion.p
-              className="mt-8 text-mute leading-relaxed text-[17px] max-w-[40ch]"
+              className="mt-8 text-mute leading-relaxed text-[17px] max-w-[42ch]"
               {...FADE(0.2)}
             >
-              هذا اللي نحن نرجّعه — تلقائياً. بدون جهد يدوي. مبني لعيادات الأسنان في الخليج والأردن.
+              هذا اللي نحن نرجّعه — تلقائياً. بدون جهد يدوي. مبني لعيادات الأسنان والتجميل في الخليج
+              والأردن.
             </motion.p>
 
-            <motion.p className="mt-5 text-mute text-[13px] tracking-wide" {...FADE(0.28)}>
-              المصدر: دراسة على ٢٠٠+ عيادة في منطقة الخليج
+            <motion.p
+              className="mt-5 text-mute text-[13px] tracking-wide max-w-[42ch] leading-[1.7]"
+              {...FADE(0.28)}
+            >
+              ملاحظة: حجم الخسارة يختلف من عيادة لأخرى بناءً على متوسط قيمة الزيارة وحجم قاعدة
+              العملاء. نحسب التقدير الخاص بعيادتك ضمن الديمو.
             </motion.p>
           </div>
 
@@ -153,38 +120,13 @@ export function StatementSection() {
             {/* Patient grid */}
             <div className="relative" dir="rtl">
               <p className="mb-4 text-mute text-[12px] font-semibold tracking-[0.1em] uppercase">
-                توزيع عملاء عيادة نموذجية
+                توزيع توضيحي لقاعدة عملاء عيادة
               </p>
               <PatientGrid />
+              <p className="mt-3 text-mute text-[11px] max-w-[26ch] leading-[1.6]">
+                رسم توضيحي — النسب الفعلية لعيادتك تظهر في الديمو بعد رفع البيانات.
+              </p>
             </div>
-
-            {/* Stat pill */}
-            <motion.div
-              className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl bg-copper/6 dark:bg-gold-500/5 border border-copper/14 dark:border-gold-500/20"
-              initial={{ opacity: 0, scale: 0.92 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5, duration: 0.5, ease: 'backOut' }}
-              dir="rtl"
-            >
-              <span
-                className="font-fraunces font-semibold text-copper dark:text-gold-300"
-                style={{
-                  fontSize: 36,
-                  letterSpacing: '-0.02em',
-                  fontVariantNumeric: 'tabular-nums',
-                }}
-              >
-                ١٨٠ ألف
-              </span>
-              <div>
-                <p className="text-mute text-[13px] leading-[1.4]">
-                  ريال سعودي
-                  <br />
-                  <span className="text-mute text-[12px]">خسارة سنوية لعيادة متوسطة</span>
-                </p>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </div>

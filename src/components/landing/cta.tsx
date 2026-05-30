@@ -1,21 +1,44 @@
 'use client'
+import { useEffect, useRef } from 'react'
 import { BookingButton } from '@/components/BookingButton'
 
 export function FinalCTA() {
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          el.querySelectorAll('.glow-fade-in, .glow-fade-in-soft').forEach((n) =>
+            n.classList.add('in-view'),
+          )
+          obs.disconnect()
+        }
+      },
+      { threshold: 0.2 },
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+
   return (
     <section
+      ref={sectionRef}
       className="relative overflow-hidden py-40 px-6"
       style={{ background: 'linear-gradient(170deg, #0A1F1C 0%, #0E2420 60%, #071810 100%)' }}
       aria-labelledby="cta-heading"
       id="cta"
     >
-      {/* Pulsing gold orb — central accent */}
+      {/* Gold orb — fades in once, no loop */}
       <div
-        className="pulse-glow pointer-events-none absolute left-1/2 top-1/2 rounded-full"
+        className="glow-fade-in pointer-events-none absolute top-1/2 rounded-full"
         aria-hidden="true"
         style={{
           width: 600,
           height: 600,
+          insetInlineStart: '50%',
           transform: 'translate(-50%, -50%)',
           background:
             'radial-gradient(circle, rgba(212,165,116,0.18) 0%, rgba(212,165,116,0.05) 40%, transparent 70%)',
@@ -26,13 +49,13 @@ export function FinalCTA() {
 
       {/* Secondary sage glow offset */}
       <div
-        className="pulse-glow-slow pointer-events-none absolute"
+        className="glow-fade-in-soft pointer-events-none absolute"
         aria-hidden="true"
         style={{
           width: 400,
           height: 400,
           top: '10%',
-          right: '5%',
+          insetInlineEnd: '5%',
           background: 'radial-gradient(circle, rgba(127,181,168,0.08) 0%, transparent 70%)',
           filter: 'blur(60px)',
           zIndex: 0,
@@ -41,9 +64,8 @@ export function FinalCTA() {
 
       {/* Brand watermark */}
       <div
-        className="pointer-events-none select-none absolute bottom-0 end-[-2%] font-fraunces text-cream leading-none"
+        className="pointer-events-none select-none absolute bottom-0 end-[-2%] font-fraunces text-cream leading-none text-fluid-hero"
         style={{
-          fontSize: 'clamp(180px, 28vw, 380px)',
           opacity: 0.04,
           zIndex: 0,
           lineHeight: 0.9,
@@ -92,11 +114,8 @@ export function FinalCTA() {
         {/* Headline */}
         <h2
           id="cta-heading"
-          className="font-sans font-black text-cream mb-6 mx-auto"
+          className="font-sans font-black text-cream mb-6 mx-auto text-fluid-5xl"
           style={{
-            fontSize: 'clamp(2.5rem, 6vw, 4.8rem)',
-            lineHeight: 1.05,
-            letterSpacing: '-0.035em',
             maxWidth: '18ch',
           }}
         >
@@ -114,7 +133,7 @@ export function FinalCTA() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
           <BookingButton
             source="final-cta"
-            className="inline-flex items-center h-[54px] px-10 rounded-full text-[16px] font-bold transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(0,0,0,0.35)] active:translate-y-0"
+            className="inline-flex items-center h-[54px] px-10 rounded-full text-[16px] font-bold transition-all duration-200 hover:-translate-y-1 hover:shadow-e2 active:translate-y-0"
             style={
               {
                 background: 'linear-gradient(135deg, #D4A574, #C08840)',
@@ -145,9 +164,10 @@ export function FinalCTA() {
           </BookingButton>
         </div>
 
-        {/* Trust line */}
+        {/* Trust line — pre-launch, no fabricated counts.
+            TODO(brand): replace with attributed pilot results when available. */}
         <p className="mt-10" style={{ color: '#8A9B95', fontSize: 13 }}>
-          ٣٤+ عيادة تثق بعَودة · لا عقود · إلغاء في أي وقت
+          نحن في مرحلة الإطلاق التجريبي · لا عقود · إلغاء في أي وقت
         </p>
       </div>
     </section>

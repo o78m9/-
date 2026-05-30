@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, useInView } from 'framer-motion'
+import { motion, useInView, useReducedMotion } from 'framer-motion'
 import { useRef } from 'react'
 import { SectionNumber } from '@/components/ui/section-number'
 import { SectionGlow, DotGrid } from '@/components/ui/section-bg'
@@ -66,7 +66,7 @@ function CsvFragment() {
           style={{ background: GOLD_GRADIENT }}
           initial={{ width: '0%' }}
           animate={inView ? { width: '100%' } : { width: '0%' }}
-          transition={{ duration: 1.5, ease: 'easeInOut' }}
+          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
         />
       </div>
 
@@ -127,14 +127,19 @@ function CsvFragment() {
 
 /* ─── Typing indicator ───────────────────────────────────────────── */
 function TypingDots() {
+  const prefersReducedMotion = useReducedMotion()
   return (
     <div className="flex items-center gap-[3px] px-3 py-2 rounded-[4px_12px_12px_12px] w-fit bg-forest/90 dark:bg-[#202c33] border border-forest/15 dark:border-white/5">
       {[0, 0.15, 0.3].map((delay, i) => (
         <motion.span
           key={i}
           className="block w-1.5 h-1.5 rounded-full bg-sage-400 dark:bg-[#8696a0]"
-          animate={{ y: [0, -4, 0] }}
-          transition={{ repeat: Infinity, duration: 0.8, delay, ease: 'easeInOut' }}
+          animate={prefersReducedMotion ? undefined : { y: [0, -4, 0] }}
+          transition={
+            prefersReducedMotion
+              ? undefined
+              : { repeat: Infinity, duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }
+          }
         />
       ))}
     </div>
@@ -214,7 +219,7 @@ function MessageFragment() {
           </div>
           <div className="flex justify-end">
             <div className="max-w-[160px] bg-[#DCF8C6] dark:bg-[#005c4b] rounded-[12px_4px_12px_12px] px-3 py-1.5 text-[10px] text-[#1f2937] dark:text-[#e9edef] leading-[1.5] transition-colors duration-200">
-              السلام عليكم أبو فاطمة، وحشتنا 🌟 مرّت فترة منذ زيارتك لعيادة الابتسامة...
+              السلام عليكم أبو فاطمة، وحشتنا. مرّت فترة منذ زيارتك لعيادة الابتسامة...
               <div className="flex items-center justify-end gap-1 mt-1 text-[#1f2937]/50 dark:text-[#e9edef]/50">
                 <span className="text-[8px]">١٠:٢٤</span>
                 <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
@@ -328,7 +333,7 @@ function DashboardFragment() {
       </div>
 
       <div className="p-4 space-y-3">
-        {/* KPI pills */}
+        {/* KPI pills — illustrative dashboard preview (UI mockup, not a claimed average) */}
         <div className="flex gap-2">
           <motion.div
             className="flex-1 rounded-lg px-3 py-2"
@@ -351,14 +356,14 @@ function DashboardFragment() {
                 />
               </svg>
               <span className="text-[8px] font-[500]" style={{ color: '#D4A574' }}>
-                +٣٧٪
+                إيراد مسترجع
               </span>
             </div>
             <div className="text-[13px] font-[700]" style={{ color: '#D4A574' }}>
-              +١٢٬٤٠٠
+              ر.س
             </div>
             <div className="text-[8px]" style={{ color: '#8A9B95' }}>
-              ريال هذا الشهر
+              يُحتسب من حجوزات فعلية
             </div>
           </motion.div>
 
@@ -373,13 +378,13 @@ function DashboardFragment() {
             transition={{ delay: 0.2 }}
           >
             <div className="text-[13px] font-[700]" style={{ color: '#7FB5A8' }}>
-              ٣٨
+              مرضى عادوا
             </div>
             <div className="text-[8px]" style={{ color: '#8A9B95' }}>
-              مريض عاد
+              من حملة الاسترداد
             </div>
             <div className="text-[7px] mt-0.5" style={{ color: 'rgba(127,181,168,0.6)' }}>
-              هذا الشهر
+              بيانات مباشرة
             </div>
           </motion.div>
         </div>
@@ -426,26 +431,34 @@ const STEPS: StepData[] = [
   {
     numeral: '٠١',
     title: 'اربط بياناتك',
-    desc: 'استورد سجلات عملائك بملف CSV. نستخدم الاسم، رقم الهاتف، وتاريخ آخر زيارة فقط — لا بيانات طبية.',
-    bullets: ['CSV أو Excel — أي تنسيق', '٣ أعمدة فقط: اسم، هاتف، تاريخ', 'إعداد في أقل من دقيقة'],
+    desc: 'استورد سجلات عملائك بملف CSV. نستخدم الاسم، رقم الهاتف، وتاريخ آخر زيارة فقط — لا بيانات طبية. ملف العملاء يتضمن عمود الموافقة المسبقة على التواصل (Opt-In) كشرط نظامي.',
+    bullets: [
+      'CSV أو Excel — أي تنسيق',
+      '٣ أعمدة + عمود موافقة Opt-In',
+      'إعداد في أقل من ٣٠ دقيقة',
+    ],
     Fragment: CsvFragment,
   },
   {
     numeral: '٠٢',
     title: 'Claude AI يصنّف ويكتب',
-    desc: 'النموذج يحلل كل عميل ويكتب رسالة WhatsApp شخصية باللهجة المحلية — يمكنك مراجعتها قبل الإرسال.',
+    desc: 'النموذج يحلل كل عميل ويكتب رسالة WhatsApp شخصية باللهجة المحلية — تراجعها قبل الإرسال. كل رسالة تحتوي إجبارياً على باسم عيادتك في الأعلى وعبارة "للإيقاف، أرسل STOP" في الأسفل، التزاماً بنظام PDPL ولوائح هيئة الاتصالات (CITC).',
     bullets: [
       'رسالة شخصية لكل مريض',
       'تراجع قبل الإرسال — أنت المتحكم',
-      'باللهجة المحلية السعودية أو الأردنية',
+      'تذييل "STOP" في كل رسالة — تلقائياً',
     ],
     Fragment: MessageFragment,
   },
   {
     numeral: '٠٣',
     title: 'احصد النتيجة',
-    desc: 'كل رد ينعكس تلقائياً في لوحة التحكم. الحجوزات تُحتسب على الفور كإيرادات مسترجعة. الرسائل ترسل من رقم WhatsApp Business مرتبط باسم عيادتك — المريض يرى اسمك مباشرةً.',
-    bullets: ['كل رد = موعد مباشر في لوحتك', 'إيراد محسوب تلقائياً', 'متوسط ١٢٬٤٠٠ ر.س شهرياً'],
+    desc: 'كل رد ينعكس تلقائياً في لوحة التحكم. الحجوزات تُحتسب على الفور كإيرادات مسترجعة. الرسائل تُرسل من رقم WhatsApp Business مرتبط باسم عيادتك — المريض يرى اسمك مباشرةً، لا رقماً مجهولاً.',
+    bullets: [
+      'كل رد = موعد مباشر في لوحتك',
+      'إيراد محسوب تلقائياً',
+      'تقارير شفافة عن كل رسالة وكل رد',
+    ],
     Fragment: DashboardFragment,
   },
 ]
@@ -581,15 +594,13 @@ export function HowItWorksSection() {
             className="font-sans font-bold text-ink mb-3"
             style={{
               fontSize: 'clamp(2rem, 4vw, 3rem)',
-              lineHeight: 1.1,
-              letterSpacing: '-0.025em',
               maxWidth: '24ch',
             }}
           >
             ثلاث خطوات من البيانات إلى الإيراد
           </h2>
           <p className="mb-16" style={{ fontSize: 16, color: '#8A9B95', lineHeight: 1.6 }}>
-            من لحظة الرفع إلى موعد محجوز — في أقل من ٧٢ ساعة
+            من رفع الملف إلى إطلاق أول حملة — في أقل من ٣٠ دقيقة
           </p>
         </FadeIn>
 

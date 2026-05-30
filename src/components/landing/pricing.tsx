@@ -1,17 +1,19 @@
 'use client'
 
 import { Check, Shield, Zap, Star } from 'lucide-react'
-import { motion, useMotionValue, useTransform } from 'framer-motion'
+import { motion, useMotionValue, useReducedMotion, useTransform } from 'framer-motion'
 import { BookingButton } from '@/components/BookingButton'
 import { DotGrid, SectionGlow } from '@/components/ui/section-bg'
 import type { MouseEvent } from 'react'
+
+const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
 function fade(delay = 0) {
   return {
     initial: { opacity: 0, y: 24 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true as const },
-    transition: { duration: 0.65, delay, ease: 'easeOut' as const },
+    transition: { duration: 0.65, delay, ease: EASE_OUT_EXPO },
   }
 }
 
@@ -31,11 +33,26 @@ const SUBSCRIPTION_FEATURES = [
   'SLA بوقت استجابة مضمون',
 ]
 
-function TiltCard({ children, className = '' }: { children: React.ReactNode; className?: string }) {
+type TiltCardProps = {
+  children: React.ReactNode
+  className?: string
+  style?: React.CSSProperties
+}
+
+function TiltCard({ children, className = '', style }: TiltCardProps) {
+  const prefersReducedMotion = useReducedMotion()
   const mx = useMotionValue(0)
   const my = useMotionValue(0)
   const rotateX = useTransform(my, [-80, 80], [4, -4])
   const rotateY = useTransform(mx, [-80, 80], [-4, 4])
+
+  if (prefersReducedMotion) {
+    return (
+      <div className={className} style={style}>
+        {children}
+      </div>
+    )
+  }
 
   const onMove = (e: MouseEvent<HTMLDivElement>) => {
     const r = e.currentTarget.getBoundingClientRect()
@@ -50,7 +67,7 @@ function TiltCard({ children, className = '' }: { children: React.ReactNode; cla
   return (
     <motion.div
       className={className}
-      style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
+      style={{ ...style, rotateX, rotateY, transformStyle: 'preserve-3d' }}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
       whileHover={{ y: -10 }}
@@ -103,15 +120,11 @@ export function PricingSection() {
           </span>
         </motion.div>
 
-        {/* Headline */}
+        {/* Headline — kept below hero by using fluid-6xl (hero uses fluid-hero) */}
         <motion.h2
           id="pricing-heading"
           className="font-sans font-black text-cream text-center mb-5"
-          style={{
-            fontSize: 'clamp(3.5rem, 8vw, 6rem)',
-            lineHeight: 1.0,
-            letterSpacing: '-0.035em',
-          }}
+          style={{ fontSize: 'clamp(3.5rem, 8vw, 6rem)' }}
           {...fade(0.08)}
         >
           تدفع بعد ما نثبت
@@ -152,13 +165,11 @@ export function PricingSection() {
           {/* ── Featured: Revenue share ─────────────────────────────── */}
           <motion.div className="flex flex-col" {...fade(0.18)}>
             <TiltCard
-              className="h-full flex flex-col rounded-3xl p-12 relative overflow-hidden"
-              // @ts-expect-error padding-box/border-box gradient border trick
+              className="h-full flex flex-col rounded-3xl p-12 relative overflow-hidden shadow-e3"
               style={{
                 background:
                   'linear-gradient(135deg, #142B27, #1B3830) padding-box, linear-gradient(135deg, rgba(212,165,116,0.55) 0%, rgba(138,96,64,0.25) 50%, rgba(212,165,116,0.55) 100%) border-box',
                 border: '1.5px solid transparent',
-                boxShadow: '0 0 80px rgba(212,165,116,0.06), 0 24px 64px rgba(0,0,0,0.45)',
               }}
             >
               {/* Inner top glow */}
@@ -203,7 +214,6 @@ export function PricingSection() {
                   aria-hidden="false"
                   style={{
                     fontSize: 'clamp(5rem, 10vw, 8rem)',
-                    letterSpacing: '-0.045em',
                     background: 'linear-gradient(135deg, #D4A574 0%, #F5D09A 55%, #D4A574 100%)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
@@ -235,7 +245,7 @@ export function PricingSection() {
               <div className="relative z-10">
                 <BookingButton
                   source="pricing-revenue"
-                  className="w-full h-12 rounded-full font-bold text-[15px] transition-all duration-200 hover:shadow-[0_0_28px_rgba(212,165,116,0.45)] active:scale-[0.98]"
+                  className="w-full h-12 rounded-full font-bold text-[15px] transition-all duration-200 hover:shadow-glow-gold active:scale-[0.98]"
                   style={
                     {
                       background: 'linear-gradient(135deg, #D4A574, #C08840)',
@@ -280,12 +290,10 @@ export function PricingSection() {
           {/* ── Subscription ────────────────────────────────────────── */}
           <motion.div className="flex flex-col" {...fade(0.3)}>
             <TiltCard
-              className="h-full flex flex-col rounded-3xl p-12 relative overflow-hidden"
-              // @ts-expect-error inline style
+              className="h-full flex flex-col rounded-3xl p-12 relative overflow-hidden shadow-e3"
               style={{
                 background: '#0E2118',
                 border: '1.5px solid rgba(127,181,168,0.14)',
-                boxShadow: '0 24px 64px rgba(0,0,0,0.35)',
               }}
             >
               {/* Spacer aligns with badge height */}
@@ -306,8 +314,7 @@ export function PricingSection() {
                 <span
                   className="font-sans font-black leading-none select-none"
                   style={{
-                    fontSize: 'clamp(5rem, 10vw, 8rem)',
-                    letterSpacing: '-0.045em',
+                    fontSize: 'clamp(4.5rem, 9vw, 7rem)',
                     background: 'linear-gradient(135deg, #7FB5A8 0%, #9FD0C8 55%, #7FB5A8 100%)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
@@ -357,29 +364,23 @@ export function PricingSection() {
           {...fade(0.2)}
         >
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            {/* Clinic avatars */}
-            <div className="flex items-center gap-4">
-              <div className="flex items-center" dir="ltr">
-                {['ع', 'ر', 'س', 'ن', 'خ'].map((letter, i) => (
-                  <div
-                    key={i}
-                    className="w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-semibold"
-                    style={{
-                      background: `hsl(${158 + i * 12}, 28%, 18%)`,
-                      color: '#7FB5A8',
-                      border: '2px solid #0A1F1C',
-                      marginLeft: i > 0 ? -8 : 0,
-                      position: 'relative',
-                      zIndex: 5 - i,
-                    }}
-                  >
-                    {letter}
-                  </div>
-                ))}
+            {/* Transparency line — pre-launch, no fabricated counts.
+                TODO(brand): once we have a signed pilot cohort with published results,
+                replace with attributed numbers + source. */}
+            <div className="flex items-center gap-3">
+              <div
+                className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0"
+                style={{
+                  background: 'rgba(127,181,168,0.08)',
+                  border: '1px solid rgba(127,181,168,0.18)',
+                }}
+                aria-hidden="true"
+              >
+                <Shield size={15} color="#7FB5A8" />
               </div>
-              <p style={{ color: '#8A9B95', fontSize: 14 }}>
-                <span style={{ color: '#D4A574', fontWeight: 600 }}>٣٤+ عيادة</span> تثق بعَودة في
-                السعودية والأردن والإمارات
+              <p style={{ color: '#8A9B95', fontSize: 14, lineHeight: 1.6, maxWidth: '52ch' }}>
+                نحن في مرحلة الإطلاق التجريبي — اطّلع على نموذج رسالة وحالة عمل عيادة عبر الديمو.
+                بياناتك تبقى في السعودية.
               </p>
             </div>
 

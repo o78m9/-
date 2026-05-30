@@ -93,8 +93,7 @@ function StatRow({
           ref={numRef}
           className="font-fraunces font-semibold text-copper leading-none"
           style={{
-            fontSize: 'clamp(4.5rem, 11vw, 8rem)',
-            letterSpacing: '-0.02em',
+            fontSize: 'clamp(2rem, 5vw, 3rem)',
             fontVariantNumeric: 'tabular-nums',
           }}
           aria-label={String(countTo)}
@@ -151,11 +150,7 @@ export function ResultsSection() {
         <h2
           id="results-heading"
           className="font-sans font-bold text-ink mb-8"
-          style={{
-            fontSize: 'clamp(2rem, 4vw, 3rem)',
-            lineHeight: 1.1,
-            letterSpacing: '-0.025em',
-          }}
+          style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}
           dir="rtl"
         >
           أرقام تتكلم عن نفسها

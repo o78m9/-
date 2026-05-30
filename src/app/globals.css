@@ -340,33 +340,39 @@
   }
 }
 
-/* ── Pulsing glow — CTA section gold orb ─────────────────────── */
-@keyframes pulse-glow {
-  0%,
-  100% {
+/* ── Glow fade-in — CTA section gold orb (single reveal, no loop) ─ */
+/* Intersection-observer driven via .glow-in-view; lands and stays. */
+.glow-static {
+  opacity: 0.22;
+}
+.glow-static-soft {
+  opacity: 0.6;
+}
+.glow-fade-in {
+  opacity: 0;
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glow-fade-in.in-view {
+  opacity: 0.22;
+}
+.glow-fade-in-soft {
+  opacity: 0;
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glow-fade-in-soft.in-view {
+  opacity: 0.6;
+}
+@media (prefers-reduced-motion: reduce) {
+  .glow-fade-in,
+  .glow-fade-in-soft {
+    transition: none;
+  }
+  .glow-fade-in {
     opacity: 0.22;
-    transform: translate(-50%, -50%) scale(1);
   }
-  50% {
-    opacity: 0.38;
-    transform: translate(-50%, -50%) scale(1.1);
-  }
-}
-.pulse-glow {
-  animation: pulse-glow 4s ease-in-out infinite;
-}
-
-@keyframes pulse-glow-slow {
-  0%,
-  100% {
+  .glow-fade-in-soft {
     opacity: 0.6;
   }
-  50% {
-    opacity: 1;
-  }
-}
-.pulse-glow-slow {
-  animation: pulse-glow-slow 6s ease-in-out infinite 1.5s;
 }
 
 /* ── Floating elements ────────────────────────────────────────── */

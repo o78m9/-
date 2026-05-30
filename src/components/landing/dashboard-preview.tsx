@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import {
   BarChart,
   Bar,
@@ -402,13 +402,13 @@ const PENDING_MESSAGES = [
     patient: 'محمد العتيبي',
     initial: 'م',
     lastVisit: 'منذ ٩ أشهر',
-    msg: 'السلام عليكم أبو محمد 🌟 لاحظنا أنك لم تزرنا منذ فترة، وكنا نودّ الاطمئنان عليك. لو تحب نحجز لك موعداً هذا الأسبوع يكون عندنا وقت مناسب.',
+    msg: 'السلام عليكم أبو محمد، لاحظنا أنك لم تزرنا منذ فترة، وكنا نودّ الاطمئنان عليك. لو تحب نحجز لك موعداً هذا الأسبوع يكون عندنا وقت مناسب.',
   },
   {
     patient: 'هند الغامدي',
     initial: 'هـ',
     lastVisit: 'منذ ٧ أشهر',
-    msg: 'مرحباً هند 😊 فترة ما شفناك! تذكيرك بالفحص الدوري — وعندنا هالشهر خصم خاص لمريضاتنا القدامى.',
+    msg: 'مرحباً هند، فترة ما شفناك! تذكيرك بالفحص الدوري — وعندنا هالشهر خصم خاص لمريضاتنا القدامى.',
   },
 ]
 
@@ -645,21 +645,31 @@ const CONTENT: Record<TabId, React.ReactNode> = {
 
 export function DashboardPreview() {
   const [activeTab, setActiveTab] = useState<TabId>('patients')
-  const [notifIdx, setNotifIdx] = useState(0)
+  const prefersReducedMotion = useReducedMotion()
+  const notifRef = useRef<HTMLDivElement>(null)
   const [showNotif, setShowNotif] = useState(false)
+  // Single notification reveal, no loop. First item only.
+  const notifText = NOTIFICATIONS[0]
 
   useEffect(() => {
-    let hideTimeout: ReturnType<typeof setTimeout>
-    const timer = setInterval(() => {
-      setNotifIdx((i) => (i + 1) % NOTIFICATIONS.length)
+    const el = notifRef.current
+    if (!el) return
+    if (prefersReducedMotion) {
       setShowNotif(true)
-      hideTimeout = setTimeout(() => setShowNotif(false), 4000)
-    }, 8000)
-    return () => {
-      clearInterval(timer)
-      clearTimeout(hideTimeout)
+      return
     }
-  }, [])
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setShowNotif(true)
+          obs.disconnect()
+        }
+      },
+      { threshold: 0.4 },
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [prefersReducedMotion])
 
   return (
     <section
@@ -688,13 +698,10 @@ export function DashboardPreview() {
           </span>
           <h2
             id="dashboard-heading"
-            className="font-black mb-4"
+            className="font-black mb-4 text-fluid-4xl"
             style={{
-              fontSize: 'clamp(2rem, 4vw, 3.5rem)',
               color: '#F5EFE6',
               fontFamily: 'var(--font-tajawal)',
-              letterSpacing: '-0.03em',
-              lineHeight: 1.1,
             }}
           >
             لوحة تحكم واضحة
@@ -706,14 +713,14 @@ export function DashboardPreview() {
 
         {/* Browser frame */}
         <motion.div
+          ref={notifRef}
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="relative rounded-2xl overflow-hidden"
+          className="relative rounded-2xl overflow-hidden shadow-e3"
           style={{
             border: '1px solid rgba(127,181,168,0.12)',
-            boxShadow: '0 40px 120px rgba(0,0,0,0.7), 0 8px 32px rgba(0,0,0,0.5)',
           }}
         >
           {/* Browser bar */}
@@ -807,37 +814,41 @@ export function DashboardPreview() {
             </AnimatePresence>
           </div>
 
-          {/* Live notification */}
-          <AnimatePresence>
-            {showNotif && (
-              <motion.div
-                initial={{ opacity: 0, y: 12, x: '-50%' }}
-                animate={{ opacity: 1, y: 0, x: '-50%' }}
-                exit={{ opacity: 0, y: -8, x: '-50%' }}
-                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute bottom-4"
-                style={{ left: '50%', zIndex: 10 }}
-                role="status"
-                aria-live="polite"
+          {/* Live notification — single reveal on viewport entry, no loop */}
+          {showNotif && (
+            <motion.div
+              initial={
+                prefersReducedMotion
+                  ? { opacity: 1, y: 0, x: '-50%' }
+                  : { opacity: 0, y: 12, x: '-50%' }
+              }
+              animate={{ opacity: 1, y: 0, x: '-50%' }}
+              transition={
+                prefersReducedMotion
+                  ? { duration: 0 }
+                  : { duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }
+              }
+              className="absolute bottom-4 shadow-e2"
+              style={{ insetInlineStart: '50%', zIndex: 10 }}
+              role="status"
+              aria-live="polite"
+            >
+              <div
+                className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-[0.8125rem] whitespace-nowrap"
+                style={{
+                  background: '#0D2A24',
+                  border: '1px solid rgba(212,165,116,0.25)',
+                }}
               >
                 <div
-                  className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-[0.8125rem] whitespace-nowrap"
-                  style={{
-                    background: '#0D2A24',
-                    border: '1px solid rgba(212,165,116,0.25)',
-                    boxShadow: '0 8px 24px rgba(0,0,0,0.4)',
-                  }}
-                >
-                  <div
-                    className="w-2 h-2 rounded-full bg-sage-400 animate-pulse shrink-0"
-                    style={{ background: '#7FB5A8' }}
-                    aria-hidden="true"
-                  />
-                  <span style={{ color: '#F5EFE6' }}>{NOTIFICATIONS[notifIdx]}</span>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                  className="w-2 h-2 rounded-full shrink-0"
+                  style={{ background: '#7FB5A8' }}
+                  aria-hidden="true"
+                />
+                <span style={{ color: '#F5EFE6' }}>{notifText}</span>
+              </div>
+            </motion.div>
+          )}
         </motion.div>
 
         <p className="text-center text-xs mt-4" style={{ color: 'rgba(138,155,149,0.4)' }}>

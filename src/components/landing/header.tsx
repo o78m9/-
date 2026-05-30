@@ -98,7 +98,7 @@ export function LandingHeader() {
             source="header"
             className={`inline-flex items-center h-11 px-5 rounded-full text-[14px] font-[500] transition-all duration-150 active:translate-y-0 ${
               scrolled
-                ? 'border border-forest bg-forest text-cream hover:-translate-y-[2px] hover:shadow-[0_4px_12px_rgba(31,61,54,0.3)]'
+                ? 'border border-forest bg-forest text-cream hover:-translate-y-[2px] hover:shadow-e2'
                 : 'border border-[#7FB5A8]/30 bg-[#7FB5A8]/5 hover:bg-[#7FB5A8]/12 text-[#7FB5A8] hover:text-[#F5EFE6] hover:-translate-y-[2px]'
             }`}
           >

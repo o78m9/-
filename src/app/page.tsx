@@ -1,6 +1,5 @@
 import { LandingHeader } from '@/components/landing/header'
 import { HeroSection } from '@/components/landing/hero'
-import { LogoBar } from '@/components/landing/logo-bar'
 import { StatementSection } from '@/components/landing/statement'
 import { HowItWorksSection } from '@/components/landing/how-it-works'
 import { DashboardPreviewWrapper } from '@/components/landing/dashboard-preview-wrapper'
@@ -18,7 +17,6 @@ export default function LandingPage() {
       <LandingHeader />
       <main id="main">
         <HeroSection />
-        <LogoBar />
         <StatementSection />
         <HowItWorksSection />
         <DashboardPreviewWrapper />

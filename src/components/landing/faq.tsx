@@ -6,6 +6,10 @@ import { SectionGlow } from '@/components/ui/section-bg'
 
 const FAQS = [
   {
+    q: 'لو مريض اشتكى من رسالة، مين المسؤول قانونياً؟',
+    a: 'بحسب نظام حماية البيانات الشخصية (PDPL): عيادتك هي "صاحب البيانات" (Data Controller)، وعَودة هي "معالج البيانات" (Data Processor). كل رسالة تخرج باسم عيادتك ومن رقم WhatsApp Business مرتبط بها، وتحتوي إجبارياً على عبارة "للإيقاف، أرسل STOP". الموافقة المسبقة على التواصل تُلتقط في نموذج تسجيل المريض في عيادتك (عمود في ملف Excel أو رمز QR للموافقة). شكاوى هيئة الاتصالات (CITC) تتم معالجتها بالتعاون بيننا — وأي خلل فني من جانب المنصة نتحمّله نحن مباشرةً.',
+  },
+  {
     q: 'كيف تعرف عَودة أي عميل "خامل"؟',
     a: 'نحدد الخمول بناءً على آخر زيارة للعيادة. أي عميل لم يزر خلال فترة تحددها أنت (عادةً ٣–٦ أشهر) يُصنَّف خاملاً ويدخل قائمة الاسترداد تلقائياً.',
   },
@@ -55,13 +59,12 @@ export function FAQSection() {
       <SectionGlow color="sage" position="top-left" size={600} opacity={0.02} />
       <SectionGlow color="gold" position="bottom-right" size={500} opacity={0.02} />
 
-      {/* Huge decorative quote mark */}
+      {/* Huge decorative quote mark — kept below hero by using fluid-hero scale */}
       <div
         aria-hidden="true"
-        className="pointer-events-none select-none absolute bottom-8 end-8 leading-none"
+        className="pointer-events-none select-none absolute bottom-8 end-8 leading-none text-fluid-hero"
         style={{
           fontFamily: 'Georgia, serif',
-          fontSize: 'clamp(10rem, 20vw, 18rem)',
           color: '#D4A574',
           opacity: 0.045,
           lineHeight: 1,
@@ -83,7 +86,7 @@ export function FAQSection() {
           >
             <div className="relative">
               {/* Central icon */}
-              <div className="w-28 h-28 rounded-3xl flex items-center justify-center mx-auto mb-8 bg-gradient-to-br from-forest/12 to-forest/6 dark:from-sage-400/12 dark:to-sage-400/6 border border-forest/14 dark:border-sage-400/20 shadow-[0_8px_32px_rgba(31,61,54,0.08)] dark:shadow-none">
+              <div className="w-28 h-28 rounded-3xl flex items-center justify-center mx-auto mb-8 bg-gradient-to-br from-forest/12 to-forest/6 dark:from-sage-400/12 dark:to-sage-400/6 border border-forest/14 dark:border-sage-400/20 shadow-e2 dark:shadow-none">
                 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
                   <circle
                     cx="24"
@@ -112,7 +115,7 @@ export function FAQSection() {
                   className="absolute start-full ms-6 float-slow"
                   style={{ top, animationDelay: delay }}
                 >
-                  <div className="whitespace-nowrap px-4 py-2 rounded-full text-[12px] font-medium bg-paper border border-line text-mute dark:text-gold-300 shadow-[0_2px_8px_rgba(26,24,21,0.06)] dark:shadow-none">
+                  <div className="whitespace-nowrap px-4 py-2 rounded-full text-[12px] font-medium bg-paper border border-line text-mute dark:text-gold-300 shadow-e1 dark:shadow-none">
                     {label}
                   </div>
                 </div>
@@ -135,12 +138,7 @@ export function FAQSection() {
           <div>
             <h2
               id="faq-heading"
-              className="font-sans font-bold text-ink mb-12"
-              style={{
-                fontSize: 'clamp(2rem, 4vw, 3rem)',
-                lineHeight: 1.1,
-                letterSpacing: '-0.025em',
-              }}
+              className="font-sans font-bold text-ink mb-12 text-fluid-4xl"
               dir="rtl"
             >
               أسئلة يسألها أصحاب العيادات
@@ -152,7 +150,7 @@ export function FAQSection() {
                   key={i}
                   className={`rounded-2xl overflow-hidden transition-all duration-200 border ${
                     open === i
-                      ? 'bg-paper border-copper/20 dark:border-gold-500/20 shadow-[0_4px_16px_rgba(26,24,21,0.06)] dark:shadow-none'
+                      ? 'bg-paper border-copper/20 dark:border-gold-500/20 shadow-e2 dark:shadow-none'
                       : 'bg-cream/40 dark:bg-forest-950/20 border-line dark:border-sage-800/20'
                   }`}
                 >
