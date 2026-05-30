@@ -66,8 +66,7 @@ function PatientGrid() {
 export function StatementSection() {
   return (
     <section
-      className="relative overflow-hidden py-20 px-6"
-      style={{ background: 'var(--paper)' }}
+      className="relative overflow-hidden py-20 px-6 bg-paper"
       aria-labelledby="statement-heading"
     >
       <SectionGlow color="gold" position="top-left" size={600} opacity={0.04} />
@@ -96,14 +95,7 @@ export function StatementSection() {
           <div>
             {/* Eyebrow */}
             <motion.div {...FADE(0)} className="mb-8">
-              <span
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-semibold tracking-[0.14em] uppercase"
-                style={{
-                  background: 'rgba(184,116,61,0.09)',
-                  color: '#B8743D',
-                  border: '1px solid rgba(184,116,61,0.18)',
-                }}
-              >
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-semibold tracking-[0.14em] uppercase bg-copper/9 text-copper dark:text-gold-300 border border-copper/18 dark:border-gold-500/20">
                 المشكلة
               </span>
             </motion.div>
@@ -120,14 +112,14 @@ export function StatementSection() {
             >
               كل عميل ما رجع لـ{' '}
               <span
-                className="font-fraunces font-semibold text-copper"
+                className="font-fraunces font-semibold text-copper dark:text-gold-300"
                 style={{ fontVariantNumeric: 'tabular-nums' }}
               >
                 ٩
               </span>{' '}
               أشهر، خسارة{' '}
               <span
-                className="font-fraunces font-semibold text-copper"
+                className="font-fraunces font-semibold text-copper dark:text-gold-300"
                 style={{ fontVariantNumeric: 'tabular-nums' }}
               >
                 ١٫٨٠٠
@@ -136,7 +128,7 @@ export function StatementSection() {
               <br />
               اضرب هذا بـ{' '}
               <span
-                className="font-fraunces font-semibold text-copper"
+                className="font-fraunces font-semibold text-copper dark:text-gold-300"
                 style={{ fontVariantNumeric: 'tabular-nums' }}
               >
                 ١٠٠
@@ -145,18 +137,13 @@ export function StatementSection() {
             </motion.p>
 
             <motion.p
-              className="mt-8 text-mute leading-relaxed"
-              style={{ fontSize: 17, maxWidth: '40ch' }}
+              className="mt-8 text-mute leading-relaxed text-[17px] max-w-[40ch]"
               {...FADE(0.2)}
             >
               هذا اللي نحن نرجّعه — تلقائياً. بدون جهد يدوي. مبني لعيادات الأسنان في الخليج والأردن.
             </motion.p>
 
-            <motion.p
-              className="mt-5"
-              style={{ fontSize: 13, color: '#6B6359', letterSpacing: '0.01em' }}
-              {...FADE(0.28)}
-            >
+            <motion.p className="mt-5 text-mute text-[13px] tracking-wide" {...FADE(0.28)}>
               المصدر: دراسة على ٢٠٠+ عيادة في منطقة الخليج
             </motion.p>
           </div>
@@ -165,10 +152,7 @@ export function StatementSection() {
           <motion.div className="flex flex-col items-center lg:items-start gap-10" {...FADE(0.15)}>
             {/* Patient grid */}
             <div className="relative" dir="rtl">
-              <p
-                className="mb-4 text-[12px] font-semibold tracking-[0.1em] uppercase"
-                style={{ color: '#6B6359' }}
-              >
+              <p className="mb-4 text-mute text-[12px] font-semibold tracking-[0.1em] uppercase">
                 توزيع عملاء عيادة نموذجية
               </p>
               <PatientGrid />
@@ -176,11 +160,7 @@ export function StatementSection() {
 
             {/* Stat pill */}
             <motion.div
-              className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl"
-              style={{
-                background: 'rgba(184,116,61,0.06)',
-                border: '1px solid rgba(184,116,61,0.14)',
-              }}
+              className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl bg-copper/6 dark:bg-gold-500/5 border border-copper/14 dark:border-gold-500/20"
               initial={{ opacity: 0, scale: 0.92 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -188,7 +168,7 @@ export function StatementSection() {
               dir="rtl"
             >
               <span
-                className="font-fraunces font-semibold text-copper"
+                className="font-fraunces font-semibold text-copper dark:text-gold-300"
                 style={{
                   fontSize: 36,
                   letterSpacing: '-0.02em',
@@ -198,10 +178,10 @@ export function StatementSection() {
                 ١٨٠ ألف
               </span>
               <div>
-                <p style={{ color: '#6B6359', fontSize: 13, lineHeight: 1.4 }}>
+                <p className="text-mute text-[13px] leading-[1.4]">
                   ريال سعودي
                   <br />
-                  <span style={{ color: '#6B6359', fontSize: 12 }}>خسارة سنوية لعيادة متوسطة</span>
+                  <span className="text-mute text-[12px]">خسارة سنوية لعيادة متوسطة</span>
                 </p>
               </div>
             </motion.div>

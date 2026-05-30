@@ -104,6 +104,7 @@
 
 @layer base {
   :root {
+    color-scheme: light;
     /* ── Editorial palette ─────────────────────────────────────── */
     --ink: #1a1815;
     --cream: #f5f1e8;
@@ -150,6 +151,7 @@
   }
 
   .dark {
+    color-scheme: dark;
     --ink: #e8e2d5;
     --cream: #0d1a16;
     --paper: #111f1a;

@@ -118,14 +118,15 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       className={`${arabic.variable} ${tajawal.variable} ${inter.variable} ${fraunces.variable} ${GeistSans.variable} ${GeistMono.variable}`}
       suppressHydrationWarning
     >
-      <body className="bg-cream text-ink antialiased font-sans min-h-screen dark:bg-[#0d1a16] dark:text-cream">
+      <body className="bg-cream text-ink antialiased font-sans min-h-screen">
         <AnalyticsProvider>
           <LenisProvider>
             <CommandPaletteShell>
               <ThemeProvider
                 attribute="class"
-                defaultTheme="system"
-                enableSystem
+                defaultTheme="light"
+                forcedTheme="light"
+                enableSystem={false}
                 disableTransitionOnChange
               >
                 <a

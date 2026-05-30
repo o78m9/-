@@ -37,8 +37,7 @@ export function FAQSection() {
   return (
     <section
       id="faq"
-      className="relative overflow-hidden py-20 px-6"
-      style={{ background: 'var(--paper)' }}
+      className="relative overflow-hidden py-20 px-6 bg-paper"
       aria-labelledby="faq-heading"
     >
       <SectionGlow color="sage" position="top-left" size={600} opacity={0.02} />
@@ -72,19 +71,18 @@ export function FAQSection() {
           >
             <div className="relative">
               {/* Central icon */}
-              <div
-                className="w-28 h-28 rounded-3xl flex items-center justify-center mx-auto mb-8"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(31,61,54,0.12), rgba(31,61,54,0.06))',
-                  border: '1px solid rgba(31,61,54,0.14)',
-                  boxShadow: '0 8px 32px rgba(31,61,54,0.08)',
-                }}
-              >
+              <div className="w-28 h-28 rounded-3xl flex items-center justify-center mx-auto mb-8 bg-gradient-to-br from-forest/12 to-forest/6 dark:from-sage-400/12 dark:to-sage-400/6 border border-forest/14 dark:border-sage-400/20 shadow-[0_8px_32px_rgba(31,61,54,0.08)] dark:shadow-none">
                 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                  <circle cx="24" cy="24" r="20" stroke="rgba(31,61,54,0.4)" strokeWidth="1.5" />
+                  <circle
+                    cx="24"
+                    cy="24"
+                    r="20"
+                    className="stroke-forest/40 dark:stroke-sage-400/40"
+                    strokeWidth="1.5"
+                  />
                   <path
                     d="M24 14v12M24 32v2"
-                    stroke="#1F3D36"
+                    className="stroke-forest dark:stroke-sage-400"
                     strokeWidth="2.5"
                     strokeLinecap="round"
                   />
@@ -102,15 +100,7 @@ export function FAQSection() {
                   className="absolute start-full ms-6 float-slow"
                   style={{ top, animationDelay: delay }}
                 >
-                  <div
-                    className="whitespace-nowrap px-4 py-2 rounded-full text-[12px] font-medium"
-                    style={{
-                      background: 'var(--paper)',
-                      border: '1px solid var(--line)',
-                      color: '#4A4440',
-                      boxShadow: '0 2px 8px rgba(26,24,21,0.06)',
-                    }}
-                  >
+                  <div className="whitespace-nowrap px-4 py-2 rounded-full text-[12px] font-medium bg-paper border border-line text-mute dark:text-gold-300 shadow-[0_2px_8px_rgba(26,24,21,0.06)] dark:shadow-none">
                     {label}
                   </div>
                 </div>
@@ -118,14 +108,11 @@ export function FAQSection() {
             </div>
 
             {/* Bottom note */}
-            <p
-              className="mt-16 text-center"
-              style={{ color: '#6B6359', fontSize: 13, maxWidth: '24ch' }}
-            >
+            <p className="mt-16 text-center text-mute text-[13px] max-w-[24ch]">
               هل عندك سؤال ما وجدته هنا؟{' '}
               <a
                 href="#cta"
-                className="underline underline-offset-2 text-copper hover:text-rust transition-colors"
+                className="underline underline-offset-2 text-copper dark:text-gold-500 hover:text-rust dark:hover:text-gold-400 transition-colors"
               >
                 تواصل معنا
               </a>
@@ -151,13 +138,11 @@ export function FAQSection() {
               {FAQS.map(({ q, a }, i) => (
                 <div
                   key={i}
-                  className="rounded-2xl overflow-hidden transition-shadow duration-200"
-                  style={{
-                    background: open === i ? 'var(--paper)' : 'rgba(245,241,232,0.5)',
-                    border:
-                      open === i ? '1px solid rgba(184,116,61,0.18)' : '1px solid var(--line)',
-                    boxShadow: open === i ? '0 4px 16px rgba(26,24,21,0.06)' : 'none',
-                  }}
+                  className={`rounded-2xl overflow-hidden transition-all duration-200 border ${
+                    open === i
+                      ? 'bg-paper border-copper/20 dark:border-gold-500/20 shadow-[0_4px_16px_rgba(26,24,21,0.06)] dark:shadow-none'
+                      : 'bg-cream/40 dark:bg-forest-950/20 border-line dark:border-sage-800/20'
+                  }`}
                 >
                   <button
                     className="w-full flex items-start justify-between px-6 py-5 text-start group"
@@ -166,20 +151,15 @@ export function FAQSection() {
                     aria-controls={`faq-${i}`}
                     id={`faq-btn-${i}`}
                   >
-                    <span
-                      className="font-sans font-medium text-ink group-hover:text-forest transition-colors duration-150 pe-6"
-                      style={{ fontSize: 16, lineHeight: 1.45 }}
-                    >
+                    <span className="font-sans font-medium text-ink group-hover:text-forest dark:group-hover:text-gold-300 transition-colors duration-150 pe-6 text-[16px] leading-[1.45]">
                       {q}
                     </span>
                     <span
-                      className="w-7 h-7 flex-shrink-0 flex items-center justify-center rounded-full transition-all duration-200 mt-0.5"
-                      style={{
-                        background: open === i ? 'rgba(31,61,54,0.1)' : 'transparent',
-                        border:
-                          open === i ? '1px solid rgba(31,61,54,0.2)' : '1px solid var(--line)',
-                        color: open === i ? '#1A1815' : '#6B6359',
-                      }}
+                      className={`w-7 h-7 flex-shrink-0 flex items-center justify-center rounded-full transition-all duration-200 mt-0.5 border ${
+                        open === i
+                          ? 'bg-forest/10 dark:bg-sage-400/10 border-forest/20 dark:border-sage-400/30 text-ink dark:text-gold-300'
+                          : 'bg-transparent border-line dark:border-sage-800/20 text-mute dark:text-gold-500/60'
+                      }`}
                       aria-hidden="true"
                     >
                       <svg
@@ -218,10 +198,7 @@ export function FAQSection() {
                     aria-labelledby={`faq-btn-${i}`}
                   >
                     <div>
-                      <p
-                        className="px-6 pb-6 text-mute leading-[1.8]"
-                        style={{ fontSize: 15, maxWidth: '56ch' }}
-                      >
+                      <p className="px-6 pb-6 text-mute leading-[1.8] text-[15px] max-w-[56ch]">
                         {a}
                       </p>
                     </div>

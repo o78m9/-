@@ -88,8 +88,7 @@ function CsvFragment() {
             ].map(([name, phone, date], i) => (
               <tr
                 key={i}
-                className="border-t border-line/40"
-                style={{ background: i % 2 === 0 ? 'transparent' : 'rgba(245,241,232,0.5)' }}
+                className="border-t border-line/40 odd:bg-transparent even:bg-cream/30 dark:even:bg-forest-900/30"
               >
                 <td className="px-2 py-1.5 text-ink font-[500]">{name}</td>
                 <td
@@ -129,15 +128,11 @@ function CsvFragment() {
 /* ─── Typing indicator ───────────────────────────────────────────── */
 function TypingDots() {
   return (
-    <div
-      className="flex items-center gap-[3px] px-3 py-2 rounded-[4px_12px_12px_12px] w-fit"
-      style={{ background: 'rgba(26,51,45,0.95)', border: '1px solid rgba(127,181,168,0.15)' }}
-    >
+    <div className="flex items-center gap-[3px] px-3 py-2 rounded-[4px_12px_12px_12px] w-fit bg-forest/90 dark:bg-[#202c33] border border-forest/15 dark:border-white/5">
       {[0, 0.15, 0.3].map((delay, i) => (
         <motion.span
           key={i}
-          className="block w-1.5 h-1.5 rounded-full"
-          style={{ background: '#8A9B95' }}
+          className="block w-1.5 h-1.5 rounded-full bg-sage-400 dark:bg-[#8696a0]"
           animate={{ y: [0, -4, 0] }}
           transition={{ repeat: Infinity, duration: 0.8, delay, ease: 'easeInOut' }}
         />
@@ -183,25 +178,27 @@ function MessageFragment() {
       aria-hidden="true"
     >
       {/* WhatsApp header */}
-      <div className="bg-forest px-3 py-2 flex items-center gap-2">
-        <div className="w-7 h-7 rounded-full bg-paper/20 flex items-center justify-center text-[11px] font-[700] text-cream flex-shrink-0">
+      <div className="bg-forest dark:bg-[#202c33] px-3 py-2 flex items-center gap-2 transition-colors duration-200">
+        <div className="w-7 h-7 rounded-full bg-white/10 dark:bg-white/5 flex items-center justify-center text-[11px] font-[700] text-white dark:text-[#e9edef] flex-shrink-0">
           ع
         </div>
         <div>
-          <div className="text-[11px] font-[600] text-cream">عَودة</div>
-          <div className="text-[9px] text-cream/60">متصل الآن</div>
+          <div className="text-[11px] font-[600] text-white dark:text-[#e9edef]">عَودة</div>
+          <div className="text-[9px] text-white/60 dark:text-[#e9edef]/60">متصل الآن</div>
         </div>
       </div>
 
       {/* Chat area */}
-      <div className="p-3 space-y-3 bg-[#ECE5DD]">
+      <div className="p-3 space-y-3 bg-[#ECE5DD] dark:bg-[#0b141a] transition-colors duration-200">
         {/* Patient 1: فاطمة */}
         <div className="space-y-1">
           <div className="flex items-center gap-1.5 mb-1">
             <div className="w-5 h-5 rounded-full bg-[#DCFCE7] flex items-center justify-center text-[8px] font-[700] text-[#166534] flex-shrink-0">
               ف
             </div>
-            <span className="text-[9px] font-[600] text-ink">فاطمة الزهراني</span>
+            <span className="text-[9px] font-[600] text-[#1f2937] dark:text-[#e9edef] transition-colors duration-200">
+              فاطمة الزهراني
+            </span>
             <div className="flex gap-1">
               {chips1.map((c) => (
                 <motion.div
@@ -216,11 +213,11 @@ function MessageFragment() {
             </div>
           </div>
           <div className="flex justify-end">
-            <div className="max-w-[160px] bg-[#DCF8C6] rounded-[12px_4px_12px_12px] px-3 py-1.5 text-[10px] text-ink leading-[1.5]">
+            <div className="max-w-[160px] bg-[#DCF8C6] dark:bg-[#005c4b] rounded-[12px_4px_12px_12px] px-3 py-1.5 text-[10px] text-[#1f2937] dark:text-[#e9edef] leading-[1.5] transition-colors duration-200">
               السلام عليكم أبو فاطمة، وحشتنا 🌟 مرّت فترة منذ زيارتك لعيادة الابتسامة...
-              <div className="flex items-center justify-end gap-1 mt-1 opacity-60">
+              <div className="flex items-center justify-end gap-1 mt-1 text-[#1f2937]/50 dark:text-[#e9edef]/50">
                 <span className="text-[8px]">١٠:٢٤</span>
-                <svg width="12" height="8" viewBox="0 0 12 8" fill="#34B7F1">
+                <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
                   <path
                     d="M1 4l3 3 7-7M4 4l3 3 7-7"
                     strokeWidth="1.2"
@@ -240,7 +237,9 @@ function MessageFragment() {
             <div className="w-5 h-5 rounded-full bg-[#FEF3C7] flex items-center justify-center text-[8px] font-[700] text-[#92400E] flex-shrink-0">
               خ
             </div>
-            <span className="text-[9px] font-[600] text-ink">خالد السالم</span>
+            <span className="text-[9px] font-[600] text-[#1f2937] dark:text-[#e9edef] transition-colors duration-200">
+              خالد السالم
+            </span>
             <div className="flex gap-1">
               {chips2.map((c) => (
                 <motion.div
@@ -255,7 +254,7 @@ function MessageFragment() {
             </div>
           </div>
           <div className="flex justify-end">
-            <div className="max-w-[170px] bg-[#DCF8C6] rounded-[12px_4px_12px_12px] px-3 py-1.5 text-[10px] text-ink leading-[1.5]">
+            <div className="max-w-[170px] bg-[#DCF8C6] dark:bg-[#005c4b] rounded-[12px_4px_12px_12px] px-3 py-1.5 text-[10px] text-[#1f2937] dark:text-[#e9edef] leading-[1.5] transition-colors duration-200">
               خالد، مرّت فترة منذ زيارتك الأخيرة. لوحة ابتسامة تفتقدك! خصصنا لك موعداً مميزاً هذا
               الأسبوع...
             </div>
@@ -458,12 +457,7 @@ function StepCard({ step, index }: { step: StepData; index: number }) {
   return (
     <FadeIn delay={index * 140}>
       <div
-        className="relative overflow-hidden rounded-2xl p-8 md:p-10 transition-shadow duration-300"
-        style={{
-          border: '1px solid rgba(31,61,54,0.12)',
-          background:
-            'linear-gradient(135deg, rgba(245,241,232,0.6) 0%, rgba(255,252,245,0.9) 60%, rgba(240,247,246,0.5) 100%)',
-        }}
+        className="relative overflow-hidden rounded-2xl p-6 md:p-10 transition-shadow duration-300 border border-line/60 dark:border-sage-800/30 bg-gradient-to-br from-cream/60 via-paper/90 to-sage-50/50 dark:from-forest-800/40 dark:via-forest-900/60 dark:to-forest-950/50"
         onMouseEnter={(e) => {
           const el = e.currentTarget
           el.style.borderColor = 'rgba(127,181,168,0.3)'
@@ -571,8 +565,7 @@ export function HowItWorksSection() {
     <section
       id="how"
       dir="rtl"
-      className="relative overflow-hidden py-20 px-6"
-      style={{ background: 'var(--paper)' }}
+      className="relative overflow-hidden py-20 px-6 bg-paper"
       aria-labelledby="how-heading"
     >
       {/* Background glows */}
@@ -601,7 +594,7 @@ export function HowItWorksSection() {
         </FadeIn>
 
         {/* Cards with connectors */}
-        <div>
+        <div className="flex flex-col gap-6 md:gap-0">
           {STEPS.map((step, i) => (
             <div key={step.numeral}>
               <StepCard step={step} index={i} />

@@ -39,9 +39,12 @@ function fade(i: number) {
 
 export function MetricBar() {
   return (
-    <section className="py-16" style={{ background: '#030D0B' }} aria-label="إحصائيات">
+    <section
+      className="py-16 bg-cream/40 dark:bg-forest-950/10 border-y border-line dark:border-sage-800/10"
+      aria-label="إحصائيات"
+    >
       <div className="max-w-content mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 md:divide-x md:divide-x-reverse divide-sage-900">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 md:divide-x md:divide-x-reverse divide-line dark:divide-sage-800/20">
           {METRICS.map((metric, i) => (
             <motion.div
               key={metric.label}
@@ -61,8 +64,8 @@ export function MetricBar() {
               >
                 <CountUp end={metric.value} suffix={metric.suffix} arabicNumerals />
               </div>
-              <p className="text-hero-text font-semibold text-[1rem] mb-1">{metric.label}</p>
-              <p className="text-hero-muted text-sm">{metric.sublabel}</p>
+              <p className="text-ink font-semibold text-[1rem] mb-1">{metric.label}</p>
+              <p className="text-mute text-sm">{metric.sublabel}</p>
             </motion.div>
           ))}
         </div>

@@ -37,23 +37,13 @@ export function LogoBar() {
           {DUPLICATED.map((badge, i) => (
             <div
               key={i}
-              className="flex flex-col items-center shrink-0 px-5 py-2.5 rounded-xl"
-              style={{
-                border: '1px solid rgba(184,116,61,0.12)',
-                background: 'rgba(184,116,61,0.03)',
-                minWidth: 140,
-              }}
+              className="flex flex-col items-center shrink-0 px-5 py-2.5 rounded-xl border border-copper/10 dark:border-gold-500/15 bg-copper/5 dark:bg-gold-500/5"
+              style={{ minWidth: 140 }}
             >
-              <span
-                className="text-[13px] font-semibold tracking-tight"
-                style={{ color: 'rgba(74,68,64,0.75)' }}
-              >
+              <span className="text-[13px] font-semibold tracking-tight text-mute/80 dark:text-gold-300">
                 {badge.label}
               </span>
-              <span
-                className="text-[10px] font-medium tracking-wide mt-0.5"
-                style={{ color: 'rgba(154,144,137,0.7)' }}
-              >
+              <span className="text-[10px] font-medium tracking-wide mt-0.5 text-mute/60 dark:text-gold-500/60">
                 {badge.sub}
               </span>
             </div>
@@ -68,23 +58,13 @@ export function LogoBar() {
           {DUPLICATED.map((badge, i) => (
             <div
               key={`b${i}`}
-              className="flex flex-col items-center shrink-0 px-5 py-2.5 rounded-xl"
-              style={{
-                border: '1px solid rgba(184,116,61,0.12)',
-                background: 'rgba(184,116,61,0.03)',
-                minWidth: 140,
-              }}
+              className="flex flex-col items-center shrink-0 px-5 py-2.5 rounded-xl border border-copper/10 dark:border-gold-500/15 bg-copper/5 dark:bg-gold-500/5"
+              style={{ minWidth: 140 }}
             >
-              <span
-                className="text-[13px] font-semibold tracking-tight"
-                style={{ color: 'rgba(74,68,64,0.75)' }}
-              >
+              <span className="text-[13px] font-semibold tracking-tight text-mute/80 dark:text-gold-300">
                 {badge.label}
               </span>
-              <span
-                className="text-[10px] font-medium tracking-wide mt-0.5"
-                style={{ color: 'rgba(154,144,137,0.7)' }}
-              >
+              <span className="text-[10px] font-medium tracking-wide mt-0.5 text-mute/60 dark:text-gold-500/60">
                 {badge.sub}
               </span>
             </div>
@@ -92,14 +72,8 @@ export function LogoBar() {
         </motion.div>
 
         {/* Fade edges */}
-        <div
-          className="pointer-events-none absolute inset-y-0 start-0 w-20 z-10"
-          style={{ background: 'linear-gradient(to left, transparent, #FFFCF580 70%, #FFFCF5)' }}
-        />
-        <div
-          className="pointer-events-none absolute inset-y-0 end-0 w-20 z-10"
-          style={{ background: 'linear-gradient(to right, transparent, #FFFCF580 70%, #FFFCF5)' }}
-        />
+        <div className="pointer-events-none absolute inset-y-0 start-0 w-20 z-10 bg-gradient-to-l from-paper via-paper/50 to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 end-0 w-20 z-10 bg-gradient-to-r from-paper via-paper/50 to-transparent" />
       </div>
     </section>
   )

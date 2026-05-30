@@ -51,8 +51,7 @@ const item = {
 export function TestimonialsSection() {
   return (
     <section
-      className="relative overflow-hidden py-20 px-6"
-      style={{ background: 'var(--cream)' }}
+      className="relative overflow-hidden py-20 px-6 bg-cream"
       aria-labelledby="testimonials-heading"
     >
       <SectionGlow color="gold" position="top-right" size={700} opacity={0.04} />
@@ -83,14 +82,7 @@ export function TestimonialsSection() {
           transition={{ duration: 0.6 }}
           dir="rtl"
         >
-          <span
-            className="inline-flex items-center mb-4 px-3 py-1 rounded-full text-[11px] font-semibold tracking-[0.14em] uppercase"
-            style={{
-              background: 'rgba(184,116,61,0.09)',
-              color: '#B8743D',
-              border: '1px solid rgba(184,116,61,0.18)',
-            }}
-          >
+          <span className="inline-flex items-center mb-4 px-3 py-1 rounded-full text-[11px] font-semibold tracking-[0.14em] uppercase bg-copper/9 text-copper dark:text-gold-300 border border-copper/18 dark:border-gold-500/20">
             شهادات العملاء
           </span>
           <h2
@@ -104,7 +96,7 @@ export function TestimonialsSection() {
           >
             ثقة من أصحاب العيادات
           </h2>
-          <p className="mt-4 text-mute" style={{ fontSize: 17, maxWidth: '44ch' }}>
+          <p className="mt-4 text-mute text-[17px] max-w-[44ch]">
             نتائج فعلية من العيادات الأولى التي جرّبت عَودة
           </p>
         </motion.div>
@@ -123,12 +115,7 @@ export function TestimonialsSection() {
               key={t.author}
               variants={item}
               whileHover={{ y: -6, transition: { duration: 0.2 } }}
-              className="flex flex-col rounded-2xl p-8 relative overflow-hidden"
-              style={{
-                background: 'var(--paper)',
-                border: '1px solid var(--line)',
-                boxShadow: '0 2px 8px rgba(26,24,21,0.04), 0 1px 2px rgba(26,24,21,0.06)',
-              }}
+              className="flex flex-col rounded-2xl p-8 relative overflow-hidden bg-paper border border-line shadow-[0_2px_8px_rgba(26,24,21,0.04),_0_1px_2px_rgba(26,24,21,0.06)] dark:shadow-none"
             >
               {/* Top glow accent */}
               <div
@@ -154,40 +141,28 @@ export function TestimonialsSection() {
                 >
                   {t.metric}
                 </p>
-                <p className="text-[12px] font-medium" style={{ color: '#6B6359' }}>
-                  {t.metricLabel}
-                </p>
+                <p className="text-[12px] font-medium text-mute">{t.metricLabel}</p>
               </div>
 
               {/* Divider */}
-              <div className="h-px mb-6" style={{ background: 'var(--line)' }} />
+              <div className="h-px mb-6 bg-line" />
 
               {/* Quote */}
-              <blockquote
-                className="flex-1 leading-[1.75] mb-8"
-                style={{ color: '#4A4440', fontSize: 15 }}
-              >
+              <blockquote className="flex-1 leading-[1.75] mb-8 text-ink/85 text-[15px]">
                 &ldquo;{t.quote}&rdquo;
               </blockquote>
 
               {/* Author */}
               <div className="flex items-center gap-3">
                 <div
-                  className="w-10 h-10 rounded-full flex items-center justify-center text-[12px] font-bold flex-shrink-0"
-                  style={{
-                    background: 'rgba(31,61,54,0.1)',
-                    color: '#4A4440',
-                    border: '1px solid rgba(31,61,54,0.15)',
-                  }}
+                  className="w-10 h-10 rounded-full flex items-center justify-center text-[12px] font-bold flex-shrink-0 bg-forest/10 dark:bg-sage-400/10 text-ink/80 dark:text-gold-300 border border-forest/15 dark:border-sage-400/20"
                   aria-hidden="true"
                 >
                   {t.initials}
                 </div>
                 <div>
-                  <p className="font-semibold text-ink" style={{ fontSize: 14 }}>
-                    {t.author}
-                  </p>
-                  <p style={{ fontSize: 12, color: '#6B6359' }}>
+                  <p className="font-semibold text-ink text-[14px]">{t.author}</p>
+                  <p className="text-[12px] text-mute">
                     {t.role} — {t.location}
                   </p>
                 </div>
@@ -198,8 +173,7 @@ export function TestimonialsSection() {
 
         {/* Bottom note */}
         <motion.p
-          className="mt-10 text-center"
-          style={{ fontSize: 13, color: '#6B6359' }}
+          className="mt-10 text-center text-mute text-[13px]"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

@@ -2,6 +2,7 @@
 
 import dynamic from 'next/dynamic'
 import { BookingButton } from '@/components/BookingButton'
+import { HeroPatientCards } from '@/components/hero/HeroPatientCards'
 
 const HeroMockup = dynamic(() => import('./hero-mockup').then((m) => ({ default: m.HeroMockup })), {
   ssr: false,
@@ -138,8 +139,14 @@ export function HeroSection() {
           </p>
         </div>
 
-        {/* RIGHT COLUMN — empty on desktop, mockup shown full-width below */}
-        <div className="hidden lg:block" aria-hidden="true" />
+        {/* RIGHT COLUMN — Patient Cards ───────────────────────────── */}
+        <div
+          className="hidden lg:flex relative items-center justify-center"
+          aria-hidden="true"
+          style={{ minHeight: '100vh' }}
+        >
+          <HeroPatientCards />
+        </div>
       </div>
 
       {/* ── Dashboard preview — full width below grid ─────────────── */}
@@ -184,7 +191,7 @@ export function HeroSection() {
           className="w-full block"
           style={{ height: 48 }}
         >
-          <path d="M0 48 Q720 0 1440 48 L1440 48 L0 48 Z" fill="#F5F1E8" />
+          <path d="M0 48 Q720 0 1440 48 L1440 48 L0 48 Z" fill="var(--cream)" />
         </svg>
       </div>
     </section>
