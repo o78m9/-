@@ -87,6 +87,52 @@ export default function AboutPage() {
           </p>
         </section>
 
+        <section className="mb-10">
+          <h2 className="text-[22px] font-semibold mb-4" style={{ color: '#F5EFE6' }}>
+            أمان بياناتك
+          </h2>
+          <div className="space-y-3">
+            {[
+              {
+                icon: '🔒',
+                title: 'تشفير كامل',
+                desc: 'جميع البيانات مشفّرة أثناء النقل والتخزين (TLS 1.3 + AES-256).',
+              },
+              {
+                icon: '🇸🇦',
+                title: 'ملتزمون بـ PDPL',
+                desc: 'عَودة ملتزمة بنظام حماية البيانات الشخصية (PDPL) الصادر عن الهيئة السعودية للبيانات والذكاء الاصطناعي (سدايا) — جهة رقابية حكومية سعودية.',
+              },
+              {
+                icon: '🛡️',
+                title: 'ملكيتك الكاملة',
+                desc: 'بيانات مرضاك ملكك وحدك. تستلمها كاملةً عند أي طلب أو عند إلغاء الاشتراك، وتُحذف من خوادمنا خلال أسبوع.',
+              },
+              {
+                icon: '🚫',
+                title: 'لا مشاركة مع أطراف ثالثة',
+                desc: 'لا نبيع بياناتك ولا نشاركها مع أي طرف خارجي بأي شكل.',
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="flex items-start gap-4 rounded-xl px-5 py-4"
+                style={{ background: '#142B27', border: '1px solid rgba(127,181,168,0.1)' }}
+              >
+                <span className="text-[20px] shrink-0 mt-0.5">{item.icon}</span>
+                <div>
+                  <p className="text-[15px] font-semibold mb-1" style={{ color: '#F5EFE6' }}>
+                    {item.title}
+                  </p>
+                  <p className="text-[14px] leading-[1.6]" style={{ color: '#8A9B95' }}>
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section className="pt-10" style={{ borderTop: '1px solid rgba(127,181,168,0.12)' }}>
           <h2 className="text-[22px] font-semibold mb-4" style={{ color: '#F5EFE6' }}>
             نتشرّف بمحادثتك

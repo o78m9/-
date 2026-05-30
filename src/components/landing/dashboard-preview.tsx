@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   BarChart,
@@ -12,11 +12,20 @@ import {
   Area,
   AreaChart,
 } from 'recharts'
-import { Users, MessageSquare, BarChart2, CheckCircle2, Clock, Wifi } from 'lucide-react'
+import {
+  Users,
+  MessageSquare,
+  BarChart2,
+  CheckCircle2,
+  Clock,
+  Wifi,
+  ShieldCheck,
+} from 'lucide-react'
 
 const TABS = [
   { id: 'patients', label: 'المرضى', icon: Users },
   { id: 'messages', label: 'الرسائل', icon: MessageSquare },
+  { id: 'review', label: 'المراجعة', icon: ShieldCheck },
   { id: 'reports', label: 'التقارير', icon: BarChart2 },
 ] as const
 
@@ -255,6 +264,165 @@ function MessagesTab() {
   )
 }
 
+const PENDING_MESSAGES = [
+  {
+    patient: 'محمد العتيبي',
+    initial: 'م',
+    lastVisit: 'منذ ٩ أشهر',
+    msg: 'السلام عليكم أبو محمد 🌟 لاحظنا أنك لم تزرنا منذ فترة، وكنا نودّ الاطمئنان عليك. لو تحب نحجز لك موعداً هذا الأسبوع يكون عندنا وقت مناسب.',
+  },
+  {
+    patient: 'هند الغامدي',
+    initial: 'هـ',
+    lastVisit: 'منذ ٧ أشهر',
+    msg: 'مرحباً هند 😊 فترة ما شفناك! تذكيرك بالفحص الدوري — وعندنا هالشهر خصم خاص لمريضاتنا القدامى.',
+  },
+]
+
+function ReviewTab() {
+  const [approved, setApproved] = useState<Set<number>>(new Set())
+  const [undoPending, setUndoPending] = useState<number | null>(null)
+  const undoTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  function handleApprove(i: number) {
+    setApproved((s) => new Set([...s, i]))
+    setUndoPending(i)
+    if (undoTimer.current) clearTimeout(undoTimer.current)
+    undoTimer.current = setTimeout(() => setUndoPending(null), 5000)
+  }
+
+  function handleUndo() {
+    if (undoPending === null) return
+    const idx = undoPending
+    setApproved((s) => {
+      const next = new Set(s)
+      next.delete(idx)
+      return next
+    })
+    setUndoPending(null)
+    if (undoTimer.current) clearTimeout(undoTimer.current)
+  }
+
+  return (
+    <div className="space-y-3">
+      <div
+        className="flex items-center justify-between px-4 py-2.5 rounded-xl"
+        style={{ background: 'rgba(212,165,116,0.08)', border: '1px solid rgba(212,165,116,0.18)' }}
+      >
+        <span className="text-[0.75rem] font-medium" style={{ color: '#D4A574' }}>
+          رسالتان بانتظار موافقتك
+        </span>
+        <span className="text-[0.625rem]" style={{ color: '#8A9B95' }}>
+          لا ترسل عَودة رسالة واحدة بدون موافقتك
+        </span>
+      </div>
+      <p className="text-[0.625rem] px-1" style={{ color: 'rgba(138,155,149,0.6)' }}>
+        الرسائل تبقى معلّقة حتى موافقتك — لا تُرسل تلقائياً أبداً
+      </p>
+
+      <AnimatePresence>
+        {undoPending !== null && (
+          <motion.div
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.2 }}
+            className="flex items-center justify-between px-4 py-2 rounded-lg"
+            style={{
+              background: 'rgba(127,181,168,0.1)',
+              border: '1px solid rgba(127,181,168,0.25)',
+            }}
+          >
+            <span className="text-[0.75rem]" style={{ color: '#7FB5A8' }}>
+              اعتُمدت الرسالة
+            </span>
+            <button
+              onClick={handleUndo}
+              className="text-[0.75rem] font-semibold underline underline-offset-2 transition-opacity hover:opacity-70"
+              style={{ color: '#D4A574' }}
+            >
+              تراجع
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {PENDING_MESSAGES.map((m, i) => (
+        <div
+          key={m.patient}
+          className="rounded-xl overflow-hidden transition-opacity duration-300"
+          style={{
+            border: approved.has(i)
+              ? '1px solid rgba(127,181,168,0.3)'
+              : '1px solid rgba(255,255,255,0.07)',
+            opacity: approved.has(i) ? 0.6 : 1,
+          }}
+        >
+          <div
+            className="flex items-center gap-2.5 px-4 py-2.5"
+            style={{
+              background: 'rgba(255,255,255,0.04)',
+              borderBottom: '1px solid rgba(255,255,255,0.06)',
+            }}
+          >
+            <div
+              className="w-6 h-6 rounded-full flex items-center justify-center text-[0.5625rem] font-bold shrink-0"
+              style={{ background: 'rgba(212,165,116,0.2)', color: '#D4A574' }}
+            >
+              {m.initial}
+            </div>
+            <span className="text-[0.8125rem] font-semibold" style={{ color: '#F5EFE6' }}>
+              {m.patient}
+            </span>
+            <span className="text-[0.625rem] ms-auto" style={{ color: '#8A9B95' }}>
+              {m.lastVisit}
+            </span>
+          </div>
+          <div className="px-4 py-3">
+            <p
+              className="text-[0.8125rem] leading-relaxed mb-3"
+              style={{ color: '#D8EDEA', direction: 'rtl' }}
+            >
+              {m.msg}
+            </p>
+            <div className="flex gap-2 justify-end">
+              {approved.has(i) ? (
+                <span
+                  className="flex items-center gap-1.5 text-[0.75rem] font-medium px-3 py-1.5 rounded-lg"
+                  style={{ background: 'rgba(127,181,168,0.15)', color: '#7FB5A8' }}
+                >
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  تمت الموافقة
+                </span>
+              ) : (
+                <>
+                  <button
+                    onClick={() => handleApprove(i)}
+                    className="text-[0.75rem] font-semibold px-4 py-1.5 rounded-lg transition-opacity hover:opacity-80"
+                    style={{ background: 'rgba(127,181,168,0.2)', color: '#7FB5A8' }}
+                  >
+                    اعتمد ✓
+                  </button>
+                  <button
+                    className="text-[0.75rem] font-medium px-4 py-1.5 rounded-lg transition-opacity hover:opacity-80"
+                    style={{
+                      background: 'rgba(255,255,255,0.05)',
+                      border: '1px solid rgba(255,255,255,0.1)',
+                      color: '#8A9B95',
+                    }}
+                  >
+                    طلب تعديل
+                  </button>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 function ReportsTab() {
   return (
     <div className="space-y-3">
@@ -338,6 +506,7 @@ function ReportsTab() {
 const CONTENT: Record<TabId, React.ReactNode> = {
   patients: <PatientsTab />,
   messages: <MessagesTab />,
+  review: <ReviewTab />,
   reports: <ReportsTab />,
 }
 
