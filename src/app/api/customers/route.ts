@@ -2,6 +2,7 @@ import { type NextRequest, NextResponse } from 'next/server'
 import { neon } from '@neondatabase/serverless'
 import { rateLimit, LIMITS } from '@/lib/rate-limit'
 import { CustomerCreateSchema } from '@/lib/schemas'
+import { logAudit } from '@/lib/audit'
 import { createClient } from '@/features/auth/lib/server'
 
 const sql = neon(process.env.DATABASE_URL ?? '')
@@ -56,6 +57,14 @@ export async function POST(req: NextRequest) {
     const id = row.id as string
     await sql`UPDATE customers SET last_visit = ${today}, status = 'active' WHERE id = ${id}`
     await sql`INSERT INTO visits (customer_id, date, service, notes) VALUES (${id}, ${today}, ${visit_type}, ${notes || null})`
+    await logAudit(req, {
+      userId: user?.id ?? null,
+      clinicId: clinic_id,
+      action: 'customer.update',
+      resource: 'customer',
+      resourceId: id,
+      metadata: { visit_type: visit_type ?? null },
+    })
     return NextResponse.json({ id, updated: true })
   }
 
@@ -69,5 +78,13 @@ export async function POST(req: NextRequest) {
   const id = insertedRow.id as string
   await sql`INSERT INTO visits (customer_id, date, service, notes) VALUES (${id}, ${today}, ${visit_type}, ${notes || null})`
 
+  await logAudit(req, {
+    userId: user?.id ?? null,
+    clinicId: clinic_id,
+    action: 'customer.create',
+    resource: 'customer',
+    resourceId: id,
+    metadata: { visit_type: visit_type ?? null },
+  })
   return NextResponse.json({ id, created: true })
 }

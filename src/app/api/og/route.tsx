@@ -1,23 +1,25 @@
 import { ImageResponse } from 'next/og'
-import type { NextRequest } from 'next/server'
+import { NextResponse, type NextRequest } from 'next/server'
 import { rateLimit, LIMITS } from '@/lib/rate-limit'
+import { OgImageQuerySchema } from '@/lib/schemas'
 
 export const runtime = 'edge'
-
-// Hard limits to prevent DoS via oversized params that stress Satori's text layout engine.
-const TITLE_MAX = 120
-const SUBTITLE_MAX = 160
 
 export async function GET(req: NextRequest) {
   const limited = await rateLimit(req, LIMITS.api)
   if (limited) return limited
 
   const { searchParams } = new URL(req.url)
-  const rawTitle = searchParams.get('title') ?? ''
-  const rawSubtitle = searchParams.get('sub') ?? ''
+  const parsed = OgImageQuerySchema.safeParse({
+    title: searchParams.get('title') ?? '',
+    sub: searchParams.get('sub') ?? '',
+  })
+  if (!parsed.success) {
+    return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 })
+  }
 
-  const title = rawTitle.slice(0, TITLE_MAX) || 'عَودة | نظام تنشيط العملاء بالذكاء الاصطناعي'
-  const subtitle = rawSubtitle.slice(0, SUBTITLE_MAX) || 'ادفع فقط من الإيراد الذي نسترجعه'
+  const title = parsed.data.title || 'عَودة | نظام تنشيط العملاء بالذكاء الاصطناعي'
+  const subtitle = parsed.data.sub || 'ادفع فقط من الإيراد الذي نسترجعه'
 
   return new ImageResponse(
     <div

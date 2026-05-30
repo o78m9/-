@@ -2,6 +2,7 @@ import { type NextRequest, NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
 import { rateLimit, LIMITS } from '@/lib/rate-limit'
 import { GenerateMessageSchema } from '@/lib/schemas'
+import { logAudit } from '@/lib/audit'
 import { createClient } from '@/features/auth/lib/server'
 
 const client = new Anthropic()
@@ -105,6 +106,12 @@ Write the Arabic WhatsApp message now.`
       }),
     )
 
+    await logAudit(request, {
+      userId: user?.id ?? null,
+      action: 'message.generate',
+      resource: 'message',
+      metadata: { template, count: messages.length },
+    })
     return NextResponse.json({ messages })
   } catch (err) {
     console.error('generate-message error:', err)

@@ -54,3 +54,24 @@ model Visit {
   @@map("visits")
 }
 
+/// PDPL-compliant audit trail. 12-month retention enforced via scheduled prune job.
+/// `metadata` is opaque JSON — never store secrets, tokens, or full PII payloads here.
+model AuditLog {
+  id         String   @id @default(uuid())
+  userId     String?  @map("user_id")
+  clinicId   String?  @map("clinic_id")
+  action     String
+  resource   String
+  resourceId String?  @map("resource_id")
+  ip         String?
+  userAgent  String?  @map("user_agent")
+  metadata   Json?
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  @@index([userId])
+  @@index([clinicId])
+  @@index([action])
+  @@index([createdAt])
+  @@map("audit_log")
+}
+

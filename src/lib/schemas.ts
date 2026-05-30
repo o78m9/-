@@ -55,3 +55,17 @@ export const BookingSchema = z.object({
   source: z.string().max(100).optional(),
   message: z.string().max(2000).optional(),
 })
+
+// GET /api/roi-report query params.
+const MONTH_RE = /^\d{4}-(0[1-9]|1[0-2])$/
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+export const RoiReportQuerySchema = z.object({
+  month: z.string().regex(MONTH_RE, 'month must be YYYY-MM').nullable().optional(),
+  clinic_id: z.string().regex(UUID_RE, 'clinic_id must be UUID').nullable().optional(),
+})
+
+// GET /api/og query params.
+export const OgImageQuerySchema = z.object({
+  title: z.string().max(120).optional().default(''),
+  sub: z.string().max(160).optional().default(''),
+})

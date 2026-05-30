@@ -3,6 +3,7 @@ import { neon } from '@neondatabase/serverless'
 import { cleanImportData } from '@/lib/claude'
 import { rateLimit, LIMITS } from '@/lib/rate-limit'
 import { ImportSchema } from '@/lib/schemas'
+import { logAudit } from '@/lib/audit'
 import { createClient } from '@/features/auth/lib/server'
 
 const sql = neon(process.env.DATABASE_URL ?? '')
@@ -66,5 +67,12 @@ export async function POST(req: NextRequest) {
     imported++
   }
 
+  await logAudit(req, {
+    userId: user?.id ?? null,
+    clinicId: clinic_id,
+    action: 'customer.import',
+    resource: 'customer',
+    metadata: { imported, requested: safeRecords.length },
+  })
   return NextResponse.json({ imported })
 }

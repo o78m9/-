@@ -1,6 +1,7 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 import { applySecurityHeaders } from '@/lib/security-headers'
+import { csrfCheck } from '@/lib/csrf'
 
 function generateNonce(): string {
   const array = new Uint8Array(16)
@@ -11,6 +12,14 @@ function generateNonce(): string {
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
   const nonce = generateNonce()
+
+  // CSRF guard for state-changing API requests.
+  // NextAuth manages its own CSRF tokens — skip /api/auth/* to avoid breaking
+  // OAuth callbacks (which arrive with cross-origin Referer by design).
+  if (pathname.startsWith('/api/') && !pathname.startsWith('/api/auth/')) {
+    const csrf = csrfCheck(request)
+    if (csrf) return csrf
+  }
 
   let response = NextResponse.next({ request })
   response.headers.set('x-nonce', nonce)

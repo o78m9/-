@@ -15,22 +15,22 @@ project-manager → architect → ui-designer → 3d-designer → code-developer
 
 ## Progress
 
-| Phase | Name                          | Est. | Status          |
-| ----- | ----------------------------- | ---- | --------------- |
-| 1     | Brand Bible + Design Tokens   | 8h   | [x] DONE        |
-| 2     | Typography                    | 4h   | [x] DONE        |
-| 3     | Motion System                 | 12h  | [x] DONE        |
-| 4     | Apple-Level Details           | 16h  | [x] DONE        |
-| 5     | Vercel-Level Performance      | 10h  | [x] DONE        |
-| 6     | Stripe-Level Copy             | 8h   | [x] DONE        |
-| 7     | Trust Elements                | 14h  | [x] DONE        |
-| 8     | Interactive Dashboard Preview | 16h  | [x] DONE        |
-| 9     | Security Hardening            | 12h  | [~] IN PROGRESS |
-| 10    | SEO + Meta                    | 6h   | [x] DONE        |
-| 11    | Accessibility (WCAG AAA)      | 8h   | [x] DONE        |
-| 12    | Little Things                 | 10h  | [x] DONE        |
-| 13    | Quality Gates                 | 8h   | [x] DONE        |
-| 14    | Deploy                        | 6h   | [ ]             |
+| Phase | Name                          | Est. | Status                                                                |
+| ----- | ----------------------------- | ---- | --------------------------------------------------------------------- |
+| 1     | Brand Bible + Design Tokens   | 8h   | [x] DONE                                                              |
+| 2     | Typography                    | 4h   | [x] DONE                                                              |
+| 3     | Motion System                 | 12h  | [x] DONE                                                              |
+| 4     | Apple-Level Details           | 16h  | [x] DONE                                                              |
+| 5     | Vercel-Level Performance      | 10h  | [x] DONE                                                              |
+| 6     | Stripe-Level Copy             | 8h   | [x] DONE                                                              |
+| 7     | Trust Elements                | 14h  | [x] DONE                                                              |
+| 8     | Interactive Dashboard Preview | 16h  | [x] DONE                                                              |
+| 9     | Security Hardening            | 12h  | [x] DONE (8/8 in scope; 9.8 MFA + 9.9 npm audit deferred — see notes) |
+| 10    | SEO + Meta                    | 6h   | [x] DONE                                                              |
+| 11    | Accessibility (WCAG AAA)      | 8h   | [x] DONE                                                              |
+| 12    | Little Things                 | 10h  | [x] DONE                                                              |
+| 13    | Quality Gates                 | 8h   | [x] DONE                                                              |
+| 14    | Deploy                        | 6h   | [ ]                                                                   |
 
 ---
 
@@ -131,12 +131,12 @@ project-manager → architect → ui-designer → 3d-designer → code-developer
 - [x] 9.1 security.txt at /.well-known/
 - [x] 9.2 Security headers (X-Frame-Options, CSP, HSTS etc.)
 - [x] 9.3 DOMPurify installed
-- [ ] 9.4 Strict nonce-based CSP in middleware
-- [ ] 9.5 CSRF protection on all mutations
-- [ ] 9.6 Zod validation on 100% of API inputs
-- [ ] 9.7 Audit log table in DB
-- [ ] 9.8 2FA option via Supabase MFA
-- [ ] 9.9 npm audit: zero HIGH/CRITICAL
+- [x] 9.4 Strict nonce-based CSP in middleware (impl in src/lib/security-headers.ts)
+- [x] 9.5 CSRF protection on all mutations (origin/referer check in middleware via src/lib/csrf.ts)
+- [x] 9.6 Zod validation on 100% of API inputs (roi-report + og migrated to schemas.ts)
+- [x] 9.7 Audit log table in DB (audit_log model + lib/audit.ts + Vercel cron prune)
+- [~] 9.8 2FA option via Supabase MFA — SKIP (manual Supabase dashboard config, not code)
+- [~] 9.9 npm audit: zero HIGH/CRITICAL — SKIP (6 HIGH in Next.js internals, unfixable without downgrade — see Phase 13.7)
 - [x] 9.10 Rate limiting on all public API routes (auth/debug/og added 2026-05-30 — all 9 routes covered)
 
 ---

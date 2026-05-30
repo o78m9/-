@@ -2,12 +2,9 @@ import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 import { neon } from '@neondatabase/serverless'
 import { rateLimit, LIMITS } from '@/lib/rate-limit'
+import { RoiReportQuerySchema } from '@/lib/schemas'
 import { createClient } from '@/features/auth/lib/server'
 
-// Strict YYYY-MM validation — rejects anything that is not a real calendar month.
-const MONTH_RE = /^\d{4}-(0[1-9]|1[0-2])$/
-
-// UUID v4 format used for clinic IDs.
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
 
 export async function GET(req: NextRequest) {
@@ -15,25 +12,21 @@ export async function GET(req: NextRequest) {
   if (limited) return limited
 
   const { searchParams } = req.nextUrl
-  const monthParam = searchParams.get('month') // YYYY-MM
-  const clinicIdParam = searchParams.get('clinic_id')
-
-  // --- Input validation: month ---
-  // Must be absent (use current month) or a valid YYYY-MM string.
-  if (monthParam !== null && !MONTH_RE.test(monthParam)) {
-    return NextResponse.json({ error: 'Invalid month parameter' }, { status: 400 })
+  const parsed = RoiReportQuerySchema.safeParse({
+    month: searchParams.get('month'),
+    clinic_id: searchParams.get('clinic_id'),
+  })
+  if (!parsed.success) {
+    return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 })
   }
+  const monthParam = parsed.data.month ?? null
+  const clinicIdParam = parsed.data.clinic_id ?? null
 
-  // --- Input validation: month must not be in the future ---
+  // --- month must not be in the future ---
   const now = new Date()
   const currentYM = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`
   if (monthParam && monthParam > currentYM) {
     return NextResponse.json({ error: 'month cannot be in the future' }, { status: 400 })
-  }
-
-  // --- Input validation: clinic_id must be a UUID if provided ---
-  if (clinicIdParam !== null && !UUID_RE.test(clinicIdParam)) {
-    return NextResponse.json({ error: 'Invalid clinic_id' }, { status: 400 })
   }
 
   // Auth + IDOR guard
