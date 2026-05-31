@@ -1,0 +1,3 @@
+contact_id,clinic_name,owner_name,city,source_tier,found_via,first_touched_at,channel,template_used,last_status,last_action_at,next_action,next_action_due,decision_maker,csv_received_at,bsp_confirmed_at,pilot_signed_at,pilot_agreement_url,notes
+EXAMPLE-001,عيادة الياسمين للأسنان,د. أحمد العلي,Amman,0,Personal — founder's dentist,2026-06-01,whatsapp,tier0_variant_a,replied_curious,2026-06-01,Send Calendly link,2026-06-02,د. أحمد العلي,,,,,Knows founder personally; expressed interest in pilot
+EXAMPLE-002,مركز السلام للتجميل,د. سارة منصور,Amman,2,JDA member directory,,email,tier2_email,no_reply,,Send follow-up email,2026-06-04,,,,,,First contact pending
