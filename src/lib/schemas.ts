@@ -45,6 +45,12 @@ export const GenerateMessageSchema = z.object({
   template: z.enum(['standard', 'offer', 'health', 'custom']),
   customMessage: z.string().max(500).optional(),
   clinicName: z.string().max(200).optional(),
+  // When true (or when WHATSAPP_TEMPLATE_MODE=enforced), the API routes
+  // through the Meta-compliant template registry instead of free-form Claude
+  // generation. Required for any path that actually sends via BSP (Meta
+  // 2026-01-15 policy bans free-form outbound). Defaults to false for
+  // backward-compat with the demo flow.
+  useTemplates: z.boolean().optional().default(false),
 })
 
 export const BookingSchema = z.object({
