@@ -54,6 +54,51 @@ model Visit {
   @@map("visits")
 }
 
+/// Outbound WhatsApp message log. Source of truth for attribution.
+/// Every message Aooda sends to a patient lands here BEFORE going to BSP.
+/// metaMessageId is populated from BSP webhook on accept; deliveredAt on delivered receipt.
+model Message {
+  id              String    @id @default(uuid())
+  clinicId        String    @map("clinic_id")
+  customerId      String    @map("customer_id")
+  templateSlug    String    @map("template_slug")
+  metaTemplateId  String?   @map("meta_template_id")
+  variables       Json
+  status          String    @default("queued") // queued | sent | delivered | read | failed | opted_out
+  sentAt          DateTime? @map("sent_at")
+  deliveredAt     DateTime? @map("delivered_at")
+  readAt          DateTime? @map("read_at")
+  failedAt        DateTime? @map("failed_at")
+  failureReason   String?   @map("failure_reason")
+  metaMessageId   String?   @map("meta_message_id")
+  patientWasDormantAtSend Boolean? @map("patient_was_dormant_at_send")
+  supersededBy    String?   @map("superseded_by") // ID of newer message in the same patient+clinic conversation
+  createdAt       DateTime  @default(now()) @map("created_at")
+
+  @@index([clinicId])
+  @@index([customerId])
+  @@index([status])
+  @@index([sentAt])
+  @@index([clinicId, customerId, sentAt])
+  @@map("messages")
+}
+
+/// Clinic-filed disputes against attributed visits. Clinic always wins — see docs/ATTRIBUTION.md.
+model AttributionDispute {
+  id         String   @id @default(uuid())
+  clinicId   String   @map("clinic_id")
+  visitId    String   @map("visit_id")
+  messageId  String?  @map("message_id") // the message the visit was originally attributed to
+  reason     String   // fixed enum value, see docs/ATTRIBUTION.md
+  notes      String?
+  filedAt    DateTime @default(now()) @map("filed_at")
+  decidedAt  DateTime @default(now()) @map("decided_at") // always equal to filedAt — clinic auto-wins
+
+  @@index([clinicId])
+  @@index([visitId])
+  @@map("attribution_disputes")
+}
+
 /// PDPL-compliant audit trail. 12-month retention enforced via scheduled prune job.
 /// `metadata` is opaque JSON — never store secrets, tokens, or full PII payloads here.
 model AuditLog {
