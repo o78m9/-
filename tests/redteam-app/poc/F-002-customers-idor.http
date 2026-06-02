@@ -1,0 +1,28 @@
+### F-002 — IDOR via user_metadata.clinic_id (Supabase)
+### CRITICAL: customers/route.ts:41 reads clinic_id from user.user_metadata.
+### user_metadata is USER-WRITABLE by default in Supabase. Attacker:
+###  1. signs up legitimately
+###  2. calls supabase.auth.updateUser({ data: { clinic_id: '<TARGET-CLINIC-UUID>' } })
+###  3. posts to /api/customers with that clinic_id → write succeeds + matches metadata
+### → write into ANY clinic's customer table.
+
+### Reproduction (requires authenticated session cookie):
+POST http://localhost:3000/api/customers HTTP/1.1
+Cookie: <supabase-session-cookies-after-metadata-update>
+Content-Type: application/json
+X-CSRF-Token: <token-from-cookie>
+
+{
+  "name": "ATTACKER",
+  "phone": "+97150000000",
+  "clinic_id": "<TARGET-CLINIC-UUID>",
+  "visit_type": "test"
+}
+
+### Expected (buggy): 200 OK { id, created: true } — attacker wrote into victim clinic.
+### Defense:
+###  - Read clinic_id from app_metadata (admin-only writable), NOT user_metadata.
+###  - OR query clinic_members table to authorize.
+###  - Same bug exists in src/app/api/roi-report/route.ts:40 — patch both.
+
+### Severity: P0 — CVSS 8.8 (multi-tenant data integrity breach)

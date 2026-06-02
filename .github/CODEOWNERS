@@ -1,0 +1,35 @@
+# SCS-005 fix: codeowners for security-sensitive surfaces. Founder must
+# approve every change touching these paths.
+
+* @omarawad
+
+# Auth + middleware: every PR here goes through the founder.
+/middleware.ts                       @omarawad
+/auth.ts                             @omarawad
+/src/features/auth/                  @omarawad
+/src/lib/signed-cookie.ts            @omarawad
+/src/lib/csrf.ts                     @omarawad
+/src/lib/client-ip.ts                @omarawad
+
+# Schemas + LLM glue: prompt-injection / IDOR surface.
+/src/lib/schemas.ts                  @omarawad
+/src/lib/claude.ts                   @omarawad
+/src/lib/sanitize-llm-input.ts       @omarawad
+/src/lib/claude-budget.ts            @omarawad
+
+# DB migrations + Prisma schema: RLS + tenant boundary.
+/supabase/migrations/                @omarawad
+/prisma/                             @omarawad
+
+# Build + CI + deploy: supply chain.
+/package.json                        @omarawad
+/package-lock.json                   @omarawad
+/.github/                            @omarawad
+/vercel.json                         @omarawad
+/next.config.js                      @omarawad
+/scripts/                            @omarawad
+
+# Env config + secrets.
+/.env*                               @omarawad
+/docs/ENV.md                         @omarawad
+/docs/security/                      @omarawad

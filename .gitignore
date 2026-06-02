@@ -43,3 +43,9 @@ next-env.d.ts
 claude-skills/
 
 /src/generated/prisma
+
+# red-team agent — evidence may contain payloads + endpoint maps + PII
+docs/security/redteam-app/*.md
+docs/security/redteam-app/*.jsonl
+docs/security/redteam-app/session.log
+tests/redteam-app/poc/*.live.*

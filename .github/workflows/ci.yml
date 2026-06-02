@@ -10,6 +10,10 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
+# SCS-004 fix: declare explicit permissions (default to read-only at workflow root).
+permissions:
+  contents: read
+
 jobs:
   quality:
     name: Typecheck + Lint + Build + Test
@@ -17,15 +21,32 @@ jobs:
     timeout-minutes: 15
 
     steps:
-      - uses: actions/checkout@v4
+      # SCS-002 fix: pin actions to commit SHAs, not mutable tags.
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
         with:
           node-version: 20
           cache: npm
 
+      # SCS-001 guard: refuse to build if .env / .env.local / .env.production is tracked.
+      - name: Guard against tracked env files
+        run: |
+          if git ls-files | grep -E '^\.env$|^\.env\.local$|^\.env\.production$'; then
+            echo "::error::Tracked .env* files detected. Run: git rm --cached <file> and commit."
+            exit 2
+          fi
+
       - name: Install dependencies
-        run: npm ci
+        # SCS-004 fix: do not auto-run postinstall scripts from PR dependencies.
+        run: npm ci --ignore-scripts
+        env:
+          # Prisma's own generate is run explicitly below — needed because we
+          # disabled postinstall scripts globally above.
+          PRISMA_SKIP_POSTINSTALL_GENERATE: '1'
+
+      - name: Prisma generate (explicit)
+        run: npx prisma generate
 
       - name: Typecheck
         run: npx tsc --noEmit
@@ -51,15 +72,17 @@ jobs:
     needs: quality
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
         with:
           node-version: 20
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --ignore-scripts
+      - name: Prisma generate
+        run: npx prisma generate
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
@@ -71,7 +94,7 @@ jobs:
           NEXT_PUBLIC_SUPABASE_ANON_KEY: placeholder_anon_key
           ANTHROPIC_API_KEY: placeholder_anthropic_key
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
         if: failure()
         with:
           name: playwright-report

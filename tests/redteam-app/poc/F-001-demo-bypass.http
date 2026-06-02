@@ -1,0 +1,22 @@
+### F-001 — Demo bypass via __Host-awdah-demo cookie set client-side
+### Hypothesis: middleware accepts cookie value === 'true' with no signature.
+### If XSS exists on aooda.com, an attacker can set this cookie via document.cookie.
+### Test 1: fresh request to /dashboard with cookie → should reach dashboard
+GET http://localhost:3000/dashboard HTTP/1.1
+Cookie: __Host-awdah-demo=true
+
+### Expected: 200 OK (intended behaviour for demo)
+### Risk: if XSS, attacker sets this cookie → bypass auth completely.
+### Defense: HMAC the cookie value with server secret. Reject if HMAC absent.
+
+### Test 2: same cookie value but tampered casing
+GET http://localhost:3000/dashboard HTTP/1.1
+Cookie: __Host-awdah-demo=TRUE
+
+### Expected: redirect to /login (strict equality)
+
+### Test 3: dashboard-prefix loose match
+GET http://localhost:3000/dashboard/demolicious HTTP/1.1
+
+### Expected: should NOT be allowed without auth. Hypothesis: startsWith('/dashboard/demo')
+### matches '/dashboard/demolicious' so middleware skips auth check. Verify.

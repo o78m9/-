@@ -1,21 +1,51 @@
 import { z } from 'zod'
 
+// APF-005 fix: canonicalise to E.164 so phone-format variants of the same human
+// collapse to one row + PDPL erasure-by-phone catches all variants.
 const phone = z
   .string()
   .min(7)
   .max(20)
   .regex(/^\+?[\d\s\-().]+$/, 'Invalid phone number')
+  .transform((s) => {
+    const digits = s.replace(/[^\d+]/g, '')
+    if (digits.startsWith('00')) return '+' + digits.slice(2)
+    if (digits.startsWith('+')) return digits
+    if (digits.startsWith('0') && digits.length >= 9) return '+962' + digits.slice(1) // Jordan default
+    return '+' + digits
+  })
+  .refine((s) => /^\+\d{8,15}$/.test(s), 'Phone must canonicalise to E.164')
+
+// WAP-005 / PIR-001..003 fix: strip newlines + Unicode bidi/tag invisibles at
+// schema layer. Same data flows to Claude prompts (LLM injection vector) and
+// future CSV exports (Excel formula injection). Done here once so every route
+// gets the protection.
+const safeShortText = z
+  .string()
+  .min(1)
+  .max(200)
+  .trim()
+  .transform((s) => s.replace(/[‪-‮⁦-⁩\u{E0000}-\u{E007F}]/gu, '').replace(/[\r\n]+/g, ' '))
+  .pipe(z.string().min(1, 'value empty after sanitisation'))
+
+const safeLongText = z
+  .string()
+  .max(1000)
+  .transform((s) => s.replace(/[‪-‮⁦-⁩\u{E0000}-\u{E007F}]/gu, '').replace(/[\r\n]+/g, ' '))
 
 export const CustomerCreateSchema = z.object({
-  name: z.string().min(1).max(200).trim(),
+  name: safeShortText,
   phone,
   visit_type: z.string().max(100).optional(),
-  notes: z.string().max(1000).optional(),
+  notes: safeLongText.optional(),
   clinic_id: z.string().uuid(),
 })
 
+// APF-002 / PIR-005 fix: drop rawText cap from 500K to 50K. A 50K-char CSV
+// covers ~99% of real dental-clinic imports while removing the $112/hour
+// Anthropic-cost amplification window.
 export const ImportSchema = z.object({
-  rawText: z.string().min(1).max(500_000),
+  rawText: z.string().min(1).max(50_000),
   clinic_id: z.string().uuid(),
   confirm: z.boolean().optional().default(false),
 })

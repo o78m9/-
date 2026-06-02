@@ -1,0 +1,29 @@
+### F-008 — Rate limit IP key is trivially spoofable via X-Forwarded-For
+### src/lib/rate-limit.ts:76 reads X-Forwarded-For directly from request.
+### On localhost / any deployment without a trusted proxy stripping the header,
+### an attacker controls the rate-limit key and bypasses ALL caps.
+
+### Test: hammer /api/generate-message rotating XFF
+POST http://localhost:3000/api/generate-message HTTP/1.1
+X-Forwarded-For: 10.0.0.1
+Content-Type: application/json
+
+{"customers":[{"id":"x","name":"a","last_visit":"2024-01-01"}],"template":"standard"}
+
+###
+POST http://localhost:3000/api/generate-message HTTP/1.1
+X-Forwarded-For: 10.0.0.2
+Content-Type: application/json
+
+{"customers":[{"id":"x","name":"a","last_visit":"2024-01-01"}],"template":"standard"}
+
+### Expected: each XFF gets a fresh budget. Vercel edge sets XFF correctly so
+### prod is OK, but staging without that header policy = unlimited Claude burn.
+### Cost impact: 10 req/s × $0.015/req (Sonnet) = $54/hour attacker spend.
+
+### Defense:
+###  - Only trust XFF if the immediate upstream is a known proxy.
+###  - On Vercel use req.headers['x-vercel-forwarded-for'] (not spoofable by client).
+###  - Add a per-account quota in addition to per-IP.
+
+### Severity: P1 — CVSS 7.5 (cost abuse via rate-limit bypass)

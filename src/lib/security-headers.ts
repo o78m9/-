@@ -44,7 +44,14 @@ export function applySecurityHeaders(res: NextResponse, nonce: string): NextResp
     'Permissions-Policy',
     'camera=(), microphone=(), geolocation=(), interest-cohort=()',
   )
-  res.headers.set('X-XSS-Protection', '1; mode=block')
+  // WAP-004 fix: OWASP 2024+ recommends X-XSS-Protection: 0 (legacy auditor
+  // introduces UXSS in older WebKit / mobile webviews).
+  res.headers.set('X-XSS-Protection', '0')
+  // WAP-007 fix: COOP + CORP defence-in-depth against Spectre and cross-window
+  // references. Browsers that honour these isolate the document's browsing
+  // context group, which kills the "open then read across origins" class.
+  res.headers.set('Cross-Origin-Opener-Policy', 'same-origin')
+  res.headers.set('Cross-Origin-Resource-Policy', 'same-origin')
   res.headers.set('Content-Security-Policy', buildCSP(nonce))
   return res
 }

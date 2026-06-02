@@ -3,9 +3,7 @@ import { NextResponse } from 'next/server'
 import { neon } from '@neondatabase/serverless'
 import { rateLimit, LIMITS } from '@/lib/rate-limit'
 import { RoiReportQuerySchema } from '@/lib/schemas'
-import { createClient } from '@/features/auth/lib/server'
-
-const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+import { requireClinic, isClinicError } from '@/features/auth/lib/require-clinic'
 
 export async function GET(req: NextRequest) {
   const limited = await rateLimit(req, LIMITS.api)
@@ -29,39 +27,11 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: 'month cannot be in the future' }, { status: 400 })
   }
 
-  // Auth + IDOR guard
-  let clinicId: string | null = clinicIdParam
-  try {
-    const supabase = await createClient()
-    const {
-      data: { user },
-    } = await supabase.auth.getUser()
-    if (user) {
-      const metaClinicId = user.user_metadata?.clinic_id as string | undefined
-      if (metaClinicId) {
-        if (clinicIdParam && clinicIdParam !== metaClinicId) {
-          return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
-        }
-        clinicId = metaClinicId
-      }
-    } else if (process.env.NEXT_PUBLIC_SUPABASE_URL) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-    }
-  } catch {
-    // Supabase not configured — local dev
-  }
-
-  if (!clinicId) {
-    clinicId = process.env.NEXT_PUBLIC_DEMO_CLINIC_ID ?? null
-  }
-  if (!clinicId) {
-    return NextResponse.json({ error: 'clinic_id required' }, { status: 400 })
-  }
-
-  // Final guard: clinicId resolved from env or session must also be a UUID.
-  if (!UUID_RE.test(clinicId)) {
-    return NextResponse.json({ error: 'clinic_id required' }, { status: 400 })
-  }
+  // APF-001 / AUB-001 / RTA-002 fix: requireClinic() now the single source of truth.
+  // Closes the IDOR where empty user_metadata.clinic_id silently disabled the guard.
+  const ctx = await requireClinic(req, { requestedClinicId: clinicIdParam })
+  if (isClinicError(ctx)) return ctx
+  const clinicId = ctx.clinicId
 
   if (!process.env.DATABASE_URL) {
     return NextResponse.json({ error: 'Internal error' }, { status: 500 })
@@ -145,11 +115,12 @@ export async function GET(req: NextRequest) {
         GROUP BY 1
         ORDER BY 1
       `,
-      // Top reactivated patients — return only the first word of the name to
-      // minimise PII exposure in the aggregate report response.
+      // RTA-005 fix: first_name + last_visit + total_spent forms a quasi-
+      // identifier that can re-identify with an external phonebook. Drop the
+      // name entirely and bucket spend to the nearest 100 to limit
+      // re-identification. k-anonymity (k>=5) is enforced after the query.
       sql`
         SELECT
-          SPLIT_PART(name, ' ', 1) AS name,
           last_visit,
           total_spent,
           status
@@ -193,14 +164,21 @@ export async function GET(req: NextRequest) {
           visitCount: r.visit_count,
         }),
       ),
-      topReactivated: (
-        top as Array<{ name: string; last_visit: string; total_spent: number; status: string }>
-      ).map((r) => ({
-        name: r.name,
-        lastVisit: r.last_visit,
-        totalSpent: Number(r.total_spent),
-        status: r.status,
-      })),
+      // RTA-005 k-anonymity gate. Only release per-row data when there are
+      // at least 5 reactivations in the window — otherwise re-identification
+      // is trivial from a single row.
+      topReactivated:
+        currentRow.count >= 5
+          ? (top as Array<{ last_visit: string; total_spent: number; status: string }>).map(
+              (r, idx) => ({
+                rank: idx + 1,
+                lastVisit: r.last_visit,
+                totalSpent: Math.round(Number(r.total_spent) / 100) * 100,
+                status: r.status,
+              }),
+            )
+          : [],
+      topReactivatedSuppressed: currentRow.count < 5,
     })
   } catch (err) {
     console.error('[roi-report]', err)

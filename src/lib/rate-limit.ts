@@ -1,5 +1,6 @@
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
+import { getClientIp } from '@/lib/client-ip'
 
 // ---------------------------------------------------------------------------
 // Distributed rate limiter using Upstash Redis when configured.
@@ -15,6 +16,12 @@ import { NextResponse } from 'next/server'
 interface RateLimitOptions {
   windowMs: number
   max: number
+  /**
+   * RTA-009 fix: when true, a Redis error returns 503 instead of fail-open.
+   * Use on routes where unbounded requests = cost or PII damage
+   * (generate-message, import, customers).
+   */
+  failClosed?: boolean
 }
 
 // ---------------------------------------------------------------------------
@@ -72,10 +79,9 @@ export async function rateLimit(
   req: NextRequest,
   opts: RateLimitOptions,
 ): Promise<NextResponse | null> {
-  const ip =
-    req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ??
-    req.headers.get('x-real-ip') ??
-    'unknown'
+  // RTA-008 fix: trust only platform-set headers (x-vercel-forwarded-for) by
+  // default. Operator opt-in for x-forwarded-for behind a known proxy.
+  const ip = getClientIp(req)
 
   const key = `rl:${req.nextUrl.pathname}:${ip}`
 
@@ -86,6 +92,16 @@ export async function rateLimit(
   try {
     const upstashConfigured =
       !!process.env.UPSTASH_REDIS_REST_URL && !!process.env.UPSTASH_REDIS_REST_TOKEN
+
+    // CPS-004 fix: cost-control routes also fail closed when Upstash is
+    // *absent* in production (not only when it errors). The in-memory fallback
+    // is per-instance — at scale that's effectively no cap on Claude spend.
+    if (!upstashConfigured && opts.failClosed && process.env.VERCEL_ENV === 'production') {
+      return NextResponse.json(
+        { error: 'Service temporarily unavailable' },
+        { status: 503, headers: { 'Retry-After': '30' } },
+      )
+    }
 
     if (upstashConfigured) {
       const result = await rateLimitUpstash(key, opts)
@@ -99,9 +115,14 @@ export async function rateLimit(
       resetAt = result.resetAt
     }
   } catch (err) {
-    // If Redis is unavailable, fail open (allow request) rather than blocking all traffic.
-    // Log the error so the team knows to investigate.
-    console.error('[rate-limit] Redis error — failing open:', err)
+    console.error('[rate-limit] Redis error:', err)
+    // RTA-009 fix: cost/PII routes fail closed rather than fail open.
+    if (opts.failClosed) {
+      return NextResponse.json(
+        { error: 'Service temporarily unavailable' },
+        { status: 503, headers: { 'Retry-After': '30' } },
+      )
+    }
     return null
   }
 
@@ -123,10 +144,13 @@ export async function rateLimit(
   return null
 }
 
-// Route-specific presets
+// Route-specific presets.
+// RTA-009: AI / import / write routes are failClosed because Redis-down + open
+// rate limit = uncapped Claude spend + PII writes.
 export const LIMITS = {
   api: { windowMs: 60_000, max: 60 },
-  ai: { windowMs: 60_000, max: 10 },
-  import: { windowMs: 60_000, max: 5 },
+  ai: { windowMs: 60_000, max: 10, failClosed: true },
+  import: { windowMs: 60_000, max: 5, failClosed: true },
   auth: { windowMs: 60_000, max: 20 },
-} as const
+  writes: { windowMs: 60_000, max: 30, failClosed: true },
+} as const satisfies Record<string, RateLimitOptions>

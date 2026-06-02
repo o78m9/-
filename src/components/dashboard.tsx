@@ -171,16 +171,20 @@ export function DashboardClient({
     if (stored === 'true' || !hasClinicId) setIsDemoMode(true)
   }, [hasClinicId])
 
-  const toggleDemo = () => {
+  const toggleDemo = async () => {
     const next = !isDemoMode
     setIsDemoMode(next)
     localStorage.setItem('awdah-demo-mode', String(next))
-    // Mirror to __Host- cookie so middleware can read it server-side.
-    // __Host- prefix enforces: Secure, SameSite=Strict, no Domain, path=/.
-    if (next) {
-      document.cookie = '__Host-awdah-demo=true; path=/; max-age=86400; SameSite=Strict; Secure'
-    } else {
-      document.cookie = '__Host-awdah-demo=; path=/; max-age=0; SameSite=Strict; Secure'
+    // RTA-001: cookie is HMAC-signed server-side. Client cannot mint a value
+    // that satisfies the middleware verifier, so we ask the server to set it.
+    try {
+      await fetch('/api/demo/toggle', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(next ? {} : { off: true }),
+      })
+    } catch {
+      // Network failure — UI already updated; cookie will be re-tried on next toggle.
     }
   }
 

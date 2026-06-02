@@ -1,0 +1,32 @@
+{
+  "$schema": "./allowed-targets.schema.json",
+  "version": 1,
+  "generated_at": "2026-06-01",
+  "authorization_doc": "docs/security/RED-TEAM-AUTHORIZATION.md",
+  "scopes": {
+    "local": {
+      "auth_id": "LOCAL-001",
+      "hosts": ["localhost", "127.0.0.1"],
+      "methods": ["GET", "HEAD", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+      "rate_per_sec": 5,
+      "valid_until": "2027-06-01",
+      "notes": "Local dev only. No upstream effects."
+    },
+    "staging": {
+      "auth_id": "STAGING-001",
+      "hosts": ["staging.aooda.com"],
+      "methods": ["GET", "HEAD", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+      "rate_per_sec": 2,
+      "valid_until": "2026-09-01",
+      "notes": "Synthetic data only. STOP if real PII appears."
+    },
+    "prod": {
+      "auth_id": "PROD-RECON-001",
+      "hosts": ["aooda.com"],
+      "methods": ["GET", "HEAD"],
+      "rate_per_sec": 1,
+      "valid_until": "2026-09-01",
+      "notes": "Read-only recon. No payloads. No auth attempts."
+    }
+  }
+}

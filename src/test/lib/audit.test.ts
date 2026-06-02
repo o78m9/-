@@ -57,7 +57,8 @@ describe('logAudit', () => {
         },
     }))
     const { logAudit } = await import('@/lib/audit')
-    const req = mockRequest({ 'x-forwarded-for': '1.1.1.1', 'user-agent': 'AwdahUA/1.0' })
+    // RTA-008: client IP now resolved via x-vercel-forwarded-for (platform-set).
+    const req = mockRequest({ 'x-vercel-forwarded-for': '1.1.1.1', 'user-agent': 'AwdahUA/1.0' })
     await logAudit(req, {
       userId: 'u-1',
       clinicId: 'c-1',

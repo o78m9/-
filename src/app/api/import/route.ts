@@ -4,7 +4,8 @@ import { cleanImportData } from '@/lib/claude'
 import { rateLimit, LIMITS } from '@/lib/rate-limit'
 import { ImportSchema } from '@/lib/schemas'
 import { logAudit } from '@/lib/audit'
-import { createClient } from '@/features/auth/lib/server'
+import { chargeClinicTokens, estimateTokens } from '@/lib/claude-budget'
+import { requireClinic, isClinicError } from '@/features/auth/lib/require-clinic'
 
 const sql = neon(process.env.DATABASE_URL ?? '')
 
@@ -15,34 +16,34 @@ export async function POST(req: NextRequest) {
   const limited = await rateLimit(req, LIMITS.import)
   if (limited) return limited
 
-  // Require authenticated session — import is a privileged action
-  const supabase = await createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
-
-  const supabaseConfigured =
-    !!process.env.NEXT_PUBLIC_SUPABASE_URL && !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-
-  if (supabaseConfigured && !user) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-  }
-
   const parsed = ImportSchema.safeParse(await req.json())
   if (!parsed.success) {
     return NextResponse.json({ error: parsed.error.flatten() }, { status: 422 })
   }
   const { rawText, clinic_id, confirm } = parsed.data
 
-  // IDOR guard: verify the caller owns this clinic
-  if (supabaseConfigured && user) {
-    const userClinicId =
-      (user.user_metadata?.clinic_id as string | undefined) ||
-      process.env.NEXT_PUBLIC_DEMO_CLINIC_ID
-    if (userClinicId && userClinicId !== clinic_id) {
-      return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
-    }
+  // AUB-001 / RTA-002 fix: swap to requireClinic() with trip-wires.
+  const ctx = await requireClinic(req, { requestedClinicId: clinic_id })
+  if (isClinicError(ctx)) return ctx
+
+  // APF-002 / PIR-007 fix: per-clinic Anthropic token budget.
+  const estIn = estimateTokens(rawText)
+  const budget = await chargeClinicTokens(ctx.clinicId, estIn)
+  if (!budget.ok) {
+    return NextResponse.json(
+      { error: 'Daily AI quota exceeded for this clinic', spentToday: budget.spentToday },
+      { status: 429, headers: { 'Retry-After': '3600' } },
+    )
   }
+
+  // APF-007 fix: audit BEFORE the confirm short-circuit so preview-mode is also tracked.
+  await logAudit(req, {
+    userId: ctx.userId,
+    clinicId: clinic_id,
+    action: 'customer.import',
+    resource: 'customer',
+    metadata: { mode: confirm ? 'apply' : 'preview', estInputTokens: estIn },
+  })
 
   const cleaned = await cleanImportData(rawText)
 
@@ -68,9 +69,9 @@ export async function POST(req: NextRequest) {
   }
 
   await logAudit(req, {
-    userId: user?.id ?? null,
+    userId: ctx.userId,
     clinicId: clinic_id,
-    action: 'customer.import',
+    action: 'customer.import.applied',
     resource: 'customer',
     metadata: { imported, requested: safeRecords.length },
   })

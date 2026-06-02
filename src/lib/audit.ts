@@ -1,6 +1,7 @@
 import type { NextRequest } from 'next/server'
 import { neon } from '@neondatabase/serverless'
 import * as Sentry from '@sentry/nextjs'
+import { getClientIp } from '@/lib/client-ip'
 
 /**
  * PDPL-compliant audit log writer.
@@ -19,6 +20,7 @@ export type AuditAction =
   | 'customer.create'
   | 'customer.update'
   | 'customer.import'
+  | 'customer.import.applied'
   | 'message.generate'
   | 'booking.submit'
   | 'auth.signin'
@@ -34,12 +36,10 @@ export interface AuditEntry {
   metadata?: Record<string, unknown>
 }
 
+// RTA-008 fix: prefer platform-set client IP header to avoid trusting
+// a value the client can rotate freely.
 function clientIp(req: NextRequest): string {
-  return (
-    req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ??
-    req.headers.get('x-real-ip') ??
-    'unknown'
-  )
+  return getClientIp(req)
 }
 
 function clientUa(req: NextRequest): string {

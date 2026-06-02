@@ -9,7 +9,32 @@
     "@typescript-eslint/consistent-type-imports": ["error", { "prefer": "type-imports" }],
     "@typescript-eslint/no-non-null-assertion": "warn",
     "no-console": ["warn", { "allow": ["warn", "error"] }],
-    "prefer-const": "error"
+    "prefer-const": "error",
+    "no-restricted-syntax": [
+      "error",
+      {
+        "selector": "MemberExpression[property.name='user_metadata']",
+        "message": "RTA-002: user_metadata is USER-writable in Supabase and must NOT be used as an authorization source. Use requireClinic() from src/features/auth/lib/require-clinic.ts which reads app_metadata."
+      },
+      {
+        "selector": "Property[key.name='user_metadata']",
+        "message": "RTA-002: avoid setting user_metadata for security-relevant fields (clinic_id, roles). Use app_metadata via Supabase Admin API."
+      }
+    ]
   },
-  "ignorePatterns": ["node_modules/", ".next/", "playwright-report/", "coverage/"]
+  "ignorePatterns": ["node_modules/", ".next/", "playwright-report/", "coverage/"],
+  "overrides": [
+    {
+      "files": ["src/features/auth/lib/require-clinic.ts"],
+      "rules": { "no-restricted-syntax": "off" }
+    },
+    {
+      "files": ["scripts/backfill-clinic-app-metadata.mjs"],
+      "rules": { "no-restricted-syntax": "off" }
+    },
+    {
+      "files": ["src/test/lib/require-clinic.test.ts"],
+      "rules": { "no-restricted-syntax": "off" }
+    }
+  ]
 }

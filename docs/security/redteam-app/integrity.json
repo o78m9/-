@@ -1,0 +1,11 @@
+{
+  "$comment": "Tamper-evident hashes. Mismatch = abort session. Re-pin after any intentional edit + log the edit in CHANGELOG.",
+  "version": 1,
+  "generated_at": "2026-06-01",
+  "files": {
+    "tests/redteam-app/lib/safe_curl.mjs": {
+      "sha256": "d8632b935726546099c6a9f11e0b4f3121a652ec29c1fe30e252556fc45c7b32",
+      "pinned_at": "2026-06-01"
+    }
+  }
+}

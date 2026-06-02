@@ -98,6 +98,7 @@ export default async function RoiReportPage({
         redirect('/login')
       }
 
+      /* eslint-disable-next-line no-restricted-syntax -- RTA-002 deferred swap, awaiting backfill (Action #2). Remove with Action #3. */
       clinicId = (user.user_metadata?.clinic_id as string | undefined) ?? null
 
       if (!clinicId) {

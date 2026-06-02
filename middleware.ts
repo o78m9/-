@@ -2,6 +2,7 @@ import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 import { applySecurityHeaders } from '@/lib/security-headers'
 import { csrfCheck } from '@/lib/csrf'
+import { verifyCookieValue } from '@/lib/signed-cookie'
 
 function generateNonce(): string {
   const array = new Uint8Array(16)
@@ -14,9 +15,11 @@ export async function middleware(request: NextRequest) {
   const nonce = generateNonce()
 
   // CSRF guard for state-changing API requests.
-  // NextAuth manages its own CSRF tokens — skip /api/auth/* to avoid breaking
-  // OAuth callbacks (which arrive with cross-origin Referer by design).
-  if (pathname.startsWith('/api/') && !pathname.startsWith('/api/auth/')) {
+  // WAP-003 fix: only OAuth callbacks legitimately arrive with cross-origin
+  // Referer by design. The blanket `/api/auth/*` exemption used to bypass the
+  // Origin check for /providers /session /csrf /signin /signout — narrowed
+  // to /api/auth/callback/* only.
+  if (pathname.startsWith('/api/') && !pathname.startsWith('/api/auth/callback/')) {
     const csrf = csrfCheck(request)
     if (csrf) return csrf
   }
@@ -25,25 +28,41 @@ export async function middleware(request: NextRequest) {
   response.headers.set('x-nonce', nonce)
   response = applySecurityHeaders(response, nonce)
 
-  // Only auth-protect /dashboard/* routes (but not /dashboard/demo which is public)
-  if (!pathname.startsWith('/dashboard') || pathname.startsWith('/dashboard/demo')) {
+  // Only auth-protect /dashboard/* routes (but not /dashboard/demo which is public).
+  // RTA-010 fix: tighten prefix match so /dashboard/demolicious does NOT match.
+  // Accept exact "/dashboard/demo" or anything strictly under "/dashboard/demo/".
+  if (
+    !pathname.startsWith('/dashboard') ||
+    pathname === '/dashboard/demo' ||
+    pathname.startsWith('/dashboard/demo/')
+  ) {
     return response
   }
 
-  // Demo bypass — only the __Host- prefixed cookie is accepted.
-  // __Host- cookies are automatically Secure + SameSite=Strict by the browser
-  // spec and cannot be set by JavaScript on a subdomain.
-  // The legacy "awdah-demo-mode" cookie (no __Host-, SameSite=Lax) has been
-  // removed to prevent auth bypass via cross-site cookie injection.
+  // RTA-001 fix: demo bypass cookie is now HMAC-signed.
+  // The __Host- prefix prevents cross-site setting; the HMAC binds the value
+  // to a server-issued capability with expiry. Plain "true" is rejected.
   const demoCookie = request.cookies.get('__Host-awdah-demo')
-  if (demoCookie?.value === 'true') {
+  if (verifyCookieValue(demoCookie?.value) === 'true') {
     return response
   }
 
-  // Skip auth check if Supabase not configured (dev without .env.local)
+  // AUB-004 fix: fail closed in any deployed env if Supabase isn't configured.
+  // Previously this returned `response` (public /dashboard/*) — which contradicted
+  // the API-route default-deny posture and made misconfigured prod a public surface.
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
   if (!supabaseUrl || !supabaseKey) {
+    const isDeployedEnv =
+      process.env.VERCEL_ENV === 'production' ||
+      process.env.VERCEL_ENV === 'preview' ||
+      process.env.NODE_ENV === 'production'
+    if (isDeployedEnv) {
+      return new NextResponse(JSON.stringify({ error: 'Server misconfigured' }), {
+        status: 503,
+        headers: { 'Content-Type': 'application/json' },
+      })
+    }
     return response
   }
 

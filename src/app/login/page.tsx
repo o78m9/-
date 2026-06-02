@@ -146,12 +146,16 @@ export default function LoginPage() {
           <p className="text-[12px] text-mute/70">
             أو{' '}
             <button
-              onClick={() => {
-                // Use __Host- prefix cookie — enforces Secure + SameSite=Strict automatically.
-                // Must NOT include a Domain attribute (required by __Host- spec).
-                document.cookie =
-                  '__Host-awdah-demo=true; path=/; max-age=86400; SameSite=Strict; Secure'
+              onClick={async () => {
+                // RTA-001: cookie is HMAC-signed server-side via the toggle
+                // endpoint. The client cannot mint a value that satisfies the
+                // middleware verifier.
                 localStorage.setItem('awdah-demo-mode', 'true')
+                try {
+                  await fetch('/api/demo/toggle', { method: 'POST' })
+                } catch {
+                  // If the toggle fails, the demo route is still public.
+                }
                 window.location.href = '/dashboard/demo'
               }}
               className="text-copper hover:underline"
