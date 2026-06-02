@@ -21,6 +21,8 @@ export type AuditAction =
   | 'customer.update'
   | 'customer.import'
   | 'customer.import.applied'
+  | 'customer.export'
+  | 'customer.erase'
   | 'message.generate'
   | 'booking.submit'
   | 'auth.signin'

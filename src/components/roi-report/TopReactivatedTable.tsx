@@ -1,7 +1,8 @@
 'use client'
 
+// RTA-005 fix: rows are ranks, not names. Quasi-identifier scrub.
 interface Patient {
-  name: string
+  rank: number
   lastVisit: string
   totalSpent: number
   status: string
@@ -21,7 +22,8 @@ const STATUS_STYLE: Record<string, { color: string; background: string }> = {
 }
 
 function formatDate(d: string) {
-  return new Date(d).toLocaleDateString('ar-SA', {
+  // Use ar-JO so RoI report dates match the Jordan-first product locale.
+  return new Date(d).toLocaleDateString('ar-JO', {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
@@ -54,17 +56,17 @@ export function TopReactivatedTable({ patients }: { patients: Patient[] }) {
         style={{ background: '#0A1F1C', borderColor: 'rgba(255,255,255,0.05)' }}
       >
         {patients.map((p) => (
-          <div key={p.name} className="flex items-center justify-between px-5 py-3">
+          <div key={p.rank} className="flex items-center justify-between px-5 py-3">
             <div className="flex items-center gap-3">
               <div
                 className="w-8 h-8 rounded-full flex items-center justify-center text-[12px] font-semibold flex-shrink-0"
                 style={{ background: 'rgba(255,255,255,0.06)', color: '#8A9B95' }}
               >
-                {p.name[0]}
+                #{p.rank}
               </div>
               <div>
                 <p className="text-[12px] font-medium" style={{ color: '#F5EFE6' }}>
-                  {p.name}
+                  مريض #{p.rank}
                 </p>
                 <p className="text-[10px]" style={{ color: '#6B6359' }}>
                   آخر زيارة: {formatDate(p.lastVisit)}
@@ -79,7 +81,7 @@ export function TopReactivatedTable({ patients }: { patients: Patient[] }) {
                 {STATUS_LABEL[p.status] ?? '—'}
               </span>
               <span className="text-[12px] font-semibold" style={{ color: '#D4A574' }}>
-                {p.totalSpent.toLocaleString()} ر.س
+                {p.totalSpent.toLocaleString()} د.أ
               </span>
             </div>
           </div>

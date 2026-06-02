@@ -25,15 +25,22 @@ const URL_LIKE = /https?:\/\/\S+/giu
 
 export function sanitizeForLlmContext(s: string | null | undefined, maxLen = 200): string {
   if (s == null) return ''
-  return s
-    .replace(BIDI_AND_INVISIBLES, '')
-    .replace(/[\r\n]+/g, ' ')
-    .replace(/[`"\\]/g, "'")
-    .replace(/-{3,}/g, '—') // em-dash, kills section-break role-shifts
-    .replace(INSTRUCTION_TOKEN, '$1​:') // zero-width separator
-    .replace(URL_LIKE, '[URL_REMOVED]')
-    .trim()
-    .slice(0, maxLen)
+  return (
+    s
+      // CISO fix: NFKC normalise FIRST so fullwidth (ＳＹＳＴＥＭ：), mathematical-
+      // alphanumeric (𝐒𝐘𝐒𝐓𝐄𝐌:), and ligature variants collapse to the canonical
+      // form the INSTRUCTION_TOKEN regex can match. Without this, "ＳＹＳＴＥＭ："
+      // sails past the regex and re-shapes the prompt.
+      .normalize('NFKC')
+      .replace(BIDI_AND_INVISIBLES, '')
+      .replace(/[\r\n]+/g, ' ')
+      .replace(/[`"\\]/g, "'")
+      .replace(/-{3,}/g, '—') // em-dash, kills section-break role-shifts
+      .replace(INSTRUCTION_TOKEN, '$1​:') // zero-width separator
+      .replace(URL_LIKE, '[URL_REMOVED]')
+      .trim()
+      .slice(0, maxLen)
+  )
 }
 
 /**

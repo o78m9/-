@@ -16,7 +16,10 @@ interface BudgetResult {
   cap: number
 }
 
-const DEFAULT_CAP_PER_DAY = 200_000
+// CFO fix: 200K default = ~$54/clinic/mo worst case (11× the modelled spend).
+// Lowered to 25K — covers ~5 imports + ~200 generations per clinic per day.
+// Operator can raise per-clinic via the CLAUDE_TOKENS_PER_CLINIC_PER_DAY env var.
+const DEFAULT_CAP_PER_DAY = 25_000
 
 function todayKey(clinicId: string): string {
   const d = new Date().toISOString().slice(0, 10)

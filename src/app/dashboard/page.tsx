@@ -1,4 +1,4 @@
-import { sql } from '@/lib/db'
+import { withClinic } from '@/shared/lib/db'
 import { DashboardClient } from '@/components/dashboard'
 import { createClient } from '@/lib/supabase/server'
 import { aggregateStats } from '@/lib/stats'
@@ -37,15 +37,20 @@ async function getServerData(clinicId: string | null) {
     customers: [] as CustomerRow[],
   }
 
-  if (!clinicId || !sql) return empty
+  if (!clinicId) return empty
 
   try {
-    const [statRows, customerRows] = await Promise.all([
-      sql`SELECT status FROM customers WHERE clinic_id = ${clinicId}`,
-      sql`SELECT id, name, phone, status, last_visit, total_spent FROM customers WHERE clinic_id = ${clinicId} ORDER BY last_visit DESC NULLS LAST LIMIT 50`,
-    ])
-    const stats = aggregateStats(statRows as { status: string }[])
-    return { stats, customers: customerRows as CustomerRow[] }
+    // CTO + CISO fix: route DB queries through withClinic() so RLS policies
+    // see the right tenant via SET LOCAL app.clinic_id.
+    const [statRows, customerRows] = await withClinic<[Array<{ status: string }>, CustomerRow[]]>(
+      clinicId,
+      (sql) => [
+        sql`SELECT status FROM customers WHERE clinic_id = ${clinicId}`,
+        sql`SELECT id, name, phone, status, last_visit, total_spent FROM customers WHERE clinic_id = ${clinicId} ORDER BY last_visit DESC NULLS LAST LIMIT 50`,
+      ],
+    )
+    const stats = aggregateStats(statRows)
+    return { stats, customers: customerRows }
   } catch {
     return empty
   }

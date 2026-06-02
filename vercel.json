@@ -10,6 +10,10 @@
     {
       "path": "/api/cron/prune-audit",
       "schedule": "0 3 * * 0"
+    },
+    {
+      "path": "/api/cron/spend-check",
+      "schedule": "*/15 * * * *"
     }
   ],
   "headers": [

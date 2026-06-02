@@ -13,7 +13,10 @@ export interface RoiReportData {
   }
   segmentBreakdown: { status: string; count: number }[]
   revenueTrend: { month: string; revenue: number; visitCount: number }[]
-  topReactivated: { name: string; lastVisit: string; totalSpent: number; status: string }[]
+  // RTA-005: names dropped to defeat quasi-identifier re-identification.
+  // Each row is a ranked entry only.
+  topReactivated: { rank: number; lastVisit: string; totalSpent: number; status: string }[]
+  topReactivatedSuppressed?: boolean
 }
 
 export const DEMO_ROI_DATA: RoiReportData = {
@@ -42,11 +45,14 @@ export const DEMO_ROI_DATA: RoiReportData = {
     { month: '2026-04', revenue: 9200, visitCount: 29 },
     { month: '2026-05', revenue: 12400, visitCount: 38 },
   ],
+  // CPO fix: replace Saudi family names with Jordan-anchored fixtures + use
+  // ranks instead of names (RTA-005 quasi-identifier scrub).
   topReactivated: [
-    { name: 'فاطمة الزهراني', lastVisit: '2026-05-12', totalSpent: 1800, status: 'vip' },
-    { name: 'أحمد الغامدي', lastVisit: '2026-05-18', totalSpent: 1200, status: 'active' },
-    { name: 'نورة السلمي', lastVisit: '2026-05-07', totalSpent: 950, status: 'active' },
-    { name: 'خالد العمري', lastVisit: '2026-05-22', totalSpent: 850, status: 'active' },
-    { name: 'هنوف المطيري', lastVisit: '2026-05-03', totalSpent: 720, status: 'dormant' },
+    { rank: 1, lastVisit: '2026-05-12', totalSpent: 1800, status: 'vip' },
+    { rank: 2, lastVisit: '2026-05-18', totalSpent: 1200, status: 'active' },
+    { rank: 3, lastVisit: '2026-05-07', totalSpent: 950, status: 'active' },
+    { rank: 4, lastVisit: '2026-05-22', totalSpent: 850, status: 'active' },
+    { rank: 5, lastVisit: '2026-05-03', totalSpent: 720, status: 'dormant' },
   ],
+  topReactivatedSuppressed: false,
 }

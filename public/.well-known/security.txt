@@ -1,5 +1,7 @@
 Contact: mailto:security@aooda.sa
 Expires: 2026-12-31T23:59:59.000Z
 Preferred-Languages: ar, en
-Canonical: https://awdah-ochre.vercel.app/.well-known/security.txt
-Policy: https://awdah-ochre.vercel.app/security-policy
+Canonical: https://aooda.sa/.well-known/security.txt
+Canonical: https://iota-liard.vercel.app/.well-known/security.txt
+Policy: https://aooda.sa/security-policy
+Acknowledgments: https://aooda.sa/security-thanks

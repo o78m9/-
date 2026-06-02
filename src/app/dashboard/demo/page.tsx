@@ -30,17 +30,20 @@ import { cn } from '@/lib/utils'
 
 // ── Mock Data ──────────────────────────────────────────────────────────────────
 
+// CPO fix: Jordan-anchored fixtures (was Saudi family names; product is Jordan-first).
+// Names sourced from common Amman/Irbid clinic surnames. JOD revenue ranges match
+// realistic dental procedures (cleaning ~25 JOD, crown ~150 JOD, implant ~500 JOD).
 const MOCK_CUSTOMERS = [
-  { id: '1', name: 'أحمد الزهراني', lastVisit: '2024-08-15', status: 'restored', revenue: 850 },
-  { id: '2', name: 'فاطمة العتيبي', lastVisit: '2024-07-22', status: 'restored', revenue: 1200 },
-  { id: '3', name: 'خالد السالم', lastVisit: '2024-09-01', status: 'dormant', revenue: 0 },
-  { id: '4', name: 'نورة الدوسري', lastVisit: '2024-06-10', status: 'restored', revenue: 650 },
-  { id: '5', name: 'محمد الشهري', lastVisit: '2024-08-30', status: 'restored', revenue: 2100 },
-  { id: '6', name: 'سارة القحطاني', lastVisit: '2024-07-05', status: 'dormant', revenue: 0 },
-  { id: '7', name: 'عبدالله الغامدي', lastVisit: '2024-09-15', status: 'restored', revenue: 1800 },
-  { id: '8', name: 'منى الحربي', lastVisit: '2024-08-20', status: 'restored', revenue: 950 },
-  { id: '9', name: 'يوسف العمري', lastVisit: '2024-07-18', status: 'dormant', revenue: 0 },
-  { id: '10', name: 'ريم الشمري', lastVisit: '2024-09-08', status: 'restored', revenue: 1450 },
+  { id: '1', name: 'أحمد أبو شعر', lastVisit: '2024-08-15', status: 'restored', revenue: 280 },
+  { id: '2', name: 'فاطمة الخطيب', lastVisit: '2024-07-22', status: 'restored', revenue: 450 },
+  { id: '3', name: 'خالد عبد النور', lastVisit: '2024-09-01', status: 'dormant', revenue: 0 },
+  { id: '4', name: 'نورة الزعبي', lastVisit: '2024-06-10', status: 'restored', revenue: 220 },
+  { id: '5', name: 'محمد النابلسي', lastVisit: '2024-08-30', status: 'restored', revenue: 680 },
+  { id: '6', name: 'سارة الحوراني', lastVisit: '2024-07-05', status: 'dormant', revenue: 0 },
+  { id: '7', name: 'عبدالله طوقان', lastVisit: '2024-09-15', status: 'restored', revenue: 590 },
+  { id: '8', name: 'منى الدباس', lastVisit: '2024-08-20', status: 'restored', revenue: 320 },
+  { id: '9', name: 'يوسف الجابر', lastVisit: '2024-07-18', status: 'dormant', revenue: 0 },
+  { id: '10', name: 'ريم الحمود', lastVisit: '2024-09-08', status: 'restored', revenue: 475 },
 ]
 
 const MOCK_REVENUE = [
@@ -171,7 +174,7 @@ function ChartTooltip({ active, payload, label }: ChartTooltipProps) {
         يوم {label}
       </p>
       <p className="text-[14px] font-bold" style={{ color: GOLD }}>
-        {val.toLocaleString('ar-SA')} ر.س
+        {val.toLocaleString('ar-JO')} د.أ
       </p>
     </div>
   )
@@ -347,7 +350,7 @@ export default function DashboardDemoPage() {
               <KpiCard label="إجمالي المرضى" value={2847} color={GOLD} delay={0.05} />
               <KpiCard label="مرضى خاملون" value={1139} color={COPPER} delay={0.1} />
               <KpiCard label="تم استرجاعهم" value={312} color={SAGE} delay={0.15} />
-              <KpiCard label="إيرادات الشهر" value={12400} suffix="ر.س" color={GOLD} delay={0.2} />
+              <KpiCard label="إيرادات الشهر" value={8400} suffix="د.أ" color={GOLD} delay={0.2} />
             </div>
 
             {/* ── Charts row ────────────────────────────────────────────────── */}
@@ -569,7 +572,7 @@ export default function DashboardDemoPage() {
                             className="px-4 py-3 font-semibold"
                             style={{ color: c.revenue > 0 ? GOLD : MUTED }}
                           >
-                            {c.revenue > 0 ? `${c.revenue.toLocaleString('ar-SA')} ر.س` : '—'}
+                            {c.revenue > 0 ? `${c.revenue.toLocaleString('ar-JO')} د.أ` : '—'}
                           </td>
                         </tr>
                       ))}

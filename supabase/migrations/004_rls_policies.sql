@@ -70,12 +70,19 @@ CREATE POLICY attr_disputes_tenant ON attribution_disputes FOR ALL
 
 -- audit_log: writes are tenant-scoped (or unscoped for public booking — clinic_id is null).
 -- Reads require a matching tenant setting.
+-- CISO fix: WITH CHECK was previously `true`, allowing an authenticated session
+-- to spray fake audit entries into any victim tenant's log (forensic-integrity
+-- forfeit). Now writes must match the request-scoped clinic OR be unscoped (null,
+-- e.g. /api/booking from an anonymous lead).
 CREATE POLICY audit_log_tenant ON audit_log FOR ALL
   USING (
     clinic_id IS NULL
     OR clinic_id = current_setting('app.clinic_id', true)
   )
-  WITH CHECK (true);
+  WITH CHECK (
+    clinic_id IS NULL
+    OR clinic_id = current_setting('app.clinic_id', true)
+  );
 
 -- Helpful comment for ops: app.clinic_id setting is consumed by these policies.
 COMMENT ON TABLE clinics              IS 'RLS-enabled. Set app.clinic_id per request.';

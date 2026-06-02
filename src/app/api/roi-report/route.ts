@@ -1,8 +1,8 @@
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
-import { neon } from '@neondatabase/serverless'
 import { rateLimit, LIMITS } from '@/lib/rate-limit'
 import { RoiReportQuerySchema } from '@/lib/schemas'
+import { withClinic } from '@/shared/lib/db'
 import { requireClinic, isClinicError } from '@/features/auth/lib/require-clinic'
 
 export async function GET(req: NextRequest) {
@@ -36,7 +36,6 @@ export async function GET(req: NextRequest) {
   if (!process.env.DATABASE_URL) {
     return NextResponse.json({ error: 'Internal error' }, { status: 500 })
   }
-  const sql = neon(process.env.DATABASE_URL)
 
   // Resolve month range
   const reportDate = monthParam ? new Date(`${monthParam}-01`) : now
@@ -60,7 +59,20 @@ export async function GET(req: NextRequest) {
   ).toISOString()
 
   try {
-    const [current, previous, unreached, segments, trend, top, clinicRow] = await Promise.all([
+    // CTO + CISO fix: wrap all queries in withClinic() so RLS policies (migration 004)
+    // resolve to this tenant. Previously Promise.all over `neon()` ran each query in
+    // its own HTTP request — no Postgres session, no SET LOCAL possible.
+    const [current, previous, unreached, segments, trend, top, clinicRow] = await withClinic<
+      [
+        Array<{ count: number; revenue: number }>,
+        Array<{ count: number; revenue: number }>,
+        Array<{ count: number; avg_spend: number }>,
+        Array<{ status: string; count: number }>,
+        Array<{ month: string; revenue: number; visit_count: number }>,
+        Array<{ last_visit: string; total_spent: number; status: string }>,
+        Array<{ name: string }>,
+      ]
+    >(clinicId, (sql) => [
       // Current month reactivations
       sql`
         SELECT COUNT(*)::int AS count, COALESCE(SUM(total_spent), 0)::numeric AS revenue

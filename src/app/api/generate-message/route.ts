@@ -49,6 +49,17 @@ function templateContext(template: string): string {
 }
 
 export async function POST(request: NextRequest) {
+  // COO fix: founder kill-switch. Flipping FEATURE_AI_GENERATION=false in
+  // Vercel env disables AI generation org-wide within one redeploy. Useful
+  // for emergency cost containment (Anthropic spend spike) or for shipping
+  // template-only flows before legacy free-form path is fully removed.
+  if (process.env.FEATURE_AI_GENERATION === 'false') {
+    return NextResponse.json(
+      { error: 'AI generation is temporarily disabled' },
+      { status: 503, headers: { 'Retry-After': '3600' } },
+    )
+  }
+
   const limited = await rateLimit(request, LIMITS.ai)
   if (limited) return limited
 

@@ -4,23 +4,27 @@ import { useEffect, useRef } from 'react'
 import { SectionNumber } from '@/components/ui/section-number'
 import { SectionGlow, DotGrid } from '@/components/ui/section-bg'
 
+// CMO fix: brand-suicidal to display "verified results" with numbers next to a
+// pre-launch product. Reframed as PILOT TARGETS (الأهداف التجريبية) — what we are
+// optimising for in the first cohort, with a clear footnote that these are
+// targets, not retrospective stats.
 const STATS = [
   {
-    display: '١٢٬٤٠٠',
-    unit: 'ر.س',
-    label: 'متوسط الإيرادات المسترجعة شهرياً لكل عيادة',
-    countTo: 12400,
+    display: '٨٬٤٠٠',
+    unit: 'د.أ',
+    label: 'هدف متوسط الإيرادات المسترجعة شهرياً لكل عيادة في الإطلاق التجريبي',
+    countTo: 8400,
   },
   {
-    display: '٣٤',
+    display: '٣٠',
     unit: '٪',
-    label: 'نسبة الرد على رسائل عَودة',
-    countTo: 34,
+    label: 'هدف نسبة الرد على رسائل عَودة في الإطلاق التجريبي',
+    countTo: 30,
   },
   {
     display: '٤',
     unit: 'أيام',
-    label: 'لأول حجز موعد من لحظة إرسال الرسالة',
+    label: 'الهدف لأول حجز موعد من لحظة إرسال الرسالة',
     countTo: 4,
   },
 ]
@@ -56,7 +60,7 @@ function StatRow({
           const tick = (now: number) => {
             const p = Math.min((now - t0) / dur, 1)
             const cur = Math.round(ease(p) * countTo)
-            num.textContent = new Intl.NumberFormat('ar-SA').format(cur)
+            num.textContent = new Intl.NumberFormat('ar-JO').format(cur)
             if (p < 1) requestAnimationFrame(tick)
             else num.textContent = display
           }
@@ -143,7 +147,7 @@ export function ResultsSection() {
               border: '1px solid rgba(184,116,61,0.16)',
             }}
           >
-            نتائج مؤكدة
+            أهداف الإطلاق التجريبي
           </span>
         </div>
 
@@ -153,7 +157,7 @@ export function ResultsSection() {
           style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}
           dir="rtl"
         >
-          أرقام تتكلم عن نفسها
+          ما نسعى إليه في الإطلاق التجريبي
         </h2>
 
         <div>
@@ -161,6 +165,18 @@ export function ResultsSection() {
             <StatRow key={s.label} {...s} />
           ))}
         </div>
+
+        {/* CMO fix: explicit footnote — these are targets, not historical results.
+            Pre-launch product cannot honestly claim "verified results". */}
+        <p
+          dir="rtl"
+          className="mt-8 text-[13px] leading-relaxed"
+          style={{ color: 'var(--mute)', maxWidth: '60ch' }}
+        >
+          هذه أرقام مستهدفة للإطلاق التجريبي مع أوّل ٥ عيادات في الأردن. لم نكشف بعد عن نتائج
+          تشغيلية لأنّنا قبل الإطلاق العام — سنُحدّث هذا القسم بالأرقام الفعلية فور نشر التقرير
+          الأوّل.
+        </p>
       </div>
     </section>
   )
